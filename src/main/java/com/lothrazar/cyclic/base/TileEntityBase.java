@@ -190,6 +190,21 @@ public abstract class TileEntityBase extends TileEntity implements IInventory {
     }
   }
 
+  // was getTargetCenter
+  protected BlockPos getFacingShapeCenter(int radiusIn) {
+    BlockPos center = null;
+    if (this.getCurrentFacing() != null) {
+      if (this.getCurrentFacing().getAxis().isVertical()) {
+        //vertical center point
+        center = this.getCurrentFacingPos(1);
+      }
+      else { //horizontal center point
+        center = this.getCurrentFacingPos(radiusIn + 1);
+      }
+    }
+    return center;
+  }
+
   public Direction getCurrentFacing() {
     if (this.getBlockState().hasProperty(BlockStateProperties.FACING)) {
       return this.getBlockState().get(BlockStateProperties.FACING);
@@ -508,6 +523,10 @@ public abstract class TileEntityBase extends TileEntity implements IInventory {
   @Deprecated
   @Override
   public int getSizeInventory() {
+    IItemHandler invo = this.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null);
+    if (invo != null) {
+      return invo.getSlots();
+    }
     return 0;
   }
 
@@ -520,6 +539,13 @@ public abstract class TileEntityBase extends TileEntity implements IInventory {
   @Deprecated
   @Override
   public ItemStack getStackInSlot(int index) {
+    IItemHandler invo = this.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).orElse(null);
+    try {
+      if (invo != null && index < invo.getSlots()) {
+        return invo.getStackInSlot(index);
+      }
+    }
+    catch (Exception e) {}
     return ItemStack.EMPTY;
   }
 
@@ -587,5 +613,15 @@ public abstract class TileEntityBase extends TileEntity implements IInventory {
     for (final Direction exportToSide : UtilDirection.getAllInDifferentOrder()) {
       moveEnergy(exportToSide, MENERGY / 2);
     }
+  }
+
+  public boolean getBlockStateVertical() {
+    if (this.getBlockState().hasProperty(BlockStateProperties.FACING))
+      return this.getBlockState().get(BlockStateProperties.FACING).getAxis().isVertical();
+    return false;
+  }
+
+  public void updateComparatorOutputLevel() {
+    world.updateComparatorOutputLevel(pos, this.getBlockState().getBlock());
   }
 }

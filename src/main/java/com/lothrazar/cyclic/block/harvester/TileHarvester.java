@@ -2,6 +2,7 @@ package com.lothrazar.cyclic.block.harvester;
 
 import com.lothrazar.cyclic.base.TileEntityBase;
 import com.lothrazar.cyclic.capability.CustomEnergyStorage;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.cyclic.util.HarvestUtil;
 import com.lothrazar.cyclic.util.UtilShape;
@@ -12,6 +13,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
@@ -33,10 +35,11 @@ public class TileHarvester extends TileEntityBase implements ITickableTileEntity
 
   public static final int MAX_SIZE = 12;
   static final int MAX_ENERGY = 640000;
-  static final int MAX_HEIGHT = 16;
+  public static final int MAX_HEIGHT = 16;
   public static IntValue POWERCONF;
-  private int radius = MAX_SIZE;
+  private int radius = MAX_SIZE / 2;
   private int shapeIndex = 0;
+  BlockPos targetPos = null;
   private int height = 1;
   private boolean directionIsUp = false;
   CustomEnergyStorage energy = new CustomEnergyStorage(MAX_ENERGY, MAX_ENERGY / 4);
@@ -64,7 +67,8 @@ public class TileHarvester extends TileEntityBase implements ITickableTileEntity
       return;
     }
     //get and update target
-    BlockPos targetPos = getShapeTarget();
+    List<BlockPos> shape = this.getShape();
+    targetPos = getShapeTarget(shape);
     shapeIndex++;
     //does it exist
     if (targetPos != null && HarvestUtil.tryHarvestSingle(this.world, targetPos)) {
@@ -73,8 +77,7 @@ public class TileHarvester extends TileEntityBase implements ITickableTileEntity
     }
   }
 
-  private BlockPos getShapeTarget() {
-    List<BlockPos> shape = this.getShape();
+  private BlockPos getShapeTarget(List<BlockPos> shape) {
     if (shape.size() == 0) {
       return null;
     }
@@ -84,22 +87,36 @@ public class TileHarvester extends TileEntityBase implements ITickableTileEntity
     return shape.get(shapeIndex);
   }
 
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().get(BlockStateProperties.FACING);
+    int diff = directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
+  }
+
   //for harvest
   public List<BlockPos> getShape() {
-    List<BlockPos> shape = UtilShape.cubeSquareBase(this.getCurrentFacingPos(radius + 1), radius, 0);
-    int diff = directionIsUp ? 1 : -1;
-    if (height > 0) {
-      shape = UtilShape.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = UtilShape.cubeSquareBase(center, radius, 0);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = UtilShape.repeatShapeByHeight(shape, heightWithDirection);
     }
     return shape;
   }
 
   //for render
   public List<BlockPos> getShapeHollow() {
-    List<BlockPos> shape = UtilShape.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-    int diff = directionIsUp ? 1 : -1;
-    if (height > 0) {
-      shape = UtilShape.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = UtilShape.squareHorizontalHollow(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = UtilShape.repeatShapeByHeight(shape, heightWithDirection);
+    }
+    if (targetPos != null) {
+      shape.add(targetPos);
     }
     return shape;
   }
@@ -133,7 +150,7 @@ public class TileHarvester extends TileEntityBase implements ITickableTileEntity
         this.needsRedstone = value % 2;
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
       case SIZE:
         radius = Math.min(value, MAX_SIZE);

@@ -73,6 +73,7 @@ public class ScreenMiner extends ScreenBase<ContainerMiner> {
     btnRender.onValueUpdate(container.tile);
     btnDirection.onValueUpdate(container.tile);
     sizeSlider.setTooltip("cyclic.screen.size" + container.tile.getField(sizeSlider.getField()));
+    btnDirection.visible = !container.tile.getBlockStateVertical();
   }
 
   @Override
