@@ -3,6 +3,7 @@ package com.lothrazar.cyclic.block.miner;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.base.TileEntityBase;
 import com.lothrazar.cyclic.capability.CustomEnergyStorage;
+import com.lothrazar.cyclic.data.DataTags;
 import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.item.datacard.BlockStateMatcher;
 import com.lothrazar.cyclic.item.datacard.BlockstateCard;
@@ -262,24 +263,29 @@ public class TileMiner extends TileEntityBase implements INamedContainerProvider
       return false; //dont mine air or liquid. 
     }
     //is this valid
-    BlockState blockSt = world.getBlockState(targetPos);
-    if (blockSt.hardness < 0) {
+    BlockState state = world.getBlockState(targetPos);
+    if (state.hardness < 0) {
       return false; //unbreakable 
     }
+    //check the tag ignore list so modpack/datapack can filter this
+    if (state.isIn(DataTags.MINER_IGNORED)) {
+      ModCyclic.LOGGER.info("miner/ignored tag skips " + targetPos);
+      return false;
+    }
     //water logged is 
-    if (blockSt.getFluidState() != null && blockSt.getFluidState().isEmpty() == false) {
+    if (state.getFluidState() != null && state.getFluidState().isEmpty() == false) {
       //am i PURE liquid? or just a WATERLOGGED block
-      if (blockSt.hasProperty(BlockStateProperties.WATERLOGGED) == false) {
+      if (state.hasProperty(BlockStateProperties.WATERLOGGED) == false) {
         //    ModCyclic.LOGGER.info(targetPos + " Mining FLUID is not valid  " + blockSt);
         //pure liquid. but this will make canHarvestBlock go true , which is a lie actually so, no. dont get stuck here
         return false;
       }
     }
-    if (!this.isValidTarget(blockSt)) {
+    if (!this.isValidTarget(state)) {
       return false;
     }
     //its a solid non-air, non-fluid block (but might be like waterlogged stairs or something)
-    boolean canHarvest = blockSt.canHarvestBlock(world, targetPos, fakePlayer.get());
+    boolean canHarvest = state.canHarvestBlock(world, targetPos, fakePlayer.get());
     if (!canHarvest) {
       //      ModCyclic.LOGGER.info(targetPos + " Mining target is not valid  " + blockSt);
     }

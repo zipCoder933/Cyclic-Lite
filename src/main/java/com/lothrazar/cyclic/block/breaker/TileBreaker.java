@@ -1,6 +1,8 @@
 package com.lothrazar.cyclic.block.breaker;
 
+import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.base.TileEntityBase;
+import com.lothrazar.cyclic.data.DataTags;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -43,7 +45,7 @@ public class TileBreaker extends TileEntityBase implements INamedContainerProvid
       return;
     }
     BlockPos target = pos.offset(this.getCurrentFacing());
-    if (this.isValid(target)) {
+    if (this.isTargetValid(target)) {
       this.world.destroyBlock(target, true);
     }
   }
@@ -51,13 +53,18 @@ public class TileBreaker extends TileEntityBase implements INamedContainerProvid
   /**
    * Avoid mining source liquid blocks and unbreakable
    */
-  private boolean isValid(BlockPos target) {
+  private boolean isTargetValid(BlockPos targetPos) {
     World level = world;
-    BlockState state = level.getBlockState(target);
+    BlockState state = level.getBlockState(targetPos);
     if (state.getBlock() == Blocks.AIR) {
       return false;
     }
-    if (state.getBlockHardness(level, target) < 0) {
+    if (state.getBlockHardness(level, targetPos) < 0) {
+      return false;
+    }
+    //check the tag ignore list so modpack/datapack can filter this
+    if (state.isIn(DataTags.BREAKER_IGNORED)) {
+      ModCyclic.LOGGER.info("breaker/ignored tag skips " + targetPos);
       return false;
     }
     if (state.getFluidState() != null && state.getFluidState().isEmpty() == false) {
