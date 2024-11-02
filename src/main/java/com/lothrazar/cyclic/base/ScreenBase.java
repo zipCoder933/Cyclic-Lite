@@ -1,6 +1,7 @@
 package com.lothrazar.cyclic.base;
 
 import com.lothrazar.cyclic.ModCyclic;
+import com.lothrazar.cyclic.data.Const;
 import com.lothrazar.cyclic.gui.GuiSliderInteger;
 import com.lothrazar.cyclic.gui.IHasTooltip;
 import com.lothrazar.cyclic.gui.TextBoxAutosave;
@@ -54,7 +55,7 @@ public abstract class ScreenBase<T extends Container> extends ContainerScreen<T>
   }
 
   protected void drawSlot(MatrixStack ms, int x, int y, ResourceLocation texture) {
-    drawSlot(ms, x, y, texture, 18);
+    drawSlot(ms, x, y, texture, Const.SQ);
   }
 
   protected void drawSlot(MatrixStack ms, int x, int y, ResourceLocation texture, int size) {
@@ -63,7 +64,7 @@ public abstract class ScreenBase<T extends Container> extends ContainerScreen<T>
   }
 
   protected void drawSlot(MatrixStack ms, int x, int y) {
-    drawSlot(ms, x, y, TextureRegistry.SLOT, 18);
+    drawSlot(ms, x, y, TextureRegistry.SLOT, Const.SQ);
   }
 
   protected void drawSlotLarge(MatrixStack ms, int x, int y) {

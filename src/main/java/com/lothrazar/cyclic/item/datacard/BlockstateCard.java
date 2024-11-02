@@ -13,6 +13,7 @@ import net.minecraft.item.ItemUseContext;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.nbt.NBTUtil;
+import net.minecraft.state.Property;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -73,12 +74,26 @@ public class BlockstateCard extends ItemBase {
     return st;
   }
 
+  public static boolean propertiesMatch(BlockState targetState, BlockState st) {
+    try {
+      for (Property<?> p : st.getProperties()) {
+        if (!st.get(p).equals(targetState.get(p))) {
+          return false;
+        }
+      }
+    }
+    catch (Exception e) {
+      return false;
+    }
+    //none had a mismatch
+    return true;
+  }
+
   @Override
   public ActionResultType onItemUse(ItemUseContext context) {
     PlayerEntity player = context.getPlayer();
     Hand hand = context.getHand();
     BlockPos pos = context.getPos();
-    //    Direction side = context.getFace();
     ItemStack held = player.getHeldItem(hand);
     BlockState state = context.getWorld().getBlockState(pos);
     CompoundNBT stateTag = NBTUtil.writeBlockState(state);

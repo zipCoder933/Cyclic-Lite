@@ -19,7 +19,6 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.INamedContainerProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.state.Property;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.TileEntity;
@@ -221,40 +220,6 @@ public class TileMiner extends TileEntityBase implements INamedContainerProvider
     return false;
   }
 
-  private boolean isValidTarget(BlockState targetState) {
-    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
-    if (filter.isEmpty()) {
-      return true; //ya go
-    }
-    for (BlockStateMatcher m : BlockstateCard.getSavedStates(filter)) {
-      BlockState st = m.getState();
-      if (targetState.getBlock() == st.getBlock()) {
-        if (m.isExactProperties() == false) {
-          // the blocks DO match, isExact is flagged as no, so we are good
-          return true;
-        }
-        //tag DOES want to match Exactly on Properties
-        return this.propertiesMatch(targetState, st);
-      }
-    }
-    return false;
-  }
-
-  private boolean propertiesMatch(BlockState targetState, BlockState st) {
-    try {
-      for (Property<?> p : st.getProperties()) {
-        if (!st.get(p).equals(targetState.get(p))) {
-          return false;
-        }
-      }
-    }
-    catch (Exception e) {
-      return false;
-    }
-    //none had a mismatch
-    return true;
-  }
-
   /***
    * Unbreakable blocks and fluid blocks are not valid. Otherwise checks if player:canHarvestBlock using its equipped item
    */
@@ -263,33 +228,46 @@ public class TileMiner extends TileEntityBase implements INamedContainerProvider
       return false; //dont mine air or liquid. 
     }
     //is this valid
-    BlockState state = world.getBlockState(targetPos);
-    if (state.hardness < 0) {
+    BlockState targetState = world.getBlockState(targetPos);
+    if (targetState.hardness < 0) {
       return false; //unbreakable 
     }
     //check the tag ignore list so modpack/datapack can filter this
-    if (state.isIn(DataTags.MINER_IGNORED)) {
+    if (targetState.isIn(DataTags.MINER_IGNORED)) {
       ModCyclic.LOGGER.info("miner/ignored tag skips " + targetPos);
       return false;
     }
     //water logged is 
-    if (state.getFluidState() != null && state.getFluidState().isEmpty() == false) {
+    if (targetState.getFluidState() != null && targetState.getFluidState().isEmpty() == false) {
       //am i PURE liquid? or just a WATERLOGGED block
-      if (state.hasProperty(BlockStateProperties.WATERLOGGED) == false) {
+      if (targetState.hasProperty(BlockStateProperties.WATERLOGGED) == false) {
         //    ModCyclic.LOGGER.info(targetPos + " Mining FLUID is not valid  " + blockSt);
         //pure liquid. but this will make canHarvestBlock go true , which is a lie actually so, no. dont get stuck here
         return false;
       }
     }
-    if (!this.isValidTarget(state)) {
+    if (!this.isValidFromDatacard(targetState)) {
       return false;
     }
     //its a solid non-air, non-fluid block (but might be like waterlogged stairs or something)
-    boolean canHarvest = state.canHarvestBlock(world, targetPos, fakePlayer.get());
+    boolean canHarvest = targetState.canHarvestBlock(world, targetPos, fakePlayer.get());
     if (!canHarvest) {
       //      ModCyclic.LOGGER.info(targetPos + " Mining target is not valid  " + blockSt);
     }
     return canHarvest;
+  }
+
+  private boolean isValidFromDatacard(BlockState targetState) {
+    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
+    if (filter.isEmpty()) {
+      return true; //ya go
+    }
+    for (BlockStateMatcher m : BlockstateCard.getSavedStates(filter)) {
+      if (m.doesMatch(targetState)) {
+        return true; // i am allowed to mine this
+      }
+    }
+    return false; //filter is my allow list, and you aint in it so not allowed
   }
 
   private void updateTargetPos(List<BlockPos> shape) {

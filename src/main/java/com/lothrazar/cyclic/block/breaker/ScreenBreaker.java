@@ -41,5 +41,6 @@ public class ScreenBreaker extends ScreenBase<ContainerBreaker> {
   @Override
   protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float partialTicks, int mouseX, int mouseY) {
     this.drawBackground(ms, TextureRegistry.INVENTORY);
+    this.drawSlot(ms, 80, 30, TextureRegistry.SLOT_BSDATA);
   }
 }

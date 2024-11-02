@@ -68,7 +68,6 @@ public class ScreenGeneratorFood extends ScreenBase<ContainerGeneratorFood> {
   @Override
   protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float partialTicks, int mouseX, int mouseY) {
     this.drawBackground(ms, TextureRegistry.INVENTORY);
-    //    this.drawSlot(ms, 54, 34); 
     this.drawSlotLarge(ms, 70, 30);
     energy.draw(ms, container.tile.getEnergy());
     progress.max = container.tile.getField(TileGeneratorFood.Fields.BURNMAX.ordinal());

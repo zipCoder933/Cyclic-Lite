@@ -8,6 +8,8 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.IWorldPosCallable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerBreaker extends ContainerBase {
 
@@ -18,6 +20,10 @@ public class ContainerBreaker extends ContainerBase {
     tile = (TileBreaker) world.getTileEntity(pos);
     this.playerEntity = player;
     this.playerInventory = playerInventory;
+    tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
+      this.endInv = h.getSlots();
+      addSlot(new SlotItemHandler(h, 0, 81, 31));
+    });
     layoutPlayerInventorySlots(8, 84);
     trackEnergy(tile);
     this.trackAllIntFields(tile, TileBreaker.Fields.values().length);
