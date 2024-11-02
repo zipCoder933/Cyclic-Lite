@@ -12,7 +12,7 @@ public interface IBlockFacade {
 
   default VoxelShape getFacadeShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
     BlockState tfs = getFacadeState(state, level, pos);
-    if (tfs != null) {
+    if (tfs != null && tfs.getBlock() != state.getBlock()) {
       return ctx == null ? tfs.getShape(level, pos) : tfs.getShape(level, pos, ctx);
     }
     return null;

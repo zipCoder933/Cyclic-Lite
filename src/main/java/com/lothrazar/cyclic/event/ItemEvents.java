@@ -533,7 +533,7 @@ public class ItemEvents {
     }
     else {
       Block block = Block.byItem(held.getItem());
-      if (block == null || block == Blocks.AIR) {
+      if (block == null || block == Blocks.AIR || block == target.getBlock()) {
         return;
       }
       if (target.getBlock() instanceof CableBase) {
