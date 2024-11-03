@@ -18,7 +18,7 @@ public class RenderItemCollect implements BlockEntityRenderer<TileItemCollector>
   public void render(TileItemCollector te, float v, PoseStack matrix, MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
     int previewType = te.getField(TileItemCollector.Fields.RENDER.ordinal());
     if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
-      RenderUtils.renderOutline(te.getBlockPos(), te.getShape(), matrix, 0.7F, ClientConfigCyclic.getColor(te));
+      RenderUtils.renderOutline(te.getBlockPos(), te.getShapeHollow(), matrix, 0.7F, ClientConfigCyclic.getColor(te));
     }
     else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShapeHollow()) {

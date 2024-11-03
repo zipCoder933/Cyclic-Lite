@@ -142,16 +142,6 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
     tag.put(NBTINV, inventory.serializeNBT());
     super.saveAdditional(tag);
   }
-  //  private BlockPos getTargetCenter() {
-  //    // move center over that much, not including exact horizontal
-  //    return this.getBlockPos().relative(this.getCurrentFacing(), radius + 1);
-  //  }
-  //  public List<BlockPos> getShape() {
-  //    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-  //    int diff = directionIsUp ? 1 : -1;
-  //    if (height > 0) {
-  //      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
-  //=======
 
   private int heightWithDirection() {
     Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
@@ -163,14 +153,10 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
   }
 
   public List<BlockPos> getShapeHollow() {
-    return getShape();
-  }
-
-  public List<BlockPos> getShape() {
     BlockPos center = getFacingShapeCenter(radius);
     List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
     int heightWithDirection = heightWithDirection();
-    if (heightWithDirection != 0) {
+    if (heightWithDirection != 0) { //   if (heightWithDirection > 1) {
       shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
     }
     return shape;
@@ -185,15 +171,17 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
     BlockPos center = getFacingShapeCenter(radius);
     int heightWithDirection = heightWithDirection();
     int yMin = center.getY();
-    int yMax = center.getY() + heightWithDirection;
-    //for some reason
-    if (!directionIsUp) {
-      // when aiming down, we dont have the offset to get [current block] without this
-      yMin++;
+    int yMax = center.getY();
+    if (heightWithDirection < 0) {
+      yMin += heightWithDirection;
+    }
+    else {
+      yMax += heightWithDirection;
     }
     AABB aabb = new AABB(
         center.getX() - radius, yMin, center.getZ() - radius,
         center.getX() + radius + 1, yMax, center.getZ() + radius + 1);
+    //    System.out.println(aabb);
     return aabb;
   }
 
