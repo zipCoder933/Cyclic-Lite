@@ -51,7 +51,7 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
     x = guiLeft + 34;
     f = TileItemCollector.Fields.HEIGHT.ordinal();
     heightslider = this.addButton(new GuiSliderInteger(x, y, w, h, TileItemCollector.Fields.HEIGHT.ordinal(), container.tile.getPos(),
-        1, TileItemCollector.MAX_HEIGHT, container.tile.getField(f)));
+        0, TileItemCollector.MAX_HEIGHT, container.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");
     //then size
     f = TileItemCollector.Fields.SIZE.ordinal();
