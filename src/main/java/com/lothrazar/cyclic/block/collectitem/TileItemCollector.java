@@ -2,6 +2,7 @@ package com.lothrazar.cyclic.block.collectitem;
 
 import java.util.List;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.item.datacard.filter.FilterCardItem;
 import com.lothrazar.cyclic.registry.ItemRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
@@ -21,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -88,6 +90,7 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
           break;
         }
         remainder = inventory.insertItem(i, remainder, false);
+        updateComparatorOutputLevel();
       }
       stackEntity.setItem(remainder);
       if (remainder.isEmpty()) {
@@ -139,26 +142,50 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
     tag.put(NBTINV, inventory.serializeNBT());
     super.saveAdditional(tag);
   }
+  //  private BlockPos getTargetCenter() {
+  //    // move center over that much, not including exact horizontal
+  //    return this.getBlockPos().relative(this.getCurrentFacing(), radius + 1);
+  //  }
+  //  public List<BlockPos> getShape() {
+  //    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
+  //    int diff = directionIsUp ? 1 : -1;
+  //    if (height > 0) {
+  //      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+  //=======
 
-  private BlockPos getTargetCenter() {
-    // move center over that much, not including exact horizontal
-    return this.getBlockPos().relative(this.getCurrentFacing(), radius + 1);
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
+    int diff = directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
+  }
+
+  public List<BlockPos> getShapeHollow() {
+    return getShape();
   }
 
   public List<BlockPos> getShape() {
-    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-    int diff = directionIsUp ? 1 : -1;
-    if (height > 0) {
-      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
     }
     return shape;
   }
 
   private AABB getRange() {
-    BlockPos center = getTargetCenter();
-    int diff = directionIsUp ? 1 : -1;
+    //    BlockPos center = getTargetCenter();
+    //    int diff = directionIsUp ? 1 : -1;
+    //=======
+    //
+    //  private AxisAlignedBB getRange() {
+    BlockPos center = getFacingShapeCenter(radius);
+    int heightWithDirection = heightWithDirection();
     int yMin = center.getY();
-    int yMax = center.getY() + diff * height;
+    int yMax = center.getY() + heightWithDirection;
     //for some reason
     if (!directionIsUp) {
       // when aiming down, we dont have the offset to get [current block] without this
@@ -177,7 +204,7 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
         this.setNeedsRedstone(value);
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
       case SIZE:
         radius = Math.min(value, MAX_SIZE);

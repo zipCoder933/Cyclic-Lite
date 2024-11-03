@@ -22,6 +22,8 @@ public class DataTags {
   public static final TagKey<Block> MUSHROOMS = BlockTags.create(new ResourceLocation("forge:mushrooms"));
   public static final TagKey<Block> VINES = BlockTags.create(new ResourceLocation("forge:vines"));
   public static final TagKey<Block> CACTUS = BlockTags.create(new ResourceLocation("forge:cactus"));
+  public static final TagKey<Block> BREAKER_IGNORED = BlockTags.create(new ResourceLocation("cyclic:ignored/breaker"));
+  public static final TagKey<Block> MINER_IGNORED = BlockTags.create(new ResourceLocation("cyclic:ignored/miner"));
   public static final TagKey<Block> CROP_BLOCKS = BlockTags.create(new ResourceLocation("forge:crop_blocks"));
   public static final TagKey<Item> FISHING_RODS = ItemTags.create(new ResourceLocation("forge:fishing_rods"));
   public static final TagKey<Item> GLASS_DARKI = ItemTags.create(new ResourceLocation("forge:glass/dark"));

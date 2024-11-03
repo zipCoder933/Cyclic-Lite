@@ -104,6 +104,7 @@ public class TileGeneratorFood extends TileBlockEntityCyclic implements MenuProv
       this.burnTimeMax = burnTimeTicks;
       this.burnTime = this.burnTimeMax;
       stack.shrink(1);
+      updateComparatorOutputLevel();
       //nether items, mob drops
       // lava fluid
       //exp fluid

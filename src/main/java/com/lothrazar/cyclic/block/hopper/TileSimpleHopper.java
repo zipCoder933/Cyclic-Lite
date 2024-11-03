@@ -2,7 +2,6 @@ package com.lothrazar.cyclic.block.hopper;
 
 import java.util.List;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
-import com.lothrazar.cyclic.block.hopperfluid.BlockFluidHopper;
 import com.lothrazar.cyclic.block.hoppergold.TileGoldHopper;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
@@ -66,10 +65,11 @@ public class TileSimpleHopper extends TileBlockEntityCyclic implements Hopper {
     //no cooldown unlike mojang hopper
     this.tryPullFromWorld(worldPosition.relative(Direction.UP));
     this.tryExtract(inventory, Direction.UP, getFlow(), null);
-    Direction exportToSide = this.getBlockState().getValue(BlockFluidHopper.FACING);
+    Direction exportToSide = this.getBlockState().getValue(BlockSimpleHopper.FACING);
     //is it a composter
     this.moveItemToCompost(exportToSide, inventory);
     this.moveItems(exportToSide, getFlow(), inventory);
+    updateComparatorOutputLevel();
   }
 
   public int getFlow() {
@@ -86,6 +86,7 @@ public class TileSimpleHopper extends TileBlockEntityCyclic implements Hopper {
       if (remainder.isEmpty()) {
         stackEntity.remove(Entity.RemovalReason.KILLED);
       }
+      updateComparatorOutputLevel();
     }
   }
 

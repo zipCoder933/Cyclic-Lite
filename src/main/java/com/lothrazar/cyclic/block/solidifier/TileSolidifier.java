@@ -222,6 +222,7 @@ public class TileSolidifier extends TileBlockEntityCyclic implements MenuProvide
       inputSlots.getStackInSlot(2).shrink(1);
       tank.drain(this.currentRecipe.fluidIngredient.getAmount(), FluidAction.EXECUTE);
       outputSlots.insertItem(0, currentRecipe.getResultItem(), false);
+      updateComparatorOutputLevel();
       return true;
     }
     return false;

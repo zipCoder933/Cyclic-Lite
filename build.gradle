@@ -96,6 +96,7 @@ dependencies {
   //   implementation fg.deobf("curse.maven:yungs-better-strongholds-465575:3778231")
   //   implementation fg.deobf("curse.maven:mekanism-268560:3875976")
   
+     implementation fg.deobf("curse.maven:jade-324717:5079263")
 
 
 }
@@ -116,7 +117,7 @@ repositories {
   maven { url 'https://maven.theillusivec4.top/'    }
   maven { url 'https://maven.blamejared.com' }    
   maven { url 'https://modmaven.dev'  }    
-//  maven { url 'https://www.cursemaven.com'  }
+  maven { url 'https://www.cursemaven.com'  }
 }
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {

@@ -1,11 +1,12 @@
 package com.lothrazar.cyclic.block.miner;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.capabilities.block.CustomEnergyStorage;
+import com.lothrazar.cyclic.data.DataTags;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.item.datacard.BlockStateMatcher;
 import com.lothrazar.cyclic.item.datacard.BlockstateCard;
 import com.lothrazar.cyclic.registry.ItemRegistry;
@@ -27,7 +28,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.capabilities.Capability;
@@ -228,40 +228,43 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     return false;
   }
 
-  private boolean isValidTarget(BlockState targetState) {
-    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
-    if (filter.isEmpty()) {
-      return true; //ya go
-    }
-    for (BlockStateMatcher m : BlockstateCard.getSavedStates(filter)) {
-      BlockState st = m.getState();
-      if (targetState.getBlock() == st.getBlock()) {
-        if (m.isExactProperties() == false) {
-          // the blocks DO match, isExact is flagged as no, so we are good
-          return true;
-        }
-        //tag DOES want to match Exactly on Properties
-        return this.propertiesMatch(targetState, st);
-      }
-    }
-    return false;
-  }
-
-  private boolean propertiesMatch(BlockState targetState, BlockState st) {
-    try {
-      for (Property<?> p : st.getProperties()) {
-        if (!st.getValue(p).equals(targetState.getValue(p))) {
-          return false;
-        }
-      }
-    }
-    catch (Exception e) {
-      return false;
-    }
-    //none had a mismatch
-    return true;
-  }
-
+  //<<<<<<< HEAD
+  //  private boolean isValidTarget(BlockState targetState) {
+  //    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
+  //    if (filter.isEmpty()) {
+  //      return true; //ya go
+  //    }
+  //    for (BlockStateMatcher m : BlockstateCard.getSavedStates(filter)) {
+  //      BlockState st = m.getState();
+  //      if (targetState.getBlock() == st.getBlock()) {
+  //        if (m.isExactProperties() == false) {
+  //          // the blocks DO match, isExact is flagged as no, so we are good
+  //          return true;
+  //        }
+  //        //tag DOES want to match Exactly on Properties
+  //        return this.propertiesMatch(targetState, st);
+  //      }
+  //    }
+  //    return false;
+  //  }
+  //
+  //  private boolean propertiesMatch(BlockState targetState, BlockState st) {
+  //    try {
+  //      for (Property<?> p : st.getProperties()) {
+  //        if (!st.getValue(p).equals(targetState.getValue(p))) {
+  //          return false;
+  //        }
+  //      }
+  //    }
+  //    catch (Exception e) {
+  //      return false;
+  //    }
+  //    //none had a mismatch
+  //    return true;
+  //  }
+  //
+  //=======
+  //>>>>>>> 1b122244b7c8d5e5f8dd6ec97302f2fb838e4e2c
   /***
    * Unbreakable blocks and fluid blocks are not valid. Otherwise checks if player:canHarvestBlock using its equipped item
    */
@@ -270,28 +273,50 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
       return false; //dont mine air or liquid. 
     }
     //is this valid
-    BlockState blockSt = level.getBlockState(targetPos);
-    if (blockSt.destroySpeed < 0) {
+    BlockState targetState = level.getBlockState(targetPos);
+    if (targetState.destroySpeed < 0) {
       return false; //unbreakable 
     }
+    //check the tag ignore list so modpack/datapack can filter this
+    if (targetState.is(DataTags.MINER_IGNORED)) {
+      ModCyclic.LOGGER.info("miner/ignored tag skips " + targetPos);
+      return false;
+    }
     //water logged is 
-    if (blockSt.getFluidState() != null && blockSt.getFluidState().isEmpty() == false) {
+    if (targetState.getFluidState() != null && targetState.getFluidState().isEmpty() == false) {
       //am i PURE liquid? or just a WATERLOGGED block
-      if (blockSt.hasProperty(BlockStateProperties.WATERLOGGED) == false) {
+      if (targetState.hasProperty(BlockStateProperties.WATERLOGGED) == false) {
         //    ModCyclic.LOGGER.info(targetPos + " Mining FLUID is not valid  " + blockSt);
         //pure liquid. but this will make canHarvestBlock go true , which is a lie actually so, no. dont get stuck here
         return false;
       }
     }
-    if (!this.isValidTarget(blockSt)) {
+    if (!this.isValidFromDatacard(targetState)) {
       return false;
     }
     //its a solid non-air, non-fluid block (but might be like waterlogged stairs or something)
-    boolean canHarvest = blockSt.canHarvestBlock(level, targetPos, fakePlayer.get());
+    //<<<<<<< HEAD
+    boolean canHarvest = targetState.canHarvestBlock(level, targetPos, fakePlayer.get());
+    //=======
+    //    boolean canHarvest = targetState.canHarvestBlock(world, targetPos, fakePlayer.get());
+    //>>>>>>> 1b122244b7c8d5e5f8dd6ec97302f2fb838e4e2c
     if (!canHarvest) {
       //      ModCyclic.LOGGER.info(targetPos + " Mining target is not valid  " + blockSt);
     }
     return canHarvest;
+  }
+
+  private boolean isValidFromDatacard(BlockState targetState) {
+    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
+    if (filter.isEmpty()) {
+      return true; //ya go
+    }
+    for (BlockStateMatcher m : BlockstateCard.getSavedStates(filter)) {
+      if (m.doesMatch(targetState)) {
+        return true; // i am allowed to mine this
+      }
+    }
+    return false; //filter is my allow list, and you aint in it so not allowed
   }
 
   private void updateTargetPos(List<BlockPos> shape) {
@@ -306,26 +331,35 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     isCurrentlyMining = false;
     curBlockDamage = 0;
     if (fakePlayer != null && targetPos != null) {
-      //BlockPos targetPos = pos.offset(state.getValue(BlockMiner.PROPERTYFACING));
-      getLevel().destroyBlockProgress(fakePlayer.get().getUUID().hashCode(), targetPos, -1);
+      getLevel().destroyBlockProgress(fakePlayer.get().getUUID().hashCode(), targetPos, -1); // sendBlockBreakProgress
     }
   }
 
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
+    int diff = directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
+  }
+
   public List<BlockPos> getShape() {
-    List<BlockPos> shape = ShapeUtil.squareHorizontalFull(this.getCurrentFacingPos(radius + 1), radius);
-    if (height > 0) {
-      int diff = directionIsUp ? 1 : -1;
-      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalFull(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
     }
     return shape;
   }
 
   public List<BlockPos> getShapeHollow() {
-    List<BlockPos> shape = new ArrayList<BlockPos>();
-    shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-    if (height > 0) {
-      int diff = directionIsUp ? 1 : -1;
-      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
     }
     if (targetPos != null) {
       shape.add(targetPos);
@@ -357,7 +391,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
         this.needsRedstone = value % 2;
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
       case DIRECTION:
         this.directionIsUp = value == 1;

@@ -3,6 +3,7 @@ package com.lothrazar.cyclic.block.placerfluid;
 import java.util.function.Predicate;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.capabilities.block.FluidTankBase;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -139,7 +140,7 @@ public class TilePlacerFluid extends TileBlockEntityCyclic implements MenuProvid
         this.needsRedstone = value % 2;
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
     }
   }

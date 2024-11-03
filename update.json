@@ -4,7 +4,7 @@
 		"1.18-latest": "1.6.7",
 		"1.18.1-latest": "1.6.15",
 		"1.18.2-latest": "1.7.20",
-		"1.16.5-latest": "1.5.24"
+		"1.16.5-latest": "1.6.0"
 	},
 	"1.16.5": {
 		"0.6.1": "Ported ",
@@ -87,6 +87,7 @@
 
 
 
+
 	},
 	"1.18.2": {
 		"1.6.0": "Ported Cyclic[1.16.5]-1.5.8 to Minecraft [1.17.1] & forge-37.0.85+.  Altered a few crafting recipes to use new items.  Removed Peat Generator (Use Peat items in Material Generator).  Removed 5 Mason blocks, replaced with Compressed Cobblestone, Flint Block.  Added Peace Candle, Translocation Platform, Stone Mattock, Crushing Macerator, and Lava Sponge.  Added Copper Tools and Amethyst Tools, Copper Lantern, Copper Chain, Copper Bars, Gold Chain, Gold Bars, Gold Lantern (Art by @shynieke).  Added Copper Nuggets and Netherite Nuggets.  Added Netherite Lanterns, chains, and bars.  Added 3 Pressure Plates: Copper Netherite and Obsidian. ",
@@ -129,6 +130,9 @@
 		,"1.7.18":"Re-added crafttweaker support. Re-added botania-api Solegnolia support. Growth enchantment now uses the same logic as Sprinkler & Terra Soil (only minecraft:crops or minecraft::saplings can grow, respect IGrowable::canUseBonemeal).  New gloom ignored config Gloom enchant (cyclic:curse) to ignore and not use these effects #2217 #2325.  New config 'Fix Soundproofing block not muting Mekanism sounds #2389 (for example Precision Sawmill and others - you may need four or more soundproofing blocks for the desired effect).  New config [cyclic.blocks.soundproofing] radius = 6 to control the area.  New config under [cyclic.blocks] wireless_transfer_dimensional = true allowing transfer nodes to connect across dimensions #1913.  Balance changes made for Excavate enchant it will no longer trigger if the tool is not 'mineable' effective for example axe on dirt.  New feature for Excavate enchant #2116 it will not trigger on anything matching the block data-tag 'cyclic:ignored/excavate'.  backported some recipe changes to match mc1.20.1+ (port of 1.16.5-1.5.23) "
 		,"1.7.19":"Fix buckets not filling tanks (bug was introduced in 1.7.18, see changelog there as well)"
 		,"1.7.20":"Fixed bug in the item cyclic:offset_scepter #2427.  Tweaked block model visuals of the Transfer Nodes.  Fix Mattock not saving contents of Shulker Boxes when mined #2411. Add recipes in the solidifier machine for Waxed copper blocks  "
+
+
+		,"1.8.0":"Added an optional item slot in the Block Breaker using the BlockState Data Card so players have the option to limit the block breaker to only the targets listed in the data card.  Add new block data tags cyclic:ignored/breaker and cyclic:ignored/miner so that pack devs can customize these machines to not break certain blocks (regardless of hardness). Many blocks now allow minecraft:comparator to pull a redstone signal based on inventory contents (most machines and blocks that have inventory).  Fluid collector will now place air and scoop up the fluid if the itemslot is empty.  New feature: some machines can now be placed facing Up or Down vertically for convenience (harvester, forester, miner, item collector, fluid collector, dropper).  Backported machine feature 'Preview Outline' mode on machines that already have the button. Backported cable (fluid & energy) buffer and flow speed configs from 1.20.1. Several blocks added to block-tag mineable/pickaxe (thanks to darkosto)  "
 
 	}
 }

@@ -119,6 +119,7 @@ public class TileGeneratorDrops extends TileBlockEntityCyclic implements MenuPro
         final int slot = 0;
         final int qty = 1;
         this.inputSlots.extractItem(slot, qty, false);
+        updateComparatorOutputLevel();
         return;
       }
     }
