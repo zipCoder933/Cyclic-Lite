@@ -54,9 +54,6 @@ public class BlockForester extends BlockCyclic {
   public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity entity, ItemStack stack) {
     if (entity != null) {
       world.setBlock(pos, state.setValue(BlockStateProperties.FACING, BlockstatesUtil.getFacingFromEntity(pos, entity)), 2);
-      //=======
-      //      world.setBlockState(pos, state.with(BlockStateProperties.FACING, UtilBlockstates.getFacingFromEntity(pos, entity)), 2);
-      //>>>>>>> 1b122244b7c8d5e5f8dd6ec97302f2fb838e4e2c
     }
   }
 

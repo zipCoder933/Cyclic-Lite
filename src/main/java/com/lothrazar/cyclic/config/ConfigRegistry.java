@@ -105,7 +105,7 @@ public class ConfigRegistry {
   private static final ForgeConfigSpec.Builder CFG = new ForgeConfigSpec.Builder();
   private static final ForgeConfigSpec.Builder CFGC = new ForgeConfigSpec.Builder();
   private static ForgeConfigSpec COMMON_CONFIG;
-  private static ForgeConfigSpec CLIENT_CONFIG;//<<<<<<<HEAD
+  private static ForgeConfigSpec CLIENT_CONFIG;
   // Defaults
   private static final List<String> BEHEADING = new ArrayList<>();
   private static final List<String> IGNORE_LIST_UNCRAFTER = new ArrayList<>();

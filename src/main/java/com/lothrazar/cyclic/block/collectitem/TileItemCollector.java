@@ -163,25 +163,11 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
   }
 
   private AABB getRange() {
-    //    BlockPos center = getTargetCenter();
-    //    int diff = directionIsUp ? 1 : -1;
-    //=======
-    //
-    //  private AxisAlignedBB getRange() {
     BlockPos center = getFacingShapeCenter(radius);
     int heightWithDirection = heightWithDirection();
-    int yMin = center.getY();
-    int yMax = center.getY();
-    if (heightWithDirection < 0) {
-      yMin += heightWithDirection;
-    }
-    else {
-      yMax += heightWithDirection;
-    }
-    AABB aabb = new AABB(
-        center.getX() - radius, yMin, center.getZ() - radius,
-        center.getX() + radius + 1, yMax, center.getZ() + radius + 1);
-    //    System.out.println(aabb);
+    AABB aabb = new AABB(center);
+    aabb = aabb.expandTowards(0, heightWithDirection, 0); // was .expand()
+    aabb = aabb.inflate(radius, 0, radius); // was .grow()
     return aabb;
   }
 

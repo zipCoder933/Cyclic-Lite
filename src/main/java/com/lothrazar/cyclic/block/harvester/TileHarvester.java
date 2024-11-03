@@ -105,12 +105,6 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
 
   //for harvest
   public List<BlockPos> getShape() {
-    //<<<<<<< HEAD
-    //    List<BlockPos> shape = ShapeUtil.cubeSquareBase(this.getCurrentFacingPos(radius + 1), radius, 0);
-    //    int diff = directionIsUp ? 1 : -1;
-    //    if (height > 0) {
-    //      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
-    //=======
     BlockPos center = getFacingShapeCenter(radius);
     List<BlockPos> shape = ShapeUtil.cubeSquareBase(center, radius, 0);
     int heightWithDirection = heightWithDirection();
@@ -122,12 +116,6 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
 
   //for render
   public List<BlockPos> getShapeHollow() {
-    //<<<<<<< HEAD
-    //    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-    //    int diff = directionIsUp ? 1 : -1;
-    //    if (height > 0) {
-    //      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
-    //=======
     BlockPos center = getFacingShapeCenter(radius);
     List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
     int heightWithDirection = heightWithDirection();

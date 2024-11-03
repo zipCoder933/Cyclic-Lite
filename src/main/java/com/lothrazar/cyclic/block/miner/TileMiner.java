@@ -228,43 +228,6 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     return false;
   }
 
-  //<<<<<<< HEAD
-  //  private boolean isValidTarget(BlockState targetState) {
-  //    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
-  //    if (filter.isEmpty()) {
-  //      return true; //ya go
-  //    }
-  //    for (BlockStateMatcher m : BlockstateCard.getSavedStates(filter)) {
-  //      BlockState st = m.getState();
-  //      if (targetState.getBlock() == st.getBlock()) {
-  //        if (m.isExactProperties() == false) {
-  //          // the blocks DO match, isExact is flagged as no, so we are good
-  //          return true;
-  //        }
-  //        //tag DOES want to match Exactly on Properties
-  //        return this.propertiesMatch(targetState, st);
-  //      }
-  //    }
-  //    return false;
-  //  }
-  //
-  //  private boolean propertiesMatch(BlockState targetState, BlockState st) {
-  //    try {
-  //      for (Property<?> p : st.getProperties()) {
-  //        if (!st.getValue(p).equals(targetState.getValue(p))) {
-  //          return false;
-  //        }
-  //      }
-  //    }
-  //    catch (Exception e) {
-  //      return false;
-  //    }
-  //    //none had a mismatch
-  //    return true;
-  //  }
-  //
-  //=======
-  //>>>>>>> 1b122244b7c8d5e5f8dd6ec97302f2fb838e4e2c
   /***
    * Unbreakable blocks and fluid blocks are not valid. Otherwise checks if player:canHarvestBlock using its equipped item
    */
@@ -295,11 +258,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
       return false;
     }
     //its a solid non-air, non-fluid block (but might be like waterlogged stairs or something)
-    //<<<<<<< HEAD
     boolean canHarvest = targetState.canHarvestBlock(level, targetPos, fakePlayer.get());
-    //=======
-    //    boolean canHarvest = targetState.canHarvestBlock(world, targetPos, fakePlayer.get());
-    //>>>>>>> 1b122244b7c8d5e5f8dd6ec97302f2fb838e4e2c
     if (!canHarvest) {
       //      ModCyclic.LOGGER.info(targetPos + " Mining target is not valid  " + blockSt);
     }

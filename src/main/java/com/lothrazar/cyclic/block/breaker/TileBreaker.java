@@ -99,7 +99,6 @@ public class TileBreaker extends TileBlockEntityCyclic implements MenuProvider {
       return false;
     }
     if (targetState.getDestroySpeed(level, targetPos) < 0) {
-      //>>>>>>> 1b122244b7c8d5e5f8dd6ec97302f2fb838e4e2c
       return false;
     }
     //check the tag ignore list so modpack/datapack can filter this
