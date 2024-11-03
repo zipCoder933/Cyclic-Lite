@@ -144,15 +144,11 @@ public class TileItemCollector extends TileEntityBase implements ITickableTileEn
   }
 
   public List<BlockPos> getShapeHollow() {
-    return getShape();
-  }
-
-  public List<BlockPos> getShape() {
     BlockPos center = getFacingShapeCenter(radius);
     List<BlockPos> shape = UtilShape.squareHorizontalHollow(center, radius);
     int heightWithDirection = heightWithDirection();
-    if (heightWithDirection != 0) {
-      shape = UtilShape.repeatShapeByHeight(shape, heightWithDirection);
+    if (heightWithDirection > 1) {
+      shape = UtilShape.repeatShapeByHeight(shape, heightWithDirection - 1);
     }
     return shape;
   }
@@ -161,15 +157,22 @@ public class TileItemCollector extends TileEntityBase implements ITickableTileEn
     BlockPos center = getFacingShapeCenter(radius);
     int heightWithDirection = heightWithDirection();
     int yMin = center.getY();
-    int yMax = center.getY() + heightWithDirection;
-    //for some reason
-    if (!directionIsUp) {
-      // when aiming down, we dont have the offset to get [current block] without this
-      yMin++;
+    int yMax = center.getY();
+    if (heightWithDirection < 0) {
+      yMin += heightWithDirection;
     }
+    else {
+      yMax += heightWithDirection;
+    }
+    //for some reason
+    //    if (!directionIsUp && !this.getBlockStateVertical()) {
+    //      // when aiming down, we dont have the offset to get [current block] without this
+    //      yMin++;
+    //    }
     AxisAlignedBB aabb = new AxisAlignedBB(
         center.getX() - radius, yMin, center.getZ() - radius,
         center.getX() + radius + 1, yMax, center.getZ() + radius + 1);
+    //    System.out.println(aabb);
     return aabb;
   }
 

@@ -5,7 +5,7 @@ import com.lothrazar.cyclic.block.anvil.TileAnvilAuto;
 import com.lothrazar.cyclic.block.anvilmagma.TileAnvilMagma;
 import com.lothrazar.cyclic.block.anvilvoid.TileAnvilVoid;
 import com.lothrazar.cyclic.block.battery.TileBattery;
-import com.lothrazar.cyclic.block.beaconpotion.TilePotion;
+import com.lothrazar.cyclic.block.beaconpotion.TilePotionBeacon;
 import com.lothrazar.cyclic.block.bedrock.UnbreakablePoweredTile;
 import com.lothrazar.cyclic.block.breaker.TileBreaker;
 import com.lothrazar.cyclic.block.cable.energy.TileCableEnergy;
@@ -128,7 +128,7 @@ public class TileRegistry {
     r.register(TileEntityType.Builder.create(TileEyeTp::new, BlockRegistry.EYE_TELEPORT).build(null).setRegistryName("eye_teleport"));
     //
     r.register(TileEntityType.Builder.create(TileAnvilMagma::new, BlockRegistry.anvil_magma).build(null).setRegistryName("anvil_magma"));
-    r.register(TileEntityType.Builder.create(TilePotion::new, BlockRegistry.beacon).build(null).setRegistryName("beacon"));
+    r.register(TileEntityType.Builder.create(TilePotionBeacon::new, BlockRegistry.beacon).build(null).setRegistryName("beacon"));
     r.register(TileEntityType.Builder.create(TileBatteryInfinite::new, BlockRegistry.battery_infinite).build(null).setRegistryName("battery_infinite"));
     r.register(TileEntityType.Builder.create(TileItemInfinite::new, BlockRegistry.item_infinite).build(null).setRegistryName("item_infinite"));
     r.register(TileEntityType.Builder.create(TileDice::new, BlockRegistry.dice).build(null).setRegistryName("dice"));
@@ -257,7 +257,7 @@ public class TileRegistry {
   @ObjectHolder(ModCyclic.MODID + ":placer_fluid")
   public static TileEntityType<TilePlacerFluid> placer_fluid;
   @ObjectHolder(ModCyclic.MODID + ":beacon")
-  public static TileEntityType<TilePotion> beacon;
+  public static TileEntityType<TilePotionBeacon> beacon;
   @ObjectHolder(ModCyclic.MODID + ":battery_infinite")
   public static TileEntityType<TileBatteryInfinite> battery_infinite;
   @ObjectHolder(ModCyclic.MODID + ":item_infinite")

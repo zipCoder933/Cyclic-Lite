@@ -20,7 +20,7 @@ public class RenderItemCollect extends TileEntityRenderer<TileItemCollector> {
   public void render(TileItemCollector te, float v, MatrixStack matrix, IRenderTypeBuffer ibuffer, int partialTicks, int destroyStage) {
     int previewType = te.getField(TileItemCollector.Fields.RENDER.ordinal());
     if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
-      UtilRender.renderOutline(te.getPos(), te.getShape(), matrix, 0.7F, ClientConfigCyclic.getColor(te));
+      UtilRender.renderOutline(te.getPos(), te.getShapeHollow(), matrix, 0.7F, ClientConfigCyclic.getColor(te));
     }
     else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShapeHollow()) {

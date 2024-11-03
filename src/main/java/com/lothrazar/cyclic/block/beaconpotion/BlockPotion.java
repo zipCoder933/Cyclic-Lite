@@ -46,7 +46,7 @@ public class BlockPotion extends BlockBase {
 
   @Override
   public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-    return new TilePotion();
+    return new TilePotionBeacon();
   }
 
   @Override

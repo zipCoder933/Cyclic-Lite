@@ -20,7 +20,7 @@ public class ScreenPotion extends ScreenBase<ContainerPotion> {
 
   public ScreenPotion(ContainerPotion screenContainer, PlayerInventory inv, ITextComponent titleIn) {
     super(screenContainer, inv, titleIn);
-    energy = new EnergyBar(this, TilePotion.MAX);
+    energy = new EnergyBar(this, TilePotionBeacon.MAX);
   }
 
   @Override
@@ -29,13 +29,13 @@ public class ScreenPotion extends ScreenBase<ContainerPotion> {
     int x, y;
     energy.guiLeft = guiLeft;
     energy.guiTop = guiTop;
-    energy.visible = TilePotion.POWERCONF.get() > 0;
+    energy.visible = TilePotionBeacon.POWERCONF.get() > 0;
     x = guiLeft + 6;
     y = guiTop + 6;
-    btnRedstone = addButton(new ButtonMachineField(x, y, TilePotion.Fields.REDSTONE.ordinal(), container.tile.getPos()));
+    btnRedstone = addButton(new ButtonMachineField(x, y, TilePotionBeacon.Fields.REDSTONE.ordinal(), container.tile.getPos()));
     y += 51;
     btnEntity = addButton(new ButtonMachine(x, y, 60, 20, "", (p) -> {
-      int f = TilePotion.Fields.ENTITYTYPE.ordinal();
+      int f = TilePotionBeacon.Fields.ENTITYTYPE.ordinal();
       PacketRegistry.INSTANCE.sendToServer(new PacketTileData(f,
           container.tile.getField(f) + 1, container.tile.getPos()));
     }));

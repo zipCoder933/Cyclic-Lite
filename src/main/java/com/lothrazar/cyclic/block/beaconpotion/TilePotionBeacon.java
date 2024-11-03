@@ -30,7 +30,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TilePotion extends TileEntityBase implements INamedContainerProvider, ITickableTileEntity {
+public class TilePotionBeacon extends TileEntityBase implements INamedContainerProvider, ITickableTileEntity {
 
   static enum Fields {
     TIMER, REDSTONE, RANGE, ENTITYTYPE;
@@ -60,7 +60,7 @@ public class TilePotion extends TileEntityBase implements INamedContainerProvide
   };
   private LazyOptional<IItemHandler> inventoryCap = LazyOptional.of(() -> inventory);
 
-  public TilePotion() {
+  public TilePotionBeacon() {
     super(TileRegistry.beacon);
     timer = 0;
   }

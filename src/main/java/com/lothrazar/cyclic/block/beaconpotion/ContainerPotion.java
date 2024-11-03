@@ -13,11 +13,11 @@ import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerPotion extends ContainerBase {
 
-  TilePotion tile;
+  TilePotionBeacon tile;
 
   public ContainerPotion(int windowId, World world, BlockPos pos, PlayerInventory playerInventory, PlayerEntity player) {
     super(ContainerScreenRegistry.BEACON, windowId);
-    tile = (TilePotion) world.getTileEntity(pos);
+    tile = (TilePotionBeacon) world.getTileEntity(pos);
     this.playerEntity = player;
     this.playerInventory = playerInventory;
     tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
@@ -25,7 +25,7 @@ public class ContainerPotion extends ContainerBase {
       addSlot(new SlotItemHandler(h, 0, 9, 35));
     });
     layoutPlayerInventorySlots(8, 84);
-    this.trackAllIntFields(tile, TilePotion.Fields.values().length);
+    this.trackAllIntFields(tile, TilePotionBeacon.Fields.values().length);
     trackEnergy(tile);
   }
 
