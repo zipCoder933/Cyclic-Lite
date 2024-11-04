@@ -64,9 +64,9 @@ public class TilePlacer extends TileBlockEntityCyclic implements MenuProvider {
     Direction dir = this.getBlockState().getValue(BlockStateProperties.FACING);
     BlockPos offset = worldPosition.relative(dir);
     BlockState state = Block.byItem(stack.getItem()).defaultBlockState();
-    if (level.isEmptyBlock(offset) &&
-        level.setBlockAndUpdate(offset, state)) {
+    if (level.isEmptyBlock(offset) && level.setBlockAndUpdate(offset, state)) {
       stack.shrink(1);
+      this.updateComparatorOutputLevel();
     }
   }
 

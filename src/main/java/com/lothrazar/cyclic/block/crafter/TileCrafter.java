@@ -175,6 +175,7 @@ public class TileCrafter extends TileBlockEntityCyclic implements MenuProvider {
             //otherwise its something like bucket->empty bucket, so different item, so right side 
             depositOutput(s, this.outHandler);
           }
+          this.updateComparatorOutputLevel();
         }
       }
     }

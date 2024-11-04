@@ -23,13 +23,7 @@ public class ContainerForester extends ContainerBase {
     this.playerInventory = playerInventory;
     tile.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(h -> {
       this.endInv = h.getSlots();
-      addSlot(new SlotItemHandler(h, 0, 80, 25) {
-
-        @Override
-        public void setChanged() {
-          tile.setChanged();
-        }
-      });
+      addSlot(new SlotItemHandler(h, 0, 80, 17)); // 25
     });
     layoutPlayerInventorySlots(8, 84);
     this.trackAllIntFields(tile, TileForester.Fields.values().length);

@@ -18,6 +18,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -71,12 +72,26 @@ public class BlockstateCard extends ItemBaseCyclic {
     return st;
   }
 
+  public static boolean propertiesMatch(BlockState targetState, BlockState st) {
+    try {
+      for (Property<?> p : st.getProperties()) {
+        if (!st.getValue(p).equals(targetState.getValue(p))) {
+          return false;
+        }
+      }
+    }
+    catch (Exception e) {
+      return false;
+    }
+    //none had a mismatch
+    return true;
+  }
+
   @Override
   public InteractionResult useOn(UseOnContext context) {
     Player player = context.getPlayer();
     InteractionHand hand = context.getHand();
     BlockPos pos = context.getClickedPos();
-    //    Direction side = context.getFace();
     ItemStack held = player.getItemInHand(hand);
     BlockState state = context.getLevel().getBlockState(pos);
     CompoundTag stateTag = NbtUtils.writeBlockState(state);

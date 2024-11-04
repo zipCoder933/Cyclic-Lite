@@ -36,14 +36,6 @@ public class ItemStackUtil {
     }
     return ItemStack.EMPTY;
   }
-  //  public static void dropAll(IItemHandler items, Level world, BlockPos pos) {
-  //    if (items == null) {
-  //      return;
-  //    }
-  //    for (int i = 0; i < items.getSlots(); i++) {
-  //      Containers.dropItemStack(world, pos.getX(), pos.getY(), pos.getZ(), items.getStackInSlot(i));
-  //    }
-  //  }
 
   public static void repairItem(ItemStack s) {
     repairItem(s, 1);
@@ -113,9 +105,8 @@ public class ItemStackUtil {
     if (world.isClientSide == false) {
       ItemEntity entityItem = new ItemEntity(world, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, stack);
       // do not spawn a second 'ghost' one onclient side
-      world.addFreshEntity(entityItem);
       entityItem.setDeltaMovement(0, 0, 0);
-      //      entityItem.motionX = entityItem.motionY = entityItem.motionZ = 0;
+      world.addFreshEntity(entityItem);
     }
   }
 

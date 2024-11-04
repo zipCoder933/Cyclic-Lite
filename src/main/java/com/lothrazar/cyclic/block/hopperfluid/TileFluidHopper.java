@@ -85,11 +85,13 @@ public class TileFluidHopper extends TileBlockEntityCyclic {
     IFluidHandler tankAbove = FluidHelpers.getTank(level, target, Direction.DOWN);
     boolean success = FluidHelpers.tryFillPositionFromTank(level, worldPosition, Direction.UP, tankAbove, FLOW);
     if (success) {
+      this.updateComparatorOutputLevel();
       return;
     }
     //try from the world
     if (tank.getSpace() >= FluidAttributes.BUCKET_VOLUME) {
       FluidHelpers.extractSourceWaterloggedCauldron(level, target, tank);
+      this.updateComparatorOutputLevel();
     }
   }
 

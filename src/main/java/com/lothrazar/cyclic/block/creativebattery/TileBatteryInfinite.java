@@ -19,7 +19,7 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 public class TileBatteryInfinite extends TileBlockEntityCyclic {
 
-  static final int MAX = 960000000;
+  static final int MAX = Integer.MAX_VALUE;
 
   static enum Fields {
     N, E, S, W, U, D;

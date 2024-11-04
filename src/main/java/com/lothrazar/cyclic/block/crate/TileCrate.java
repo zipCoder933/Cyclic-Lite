@@ -34,11 +34,13 @@ public class TileCrate extends TileBlockEntityCyclic implements MenuProvider {
 
   @Override
   public AbstractContainerMenu createMenu(int i, Inventory playerInventory, Player playerEntity) {
+    this.updateComparatorOutputLevel();
     return new ContainerCrate(i, level, worldPosition, playerInventory, playerEntity);
   }
 
   @Override
   public void invalidateCaps() {
+    this.updateComparatorOutputLevel();
     inventoryCap.invalidate();
     super.invalidateCaps();
   }

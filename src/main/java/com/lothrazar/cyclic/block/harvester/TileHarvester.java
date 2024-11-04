@@ -3,6 +3,7 @@ package com.lothrazar.cyclic.block.harvester;
 import java.util.List;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.capabilities.block.CustomEnergyStorage;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.cyclic.util.HarvestUtil;
@@ -18,6 +19,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.capabilities.Capability;
@@ -33,10 +35,11 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
 
   public static final int MAX_SIZE = 12;
   static final int MAX_ENERGY = 640000;
-  static final int MAX_HEIGHT = 16;
+  public static final int MAX_HEIGHT = 16;
   public static IntValue POWERCONF;
-  private int radius = MAX_SIZE;
+  private int radius = MAX_SIZE / 2;
   private int shapeIndex = 0;
+  BlockPos targetPos = null;
   private int height = 1;
   private boolean directionIsUp = false;
   CustomEnergyStorage energy = new CustomEnergyStorage(MAX_ENERGY, MAX_ENERGY / 4);
@@ -71,7 +74,8 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
       return;
     }
     //get and update target
-    BlockPos targetPos = getShapeTarget();
+    List<BlockPos> shape = this.getShape();
+    targetPos = getShapeTarget(shape);
     shapeIndex++;
     //does it exist
     if (targetPos != null && HarvestUtil.tryHarvestSingle(this.level, targetPos)) {
@@ -80,8 +84,7 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
     }
   }
 
-  private BlockPos getShapeTarget() {
-    List<BlockPos> shape = this.getShape();
+  private BlockPos getShapeTarget(List<BlockPos> shape) {
     if (shape.size() == 0) {
       return null;
     }
@@ -91,22 +94,36 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
     return shape.get(shapeIndex);
   }
 
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
+    int diff = directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
+  }
+
   //for harvest
   public List<BlockPos> getShape() {
-    List<BlockPos> shape = ShapeUtil.cubeSquareBase(this.getCurrentFacingPos(radius + 1), radius, 0);
-    int diff = directionIsUp ? 1 : -1;
-    if (height > 0) {
-      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.cubeSquareBase(center, radius, 0);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
     }
     return shape;
   }
 
   //for render
   public List<BlockPos> getShapeHollow() {
-    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-    int diff = directionIsUp ? 1 : -1;
-    if (height > 0) {
-      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
+    }
+    if (targetPos != null) {
+      shape.add(targetPos);
     }
     return shape;
   }
@@ -140,7 +157,7 @@ public class TileHarvester extends TileBlockEntityCyclic implements MenuProvider
         this.needsRedstone = value % 2;
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
       case SIZE:
         radius = Math.min(value, MAX_SIZE);

@@ -421,15 +421,35 @@ public class RenderUtils {
 
   public static void createBox(PoseStack poseStack, BlockPos pos) {
     poseStack.pushPose();
-    createBox(Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, pos.getX(), pos.getY(), pos.getZ(), 1.0F);
+    createBox(Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, pos);
     poseStack.popPose();
   }
 
-  private static void createBox(MultiBufferSource.BufferSource bufferSource, PoseStack poseStack, float x, float y, float z, float offset) {
-    long c = (System.currentTimeMillis() / 15L) % 360L;
-    float[] color = getHSBtoRGBF(c / 360f, 1f, 1f);
+  //used by handheld items.  
+  private static void createBox(MultiBufferSource.BufferSource bufferSource, PoseStack poseStack, BlockPos pos) {
+    float x = pos.getX();
+    float y = pos.getY();
+    float z = pos.getZ();
+    float offset = 1;
     Minecraft mc = Minecraft.getInstance();
     Vec3 cameraPosition = mc.gameRenderer.getMainCamera().getPosition();
+    createBox(bufferSource, poseStack, x, y, z, offset, cameraPosition);
+  }
+
+  //used by machines in the world. viewPosition is the tile location
+  public static void createBox(PoseStack poseStack, BlockPos pos, Vec3 cameraPosition) {
+    float x = pos.getX();
+    float y = pos.getY();
+    float z = pos.getZ();
+    float offset = 1;
+    poseStack.pushPose();
+    createBox(Minecraft.getInstance().renderBuffers().bufferSource(), poseStack, x, y, z, offset, cameraPosition);
+    poseStack.popPose();
+  }
+
+  private static void createBox(MultiBufferSource.BufferSource bufferSource, PoseStack poseStack, float x, float y, float z, float offset, Vec3 cameraPosition) {
+    long c = (System.currentTimeMillis() / 15L) % 360L;
+    float[] color = getHSBtoRGBF(c / 360f, 1f, 1f);
     // get a closer pos if too far
     Vec3 vec = new Vec3(x, y, z).subtract(cameraPosition);
     if (vec.distanceTo(Vec3.ZERO) > 200d) { // could be 300
