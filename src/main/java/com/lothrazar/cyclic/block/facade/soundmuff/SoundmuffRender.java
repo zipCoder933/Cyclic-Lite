@@ -21,11 +21,11 @@ public class SoundmuffRender extends TileEntityRenderer<SoundmuffTileFacade> {
   }
 
   @Override
-  public void render(SoundmuffTileFacade te, float v, MatrixStack matrixStack, IRenderTypeBuffer ibuffer, int partialTicks, int destroyStage) {
+  public void render(SoundmuffTileFacade te, float v, MatrixStack matrixStack, IRenderTypeBuffer ibuffer, int packedLight, int packedOverlay) {
     if (te.getFacade() != null) {
       BlockState facadeState = te.getFacadeState(te.getWorld());
       BlockRendererDispatcher brd = Minecraft.getInstance().getBlockRendererDispatcher();
-      FacadeUtil.renderBlockState(brd, matrixStack, facadeState);
+      FacadeUtil.renderBlockState(brd, matrixStack, facadeState, packedLight, packedOverlay);
     }
   }
 }

@@ -4,6 +4,7 @@ import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.base.BlockBase;
 import com.lothrazar.cyclic.base.ItemBase;
 import com.lothrazar.cyclic.block.conveyor.ConveyorItemRenderer;
+import com.lothrazar.cyclic.block.facade.RenderCableFacade;
 import com.lothrazar.cyclic.event.ClientInputEvents;
 import com.lothrazar.cyclic.event.EventRender;
 import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
@@ -49,6 +50,10 @@ public class ClientRegistryCyclic {
     }
     initColours();
     initKeybindings();
+    //cable renderers
+    ClientRegistry.bindTileEntityRenderer(TileRegistry.energy_pipeTile, RenderCableFacade::new);
+    ClientRegistry.bindTileEntityRenderer(TileRegistry.fluid_pipeTile, RenderCableFacade::new);
+    ClientRegistry.bindTileEntityRenderer(TileRegistry.item_pipeTile, RenderCableFacade::new);
   }
 
   private static void initKeybindings() {

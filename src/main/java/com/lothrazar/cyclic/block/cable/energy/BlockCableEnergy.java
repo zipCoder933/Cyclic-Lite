@@ -3,6 +3,7 @@ package com.lothrazar.cyclic.block.cable.energy;
 import com.lothrazar.cyclic.block.cable.CableBase;
 import com.lothrazar.cyclic.block.cable.EnumConnectType;
 import com.lothrazar.cyclic.block.cable.ShapeCache;
+import com.lothrazar.cyclic.config.ConfigRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
@@ -49,6 +50,12 @@ public class BlockCableEnergy extends CableBase {
 
   @Override
   public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    if (ConfigRegistry.CABLE_FACADES.get()) {
+      VoxelShape facade = this.getFacadeShape(state, worldIn, pos, context);
+      if (facade != null) {
+        return facade;
+      }
+    }
     return ShapeCache.getOrCreate(state, CableBase::createShape);
   }
 

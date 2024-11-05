@@ -2,6 +2,7 @@ package com.lothrazar.cyclic.block.cable;
 
 import com.google.common.collect.Maps;
 import com.lothrazar.cyclic.base.BlockBase;
+import com.lothrazar.cyclic.block.facade.IBlockFacade;
 import com.lothrazar.cyclic.data.DataTags;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.SoundRegistry;
@@ -35,7 +36,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public abstract class CableBase extends BlockBase implements IWaterLoggable {
+public abstract class CableBase extends BlockBase implements IWaterLoggable, IBlockFacade {
 
   public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
   //regular connections
