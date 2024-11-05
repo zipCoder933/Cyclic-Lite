@@ -80,10 +80,12 @@ public class TileTank extends TileBlockEntityCyclic {
 
   //  @Override
   public void tick() {
-    //drain below but only to one of myself
+    //drain below but only to one of myself 
     BlockEntity below = this.level.getBlockEntity(this.worldPosition.below());
     if (below != null && below instanceof TileTank) {
       FluidHelpers.tryFillPositionFromTank(level, this.worldPosition.below(), Direction.UP, tank, TRANSFER_FLUID_PER_TICK);
+      this.updateComparatorOutputLevel();
+      this.updateComparatorOutputLevelAt(worldPosition.below());
     }
   }
 }
