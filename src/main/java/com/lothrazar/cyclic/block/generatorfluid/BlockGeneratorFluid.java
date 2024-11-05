@@ -5,6 +5,7 @@ import com.lothrazar.cyclic.registry.MenuTypeRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -26,6 +27,16 @@ public class BlockGeneratorFluid extends BlockCyclic {
   @Override
   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
     builder.add(BlockStateProperties.FACING).add(LIT);
+  }
+
+  @Override
+  public boolean hasAnalogOutputSignal(BlockState bs) {
+    return true;
+  }
+
+  @Override
+  public int getAnalogOutputSignal(BlockState st, Level level, BlockPos pos) {
+    return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
   }
 
   @Override

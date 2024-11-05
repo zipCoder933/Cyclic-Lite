@@ -16,6 +16,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -33,7 +34,14 @@ public class BlockItemShelf extends BlockCyclic {
   }
 
   @Override
-  public void registerClient() {}
+  public boolean hasAnalogOutputSignal(BlockState bs) {
+    return true;
+  }
+
+  @Override
+  public int getAnalogOutputSignal(BlockState st, Level level, BlockPos pos) {
+    return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
+  }
 
   @Override
   protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
@@ -45,10 +53,6 @@ public class BlockItemShelf extends BlockCyclic {
     return new TileItemShelf(pos, state);
   }
 
-  //  @Override
-  //  public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-  //    return createTickerHelper(type,TileRegistry.ENDER_ITEM_SHELF.get(), world.isClientSide ? TileItemShelf::clientTick : TileItemShelf::serverTick);
-  //  }
   @Override
   public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
     //    if (state.hasTileEntity() && (!state.is(newState.getBlock()) || !newState.hasTileEntity())) {
@@ -86,6 +90,7 @@ public class BlockItemShelf extends BlockCyclic {
         //try to insert  
         boolean oldEmpty = shelfStack.isEmpty();
         ItemStack remaining = shelf.inventory.insertItem(slot, heldItem, false);
+        shelf.updateComparatorOutputLevel();
         if (remaining.isEmpty() || remaining.getCount() != shelfStack.getCount()) {
           player.setItemInHand(hand, remaining);
           player.swing(hand);
@@ -101,6 +106,7 @@ public class BlockItemShelf extends BlockCyclic {
         ItemStack retrieved = shelf.inventory.extractItem(slot, q, false);
         player.setItemInHand(hand, retrieved);
         player.swing(hand);
+        shelf.updateComparatorOutputLevel();
       }
       if (!shelfStack.isEmpty() && !heldItem.isEmpty()) {
         //
@@ -111,6 +117,7 @@ public class BlockItemShelf extends BlockCyclic {
         player.setItemInHand(hand, forPlayer);
         player.swing(hand);
         shelf.inventory.insertItem(slot, forShelf, false);
+        shelf.updateComparatorOutputLevel();
       }
       return InteractionResult.SUCCESS;
     }

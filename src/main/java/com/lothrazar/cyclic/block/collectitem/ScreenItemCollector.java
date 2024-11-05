@@ -76,6 +76,7 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
     sizeSlider.setTooltip("cyclic.screen.size" + menu.tile.getField(sizeSlider.getField()));
     this.drawButtonTooltips(ms, mouseX, mouseY);
     this.drawName(ms, this.title.getString());
+    btnDirection.visible = !menu.tile.getBlockStateVertical();
   }
 
   @Override

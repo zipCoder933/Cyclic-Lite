@@ -6,6 +6,7 @@ import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -26,6 +27,17 @@ public class BlockSolidifier extends BlockCyclic {
   }
 
   @Override
+  public boolean hasAnalogOutputSignal(BlockState bs) {
+    return true;
+  }
+
+  @Override
+  public int getAnalogOutputSignal(BlockState st, Level level, BlockPos pos) {
+    return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
+  }
+
+  @Override
+  @Deprecated
   public float getShadeBrightness(BlockState state, BlockGetter worldIn, BlockPos pos) {
     return 1.0f;
   }

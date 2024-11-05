@@ -15,8 +15,8 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
   private EnergyBar energy;
   private ButtonMachineField btnRedstone;
   private ButtonMachineField btnRender;
-  private GuiSliderInteger size;
   private ButtonMachineField btnDirection;
+  private GuiSliderInteger size;
   private GuiSliderInteger heightslider;
 
   public ScreenHarvester(ContainerHarvester screenContainer, Inventory inv, Component titleIn) {
@@ -41,9 +41,7 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
     int f = TileHarvester.Fields.DIRECTION.ordinal();
     y += 20;
     btnDirection = addRenderableWidget(new ButtonMachineField(x, y, f,
-        menu.tile.getBlockPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"))
-    //.setSize(18)
-    ;
+        menu.tile.getBlockPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"));
     int w = 110;
     int h = 18;
     //now start sliders
@@ -54,8 +52,6 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
     heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileHarvester.Fields.HEIGHT.ordinal(), menu.tile.getBlockPos(),
         0, TileHarvester.MAX_HEIGHT, menu.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");
-    //     w = 130;
-    //    int h = 18;
     f = TileHarvester.Fields.SIZE.ordinal();
     y += 26;
     size = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(), 0, TileHarvester.MAX_SIZE, menu.tile.getField(f)));
@@ -74,9 +70,11 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
     btnRedstone.onValueUpdate(menu.tile);
     btnRender.onValueUpdate(menu.tile);
     btnDirection.onValueUpdate(menu.tile);
+    heightslider.setTooltip("buildertype.height.tooltip");
     size.setTooltip("cyclic.screen.size" + menu.tile.getField(size.getField()));
     this.drawButtonTooltips(ms, mouseX, mouseY);
     this.drawName(ms, title.getString());
+    btnDirection.visible = !menu.tile.getBlockStateVertical();
   }
 
   @Override

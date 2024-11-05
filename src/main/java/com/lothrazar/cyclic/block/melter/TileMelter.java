@@ -231,6 +231,7 @@ public class TileMelter extends TileBlockEntityCyclic implements MenuProvider {
       inventory.getStackInSlot(0).shrink(1);
       inventory.getStackInSlot(1).shrink(1);
       tank.fill(this.currentRecipe.getRecipeFluid(), FluidAction.EXECUTE);
+      updateComparatorOutputLevel();
       return true;
     }
     return false;

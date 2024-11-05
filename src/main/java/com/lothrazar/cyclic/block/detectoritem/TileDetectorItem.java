@@ -4,6 +4,7 @@ import java.util.List;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.block.detectorentity.CompareType;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.cyclic.util.ShapeUtil;
@@ -190,7 +191,7 @@ public class TileDetectorItem extends TileBlockEntityCyclic implements MenuProvi
         this.rangeZ = value;
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
     }
   }
@@ -216,6 +217,10 @@ public class TileDetectorItem extends TileBlockEntityCyclic implements MenuProvi
     tag.putInt("limit", limitUntilRedstone);
     tag.putInt("compare", compType.ordinal());
     super.saveAdditional(tag);
+  }
+
+  public List<BlockPos> getShapeHollow() {
+    return getShape();
   }
 
   public List<BlockPos> getShape() {

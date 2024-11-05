@@ -108,6 +108,7 @@ public class TileGeneratorFuel extends TileBlockEntityCyclic implements MenuProv
       else {
         stack.shrink(1);
       }
+      updateComparatorOutputLevel();
     }
   }
 

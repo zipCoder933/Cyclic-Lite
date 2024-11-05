@@ -8,6 +8,8 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.SlotItemHandler;
 
 public class ContainerBreaker extends ContainerBase {
 
@@ -18,6 +20,10 @@ public class ContainerBreaker extends ContainerBase {
     tile = (TileBreaker) world.getBlockEntity(pos);
     this.playerEntity = player;
     this.playerInventory = playerInventory;
+    tile.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(h -> {
+      this.endInv = h.getSlots();
+      addSlot(new SlotItemHandler(h, 0, 81, 31));
+    });
     layoutPlayerInventorySlots(8, 84);
     trackEnergy(tile);
     this.trackAllIntFields(tile, TileBreaker.Fields.values().length);

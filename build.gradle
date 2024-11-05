@@ -93,6 +93,14 @@ dependencies {
   //  runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${mc_version}-${patchouli_version}")
  
 
+  //   implementation fg.deobf("curse.maven:autoreglib-250363:3642382")
+  //   implementation fg.deobf("curse.maven:quark-243121:3840125")
+  //   implementation fg.deobf("curse.maven:more-villagers-484954:3843498")
+  //   implementation fg.deobf("curse.maven:yungs-api-421850:4428184")
+  //   implementation fg.deobf("curse.maven:yungs-better-strongholds-465575:3778231")
+  //   implementation fg.deobf("curse.maven:mekanism-268560:3875976")
+  
+  //   implementation fg.deobf("curse.maven:jade-324717:5079263")
 
 
 
@@ -115,7 +123,7 @@ repositories {
   maven { url 'https://maven.theillusivec4.top/'    }
   maven { url 'https://maven.blamejared.com' }    
   maven { url 'https://modmaven.dev'  }    
-//  maven { url 'https://www.cursemaven.com'  }
+  maven { url 'https://www.cursemaven.com'  }
 }
 // Example for how to get properties into the manifest for reading by the runtime..
 jar {

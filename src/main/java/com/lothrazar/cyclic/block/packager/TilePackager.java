@@ -113,6 +113,7 @@ public class TilePackager extends TileBlockEntityCyclic implements MenuProvider 
       inputSlots.extractItem(0, total, false);
       outputSlots.insertItem(0, output, false);
       energy.extractEnergy(POWERCONF.get(), false);
+      this.updateComparatorOutputLevel();
     }
   }
 
@@ -175,7 +176,7 @@ public class TilePackager extends TileBlockEntityCyclic implements MenuProvider 
 
   @Override
   public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-    if (cap == ForgeCapabilities.ENERGY) {
+    if (cap == ForgeCapabilities.ENERGY && POWERCONF.get() > 0) {
       return energyCap.cast();
     }
     if (cap == ForgeCapabilities.ITEM_HANDLER) {

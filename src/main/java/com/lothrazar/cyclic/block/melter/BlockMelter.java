@@ -6,6 +6,7 @@ import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -22,6 +23,16 @@ public class BlockMelter extends BlockCyclic {
   public BlockMelter(Properties properties) {
     super(properties.strength(1.2F).noOcclusion());
     this.setHasGui();
+  }
+
+  @Override
+  public boolean hasAnalogOutputSignal(BlockState bs) {
+    return true;
+  }
+
+  @Override
+  public int getAnalogOutputSignal(BlockState st, Level level, BlockPos pos) {
+    return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
   }
 
   @Override

@@ -1,11 +1,11 @@
 package com.lothrazar.cyclic.block.forester;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
 import java.util.List;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.capabilities.block.CustomEnergyStorage;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.cyclic.util.ShapeUtil;
@@ -29,6 +29,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SaplingBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.capabilities.Capability;
@@ -42,15 +43,16 @@ import net.minecraftforge.items.ItemStackHandler;
 public class TileForester extends TileBlockEntityCyclic implements MenuProvider {
 
   static enum Fields {
-    REDSTONE, RENDER, SIZE;
+    REDSTONE, RENDER, SIZE, HEIGHT;
   }
 
   static final int MAX = 64000;
   static final int MAX_HEIGHT = 32;
-  private static final int MAX_SIZE = 12; //radius 7 translates to 15x15 area (center block + 7 each side)
+  static final int MAX_SIZE = 12; //radius 7 translates to 15x15 area (center block + 7 each side)
   public static IntValue POWERCONF;
   private int height = MAX_HEIGHT;
   private int radius = MAX_SIZE;
+  private BlockPos targetPos = null;
   CustomEnergyStorage energy = new CustomEnergyStorage(MAX, MAX);
   ItemStackHandler inventory = new ItemStackHandler(1) {
 
@@ -101,8 +103,7 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
     }
     //update target
     shapeIndex++;
-    BlockPos targetPos = getShapeTarget(shape);
-    skipSomeAirBlocks(shape);
+    targetPos = getShapeTarget(shape);
     //only saplings at my level, the rest is harvesting
     try {
       if (fakePlayer == null && level instanceof ServerLevel) {
@@ -117,14 +118,13 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
         }
       }
       else if (this.isSapling(dropMe)) {
-        //plant me  . if im on the lowest level 
-        if (targetPos.getY() == this.worldPosition.getY()) {
-          InteractionResult result = TileBlockEntityCyclic.interactUseOnBlock(fakePlayer, level, targetPos, InteractionHand.OFF_HAND, Direction.DOWN);
-          if (result == InteractionResult.CONSUME) {
-            //ok then DRAIN POWER
-            energy.extractEnergy(cost, false);
-          }
+        //plant me  . if im on the lowest level  
+        InteractionResult result = TileBlockEntityCyclic.interactUseOnBlock(fakePlayer, level, targetPos, InteractionHand.OFF_HAND, Direction.DOWN);
+        if (result == InteractionResult.CONSUME) {
+          updateComparatorOutputLevel();
         }
+        //ok then DRAIN POWER
+        energy.extractEnergy(cost, false);
       }
     }
     catch (Exception e) {
@@ -167,6 +167,7 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
 
   @Override
   public void load(CompoundTag tag) {
+    height = tag.getInt("height");
     shapeIndex = tag.getInt("shapeIndex");
     radius = tag.getInt("radius");
     energy.deserializeNBT(tag.getCompound(NBTENERGY));
@@ -176,6 +177,7 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
 
   @Override
   public void saveAdditional(CompoundTag tag) {
+    tag.putInt("height", height);
     tag.putInt("shapeIndex", shapeIndex);
     tag.put(NBTENERGY, energy.serializeNBT());
     tag.putInt("radius", radius);
@@ -198,16 +200,6 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
     }
   }
 
-  private void skipSomeAirBlocks(List<BlockPos> shape) {
-    //    int skipping = MAX_HEIGHT - 2;
-    //    int i = 0;
-    //    while (world.isAirBlock(targetPos) && i < skipping
-    //        && targetPos.getY() > pos.getY()) {
-    //      updateTargetPos(shape);
-    //      i++;
-    //    }
-  }
-
   private BlockPos getShapeTarget(List<BlockPos> shape) {
     if (this.shapeIndex < 0 || this.shapeIndex >= shape.size()) {
       this.shapeIndex = 0;
@@ -215,17 +207,35 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
     return shape.get(shapeIndex);
   }
 
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
+    int diff = 1;//directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
+  }
+
   //for harvest
   public List<BlockPos> getShape() {
-    List<BlockPos> shape = new ArrayList<BlockPos>();
-    shape = ShapeUtil.cubeSquareBase(this.getCurrentFacingPos(radius + 1), radius, height);
+    //    List<BlockPos>    shape = ShapeUtil.cubeSquareBase(this.getCurrentFacingPos(radius + 1), radius, height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.cubeSquareBase(center, radius, 0);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
+    }
     return shape;
   }
 
   //for render
   public List<BlockPos> getShapeHollow() {
-    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), this.radius);
-    BlockPos targetPos = getShapeTarget(shape);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
+    }
     if (targetPos != null) {
       shape.add(targetPos);
     }
@@ -233,7 +243,6 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
   }
 
   private boolean isSapling(ItemStack dropMe) {
-    //    if(dropMe.getItem().isIn(Tags.Blocks.SAND))
     //sapling tag SHOULD exist. it doesnt. idk WHY
     BlockState block = Block.byItem(dropMe.getItem()).defaultBlockState();
     return block.is(BlockTags.SAPLINGS) || block.getBlock() instanceof SaplingBlock;
@@ -257,6 +266,8 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
         return render;
       case SIZE:
         return radius;
+      case HEIGHT:
+        return height;
     }
     return 0;
   }
@@ -268,11 +279,18 @@ public class TileForester extends TileBlockEntityCyclic implements MenuProvider 
         this.needsRedstone = value % 2;
       break;
       case RENDER:
-        this.render = value % 2;
+        this.render = value % PreviewOutlineType.values().length;
       break;
       case SIZE:
-        radius = value % MAX_SIZE;
+        radius = Math.min(value, MAX_SIZE);
+      break;
+      case HEIGHT:
+        this.height = Math.min(value, MAX_HEIGHT);
       break;
     }
+  }
+
+  public boolean hasSapling() {
+    return !this.inventory.getStackInSlot(0).isEmpty();
   }
 }

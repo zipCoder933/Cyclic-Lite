@@ -140,6 +140,7 @@ public class CandleWaterBlock extends BlockCyclic {
     world.scheduleTick(pos, this, TICK_RATE.get());
   }
 
+  @SuppressWarnings("deprecation")
   private void afterSpawnSuccess(Mob monster, Level world, BlockPos pos, RandomSource rand) {
     monster.finalizeSpawn(world.getServer().getLevel(world.dimension()), world.getCurrentDifficultyAt(pos), MobSpawnType.SPAWNER, null, null);
     world.scheduleTick(pos, this, TICK_RATE.get());

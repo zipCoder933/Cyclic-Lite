@@ -75,6 +75,7 @@ public class TileTank extends TileBlockEntityCyclic {
   @Override
   public void setFluid(FluidStack fluid) {
     tank.setFluid(fluid);
+    this.updateComparatorOutputLevel();
   }
 
   //  @Override
