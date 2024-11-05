@@ -624,4 +624,8 @@ public abstract class TileEntityBase extends TileEntity implements IInventory {
   public void updateComparatorOutputLevel() {
     world.updateComparatorOutputLevel(pos, this.getBlockState().getBlock());
   }
+
+  public void updateComparatorOutputLevelAt(BlockPos target) {
+    world.updateComparatorOutputLevel(target, world.getBlockState(target).getBlock());
+  }
 }

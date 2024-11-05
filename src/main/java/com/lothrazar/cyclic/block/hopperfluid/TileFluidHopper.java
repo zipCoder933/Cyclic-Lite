@@ -65,6 +65,8 @@ public class TileFluidHopper extends TileEntityBase implements ITickableTileEnti
     Direction exportToSide = this.getBlockState().get(BlockFluidHopper.FACING);
     if (exportToSide != null && exportToSide != Direction.UP) {
       moveFluids(exportToSide, pos.offset(exportToSide), FLOW, tank);
+      this.updateComparatorOutputLevel();
+      this.updateComparatorOutputLevelAt(pos.offset(exportToSide));
     }
   }
 
@@ -79,6 +81,7 @@ public class TileFluidHopper extends TileEntityBase implements ITickableTileEnti
     if (stuff != null) {
       success = UtilFluid.tryFillPositionFromTank(world, pos, extractSide, stuff, FLOW);
       if (success) {
+        this.updateComparatorOutputLevelAt(target);
         this.updateComparatorOutputLevel();
         return;
       }

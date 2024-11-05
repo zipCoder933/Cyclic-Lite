@@ -72,9 +72,11 @@ public class TileTank extends TileEntityBase implements ITickableTileEntity {
   @Override
   public void tick() {
     //drain below but only to one of myself
-    TileEntity below = this.world.getTileEntity(this.pos.down());
+    TileEntity below = this.world.getTileEntity(pos.down());
     if (below != null && below instanceof TileTank) {
-      UtilFluid.tryFillPositionFromTank(world, this.pos.down(), Direction.UP, tank, TRANSFER_FLUID_PER_TICK);
+      UtilFluid.tryFillPositionFromTank(world, pos.down(), Direction.UP, tank, TRANSFER_FLUID_PER_TICK);
+      this.updateComparatorOutputLevel();
+      this.updateComparatorOutputLevelAt(pos.down());
     }
   }
 }
