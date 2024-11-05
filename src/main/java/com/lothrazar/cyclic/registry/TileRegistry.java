@@ -32,6 +32,8 @@ import com.lothrazar.cyclic.block.endershelf.TileEnderShelf;
 import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
 import com.lothrazar.cyclic.block.eye.TileEye;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
+import com.lothrazar.cyclic.block.facade.light.TileLightFacade;
+import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffTileFacade;
 import com.lothrazar.cyclic.block.fan.TileFan;
 import com.lothrazar.cyclic.block.fanslab.TileFanSlab;
 import com.lothrazar.cyclic.block.fishing.TileFisher;
@@ -46,7 +48,6 @@ import com.lothrazar.cyclic.block.hopper.TileSimpleHopper;
 import com.lothrazar.cyclic.block.hopperfluid.TileFluidHopper;
 import com.lothrazar.cyclic.block.hoppergold.TileGoldHopper;
 import com.lothrazar.cyclic.block.laser.TileLaser;
-import com.lothrazar.cyclic.block.lightcompr.TileLightCamo;
 import com.lothrazar.cyclic.block.melter.TileMelter;
 import com.lothrazar.cyclic.block.miner.TileMiner;
 import com.lothrazar.cyclic.block.packager.TilePackager;
@@ -60,7 +61,6 @@ import com.lothrazar.cyclic.block.screen.TileScreentext;
 import com.lothrazar.cyclic.block.shapebuilder.TileStructure;
 import com.lothrazar.cyclic.block.shapedata.TileShapedata;
 import com.lothrazar.cyclic.block.solidifier.TileSolidifier;
-import com.lothrazar.cyclic.block.soundmuff.ghost.SoundmuffTile;
 import com.lothrazar.cyclic.block.soundplay.TileSoundPlayer;
 import com.lothrazar.cyclic.block.soundrecord.TileSoundRecorder;
 import com.lothrazar.cyclic.block.spikes.TileDiamondSpikes;
@@ -121,8 +121,8 @@ public class TileRegistry {
   public static void onTileEntityRegistry(final RegistryEvent.Register<TileEntityType<?>> event) {
     IForgeRegistry<TileEntityType<?>> r = event.getRegistry();
     r.register(TileEntityType.Builder.create(TileDiamondSpikes::new, BlockRegistry.spikes_diamond).build(null).setRegistryName("spikes_diamond"));
-    r.register(TileEntityType.Builder.create(TileLightCamo::new, BlockRegistry.LIGHT_CAMO.get()).build(null).setRegistryName("light_camo"));
-    r.register(TileEntityType.Builder.create(SoundmuffTile::new, BlockRegistry.soundproofing_ghost).build(null).setRegistryName("soundproofing_ghost"));
+    r.register(TileEntityType.Builder.create(TileLightFacade::new, BlockRegistry.LIGHT_CAMO.get()).build(null).setRegistryName("light_camo"));
+    r.register(TileEntityType.Builder.create(SoundmuffTileFacade::new, BlockRegistry.soundproofing_ghost).build(null).setRegistryName("soundproofing_ghost"));
     r.register(TileEntityType.Builder.create(TileTerraPreta::new, BlockRegistry.TERRA_PRETA.get()).build(null).setRegistryName("terra_preta"));
     r.register(TileEntityType.Builder.create(TileEye::new, BlockRegistry.EYE_REDSTONE).build(null).setRegistryName("eye_redstone"));
     r.register(TileEntityType.Builder.create(TileEyeTp::new, BlockRegistry.EYE_TELEPORT).build(null).setRegistryName("eye_teleport"));
@@ -181,9 +181,9 @@ public class TileRegistry {
   @ObjectHolder(ModCyclic.MODID + ":spikes_diamond")
   public static TileEntityType<TileDiamondSpikes> spikes_diamond;
   @ObjectHolder(ModCyclic.MODID + ":light_camo")
-  public static TileEntityType<TileLightCamo> light_camo;
+  public static TileEntityType<TileLightFacade> light_camo;
   @ObjectHolder(ModCyclic.MODID + ":soundproofing_ghost")
-  public static TileEntityType<SoundmuffTile> soundproofing_ghost;
+  public static TileEntityType<SoundmuffTileFacade> soundproofing_ghost;
   @ObjectHolder(ModCyclic.MODID + ":eye_redstone")
   public static TileEntityType<TileEye> eye_redstone;
   @ObjectHolder(ModCyclic.MODID + ":eye_teleport")

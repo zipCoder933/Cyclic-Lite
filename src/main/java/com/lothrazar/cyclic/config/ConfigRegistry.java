@@ -71,17 +71,21 @@ import com.lothrazar.cyclic.item.scythe.ScytheLeaves;
 import com.lothrazar.cyclic.item.transporter.TileTransporterEmptyItem;
 import com.lothrazar.cyclic.registry.CommandRegistry.CyclicCommands;
 import com.lothrazar.cyclic.registry.MaterialRegistry;
+import com.lothrazar.cyclic.util.UtilString;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
 import net.minecraftforge.common.ForgeConfigSpec.DoubleValue;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.fml.loading.FMLPaths;
+import net.minecraftforge.registries.ForgeRegistries;
 
 public class ConfigRegistry {
 
@@ -406,6 +410,27 @@ public class ConfigRegistry {
     CFG.pop(); //items
     CFG.comment(WALL, " Block specific configs", WALL)
         .push("blocks");
+    CFG.push("facades");
+    CABLE_FACADES = CFG.comment("\r\n Allow cables to have blocks placed in them as facades (sneak-left-click to set; use empty hand to remove).  Set to false to disable facades")
+        .define("cables.enabled", true);
+    //a few default
+    List<String> list = Arrays.asList("minecraft:ladder", "minecraft:double_plant", "minecraft:waterlily",
+        "minecraft:torch", "minecraft:*_torch", "minecraft:redstone", "minecraft:iron_bars",
+        "minecraft:chest", "minecraft:ender_chest", "minecraft:sculk_vein", "minecraft:string", "minecraft:vine",
+        "minecraft:rail",
+        "minecraft:*_rail",
+        "minecraft:brewing_stand",
+        "minecraft:*_dripleaf",
+        "minecraft:*_pane",
+        "minecraft:*_sapling", "minecraft:*_sign",
+        "minecraft:*_door",
+        "minecraft:*_banner", "minecraft:*_shulker_box",
+        "cyclic:*_pipe", "cyclic:*_bars",
+        "storagenetwork:*");
+    FACADE_IGNORELIST = CFG.comment("\r\n  These blocks are not allowed to be used as Facades for blocks because they look weird (used by cables and Glowstone Facade and Soundproofing Facade and others)")
+        .define("itemsNotAllowed", list);
+    CFG.pop();
+    //
     TRANSFER_NODES_DIMENSIONAL = CFG.comment("  Allows the dimensional Transfer Nodes to cross dimensions "
         + "(no chunk loading is done, you have to do that on your own); "
         + "This affects blocks cyclic:wireless_energy, cyclic:wireless_item, cyclic:wireless_fluid, cyclic:wireless_transmitter; "
@@ -558,5 +583,16 @@ public class ConfigRegistry {
       }
     }
     return mappedBeheading;
+  }
+
+  public static BooleanValue CABLE_FACADES;
+  private static ConfigValue<List<String>> FACADE_IGNORELIST;
+
+  public static boolean isFacadeAllowed(ItemStack item) {
+    ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(item.getItem());
+    if (UtilString.isInList(FACADE_IGNORELIST.get(), itemId)) {
+      return false;
+    }
+    return true;
   }
 }

@@ -3,7 +3,9 @@ package com.lothrazar.cyclic.event;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.base.ItemEntityInteractable;
 import com.lothrazar.cyclic.block.cable.CableBase;
+import com.lothrazar.cyclic.block.facade.IBlockFacade;
 import com.lothrazar.cyclic.block.scaffolding.ItemScaffolding;
+import com.lothrazar.cyclic.config.ConfigRegistry;
 import com.lothrazar.cyclic.data.DataTags;
 import com.lothrazar.cyclic.enchant.EnchantMultishot;
 import com.lothrazar.cyclic.item.AntimatterEvaporatorWandItem;
@@ -19,9 +21,11 @@ import com.lothrazar.cyclic.item.enderbook.EnderBookItem;
 import com.lothrazar.cyclic.item.equipment.GlowingHelmetItem;
 import com.lothrazar.cyclic.item.heart.HeartItem;
 import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
+import com.lothrazar.cyclic.net.BlockFacadeMessage;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.EnchantRegistry;
 import com.lothrazar.cyclic.registry.ItemRegistry;
+import com.lothrazar.cyclic.registry.PacketRegistry;
 import com.lothrazar.cyclic.registry.PotionRegistry;
 import com.lothrazar.cyclic.registry.SoundRegistry;
 import com.lothrazar.cyclic.util.CharmUtil;
@@ -30,7 +34,9 @@ import com.lothrazar.cyclic.util.UtilEntity;
 import com.lothrazar.cyclic.util.UtilItemStack;
 import com.lothrazar.cyclic.util.UtilSound;
 import com.lothrazar.cyclic.util.UtilWorld;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -41,18 +47,24 @@ import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.AbstractArrowEntity;
+import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
+import net.minecraft.nbt.NBTUtil;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.ProjectileImpactEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -418,15 +430,18 @@ public class ItemEvents {
   public void onHit(PlayerInteractEvent.LeftClickBlock event) {
     PlayerEntity player = event.getPlayer();
     ItemStack held = player.getHeldItem(event.getHand());
-    if (held.isEmpty()) {
-      return;
-    }
     World world = player.getEntityWorld();
+    BlockState target = world.getBlockState(event.getPos());
     ///////////// shape
     if (held.getItem() instanceof ShapeCard && player.isCrouching()) {
-      BlockState target = world.getBlockState(event.getPos());
       ShapeCard.setBlockState(held, target);
       UtilChat.sendStatusMessage(player, target.getBlock().getTranslationKey());
+    }
+    if (player.isCrouching()
+        && target.getBlock() instanceof IBlockFacade) {
+      //
+      onHitFacadeHandler(event, player, held, target);
+      //
     }
     ///////////////// builders
     if (held.getItem() instanceof BuilderItem) {
@@ -438,7 +453,7 @@ public class ItemEvents {
       event.setCanceled(true);
       if (player.isCrouching()) {
         //pick out target block
-        BlockState target = world.getBlockState(event.getPos());
+        //        BlockState target = world.getBlockState(event.getPos());
         BuilderActionType.setBlockState(held, target);
         UtilChat.sendStatusMessage(player, target.getBlock().getTranslationKey());
         event.setCanceled(true);
@@ -456,6 +471,46 @@ public class ItemEvents {
     }
     if (held.getItem() instanceof AntimatterEvaporatorWandItem) {
       AntimatterEvaporatorWandItem.toggleMode(player, held);
+    }
+  }
+
+  private void onHitFacadeHandler(PlayerInteractEvent.LeftClickBlock event, PlayerEntity player, ItemStack held, BlockState target) {
+    if (held.isEmpty() && event.getWorld().isRemote()) {
+      PacketRegistry.INSTANCE.sendToServer(new BlockFacadeMessage(event.getPos(), true));
+    }
+    else {
+      Block block = Block.getBlockFromItem(held.getItem());
+      if (block == null || block == Blocks.AIR || block == target.getBlock()) {
+        return;
+      }
+      if (target.getBlock() instanceof CableBase) {
+        if (!ConfigRegistry.CABLE_FACADES.get()) {
+          return;
+        }
+      }
+      if (!ConfigRegistry.isFacadeAllowed(held)) {
+        ModCyclic.LOGGER.info("not allowed to use this item as a facade from config: " + held.getItem());
+        return;
+      }
+      if (event.getWorld().isRemote()) {
+        onHitFacadeClient(event, player, held, block);
+      }
+    }
+    //cancel the event so creative players will not break it
+    event.setCanceled(true);
+  }
+
+  @OnlyIn(Dist.CLIENT)
+  private void onHitFacadeClient(PlayerInteractEvent.LeftClickBlock event, PlayerEntity player, ItemStack held, Block block) {
+    //pick the block, write to tags, and send to server
+    boolean pickFluids = false;
+    double reach = 6; // TODO: player.getBlockReach()
+    RayTraceResult bhr = player.pick(reach, 1, pickFluids); // BlockHitResult
+    if (bhr.getType() == RayTraceResult.Type.BLOCK) {
+      BlockItemUseContext context = new BlockItemUseContext(player, event.getHand(), held, (BlockRayTraceResult) bhr); // BlockPlaceContext
+      BlockState facadeState = block.getStateForPlacement(context);
+      CompoundNBT tags = (facadeState == null) ? null : NBTUtil.writeBlockState(facadeState);
+      PacketRegistry.INSTANCE.sendToServer(new BlockFacadeMessage(event.getPos(), tags));
     }
   }
 

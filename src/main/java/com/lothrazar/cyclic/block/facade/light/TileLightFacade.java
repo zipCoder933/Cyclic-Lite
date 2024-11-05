@@ -1,6 +1,7 @@
-package com.lothrazar.cyclic.block.lightcompr;
+package com.lothrazar.cyclic.block.facade.light;
 
 import com.lothrazar.cyclic.base.TileEntityBase;
+import com.lothrazar.cyclic.block.facade.ITileFacade;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,17 +17,18 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileLightCamo extends TileEntityBase {
+public class TileLightFacade extends TileEntityBase implements ITileFacade {
 
   ItemStackHandler notInventory = new ItemStackHandler(1);
   private LazyOptional<IItemHandler> inventoryCap = LazyOptional.of(() -> notInventory);
 
-  public TileLightCamo() {
+  public TileLightFacade() {
     super(TileRegistry.light_camo);
   }
 
   @Override
   public void read(BlockState bs, CompoundNBT tag) {
+    this.loadFacade(tag);
     super.read(bs, tag);
     notInventory.deserializeNBT(tag.getCompound(NBTINV));
   }
@@ -34,6 +36,7 @@ public class TileLightCamo extends TileEntityBase {
   @Override
   public CompoundNBT write(CompoundNBT tag) {
     tag.put(NBTINV, notInventory.serializeNBT());
+    this.saveFacade(tag);
     return super.write(tag);
   }
 
@@ -68,5 +71,17 @@ public class TileLightCamo extends TileEntityBase {
     List<BlockPos> lis = new ArrayList<BlockPos>();
     lis.add(pos);
     return lis;
+  }
+
+  private CompoundNBT facadeState = null;
+
+  @Override
+  public CompoundNBT getFacade() {
+    return facadeState;
+  }
+
+  @Override
+  public void setFacade(CompoundNBT facadeState) {
+    this.facadeState = facadeState;
   }
 }
