@@ -200,6 +200,10 @@ public class TileDropper extends TileBlockEntityCyclic implements MenuProvider {
     }
   }
 
+  public List<BlockPos> getShapeHollow() {
+    return getShape();
+  }
+
   public List<BlockPos> getShape() {
     List<BlockPos> shape = new ArrayList<>();
     shape.add(getTargetPos());

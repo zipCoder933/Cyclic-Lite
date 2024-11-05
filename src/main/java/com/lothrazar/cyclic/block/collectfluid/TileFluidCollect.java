@@ -23,6 +23,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
@@ -49,7 +50,7 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
   FluidTankBase tank;
   private final LazyOptional<FluidTankBase> fluidCap = LazyOptional.of(() -> tank);
   private int shapeIndex = 0; // current index of shape array
-  private int size = 4 * 2;
+  private int radius = 4 * 2;
   private int height = 4;
   BlockPos targetPos = null;
   static final int MAX = 64000;
@@ -88,9 +89,8 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
       return;
     }
     ItemStack stack = inventory.getStackInSlot(0);
-    if (stack.isEmpty() || Block.byItem(stack.getItem()) == Blocks.AIR) {
-      return;
-    }
+    //use air if its empty
+    BlockState newState = Block.byItem(stack.getItem()).defaultBlockState();
     this.setLitProperty(true);
     List<BlockPos> shape = this.getShapeFilled();
     if (shape.size() == 0) {
@@ -105,8 +105,8 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
       FluidStack fstack = new FluidStack(fluidState.getType(), FluidAttributes.BUCKET_VOLUME);
       int result = tank.fill(fstack, FluidAction.SIMULATE);
       if (result == FluidAttributes.BUCKET_VOLUME) {
-        //we got enough  
-        if (level.setBlockAndUpdate(targetPos, Block.byItem(stack.getItem()).defaultBlockState())) {
+        //we got enough   
+        if (level.setBlockAndUpdate(targetPos, newState)) {
           //build the block, shrink the item
           stack.shrink(1);
           //drink fluid
@@ -132,16 +132,24 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
     return BlockEntity.INFINITE_EXTENT_AABB;
   }
 
-  private BlockPos getTargetCenter() {
-    //move center over that much, not including exact horizontal
-    return this.getCurrentFacingPos(size + 1); //this.getPos().offset(this.getCurrentFacing(), size + 1);
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
+    int diff = 1; // directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
   }
 
   //for render
   public List<BlockPos> getShapeHollow() {
-    BlockPos ctr = getTargetCenter();
-    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(ctr.below(height), this.size);
-    shape = ShapeUtil.repeatShapeByHeight(shape, height);
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, this.radius);
+    //
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
+    }
     if (targetPos != null) {
       shape.add(targetPos);
     }
@@ -150,9 +158,12 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
 
   //for harvest
   public List<BlockPos> getShapeFilled() {
-    BlockPos ctr = getTargetCenter();
-    List<BlockPos> shape = ShapeUtil.squareHorizontalFull(ctr.below(height), this.size);
-    shape = ShapeUtil.repeatShapeByHeight(shape, height - 1);
+    BlockPos center = getFacingShapeCenter(radius);
+    int heightWithDirection = heightWithDirection();
+    List<BlockPos> shape = ShapeUtil.squareHorizontalFull(center, this.radius);
+    if (heightWithDirection != 0) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
+    }
     return shape;
   }
 
@@ -228,7 +239,7 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
         height = Math.min(value, MAX_HEIGHT);
       break;
       case SIZE:
-        size = Math.min(value, MAX_SIZE);
+        radius = Math.min(value, MAX_SIZE);
       break;
     }
   }
@@ -243,7 +254,7 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
       case HEIGHT:
         return height;
       case SIZE:
-        return size;
+        return radius;
     }
     return 0;
   }

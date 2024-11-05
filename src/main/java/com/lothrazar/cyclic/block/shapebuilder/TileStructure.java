@@ -41,7 +41,7 @@ public class TileStructure extends TileBlockEntityCyclic implements MenuProvider
   static final int SLOT_BUILD = 0;
   protected static final int SLOT_SHAPE = 1;
   protected static final int SLOT_GPS = 2;
-  public static final int MAXHEIGHT = 100;
+  public static final int MAX_HEIGHT = 100;
 
   static enum Fields {
     TIMER, BUILDTYPE, SIZE, HEIGHT, REDSTONE, RENDER;
@@ -140,7 +140,7 @@ public class TileStructure extends TileBlockEntityCyclic implements MenuProvider
 
   @Override
   public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
-    if (cap == ForgeCapabilities.ENERGY) {
+    if (cap == ForgeCapabilities.ENERGY && POWERCONF.get() > 0) {
       return energyCap.cast();
     }
     if (cap == ForgeCapabilities.ITEM_HANDLER) {
@@ -165,10 +165,7 @@ public class TileStructure extends TileBlockEntityCyclic implements MenuProvider
         this.buildSize = value;
       break;
       case HEIGHT:
-        if (value > MAXHEIGHT) {
-          value = MAXHEIGHT;
-        }
-        this.height = Math.max(1, value);
+        height = Math.min(value, MAX_HEIGHT);
       break;
       case REDSTONE:
         this.needsRedstone = value % 2;

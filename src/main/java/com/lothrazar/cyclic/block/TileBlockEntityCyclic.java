@@ -523,7 +523,11 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
   /************************** IInventory needed for IRecipe **********************************/
   @Deprecated
   @Override
-  public int getContainerSize() {
+  public int getContainerSize() { // was getSizeInventory
+    IItemHandler invo = this.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null);
+    if (invo != null) {
+      return invo.getSlots();
+    }
     return 0;
   }
 
@@ -535,7 +539,14 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
 
   @Deprecated
   @Override
-  public ItemStack getItem(int index) {
+  public ItemStack getItem(int index) { // was getStackInSlot
+    IItemHandler invo = this.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null);
+    try {
+      if (invo != null && index < invo.getSlots()) {
+        return invo.getStackInSlot(index);
+      }
+    }
+    catch (Exception e) {}
     return ItemStack.EMPTY;
   }
 
@@ -671,5 +682,31 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
       beamStuff.lastCheckY = level.getMinBuildHeight() - 1;
       beamStuff.beamSections = beamStuff.checkingBeamSections;
     }
+  }
+
+  // was getTargetCenter
+  protected BlockPos getFacingShapeCenter(int radiusIn) {
+    BlockPos center = null;
+    if (this.getCurrentFacing() != null) {
+      if (this.getCurrentFacing().getAxis().isVertical()) {
+        //vertical center point
+        center = this.getCurrentFacingPos(1);
+      }
+      else { //horizontal center point
+        center = this.getCurrentFacingPos(radiusIn + 1);
+      }
+    }
+    return center;
+  }
+
+  public boolean getBlockStateVertical() {
+    if (this.getBlockState().hasProperty(BlockStateProperties.FACING))
+      return this.getBlockState().getValue(BlockStateProperties.FACING).getAxis().isVertical();
+    return false;
+  }
+
+  public void updateComparatorOutputLevel() {
+    //was updateComparatorOutputLevel()
+    level.updateNeighbourForOutputSignal(worldPosition, this.getBlockState().getBlock());
   }
 }

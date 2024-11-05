@@ -17,6 +17,7 @@ import com.lothrazar.cyclic.block.endershelf.EnderShelfRenderer;
 import com.lothrazar.cyclic.block.facade.RenderCableFacade;
 import com.lothrazar.cyclic.block.facade.light.RenderLightFacade;
 import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffRenderFacade;
+import com.lothrazar.cyclic.block.fan.RenderFan;
 import com.lothrazar.cyclic.block.fishing.RenderFisher;
 import com.lothrazar.cyclic.block.forester.RenderForester;
 import com.lothrazar.cyclic.block.harvester.RenderHarvester;
@@ -125,6 +126,7 @@ public class ClientRegistryCyclic {
     event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ITEM.get(), RenderDetectorItem::new);
     event.registerBlockEntityRenderer(TileRegistry.DROPPER.get(), RenderDropper::new);
     event.registerBlockEntityRenderer(TileRegistry.ENDER_ITEM_SHELF.get(), ItemShelfRenderer::new);
+    event.registerBlockEntityRenderer(TileRegistry.FAN.get(), RenderFan::new);
     event.registerBlockEntityRenderer(TileRegistry.ENDER_SHELF.get(), EnderShelfRenderer::new);
     event.registerBlockEntityRenderer(TileRegistry.FISHER.get(), RenderFisher::new);
     event.registerBlockEntityRenderer(TileRegistry.FORESTER.get(), RenderForester::new);

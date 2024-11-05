@@ -15,15 +15,15 @@ public class RenderItemCollect implements BlockEntityRenderer<TileItemCollector>
   public RenderItemCollect(BlockEntityRendererProvider.Context d) {}
 
   @Override
-  public void render(TileItemCollector te, float v, PoseStack matrix,
-      MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
+  public void render(TileItemCollector te, float v, PoseStack matrix, MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
     int previewType = te.getField(TileItemCollector.Fields.RENDER.ordinal());
     if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
-      RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShape(), matrix, 0.9F, ClientConfigCyclic.getColor(te));
+      RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShapeHollow(), matrix, 0.9F, ClientConfigCyclic.getColor(te));
     }
     if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
-      for (BlockPos crd : te.getShape()) {
+      for (BlockPos crd : te.getShapeHollow()) {
         RenderBlockUtils.createBox(matrix, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
+
       }
     }
   }

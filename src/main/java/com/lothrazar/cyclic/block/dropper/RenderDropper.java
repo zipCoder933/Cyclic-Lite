@@ -20,7 +20,7 @@ public class RenderDropper implements BlockEntityRenderer<TileDropper> {
     if (previewType == PreviewOutlineType.SHADOW.ordinal()) {
       RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShape(), matrixStack, 0.9F, ClientConfigCyclic.getColor(te));
     }
-    if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+    else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShape()) {
         RenderBlockUtils.createBox(matrixStack, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
       }

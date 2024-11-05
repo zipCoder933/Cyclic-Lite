@@ -219,6 +219,10 @@ public class TileDetectorItem extends TileBlockEntityCyclic implements MenuProvi
     super.saveAdditional(tag);
   }
 
+  public List<BlockPos> getShapeHollow() {
+    return getShape();
+  }
+
   public List<BlockPos> getShape() {
     return ShapeUtil.getShape(getRange(), worldPosition.getY());
   }

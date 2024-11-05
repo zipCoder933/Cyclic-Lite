@@ -44,7 +44,9 @@ public class ButtonMachineField extends ButtonMachine {
 
   private void onValueUpdate(int val) {
     setTooltip(ChatUtil.lang(this.tooltipPrefix + val));
+
     // PreviewOutlineType.NONE.ordinal(); // TODO: use enum in switch
+
     switch (val) {
       case 0:
         setTextureId(textureZero);

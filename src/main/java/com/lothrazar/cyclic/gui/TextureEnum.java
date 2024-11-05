@@ -21,8 +21,6 @@ public enum TextureEnum {
         return 622;
       case RENDER_SHOW:
         return 622;
-      case RENDER_OUTLINE:
-        return 1 - 3;
       case SQUARE_ENDER:
         return 17;
       case SQUARE_RED:
@@ -33,6 +31,8 @@ public enum TextureEnum {
         return 609;
       case CRAFT_MATCH:
         return 593;
+      case RENDER_OUTLINE:
+        return 1 - 3;
     }
     return 0;
   }
@@ -55,8 +55,6 @@ public enum TextureEnum {
         return 126;
       case RENDER_SHOW: // blue one
         return 110;
-      case RENDER_OUTLINE:
-        return 129 - 3;
       case SQUARE_ENDER:
         return 129;
       case SQUARE_RED:
@@ -67,6 +65,8 @@ public enum TextureEnum {
         return 129;
       case CRAFT_MATCH:
         return 129;
+      case RENDER_OUTLINE:
+        return 129 - 3;
     }
     return 0;
   }

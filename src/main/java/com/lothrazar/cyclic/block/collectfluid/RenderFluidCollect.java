@@ -18,12 +18,14 @@ public class RenderFluidCollect implements BlockEntityRenderer<TileFluidCollect>
   public void render(TileFluidCollect te, float v, PoseStack matrix, MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
     int previewType = te.getField(TileFluidCollect.Fields.RENDER.ordinal());
     if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
+
       RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShapeHollow(), matrix, 0.9F, ClientConfigCyclic.getColor(te));
     }
-    if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+    else   if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShapeHollow()) {
         RenderBlockUtils.createBox(matrix, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
       }
     }
+
   }
 }

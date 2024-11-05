@@ -1285,7 +1285,7 @@
   "block.cyclic.plate_vector.tooltip.power": "Power:",
   "block.cyclic.plate_vector.tooltip.yaw": "Yaw:",
   "block.cyclic.poison": "Poison",
-  "gui.cyclic.render0": "Preview Off",
+  "gui.cyclic.render0": "Preview Hidden",
   "gui.cyclic.render1": "Preview Shadow",
   "gui.cyclic.render2": "Preview Outline",
   "gui.cyclic.redstone0": "Always On",

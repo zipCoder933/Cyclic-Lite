@@ -20,9 +20,10 @@ public class RenderDetector implements BlockEntityRenderer<TileDetector> {
     if (previewType == PreviewOutlineType.SHADOW.ordinal()) {
       RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShape(), matrix, 0.9F, ClientConfigCyclic.getColor(te));
     }
-    if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+    else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShape()) {
         RenderBlockUtils.createBox(matrix, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
+
       }
     }
   }

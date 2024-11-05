@@ -111,6 +111,10 @@ public class TileDetector extends TileBlockEntityCyclic implements MenuProvider 
     return isPoweredNow;
   }
 
+  public List<BlockPos> getShapeHollow() {
+    return getShape();
+  }
+
   public List<BlockPos> getShape() {
     return ShapeUtil.getShape(getRange(), worldPosition.getY());
   }

@@ -2,6 +2,7 @@ package com.lothrazar.cyclic.gui;
 
 import com.lothrazar.cyclic.api.IHasTooltip;
 import com.lothrazar.cyclic.registry.TextureRegistry;
+import com.lothrazar.library.core.Const;
 import com.lothrazar.library.util.ChatUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
@@ -21,8 +22,6 @@ public abstract class ScreenBase<T extends AbstractContainerMenu> extends Abstra
   }
 
   protected void drawBackground(GuiGraphics ms, ResourceLocation gui) {
-    //    RenderSystem.setShader(GameRenderer::getPositionTexShader);
-    //    RenderSystem.setShaderTexture(0, gui);
     int relX = (this.width - this.imageWidth) / 2;
     int relY = (this.height - this.imageHeight) / 2;
     ms.blit(gui, relX, relY, 0, 0, this.imageWidth, this.imageHeight);
@@ -52,18 +51,19 @@ public abstract class ScreenBase<T extends AbstractContainerMenu> extends Abstra
   }
 
   protected void drawSlot(GuiGraphics ms, int x, int y, ResourceLocation texture) {
-    drawSlot(ms, x, y, texture, 18);
+    drawSlot(ms, x, y, texture, Const.SQ);
   }
 
   protected void drawSlot(GuiGraphics ms, int x, int y, ResourceLocation texture, int size) {
-    //    this.minecraft.getTextureManager().bind(texture);
+
     RenderSystem.setShader(GameRenderer::getPositionTexShader);
     RenderSystem.setShaderTexture(0, texture);
     ms.blit(texture, leftPos + x, topPos + y, 0, 0, size, size, size, size);
   }
 
   protected void drawSlot(GuiGraphics ms, int x, int y) {
-    drawSlot(ms, x, y, TextureRegistry.SLOT, 18);
+    drawSlot(ms, x, y, TextureRegistry.SLOT, Const.SQ);
+
   }
 
   protected void drawSlotLarge(GuiGraphics ms, int x, int y) {

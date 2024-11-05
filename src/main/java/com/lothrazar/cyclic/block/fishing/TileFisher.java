@@ -124,6 +124,7 @@ public class TileFisher extends TileBlockEntityCyclic implements MenuProvider {
         catch (Exception e) {
           ModCyclic.LOGGER.error("Fishing Block: Loot table failed", e);
         }
+        updateComparatorOutputLevel();
       }
     }
   }

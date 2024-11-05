@@ -77,11 +77,6 @@ public class MattockItem extends DiggerItem {
     }
     return super.onBlockStartBreak(stack, pos, player);
   }
-  //  @Override
-  //  public int getHarvestLevel(ItemStack stack, net.minecraftforge.common.ToolType tool, Player player, BlockState blockState) {
-  //    return Math.max(Items.DIAMOND_PICKAXE.getHarvestLevel(stack, tool, player, blockState),
-  //        Items.DIAMOND_SHOVEL.getHarvestLevel(stack, tool, player, blockState));
-  //  }
 
   private List<BlockPos> getShape(BlockPos pos, int yoff, Direction sideHit) {
     List<BlockPos> shape;

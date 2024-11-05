@@ -22,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -89,6 +90,7 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
           break;
         }
         remainder = inventory.insertItem(i, remainder, false);
+        updateComparatorOutputLevel();
       }
       stackEntity.setItem(remainder);
       if (remainder.isEmpty()) {
@@ -141,33 +143,31 @@ public class TileItemCollector extends TileBlockEntityCyclic implements MenuProv
     super.saveAdditional(tag);
   }
 
-  private BlockPos getTargetCenter() {
-    // move center over that much, not including exact horizontal
-    return this.getBlockPos().relative(this.getCurrentFacing(), radius + 1);
+  private int heightWithDirection() {
+    Direction blockFacing = this.getBlockState().getValue(BlockStateProperties.FACING);
+    int diff = directionIsUp ? 1 : -1;
+    if (blockFacing.getAxis().isVertical()) {
+      diff = (blockFacing == Direction.UP) ? 1 : -1;
+    }
+    return diff * height;
   }
 
-  public List<BlockPos> getShape() {
-    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(this.getCurrentFacingPos(radius + 1), radius);
-    int diff = directionIsUp ? 1 : -1;
-    if (height > 0) {
-      shape = ShapeUtil.repeatShapeByHeight(shape, diff * height);
+  public List<BlockPos> getShapeHollow() {
+    BlockPos center = getFacingShapeCenter(radius);
+    List<BlockPos> shape = ShapeUtil.squareHorizontalHollow(center, radius);
+    int heightWithDirection = heightWithDirection();
+    if (heightWithDirection != 0) { //   if (heightWithDirection > 1) {
+      shape = ShapeUtil.repeatShapeByHeight(shape, heightWithDirection);
     }
     return shape;
   }
 
   private AABB getRange() {
-    BlockPos center = getTargetCenter();
-    int diff = directionIsUp ? 1 : -1;
-    int yMin = center.getY();
-    int yMax = center.getY() + diff * height;
-    //for some reason
-    if (!directionIsUp) {
-      // when aiming down, we dont have the offset to get [current block] without this
-      yMin++;
-    }
-    AABB aabb = new AABB(
-        center.getX() - radius, yMin, center.getZ() - radius,
-        center.getX() + radius + 1, yMax, center.getZ() + radius + 1);
+    BlockPos center = getFacingShapeCenter(radius);
+    int heightWithDirection = heightWithDirection();
+    AABB aabb = new AABB(center);
+    aabb = aabb.expandTowards(0, heightWithDirection, 0); // was .expand()
+    aabb = aabb.inflate(radius, 0, radius); // was .grow()
     return aabb;
   }
 

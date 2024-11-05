@@ -186,6 +186,10 @@ public class TilePeatFarm extends TileBlockEntityCyclic implements MenuProvider 
     return Block.byItem(stack.getItem()) == BlockRegistry.PEAT_UNBAKED.get();
   }
 
+  public List<BlockPos> getShapeHollow() {
+    return getShape();
+  }
+
   List<BlockPos> getShape() {
     List<BlockPos> outer = ShapeUtil.squareHorizontalHollow(this.worldPosition, 7);
     outer.addAll(ShapeUtil.squareHorizontalHollow(this.worldPosition, 5));
@@ -254,7 +258,7 @@ public class TilePeatFarm extends TileBlockEntityCyclic implements MenuProvider 
     if (cap == ForgeCapabilities.FLUID_HANDLER) {
       return fluidCap.cast();
     }
-    if (cap == ForgeCapabilities.ENERGY) {
+    if (cap == ForgeCapabilities.ENERGY && POWERCONF.get() > 0) {
       return energyCap.cast();
     }
     return super.getCapability(cap, side);

@@ -1,7 +1,7 @@
 package com.lothrazar.cyclic.block.cable.energy;
 
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.google.common.collect.Maps;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.cable.CableBase;
 import com.lothrazar.cyclic.block.cable.CableTileBase;
@@ -24,19 +24,21 @@ import net.minecraftforge.energy.IEnergyStorage;
 
 public class TileCableEnergy extends CableTileBase {
 
+  final CustomEnergyStorage energy;
+  private LazyOptional<IEnergyStorage> energyCap;
   public static IntValue BUFFERSIZE;
   public static IntValue TRANSFER_RATE;
-  CustomEnergyStorage energy;
-  private LazyOptional<IEnergyStorage> energyCap;
-  private final Map<Direction, Integer> mapIncomingEnergy = new ConcurrentHashMap<>();
-  private int energyLastSynced = -1; //fluid tanks have 'onchanged', energy caps do not 
+  //  
+  //  private final ConcurrentHashMap<Direction, LazyOptional<IEnergyStorage>> flow = new ConcurrentHashMap<>();
+  private final Map<Direction, Integer> mapIncomingEnergy = Maps.newHashMap();
+  private int energyLastSynced = -1; //fluid tanks have 'onchanged', energy caps do not
 
   public TileCableEnergy(BlockPos pos, BlockState state) {
     super(TileRegistry.ENERGY_PIPE.get(), pos, state);
     for (Direction f : Direction.values()) {
       mapIncomingEnergy.put(f, 0);
     }
-    energy = new CustomEnergyStorage(BUFFERSIZE.get(), BUFFERSIZE.get());
+    energy = new CustomEnergyStorage(BUFFERSIZE.get(), TRANSFER_RATE.get());
     energyCap = LazyOptional.of(() -> energy);
   }
 

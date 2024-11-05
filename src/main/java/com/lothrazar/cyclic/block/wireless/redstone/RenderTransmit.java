@@ -1,34 +1,26 @@
 package com.lothrazar.cyclic.block.wireless.redstone;
-
+ 
+import java.util.ArrayList;
+import java.util.List;
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import com.lothrazar.cyclic.block.laser.RenderLaser;
+import com.lothrazar.cyclic.data.PreviewOutlineType;
 import com.lothrazar.library.core.BlockPosDim;
 import com.lothrazar.library.render.type.FakeBlockRenderTypes;
 import com.lothrazar.library.util.LevelWorldUtil;
+import com.lothrazar.library.util.RenderBlockUtils;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.Vec3;
 
 public class RenderTransmit implements BlockEntityRenderer<TileWirelessTransmit> {
 
   public RenderTransmit(BlockEntityRendererProvider.Context d) {}
-
-  @Override
-  public void render(TileWirelessTransmit te, float v, PoseStack matrixStack, MultiBufferSource iRenderTypeBuffer, int partialTicks, int destroyStage) {
-    if (te.requiresRedstone() && !te.isPowered()) {
-      return;
-    }
-    if (te.getField(TileWirelessTransmit.Fields.RENDER.ordinal()) < 1) {
-      return;
-    }
-    for (int slot = 0; slot < te.inventory.getSlots(); slot++) {
-      draw(slot, te, matrixStack, iRenderTypeBuffer);
-    }
-  }
 
   public static void draw(int slot, TileWirelessTransmit tile, PoseStack matrixStackIn, MultiBufferSource bufferIn) {
     BlockPosDim posPosTarget = tile.getTargetInSlot(slot);
@@ -63,4 +55,61 @@ public class RenderTransmit implements BlockEntityRenderer<TileWirelessTransmit>
   public boolean shouldRenderOffScreen(TileWirelessTransmit te) {
     return true;
   }
+
+  @Override
+  public void render(TileWirelessTransmit te, float v, PoseStack matrixStack, MultiBufferSource iRenderTypeBuffer, int partialTicks, int destroyStage) {
+    if (te.requiresRedstone() && !te.isPowered()) {
+      return;
+    }
+    int previewType = te.getField(TileWirelessTransmit.Fields.RENDER.ordinal());
+    if (previewType <= 0) {
+      return;
+    }
+    List<BlockPos> shape = new ArrayList<>();
+    String dimensionId = LevelWorldUtil.dimensionToString(te.getLevel());
+    for (int slot = 0; slot < te.inventory.getSlots(); slot++) {
+      BlockPosDim dimPosSaved = te.getTargetInSlot(slot);
+      if (dimPosSaved != null
+          && dimPosSaved.getDimension().equalsIgnoreCase(dimensionId)) {
+        shape.add(dimPosSaved.getPos());
+      }
+      //        draw(slot, te, matrixStack, iRenderTypeBuffer);
+    }
+    if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+      for (BlockPos crd : shape) {
+        RenderBlockUtils.createBox(matrixStack, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
+      }
+    }
+    else
+      for (int slot = 0; slot < te.inventory.getSlots(); slot++) {
+        draw(slot, te, matrixStack, iRenderTypeBuffer);
+      }
+  }
+  //  @Override
+  //  public void render(TileWirelessTransmit te, float v, MatrixStack matrixStack, IRenderTypeBuffer iRenderTypeBuffer, int partialTicks, int destroyStage) {
+  //    //    if (te.requiresRedstone() && !te.isPowered()) {
+  //    //      return;
+  //    //    }
+  //    int previewType = te.getField(TileWirelessTransmit.Fields.RENDER.ordinal());
+  //    if (previewType <= 0) {
+  //      return;
+  //    }
+  //    List<BlockPos> shape = new ArrayList<>();
+  //    String dimensionId = UtilWorld.dimensionToString(te.getWorld());
+  //    for (int slot = 0; slot < te.inventory.getSlots(); slot++) {
+  //      BlockPosDim dimPosSaved = te.getTargetInSlot(slot);
+  //      if (dimPosSaved != null
+  //          && dimPosSaved.getDimension().equalsIgnoreCase(dimensionId)) {
+  //        shape.add(dimPosSaved.getPos());
+  //      }
+  //      //        draw(slot, te, matrixStack, iRenderTypeBuffer);
+  //    }
+  //    if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
+  //      UtilRender.renderOutline(te.getPos(), shape, matrixStack, 0.4F, ClientConfigCyclic.getColor(te));
+  //    }
+  //    else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+  //      for (BlockPos crd : shape) {
+  //        UtilRender.createBox(matrixStack, crd, Vector3d.copy(te.getPos()));
+  //      }
+  //    }
 }

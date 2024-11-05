@@ -17,11 +17,18 @@ public class RenderPeatFarm implements BlockEntityRenderer<TilePeatFarm> {
   @Override
   public void render(TilePeatFarm te, float v, PoseStack matrixStack, MultiBufferSource iRenderTypeBuffer, int partialTicks, int destroyStage) {
     int previewType = te.getField(TilePeatFarm.Fields.RENDER.ordinal());
+
     if (previewType == PreviewOutlineType.SHADOW.ordinal()) {
       RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShape(), matrixStack, 0.9F, ClientConfigCyclic.getColor(te));
     }
     if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShape()) {
+        RenderBlockUtils.createBox(matrixStack, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
+      }
+
+    }
+    else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+      for (BlockPos crd : te.getShapeHollow()) {
         RenderBlockUtils.createBox(matrixStack, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
       }
     }

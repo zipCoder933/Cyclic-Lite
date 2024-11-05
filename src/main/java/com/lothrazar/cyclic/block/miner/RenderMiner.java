@@ -25,5 +25,10 @@ public class RenderMiner implements BlockEntityRenderer<TileMiner> {
         RenderBlockUtils.createBox(matrixStack, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
       }
     }
+    else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
+      for (BlockPos crd : te.getShapeHollow()) {
+        RenderBlockUtils.createBox(matrixStack, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
+      }
+    }
   }
 }

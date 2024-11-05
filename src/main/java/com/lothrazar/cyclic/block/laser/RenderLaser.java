@@ -112,7 +112,7 @@ public class RenderLaser implements BlockEntityRenderer<TileLaser> {
   }
 
   @Override
-  public boolean shouldRenderOffScreen(TileLaser te) {
+  public boolean shouldRenderOffScreen(TileLaser te) { // isGlobalRenderer
     return true;
   }
 }

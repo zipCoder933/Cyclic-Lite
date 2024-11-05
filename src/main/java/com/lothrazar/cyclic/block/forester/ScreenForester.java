@@ -17,6 +17,7 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
   private ButtonMachineField btnRedstone;
   private EnergyBar energy;
   private GuiSliderInteger size;
+  private GuiSliderInteger heightslider;
 
   public ScreenForester(ContainerForester screenContainer, Inventory inv, Component titleIn) {
     super(screenContainer, inv, titleIn);
@@ -38,8 +39,13 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
         menu.tile.getBlockPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
     int w = 110;
     int h = 18;
-    int f = TileForester.Fields.SIZE.ordinal();
+    int f = TileForester.Fields.HEIGHT.ordinal();
     x += 28;
+    y += 12;
+    heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileForester.Fields.HEIGHT.ordinal(), menu.tile.getBlockPos(),
+        0, TileForester.MAX_HEIGHT, menu.tile.getField(f)));
+    //
+    f = TileForester.Fields.SIZE.ordinal();
     y += 20;
     size = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(), 0, 10, menu.tile.getField(f)));
   }
@@ -58,6 +64,7 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
     this.drawName(ms, this.title.getString());
     btnRedstone.onValueUpdate(menu.tile);
     btnRender.onValueUpdate(menu.tile);
+    heightslider.setTooltip("buildertype.height.tooltip");
     size.setTooltip("cyclic.screen.size" + menu.tile.getField(size.getField()));
   }
 
@@ -65,7 +72,14 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
   protected void renderBg(GuiGraphics ms, float partialTicks, int mouseX, int mouseY) {
     this.drawBackground(ms, TextureRegistry.INVENTORY);
     int relX = this.getXSize() / 2 - 9;
-    this.drawSlot(ms, relX, 24, TextureRegistry.SLOT_SAPLING, Const.SQ);
     energy.draw(ms, menu.getEnergy());
+    int y = 16;
+    //
+    if (menu.tile.hasSapling()) {
+      this.drawSlot(ms, relX, y);
+    }
+    else {
+      this.drawSlot(ms, relX, y, TextureRegistry.SLOT_SAPLING, Const.SQ);
+    }
   }
 }
