@@ -9,7 +9,6 @@ import com.lothrazar.cyclic.util.ItemStackUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -34,7 +33,7 @@ public class BlockCask extends BlockCyclic {
 
   @Override
   public int getAnalogOutputSignal(BlockState st, Level level, BlockPos pos) {
-    return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
+    return calcRedstoneFromFluid(level.getBlockEntity(pos));
   }
 
   @Override
