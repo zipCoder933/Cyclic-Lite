@@ -28,7 +28,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.capabilities.Capability;
@@ -226,40 +225,6 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
       level.destroyBlockProgress(fakePlayer.get().getUUID().hashCode(), targetPos, (int) (curBlockDamage * 10.0F) - 1);
     }
     return false;
-  }
-
-  private boolean isValidTarget(BlockState targetState) {
-    ItemStack filter = inventory.getStackInSlot(SLOT_FILTER);
-    if (filter.isEmpty()) {
-      return true; //ya go
-    }
-    for (BlockStateMatcher m : BlockstateCard.getSavedStates(level, filter)) {
-      BlockState st = m.getState();
-      if (targetState.getBlock() == st.getBlock()) {
-        if (m.isExactProperties() == false) {
-          // the blocks DO match, isExact is flagged as no, so we are good
-          return true;
-        }
-        //tag DOES want to match Exactly on Properties
-        return this.propertiesMatch(targetState, st);
-      }
-    }
-    return false;
-  }
-
-  private boolean propertiesMatch(BlockState targetState, BlockState st) {
-    try {
-      for (Property<?> p : st.getProperties()) {
-        if (!st.getValue(p).equals(targetState.getValue(p))) {
-          return false;
-        }
-      }
-    }
-    catch (Exception e) {
-      return false;
-    }
-    //none had a mismatch
-    return true;
   }
 
   /***
