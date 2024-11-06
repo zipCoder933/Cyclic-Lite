@@ -28,8 +28,7 @@ public class RenderCableFacade implements BlockEntityRenderer<TileCableBase> {
 
   @Override
   public void render(TileCableBase te, float v, PoseStack matrixStack, MultiBufferSource ibuffer, int packedLight, int packedOverlay) {
-    if (te.getFacade() != null
-        && ConfigRegistry.CABLE_FACADES.get()) {
+    if (ConfigRegistry.CABLE_FACADES.get()) {
       BlockState facadeState = te.getFacadeState(te.getLevel());
       FacadeUtil.renderBlockState(te.getLevel(), te.getBlockPos(), brd, renderer, ibuffer, matrixStack, facadeState, packedLight, packedOverlay);
     }

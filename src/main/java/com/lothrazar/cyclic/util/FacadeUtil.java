@@ -16,6 +16,9 @@ public class FacadeUtil {
 
   public static void renderBlockState(Level level, BlockPos pos, BlockRenderDispatcher brd, ModelBlockRenderer renderer,
       MultiBufferSource ibuffer, PoseStack matrixStack, BlockState facadeState, int packedLight, int packedOverlay) {
+    if (facadeState == null) {
+      return;
+    }
     BakedModel model = brd.getBlockModel(facadeState);
     //    int color = Minecraft.getInstance().getBlockColors().getColor(facadeState, null, null, 0);
     //    float r = (color >> 16 & 255) / 255.0F;

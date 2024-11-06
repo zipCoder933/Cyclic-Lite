@@ -403,12 +403,6 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
     }
     return sizeAfter > 0;
   }
-  //
-  //
-  //
-  //
-  //
-  //
 
   protected boolean moveEnergy(Direction myFacingDir, int quantity) {
     return moveEnergy(myFacingDir, this.worldPosition.relative(myFacingDir), quantity);
@@ -484,49 +478,6 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
     }
     return true;
   }
-  //  protected boolean moveEnergy(Direction myFacingDir, int quantity) {
-  //    return moveEnergy(myFacingDir, worldPosition.relative(myFacingDir), quantity);
-  //  }
-  //
-  //  protected boolean moveEnergy(Direction myFacingDir, BlockPos posTarget, int quantity) {
-  //    if (this.level.isClientSide) {
-  //      return false; //important to not desync cables
-  //    }
-  //    IEnergyStorage handlerHere = this.getCapability(CapabilityEnergy.ENERGY, myFacingDir).orElse(null);
-  //    if (handlerHere == null || handlerHere.getEnergyStored() == 0) {
-  //      return false;
-  //    }
-  //    if (myFacingDir == null) {
-  //      myFacingDir = Direction.UP;
-  //    }
-  //    Direction themFacingMe = myFacingDir.getOpposite();
-  //    BlockEntity tileTarget = level.getBlockEntity(posTarget);
-  //    if (tileTarget == null) {
-  //      return false;
-  //    }
-  //    IEnergyStorage handlerOutput = tileTarget.getCapability(CapabilityEnergy.ENERGY, themFacingMe).orElse(null);
-  //    if (handlerOutput == null) {
-  //      return false;
-  //    }
-  //    if (handlerHere != null && handlerOutput != null
-  //        && handlerHere.canExtract() && handlerOutput.canReceive()) {
-  //      //first simulate
-  //      int drain = handlerHere.extractEnergy(quantity, true);
-  //      if (drain > 0) {
-  //        //now push it into output, but find out what was ACTUALLY taken
-  //        int filled = handlerOutput.receiveEnergy(drain, false);
-  //        //now actually drain that much from here
-  //        handlerHere.extractEnergy(filled, false);
-  //        if (filled > 0 && tileTarget instanceof TileCableEnergy) {
-  //          // not so compatible with other fluid systems. itl do i guess
-  //          TileCableEnergy cable = (TileCableEnergy) tileTarget;
-  //          cable.updateIncomingEnergyFace(themFacingMe);
-  //        }
-  //        return filled > 0;
-  //      }
-  //    }
-  //    return false;
-  //  }
 
   @Override
   public void load(CompoundTag tag) {
