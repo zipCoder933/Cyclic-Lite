@@ -87,7 +87,6 @@
 
 
 
-
 	},
 	"1.18.2": {
 		"1.6.0": "Ported Cyclic[1.16.5]-1.5.8 to Minecraft [1.17.1] & forge-37.0.85+.  Altered a few crafting recipes to use new items.  Removed Peat Generator (Use Peat items in Material Generator).  Removed 5 Mason blocks, replaced with Compressed Cobblestone, Flint Block.  Added Peace Candle, Translocation Platform, Stone Mattock, Crushing Macerator, and Lava Sponge.  Added Copper Tools and Amethyst Tools, Copper Lantern, Copper Chain, Copper Bars, Gold Chain, Gold Bars, Gold Lantern (Art by @shynieke).  Added Copper Nuggets and Netherite Nuggets.  Added Netherite Lanterns, chains, and bars.  Added 3 Pressure Plates: Copper Netherite and Obsidian. ",
@@ -132,7 +131,7 @@
 		,"1.7.20":"Fixed bug in the item cyclic:offset_scepter #2427.  Tweaked block model visuals of the Transfer Nodes.  Fix Mattock not saving contents of Shulker Boxes when mined #2411. Add recipes in the solidifier machine for Waxed copper blocks  "
 
 
-		,"1.8.0":"Added an optional item slot in the Block Breaker using the BlockState Data Card so players have the option to limit the block breaker to only the targets listed in the data card.  Add new block data tags cyclic:ignored/breaker and cyclic:ignored/miner so that pack devs can customize these machines to not break certain blocks (regardless of hardness). Many blocks now allow minecraft:comparator to pull a redstone signal based on inventory contents (most machines and blocks that have inventory).  Fluid collector will now place air and scoop up the fluid if the itemslot is empty.  New feature: some machines can now be placed facing Up or Down vertically for convenience (harvester, forester, miner, item collector, fluid collector, dropper).  Backported machine feature 'Preview Outline' mode on machines that already have the button. Backported cable (fluid & energy) buffer and flow speed configs from 1.20.1. Several blocks added to block-tag mineable/pickaxe (thanks to darkosto)  "
+		,"1.8.0":"Added an optional item slot in the Block Breaker using the BlockState Data Card so players have the option to limit the block breaker to only the targets listed in the data card.  Add new block data tags cyclic:ignored/breaker and cyclic:ignored/miner so that pack devs can customize these machines to not break certain blocks (regardless of hardness). Many blocks now allow minecraft:comparator to pull a redstone signal based on inventory contents (most machines and blocks that have inventory).  Fluid collector will now place air and scoop up the fluid if the itemslot is empty.  New feature: some machines can now be placed facing Up or Down vertically for convenience (harvester, forester, miner, item collector, fluid collector, dropper).  Backported machine feature 'Preview Outline' mode on machines that already have the button. Backported cable (fluid & energy) buffer and flow speed configs from 1.20.1.  Facades overhaul backported from 1.20.1: Renamed 'Concentrated Glowstone' to 'Glowstone Facade' and 'Concentrated Soundproofing' to 'Soundproofing Facade'  . Backport cable facades from 1.20.1 (New feature with cables: hide them using solid blocks with a feature called 'facades', just sneak-left-click a block onto the cable; empty hand to remove it) "
 
 	}
 }

@@ -14,12 +14,14 @@ import com.lothrazar.cyclic.block.detectoritem.RenderDetectorItem;
 import com.lothrazar.cyclic.block.dropper.RenderDropper;
 import com.lothrazar.cyclic.block.enderitemshelf.ItemShelfRenderer;
 import com.lothrazar.cyclic.block.endershelf.EnderShelfRenderer;
+import com.lothrazar.cyclic.block.facade.RenderCableFacade;
+import com.lothrazar.cyclic.block.facade.light.RenderLightFacade;
+import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffRender;
 import com.lothrazar.cyclic.block.fan.RenderFan;
 import com.lothrazar.cyclic.block.fishing.RenderFisher;
 import com.lothrazar.cyclic.block.forester.RenderForester;
 import com.lothrazar.cyclic.block.harvester.RenderHarvester;
 import com.lothrazar.cyclic.block.laser.RenderLaser;
-import com.lothrazar.cyclic.block.lightcompr.RenderLightCamo;
 import com.lothrazar.cyclic.block.melter.RenderMelter;
 import com.lothrazar.cyclic.block.miner.RenderMiner;
 import com.lothrazar.cyclic.block.peatfarm.RenderPeatFarm;
@@ -27,7 +29,6 @@ import com.lothrazar.cyclic.block.screen.RenderScreentext;
 import com.lothrazar.cyclic.block.shapebuilder.RenderStructure;
 import com.lothrazar.cyclic.block.shapedata.RenderShapedata;
 import com.lothrazar.cyclic.block.solidifier.RenderSolidifier;
-import com.lothrazar.cyclic.block.soundmuff.ghost.SoundmuffRender;
 import com.lothrazar.cyclic.block.sprinkler.RenderSprinkler;
 import com.lothrazar.cyclic.block.tank.RenderTank;
 import com.lothrazar.cyclic.block.wireless.redstone.RenderTransmit;
@@ -107,7 +108,7 @@ public class ClientRegistryCyclic {
     event.registerBlockEntityRenderer(TileRegistry.FORESTER.get(), RenderForester::new);
     event.registerBlockEntityRenderer(TileRegistry.HARVESTER.get(), RenderHarvester::new);
     event.registerBlockEntityRenderer(TileRegistry.LASER.get(), RenderLaser::new);
-    event.registerBlockEntityRenderer(TileRegistry.LIGHT_CAMO.get(), RenderLightCamo::new);
+    event.registerBlockEntityRenderer(TileRegistry.LIGHT_CAMO.get(), RenderLightFacade::new);
     event.registerBlockEntityRenderer(TileRegistry.MELTER.get(), RenderMelter::new);
     event.registerBlockEntityRenderer(TileRegistry.MINER.get(), RenderMiner::new);
     event.registerBlockEntityRenderer(TileRegistry.SCREEN.get(), RenderScreentext::new);
@@ -120,6 +121,10 @@ public class ClientRegistryCyclic {
     event.registerBlockEntityRenderer(TileRegistry.BEACON.get(), RenderBeaconPotion::new);
     event.registerBlockEntityRenderer(TileRegistry.ANTI_BEACON.get(), RenderBeaconAnti::new);
     event.registerBlockEntityRenderer(TileRegistry.BEACON_REDSTONE.get(), RenderBeaconRedstone::new);
+    //cable renderers
+    event.registerBlockEntityRenderer(TileRegistry.ENERGY_PIPE.get(), RenderCableFacade::new);
+    event.registerBlockEntityRenderer(TileRegistry.ITEM_PIPE.get(), RenderCableFacade::new);
+    event.registerBlockEntityRenderer(TileRegistry.FLUID_PIPE.get(), RenderCableFacade::new);
   }
 
   public static void setupClient(final FMLClientSetupEvent event) {
