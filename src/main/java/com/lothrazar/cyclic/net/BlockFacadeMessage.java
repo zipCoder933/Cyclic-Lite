@@ -38,13 +38,15 @@ public class BlockFacadeMessage {
       if (bs.getBlock() instanceof IBlockFacade facadeBlock) {
         ITileFacade tile = facadeBlock.getTileFacade(serverWorld, message.pos);
         if (message.erase) {
-          tile.setFacade(null);
+          tile.setFacade(new CompoundTag());
         }
         else {
           tile.setFacade(message.blockStateTag);
         }
         serverWorld.markAndNotifyBlock(message.pos, serverWorld.getChunkAt(message.pos),
             bs, bs, 3, 1);
+        serverWorld.sendBlockUpdated(message.pos, bs, bs, 3);
+        serverWorld.blockUpdated(message.pos, bs.getBlock());
       }
     });
     ctx.get().setPacketHandled(true);

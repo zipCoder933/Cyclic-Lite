@@ -403,12 +403,6 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
     }
     return sizeAfter > 0;
   }
-  //
-  //
-  //
-  //
-  //
-  //
 
   protected boolean moveEnergy(Direction myFacingDir, int quantity) {
     return moveEnergy(myFacingDir, this.worldPosition.relative(myFacingDir), quantity);

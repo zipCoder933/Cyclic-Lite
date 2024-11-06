@@ -1,15 +1,13 @@
 package com.lothrazar.cyclic.block.facade.light;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.block.facade.ITileFacade;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 
 public class TileLightFacade extends TileBlockEntityCyclic implements ITileFacade {
 
@@ -18,20 +16,29 @@ public class TileLightFacade extends TileBlockEntityCyclic implements ITileFacad
   }
 
   @Override
+  public CompoundTag getUpdateTag() {
+    CompoundTag syncData = super.getUpdateTag();
+    return syncData;
+  }
+
+  @Override
+  public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+    if (pkt.getTag().contains(NBT_FACADE)) {
+      this.load(pkt.getTag());
+      super.onDataPacket(net, pkt);
+    }
+  }
+
+  @Override
   public void load(CompoundTag tag) {
-    super.load(tag);
     this.loadFacade(tag);
+    super.load(tag);
   }
 
   @Override
   public void saveAdditional(CompoundTag tag) {
     this.saveFacade(tag);
     super.saveAdditional(tag);
-  }
-
-  @Override
-  public AABB getRenderBoundingBox() {
-    return BlockEntity.INFINITE_EXTENT_AABB;
   }
 
   @Override
@@ -42,12 +49,6 @@ public class TileLightFacade extends TileBlockEntityCyclic implements ITileFacad
     return 0;
   }
 
-  public List<BlockPos> getShape() {
-    List<BlockPos> lis = new ArrayList<BlockPos>();
-    lis.add(worldPosition);
-    return lis;
-  }
-
   private CompoundTag facadeState = null;
 
   @Override
@@ -56,7 +57,7 @@ public class TileLightFacade extends TileBlockEntityCyclic implements ITileFacad
   }
 
   @Override
-  public void setFacade(CompoundTag facadeState) {
-    this.facadeState = facadeState;
+  public void setFacade(CompoundTag facadeStateIn) {
+    this.facadeState = facadeStateIn;
   }
 }

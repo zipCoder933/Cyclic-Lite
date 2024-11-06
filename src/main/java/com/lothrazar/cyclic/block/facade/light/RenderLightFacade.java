@@ -26,9 +26,7 @@ public class RenderLightFacade implements BlockEntityRenderer<TileLightFacade> {
 
   @Override
   public void render(TileLightFacade te, float v, PoseStack matrixStack, MultiBufferSource ibuffer, int packedLight, int packedOverlay) {
-    if (te.getFacade() != null) {
-      BlockState facadeState = te.getFacadeState(te.getLevel());
-      FacadeUtil.renderBlockState(te.getLevel(), te.getBlockPos(), brd, renderer, ibuffer, matrixStack, facadeState, packedLight, packedOverlay);
-    }
+    BlockState facadeState = te.getFacadeState(te.getLevel());
+    FacadeUtil.renderBlockState(te.getLevel(), te.getBlockPos(), brd, renderer, ibuffer, matrixStack, facadeState, packedLight, packedOverlay);
   }
 }
