@@ -1,20 +1,32 @@
 package com.lothrazar.cyclic.block.facade.soundmuff;
 
-import java.util.ArrayList;
-import java.util.List;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.block.facade.ITileFacade;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 
 public class SoundmuffTileFacade extends TileBlockEntityCyclic implements ITileFacade {
 
   public SoundmuffTileFacade(BlockPos pos, BlockState state) {
     super(TileRegistry.SOUNDPROOFING_GHOST.get(), pos, state);
+  }
+
+  @Override
+  public CompoundTag getUpdateTag() {
+    CompoundTag syncData = super.getUpdateTag();
+    return syncData;
+  }
+
+  @Override
+  public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+    if (pkt.getTag().contains(NBT_FACADE)) {
+      this.load(pkt.getTag());
+      super.onDataPacket(net, pkt);
+    }
   }
 
   @Override
@@ -30,22 +42,11 @@ public class SoundmuffTileFacade extends TileBlockEntityCyclic implements ITileF
   }
 
   @Override
-  public AABB getRenderBoundingBox() {
-    return BlockEntity.INFINITE_EXTENT_AABB;
-  }
-
-  @Override
   public void setField(int field, int value) {}
 
   @Override
   public int getField(int field) {
     return 0;
-  }
-
-  public List<BlockPos> getShape() {
-    List<BlockPos> lis = new ArrayList<BlockPos>();
-    lis.add(worldPosition);
-    return lis;
   }
 
   private CompoundTag facadeState = null;
@@ -56,7 +57,7 @@ public class SoundmuffTileFacade extends TileBlockEntityCyclic implements ITileF
   }
 
   @Override
-  public void setFacade(CompoundTag facadeState) {
-    this.facadeState = facadeState;
+  public void setFacade(CompoundTag facadeStateIn) {
+    this.facadeState = facadeStateIn;
   }
 }

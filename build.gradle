@@ -31,7 +31,7 @@ minecraft {
 
 						// probably for patchouli
             property 'mixin.env.disableRefMap', 'true'
-		  
+		    args '--username=ADev'
             mods {
                 cyclic {
                     source sourceSets.main

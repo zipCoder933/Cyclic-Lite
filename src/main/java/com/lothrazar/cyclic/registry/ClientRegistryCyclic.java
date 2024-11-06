@@ -16,7 +16,7 @@ import com.lothrazar.cyclic.block.enderitemshelf.ItemShelfRenderer;
 import com.lothrazar.cyclic.block.endershelf.EnderShelfRenderer;
 import com.lothrazar.cyclic.block.facade.RenderCableFacade;
 import com.lothrazar.cyclic.block.facade.light.RenderLightFacade;
-import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffRender;
+import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffRenderFacade;
 import com.lothrazar.cyclic.block.fan.RenderFan;
 import com.lothrazar.cyclic.block.fishing.RenderFisher;
 import com.lothrazar.cyclic.block.forester.RenderForester;
@@ -154,7 +154,7 @@ public class ClientRegistryCyclic {
     event.registerBlockEntityRenderer(TileRegistry.SCREEN.get(), RenderScreentext::new);
     event.registerBlockEntityRenderer(TileRegistry.COMPUTER_SHAPE.get(), RenderShapedata::new);
     event.registerBlockEntityRenderer(TileRegistry.SOLIDIFIER.get(), RenderSolidifier::new);
-    event.registerBlockEntityRenderer(TileRegistry.SOUNDPROOFING_GHOST.get(), SoundmuffRender::new);
+    event.registerBlockEntityRenderer(TileRegistry.SOUNDPROOFING_GHOST.get(), SoundmuffRenderFacade::new);
     event.registerBlockEntityRenderer(TileRegistry.SPRINKLER.get(), RenderSprinkler::new);
     event.registerBlockEntityRenderer(TileRegistry.TANK.get(), RenderTank::new);
     event.registerBlockEntityRenderer(TileRegistry.WIRELESS_TRANSMITTER.get(), RenderTransmit::new);

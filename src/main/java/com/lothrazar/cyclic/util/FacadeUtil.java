@@ -17,6 +17,9 @@ public class FacadeUtil {
 
   public static void renderBlockState(Level level, BlockPos pos, BlockRenderDispatcher brd, ModelBlockRenderer renderer,
       MultiBufferSource ibuffer, PoseStack matrixStack, BlockState facadeState, int packedLight, int packedOverlay) {
+    if (facadeState == null) {
+      return;
+    }
     BakedModel model = brd.getBlockModel(facadeState);
     VertexConsumer vertexConsumer = VertexMultiConsumer.create(ibuffer.getBuffer(RenderType.solid()));
     renderer.tesselateBlock(level, model, facadeState, pos,
