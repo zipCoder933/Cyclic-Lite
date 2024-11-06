@@ -704,4 +704,8 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
     //was updateComparatorOutputLevel()
     level.updateNeighbourForOutputSignal(worldPosition, this.getBlockState().getBlock());
   }
+
+  public void updateComparatorOutputLevelAt(BlockPos target) {
+    level.updateNeighbourForOutputSignal(target, level.getBlockState(target).getBlock());
+  }
 }
