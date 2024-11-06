@@ -74,6 +74,8 @@ public class TileFluidHopper extends TileBlockEntityCyclic {
     Direction exportToSide = this.getBlockState().getValue(BlockFluidHopper.FACING);
     if (exportToSide != null && exportToSide != Direction.UP) {
       moveFluids(exportToSide, worldPosition.relative(exportToSide), FLOW, tank);
+      this.updateComparatorOutputLevel();
+      this.updateComparatorOutputLevelAt(worldPosition.relative(exportToSide));
     }
   }
 
@@ -85,6 +87,7 @@ public class TileFluidHopper extends TileBlockEntityCyclic {
     IFluidHandler tankAbove = FluidHelpers.getTank(level, target, Direction.DOWN);
     boolean success = FluidHelpers.tryFillPositionFromTank(level, worldPosition, Direction.UP, tankAbove, FLOW);
     if (success) {
+      this.updateComparatorOutputLevelAt(target);
       this.updateComparatorOutputLevel();
       return;
     }

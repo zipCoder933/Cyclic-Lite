@@ -203,4 +203,16 @@ public class BlockCyclic extends BaseEntityBlock {
     }
     return false;
   }
+
+  //for comparators that dont use item inventories
+  protected int calcRedstoneFromFluid(BlockEntity tileEntity) {
+    IFluidHandler fluid = tileEntity.getCapability(ForgeCapabilities.FLUID_HANDLER).orElse(null);
+    if (fluid.getFluidInTank(0).isEmpty()) {
+      return 0;
+    }
+    float cap = fluid.getTankCapacity(0);
+    float amt = fluid.getFluidInTank(0).getAmount();
+    float f = amt / cap;
+    return (int) Math.floor((f * 14.0F)) + 1;
+  }
 }
