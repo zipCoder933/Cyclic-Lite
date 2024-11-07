@@ -6,8 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import com.lothrazar.cyclic.block.cable.CableBase;
-import com.lothrazar.cyclic.block.cable.CableTileBase;
 import com.lothrazar.cyclic.block.cable.EnumConnectType;
+import com.lothrazar.cyclic.block.cable.TileCableBase;
 import com.lothrazar.cyclic.capabilities.block.FluidTankBase;
 import com.lothrazar.cyclic.item.datacard.filter.FilterCardItem;
 import com.lothrazar.cyclic.registry.BlockRegistry;
@@ -36,7 +36,7 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-public class TileCableFluid extends CableTileBase implements MenuProvider {
+public class TileCableFluid extends TileCableBase implements MenuProvider {
 
   public static IntValue BUFFERSIZE;
   public static IntValue TRANSFER_RATE;

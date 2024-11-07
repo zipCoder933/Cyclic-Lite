@@ -15,7 +15,7 @@ public class RenderHarvester implements BlockEntityRenderer<TileHarvester> {
   public RenderHarvester(BlockEntityRendererProvider.Context d) {}
 
   @Override
-  public void render(TileHarvester te, float v, PoseStack matrix,      MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
+  public void render(TileHarvester te, float v, PoseStack matrix, MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
     int previewType = te.getField(TileHarvester.Fields.RENDER.ordinal());
     if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
       RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShapeHollow(), matrix, 0.9F, ClientConfigCyclic.getColor(te));
@@ -23,7 +23,6 @@ public class RenderHarvester implements BlockEntityRenderer<TileHarvester> {
     if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShapeHollow()) {
         RenderBlockUtils.createBox(matrix, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
-
       }
     }
   }

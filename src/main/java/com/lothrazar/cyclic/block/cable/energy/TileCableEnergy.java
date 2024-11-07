@@ -4,8 +4,8 @@ import java.util.Map;
 import com.google.common.collect.Maps;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.cable.CableBase;
-import com.lothrazar.cyclic.block.cable.CableTileBase;
 import com.lothrazar.cyclic.block.cable.EnumConnectType;
+import com.lothrazar.cyclic.block.cable.TileCableBase;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.cyclic.util.UtilDirection;
 import com.lothrazar.library.cap.CustomEnergyStorage;
@@ -22,7 +22,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.energy.IEnergyStorage;
 
-public class TileCableEnergy extends CableTileBase {
+public class TileCableEnergy extends TileCableBase {
 
   final CustomEnergyStorage energy;
   private LazyOptional<IEnergyStorage> energyCap;

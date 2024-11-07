@@ -7,24 +7,16 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CableTileBase extends TileBlockEntityCyclic implements ITileFacade {
+public abstract class TileCableBase extends TileBlockEntityCyclic implements ITileFacade {
 
-  public CableTileBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
+  public TileCableBase(BlockEntityType<?> tileEntityTypeIn, BlockPos pos, BlockState state) {
     super(tileEntityTypeIn, pos, state);
   }
 
   @Override
-  public void setField(int field, int value) {}
-
-  @Override
-  public int getField(int field) {
-    return 0;
-  }
-
-  @Override
   public void load(CompoundTag tag) {
-    super.load(tag);
     this.loadFacade(tag);
+    super.load(tag);
   }
 
   @Override

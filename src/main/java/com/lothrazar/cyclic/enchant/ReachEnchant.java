@@ -109,7 +109,6 @@ public class ReachEnchant extends EnchantmentFlib {
 
   private void turnReachOn(Player player, int level) {
     player.getPersistentData().putBoolean(NBT_REACH_ON, true);
-
     AttributesUtil.setPlayerReach(ENCHANTMENT_REACH_ID, player, getBoost(level));
   }
 

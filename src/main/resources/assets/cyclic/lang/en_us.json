@@ -1446,6 +1446,7 @@
   "item.minecraft.lingering_potion.effect.cyclic_reach_distance": "Lingering Potion of Reach Distance",
   "item.minecraft.tipped_arrow.effect.cyclic_reach_distance": "Arrow of Reach Distance",
   
+
   "effect.cyclic.haste": "Haste",
   "item.minecraft.potion.effect.cyclic_haste": "Potion of Haste",
   "item.minecraft.splash_potion.effect.cyclic_haste": "Splash Potion of Haste",
@@ -1458,7 +1459,6 @@
   "item.minecraft.tipped_arrow.effect.cyclic_strong_haste": "Arrow of Haste II",
   "item.minecraft.potion.effect.cyclic_haste.guide": "The Potion of Haste apples the Haste effect to the target, increasing their mining speed.",
   "item.minecraft.potion.effect.cyclic_swimspeed.guide": "The Potion of Swim Speed greatly increases its target's speed while moving through liquids.",
-  
   
   "effect.cyclic.stun": "Paralyze",
   "effect.cyclic.stun.description": "Stun the entity so it cannot move for a time",

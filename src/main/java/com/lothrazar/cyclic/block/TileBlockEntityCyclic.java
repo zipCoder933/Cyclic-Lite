@@ -404,12 +404,6 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
     }
     return sizeAfter > 0;
   }
-  //
-  //
-  //
-  //
-  //
-  //
 
   protected boolean moveEnergy(Direction myFacingDir, int quantity) {
     return moveEnergy(myFacingDir, this.worldPosition.relative(myFacingDir), quantity);
@@ -708,5 +702,9 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
   public void updateComparatorOutputLevel() {
     //was updateComparatorOutputLevel()
     level.updateNeighbourForOutputSignal(worldPosition, this.getBlockState().getBlock());
+  }
+
+  public void updateComparatorOutputLevelAt(BlockPos target) {
+    level.updateNeighbourForOutputSignal(target, level.getBlockState(target).getBlock());
   }
 }

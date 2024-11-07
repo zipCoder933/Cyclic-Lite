@@ -8,7 +8,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -37,19 +36,19 @@ public class BlockFacadeMessage {
       ServerPlayer player = ctx.get().getSender();
       ServerLevel serverWorld = (ServerLevel) player.level();
       BlockState bs = serverWorld.getBlockState(message.pos);
-      Block b = bs.getBlock();
-      //
-      if (b instanceof IBlockFacade facadeBlock) {
+      if (bs.getBlock() instanceof IBlockFacade facadeBlock) {
         //
         ITileFacade tile = facadeBlock.getTileFacade(serverWorld, message.pos);
         if (message.erase) {
-          tile.setFacade(null);
+          tile.setFacade(new CompoundTag());
         }
         else {
           tile.setFacade(message.blockStateTag);
         }
         serverWorld.markAndNotifyBlock(message.pos, serverWorld.getChunkAt(message.pos),
             bs, bs, 3, 1);
+        serverWorld.sendBlockUpdated(message.pos, bs, bs, 3);
+        serverWorld.blockUpdated(message.pos, bs.getBlock());
       }
     });
     ctx.get().setPacketHandled(true);

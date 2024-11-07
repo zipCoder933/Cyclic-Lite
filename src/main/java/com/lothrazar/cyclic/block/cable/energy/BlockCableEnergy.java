@@ -33,7 +33,7 @@ public class BlockCableEnergy extends CableBase {
   @Override
   public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
     if (ConfigRegistry.CABLE_FACADES.get()) {
-      var facade = this.getFacadeShape(state, worldIn, pos, context);
+      VoxelShape facade = this.getFacadeShape(state, worldIn, pos, context);
       if (facade != null) {
         return facade;
       }

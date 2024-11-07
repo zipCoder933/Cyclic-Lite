@@ -23,7 +23,6 @@ public class RenderDetector implements BlockEntityRenderer<TileDetector> {
     else if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShape()) {
         RenderBlockUtils.createBox(matrix, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
-
       }
     }
   }

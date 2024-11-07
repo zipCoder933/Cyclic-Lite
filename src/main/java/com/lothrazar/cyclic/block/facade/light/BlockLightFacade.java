@@ -25,11 +25,8 @@ public class BlockLightFacade extends BlockCyclic implements IBlockFacade {
     if (facade != null) {
       return facade;
     }
-    return THREE; // super.getShape(state, worldIn, pos, context);
+    return THREE;
   }
-
-  @Override
-  public void registerClient() {}
 
   @Override
   public boolean propagatesSkylightDown(BlockState state, BlockGetter reader, BlockPos pos) {

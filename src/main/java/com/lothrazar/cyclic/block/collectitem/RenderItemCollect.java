@@ -23,7 +23,6 @@ public class RenderItemCollect implements BlockEntityRenderer<TileItemCollector>
     if (PreviewOutlineType.WIREFRAME.ordinal() == previewType) {
       for (BlockPos crd : te.getShapeHollow()) {
         RenderBlockUtils.createBox(matrix, crd, Vec3.atLowerCornerOf(te.getBlockPos()));
-
       }
     }
   }

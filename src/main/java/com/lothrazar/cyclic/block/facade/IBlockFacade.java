@@ -23,8 +23,8 @@ public interface IBlockFacade {
       return null;
     }
     ITileFacade tile = this.getTileFacade(level, pos);
-    if (tile != null && level instanceof Level realLevel) {
-      return tile.getFacadeState(realLevel);
+    if (tile != null && level instanceof Level lvl) {
+      return tile.getFacadeState(lvl);
     }
     return null;
   }

@@ -489,13 +489,15 @@ public class ItemEvents {
       onHitFacadeHandler(event, player, held, target);
       //
     }
-    //    if (held.isEmpty()) {
-    //      return;
-    //    }
-    ///////////// shape
     if (held.getItem() instanceof ShapeCard && player.isCrouching()) {
       ShapeCard.setBlockState(held, target);
       ChatUtil.sendStatusMessage(player, target.getBlock().getDescriptionId());
+    }
+    if (player.isCrouching()
+        && target.getBlock() instanceof IBlockFacade) {
+      //
+      onHitFacadeHandler(event, player, held, target);
+      //
     }
     ///////////////// builders
     if (held.getItem() instanceof BuilderItem) {
@@ -506,7 +508,7 @@ public class ItemEvents {
       BuilderActionType.setTimeout(held);
       event.setCanceled(true);
       if (player.isCrouching()) {
-        //pick out target block 
+        //pick out target block
         BuilderActionType.setBlockState(held, target);
         ChatUtil.sendStatusMessage(player, target.getBlock().getDescriptionId());
         event.setCanceled(true);
@@ -532,7 +534,7 @@ public class ItemEvents {
       PacketRegistry.INSTANCE.sendToServer(new BlockFacadeMessage(event.getPos(), true));
     }
     else {
-      Block block = Block.byItem(held.getItem());
+      Block block = Block.byItem(held.getItem()); // getBlockFromItem
       if (block == null || block == Blocks.AIR || block == target.getBlock()) {
         return;
       }
@@ -557,11 +559,14 @@ public class ItemEvents {
   private void onHitFacadeClient(PlayerInteractEvent.LeftClickBlock event, Player player, ItemStack held, Block block) {
     //pick the block, write to tags, and send to server
     boolean pickFluids = false;
-    BlockHitResult bhr = (BlockHitResult) player.pick(player.getBlockReach(), 1, pickFluids);
-    BlockPlaceContext context = new BlockPlaceContext(player, event.getHand(), held, bhr);
-    BlockState facadeState = block.getStateForPlacement(context);
-    CompoundTag tags = (facadeState == null) ? null : NbtUtils.writeBlockState(facadeState);
-    PacketRegistry.INSTANCE.sendToServer(new BlockFacadeMessage(event.getPos(), tags));
+    double reach = player.getBlockReach();
+    HitResult bhr = player.pick(reach, 1, pickFluids); // BlockHitResult
+    if (bhr.getType() == HitResult.Type.BLOCK) {
+      BlockPlaceContext context = new BlockPlaceContext(player, event.getHand(), held, (BlockHitResult) bhr);
+      BlockState facadeState = block.getStateForPlacement(context);
+      CompoundTag tags = (facadeState == null) ? null : NbtUtils.writeBlockState(facadeState);
+      PacketRegistry.INSTANCE.sendToServer(new BlockFacadeMessage(event.getPos(), tags));
+    }
   }
 
   @SubscribeEvent

@@ -146,7 +146,6 @@ public class ConfigRegistry extends ConfigTemplate {
   public static IntValue LaserItemDamageFar;
   public static IntValue LaserItemEnergy;
   public static BooleanValue LaserRenderMisses;
-  public static BooleanValue CABLE_FACADES;
   static {
     buildDefaults();
     initConfig();
@@ -453,9 +452,9 @@ public class ConfigRegistry extends ConfigTemplate {
         "storagenetwork:*");
     FACADE_IGNORELIST = CFG.comment("\r\n  These blocks are not allowed to be used as Facades for blocks because they look weird (used by cables and Glowstone Facade and Soundproofing Facade and others)")
         .define("itemsNotAllowed", list);
-    //
     CFG.pop();
-    TRANSFER_NODES_DIMENSIONAL = CFG.comment("   Allows the dimensional Transfer Nodes to cross dimensions "
+    // 
+    TRANSFER_NODES_DIMENSIONAL = CFG.comment("  Allows the dimensional Transfer Nodes to cross dimensions "
         + "(no chunk loading is done, you have to do that on your own); "
         + "This affects blocks cyclic:wireless_energy, cyclic:wireless_item, cyclic:wireless_fluid, cyclic:wireless_transmitter; "
         + "If you change it to false it will only work if the target is in the same dimension.")
@@ -672,6 +671,7 @@ public class ConfigRegistry extends ConfigTemplate {
     return mappedBeheading;
   }
 
+  public static BooleanValue CABLE_FACADES;
   private static ConfigValue<List<String>> FACADE_IGNORELIST;
 
   public static boolean isFacadeAllowed(ItemStack item) {

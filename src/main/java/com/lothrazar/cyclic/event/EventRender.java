@@ -60,7 +60,6 @@ public class EventRender {
     Player player = Minecraft.getInstance().player;
     var level = player.level();
     Minecraft mc = Minecraft.getInstance();
-
     ItemStack itemStackHeld = BuilderItem.getIfHeld(player);
     if (itemStackHeld.getItem() instanceof BuilderItem) {
       //
@@ -134,7 +133,6 @@ public class EventRender {
         List<BlockPos> coordinates = PacketSwapBlock.getSelectedBlocks(world, pos, BuilderItem.getActionType(stack), lookingAt.getDirection(), buildStyle);
         for (BlockPos coordinate : coordinates) {
           putBoxHere.add(coordinate);
-
         }
       }
     }

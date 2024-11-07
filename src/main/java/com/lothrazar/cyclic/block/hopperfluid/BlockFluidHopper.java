@@ -5,7 +5,6 @@ import com.lothrazar.cyclic.block.hopper.BlockSimpleHopper;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -36,13 +35,7 @@ public class BlockFluidHopper extends BlockCyclic {
 
   @Override
   public int getAnalogOutputSignal(BlockState st, Level level, BlockPos pos) {
-    return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
-  }
-
-  @Override
-  public void registerClient() {
-    //    RenderTypeLookup.setRenderLayer(this, RenderType.getTranslucent());
-    //    ClientRegistry.bindTileEntityRenderer(TileRegistry.FLUIDHOPPER.get(), RenderHopperFluid::new);
+    return calcRedstoneFromFluid(level.getBlockEntity(pos));
   }
 
   @Override

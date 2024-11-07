@@ -21,15 +21,12 @@ public class SoundmufflerBlockFacade extends SoundmufflerBlock implements IBlock
 
   @Override
   public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-    var facade = this.getFacadeShape(state, worldIn, pos, context);
+    VoxelShape facade = this.getFacadeShape(state, worldIn, pos, context);
     if (facade != null) {
       return facade;
     }
-    return THREE; // super.getShape(state, worldIn, pos, context);
+    return THREE;
   }
-
-  @Override
-  public void registerClient() {}
 
   @Override
   public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {

@@ -27,15 +27,12 @@ public interface ITileFacade {
     if (compound.contains(NBT_FACADE)) {
       this.setFacade(compound.getCompound(NBT_FACADE));
     }
-    else {
-      this.setFacade(null);
-    }
   }
 
   default void saveFacade(CompoundTag compound) {
-    var facadeState = getFacade();
+    CompoundTag facadeState = getFacade();
     if (facadeState == null) {
-      compound.remove(NBT_FACADE);
+      compound.put(NBT_FACADE, new CompoundTag());
     }
     else {
       compound.put(NBT_FACADE, facadeState);

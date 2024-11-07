@@ -55,7 +55,6 @@ public abstract class ScreenBase<T extends AbstractContainerMenu> extends Abstra
   }
 
   protected void drawSlot(GuiGraphics ms, int x, int y, ResourceLocation texture, int size) {
-
     RenderSystem.setShader(GameRenderer::getPositionTexShader);
     RenderSystem.setShaderTexture(0, texture);
     ms.blit(texture, leftPos + x, topPos + y, 0, 0, size, size, size, size);
@@ -63,7 +62,6 @@ public abstract class ScreenBase<T extends AbstractContainerMenu> extends Abstra
 
   protected void drawSlot(GuiGraphics ms, int x, int y) {
     drawSlot(ms, x, y, TextureRegistry.SLOT, Const.SQ);
-
   }
 
   protected void drawSlotLarge(GuiGraphics ms, int x, int y) {

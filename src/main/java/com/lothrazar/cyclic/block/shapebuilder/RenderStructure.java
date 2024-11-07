@@ -19,14 +19,12 @@ public class RenderStructure implements BlockEntityRenderer<TileStructure> {
 
   @Override
   public void render(TileStructure te, float v, PoseStack matrixStack, MultiBufferSource ibuffer, int partialTicks, int destroyStage) {
-
     IItemHandler inv = te.getCapability(ForgeCapabilities.ITEM_HANDLER).orElse(null);
     if (inv == null) {
       return;
     }
     int previewType = te.getField(TileStructure.Fields.RENDER.ordinal());
     if (PreviewOutlineType.SHADOW.ordinal() == previewType) {
-
       ItemStack stack = inv.getStackInSlot(0);
       if (stack.isEmpty()) {
         RenderBlockUtils.renderOutline(te.getBlockPos(), te.getShape(), matrixStack, 0.9F, ClientConfigCyclic.getColor(te));
