@@ -7,9 +7,9 @@ import com.lothrazar.cyclic.util.UtilShape;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
@@ -32,8 +32,10 @@ public class PeatBlock extends BlockBase {
     List<BlockPos> waters = new ArrayList<>();
     for (BlockPos p : around) {
       //try to bake if SOURCE water is nearby
-      Block bSide = world.getBlockState(p).getBlock();
-      if (bSide == Blocks.WATER) {
+      //using FluidState instead of Block
+      //backport fix from this PR by PocketSizedWeeb https://github.com/Lothrazar/Cyclic/pull/2404/files#diff-75c5d8aa746dbf1c0a18dfd3f48a80408e4191eb536ea0566c243038eaf05269
+      FluidState fluid = world.getFluidState(p);
+      if (fluid.getFluid() == Fluids.WATER.getFluid()) {
         sidesWet++;
         waters.add(p);
       }
