@@ -210,7 +210,7 @@
 	# Block specific configs
 	#####################################################################################
 	[cyclic.blocks]
-		#   Allows the dimensional Transfer Nodes to cross dimensions (no chunk loading is done, you have to do that on your own); This affects blocks cyclic:wireless_energy, cyclic:wireless_item, cyclic:wireless_fluid, cyclic:wireless_transmitter; If you change it to false it will only work if the target is in the same dimension.
+		#  Allows the dimensional Transfer Nodes to cross dimensions (no chunk loading is done, you have to do that on your own); This affects blocks cyclic:wireless_energy, cyclic:wireless_item, cyclic:wireless_fluid, cyclic:wireless_transmitter; If you change it to false it will only work if the target is in the same dimension.
 		wireless_transfer_dimensional = true
 		# If true, then all potions marked as harmful/negative will be used in addition to the 'anti_beacon.potion_list' for cures and immunities  (used by both sponge and artemisbeacon).
 		harmful_potions = true
