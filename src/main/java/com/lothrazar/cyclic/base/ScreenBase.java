@@ -12,6 +12,7 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
+import net.minecraft.client.gui.widget.AbstractSlider;
 import net.minecraft.client.gui.widget.Widget;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.container.Container;
@@ -105,5 +106,18 @@ public abstract class ScreenBase<T extends Container> extends ContainerScreen<T>
         }
       }
     }
+  }
+
+  /**
+   * Propogate mouse drag events down to slider widgets
+   */
+  @Override
+  public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+    for (Widget btn : this.buttons) {
+      if (btn.isMouseOver(mouseX, mouseY) && btn instanceof AbstractSlider) {
+        ((AbstractSlider) btn).mouseDragged(mouseX, mouseY, button, dragX, dragY);
+      }
+    }
+    return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
   }
 }
