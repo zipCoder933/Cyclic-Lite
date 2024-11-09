@@ -14,13 +14,13 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
 
   private ButtonMachineField btnRedstone;
   private ButtonMachineField btnRender;
-  private GuiSliderInteger sizeSlider;
   private ButtonMachineField btnDirection;
+  private GuiSliderInteger sizeSlider;
   private GuiSliderInteger heightslider;
 
   public ScreenItemCollector(ContainerItemCollector screenContainer, PlayerInventory inv, ITextComponent titleIn) {
     super(screenContainer, inv, titleIn);
-    this.ySize = 256;
+    this.ySize = 214;
   }
 
   @Override
@@ -29,33 +29,28 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
     int x = guiLeft + 6;
     int y = guiTop + 6;
     int f = TileItemCollector.Fields.REDSTONE.ordinal();
+    int h = 20;
     btnRedstone = addButton(new ButtonMachineField(x, y, f, container.tile.getPos()));
     f = TileItemCollector.Fields.RENDER.ordinal();
-    y += 20;
+    y += h;
     btnRender = addButton(new ButtonMachineField(x, y, f,
-        container.tile.getPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"))
-    //            .setSize(18)
-    ;
+        container.tile.getPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
     //then toggle
     f = TileItemCollector.Fields.DIRECTION.ordinal();
-    y += 20;
+    y += h;
     btnDirection = addButton(new ButtonMachineField(x, y, f,
-        container.tile.getPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"))
-    //.setSize(18)
-    ;
-    int w = 110;
-    int h = 18;
-    //now start sliders
-    //
-    y = guiTop + 22;
-    x = guiLeft + 34;
+        container.tile.getPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"));
+    int w = 140;
+    //now start sliders 
+    x = guiLeft + 30;
+    y = guiTop + 34;
     f = TileItemCollector.Fields.HEIGHT.ordinal();
     heightslider = this.addButton(new GuiSliderInteger(x, y, w, h, TileItemCollector.Fields.HEIGHT.ordinal(), container.tile.getPos(),
         0, TileItemCollector.MAX_HEIGHT, container.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");
     //then size
     f = TileItemCollector.Fields.SIZE.ordinal();
-    y += h + 1;
+    y += h + 4;
     sizeSlider = this.addButton(new GuiSliderInteger(x, y, w, h, TileItemCollector.Fields.SIZE.ordinal(),
         container.tile.getPos(), 0, TileItemCollector.MAX_SIZE, container.tile.getField(f)));
     sizeSlider.setTooltip("buildertype.size.tooltip");
@@ -81,7 +76,7 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
 
   @Override
   protected void drawGuiContainerBackgroundLayer(MatrixStack ms, float partialTicks, int mouseX, int mouseY) {
-    this.drawBackground(ms, TextureRegistry.INVENTORY_LARGE_PLAIN);
+    this.drawBackground(ms, TextureRegistry.INVENTORY_MEDIUM);
     for (int i = 0; i < 9; i++) {
       int y = 81;
       this.drawSlot(ms, 7 + i * Const.SQ, y);

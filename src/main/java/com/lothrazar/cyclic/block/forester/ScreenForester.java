@@ -27,27 +27,25 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
   @Override
   public void init() {
     super.init();
-    int x, y;
+    int x = guiLeft + 6;
+    int y = guiTop + 6;
     energy.guiLeft = guiLeft;
     energy.guiTop = guiTop;
     energy.visible = TileForester.POWERCONF.get() > 0;
-    x = guiLeft + 6;
-    y = guiTop + 6;
     btnRedstone = addButton(new ButtonMachineField(x, y, TileForester.Fields.REDSTONE.ordinal(), container.tile.getPos()));
     y += 20;
     btnRender = addButton(new ButtonMachineField(x, y, TileForester.Fields.RENDER.ordinal(),
         container.tile.getPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
-    final int w = 110;
-    final int h = 18;
+    final int w = 120;
+    final int h = 20;
     int f = TileForester.Fields.HEIGHT.ordinal();
-    x = guiLeft + 34;
-    y = guiTop + 38;
+    x = guiLeft + 30;
+    y = guiTop + 36;
     heightslider = this.addButton(new GuiSliderInteger(x, y, w, h, TileForester.Fields.HEIGHT.ordinal(), container.tile.getPos(),
         0, TileForester.MAX_HEIGHT, container.tile.getField(f)));
     //
     f = TileForester.Fields.SIZE.ordinal();
-    //    x += 28;
-    y += 20;
+    y += h + 4;
     size = this.addButton(new GuiSliderInteger(x, y, w, h, f, container.tile.getPos(), 0, TileForester.MAX_SIZE, container.tile.getField(f)));
   }
 

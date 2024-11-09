@@ -25,7 +25,7 @@ public class ScreenFan extends ScreenBase<ContainerFan> {
     x = guiLeft + 6;
     y = guiTop + 6;
     btnRedstone = addButton(new ButtonMachineField(x, y, TileFan.Fields.REDSTONE.ordinal(), container.tile.getPos()));
-    y += 20;
+    x += 20;
     btnRender = addButton(new ButtonMachineField(x, y, TileFan.Fields.RENDER.ordinal(),
         container.tile.getPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
     //

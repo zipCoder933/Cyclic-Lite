@@ -42,19 +42,17 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
     y += 20;
     btnDirection = addButton(new ButtonMachineField(x, y, f,
         container.tile.getPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"));
-    final int w = 110;
-    final int h = 18;
     //now start sliders
-    //
-    //
-    y = guiTop + 24;
-    x = guiLeft + 34;
+    final int w = 120;
+    final int h = 20;
+    x = guiLeft + 30;
+    y = guiTop + 36;
     f = TileHarvester.Fields.HEIGHT.ordinal();
     heightslider = this.addButton(new GuiSliderInteger(x, y, w, h, TileHarvester.Fields.HEIGHT.ordinal(), container.tile.getPos(),
         0, TileHarvester.MAX_HEIGHT, container.tile.getField(f)));
     //
     f = TileHarvester.Fields.SIZE.ordinal();
-    y += 28;
+    y += h + 4;
     size = this.addButton(new GuiSliderInteger(x, y, w, h, f, container.tile.getPos(), 0, TileHarvester.MAX_SIZE, container.tile.getField(f)));
   }
 
