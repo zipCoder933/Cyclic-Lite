@@ -77,6 +77,32 @@ public class UtilFluid {
     return model;
   }
 
+  /**
+   * 
+   * @param level
+   * @param posTarget
+   *          where the cauldron exists
+   * @param tank
+   *          of myself that i want to extract frm for the target
+   * @return
+   */
+  public static boolean insertSourceCauldron(World level, BlockPos posTarget, IFluidHandler tank) {
+    //for mc 1.16.5 cauldrons only allow water. lava/snow cauldronds added in 1.17
+    BlockState targetState = level.getBlockState(posTarget);
+    if (targetState.getBlock() == Blocks.CAULDRON.getBlock() && targetState.hasProperty(CauldronBlock.LEVEL) && targetState.get(CauldronBlock.LEVEL) == 0) {
+      FluidStack simulate = tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlockState(posTarget, targetState.with(CauldronBlock.LEVEL, 3))) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public static void extractSourceWaterloggedCauldron(World level, BlockPos posTarget, IFluidHandler tank) {
     if (tank == null) {
       return;

@@ -64,7 +64,10 @@ public class TileFluidHopper extends TileEntityBase implements ITickableTileEnti
     //then pull from hopper facey side
     Direction exportToSide = this.getBlockState().get(BlockFluidHopper.FACING);
     if (exportToSide != null && exportToSide != Direction.UP) {
+      //if the target is a tank
       moveFluids(exportToSide, pos.offset(exportToSide), FLOW, tank);
+      //if the target is a cauldron
+      UtilFluid.insertSourceCauldron(world, pos.offset(exportToSide), tank);
       this.updateComparatorOutputLevel();
       this.updateComparatorOutputLevelAt(pos.offset(exportToSide));
     }
@@ -83,7 +86,6 @@ public class TileFluidHopper extends TileEntityBase implements ITickableTileEnti
       if (success) {
         this.updateComparatorOutputLevelAt(target);
         this.updateComparatorOutputLevel();
-        return;
       }
     }
     if (!success && tank.getSpace() >= FluidAttributes.BUCKET_VOLUME) {
