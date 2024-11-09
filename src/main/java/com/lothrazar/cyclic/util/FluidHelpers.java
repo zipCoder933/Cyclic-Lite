@@ -74,6 +74,43 @@ public class FluidHelpers {
     return COLOUR_DEFAULT;
   }
 
+  /**
+   * 
+   * @param level
+   * @param posTarget
+   *          where the cauldron exists
+   * @param tank
+   *          of myself that i want to extract frm for the target
+   * @return
+   */
+  public static boolean insertSourceCauldron(Level level, BlockPos posTarget, IFluidHandler tank) {
+    //for mc 1.16.5 cauldrons only allow water. lava cauldron added in 1.17 and levels blockstate removed
+    BlockState targetState = level.getBlockState(posTarget);
+    if (targetState.getBlock() == Blocks.CAULDRON) {
+      //cauldron is hardcoded mojang with two fluids
+      FluidStack simulate = tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlock(posTarget, Blocks.WATER_CAULDRON.defaultBlockState(), 3)) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+      //try the same thing with lava
+      simulate = tank.drain(new FluidStack(new FluidStack(Fluids.LAVA, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlock(posTarget, Blocks.LAVA_CAULDRON.defaultBlockState(), 3)) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.LAVA, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
   public static void extractSourceWaterloggedCauldron(Level level, BlockPos posTarget, IFluidHandler tank) {
     if (tank == null) {
       return;
