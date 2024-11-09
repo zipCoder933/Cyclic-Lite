@@ -27,33 +27,33 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
   @Override
   public void init() {
     super.init();
-    int x, y;
     energy.guiLeft = leftPos;
     energy.guiTop = topPos;
     energy.visible = TileHarvester.POWERCONF.get() > 0;
-    x = leftPos + 6;
-    y = topPos + 6;
-    btnRedstone = addRenderableWidget(new ButtonMachineField(x, y, TileHarvester.Fields.REDSTONE.ordinal(), menu.tile.getBlockPos()));
+    int x = leftPos + 6;
+    int y = topPos + 6;
+    final int w = 120;
+    final int h = 20;
+    int f = TileHarvester.Fields.REDSTONE.ordinal();
+    btnRedstone = addRenderableWidget(new ButtonMachineField(x, y, f, menu.tile.getBlockPos()));
     y += 20;
-    btnRender = addRenderableWidget(new ButtonMachineField(x, y, TileHarvester.Fields.RENDER.ordinal(),
+    f = TileHarvester.Fields.RENDER.ordinal();
+    btnRender = addRenderableWidget(new ButtonMachineField(x, y, f,
         menu.tile.getBlockPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
     //
-    int f = TileHarvester.Fields.DIRECTION.ordinal();
-    y += 20;
+    y += h;
+    f = TileHarvester.Fields.DIRECTION.ordinal();
     btnDirection = addRenderableWidget(new ButtonMachineField(x, y, f,
         menu.tile.getBlockPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"));
-    int w = 110;
-    int h = 18;
     //now start sliders
     //
-    y = topPos + 22;
-    x = leftPos + 34;
+    y = topPos + 30;
+    x = leftPos + 36;
     f = TileHarvester.Fields.HEIGHT.ordinal();
-    heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileHarvester.Fields.HEIGHT.ordinal(), menu.tile.getBlockPos(),
-        0, TileHarvester.MAX_HEIGHT, menu.tile.getField(f)));
+    heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(), 0, TileHarvester.MAX_HEIGHT, menu.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");
+    y += h + 4;
     f = TileHarvester.Fields.SIZE.ordinal();
-    y += 26;
     size = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(), 0, TileHarvester.MAX_SIZE, menu.tile.getField(f)));
   }
 
