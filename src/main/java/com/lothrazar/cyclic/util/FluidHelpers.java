@@ -20,6 +20,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -43,6 +44,17 @@ public class FluidHelpers {
   public static final FluidRenderMap<Int2ObjectMap<Model3D>> CACHED_FLUIDS = new FluidRenderMap<>();
   public static final int STAGES = 1400;
 
+  public static class FluidAttributes {
+
+    public static final int BUCKET_VOLUME = net.minecraftforge.fluids.FluidType.BUCKET_VOLUME;
+  }
+
+  /**
+   * maps fluid to colour hex code as int value. Used by itemstack durability bar on filled held tanks
+   * 
+   * @param fstack
+   * @return
+   */
   public static int getColorFromFluid(FluidStack fstack) {
     if (fstack != null && fstack.getFluid() != null) {
       //first check mine
@@ -60,10 +72,7 @@ public class FluidHelpers {
       }
       else if (fstack.getFluid() == FluidXpJuiceHolder.STILL.get()) {
         return FluidXpJuiceHolder.COLOR;
-      } //now check if the fluid has a color
-      //      else if (fstack.getFluid().getAttributes().getColor() > 0) { 
-      //        return fstack.getFluid().getAttributes().getColor();
-      //      }
+      }
       else if (fstack.getFluid() == ForgeMod.MILK.get()) {
         return COLOUR_MILK;
       }
@@ -74,11 +83,59 @@ public class FluidHelpers {
     return COLOUR_DEFAULT;
   }
 
-  public static class FluidAttributes {
-
-    public static final int BUCKET_VOLUME = net.minecraftforge.fluids.FluidType.BUCKET_VOLUME;
+  /**
+   * Internally knows that water cauldrons fil to level 3, but lava cauldrons are a different block without the level property.
+   * 
+   * Ignores partially filled water cauldrons.
+   * 
+   * a full cauldron is 1000mb
+   * 
+   * @param level
+   * @param posTarget
+   *          where the cauldron exists
+   * @param tank
+   *          of myself that i want to extract frm for the target
+   * @return
+   */
+  public static boolean insertSourceCauldron(Level level, BlockPos posTarget, IFluidHandler tank) {
+    //for mc 1.16.5 cauldrons only allow water. lava cauldron added in 1.17 and levels blockstate removed
+    BlockState targetState = level.getBlockState(posTarget);
+    if (targetState.getBlock() == Blocks.CAULDRON) {
+      //cauldron is hardcoded mojang with two fluids
+      FluidStack simulate = tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlock(posTarget, Blocks.WATER_CAULDRON.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 3), 3)) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+      //try the same thing with lava
+      simulate = tank.drain(new FluidStack(new FluidStack(Fluids.LAVA, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlock(posTarget, Blocks.LAVA_CAULDRON.defaultBlockState(), 3)) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.LAVA, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
+  /**
+   * Internally knows that water cauldrons fil to level 3, but lava cauldrons are a different block without the level property.
+   * 
+   * Ignores partially filled water cauldrons.
+   * 
+   * a full cauldron is 1000mb
+   * 
+   * @param level
+   * @param posTarget
+   * @param tank
+   */
   public static void extractSourceWaterloggedCauldron(Level level, BlockPos posTarget, IFluidHandler tank) {
     if (tank == null) {
       return;
@@ -95,7 +152,7 @@ public class FluidHelpers {
         tank.fill(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
       }
     }
-    else if (targetState.getBlock() == Blocks.WATER_CAULDRON) {
+    else if (targetState.getBlock() == Blocks.WATER_CAULDRON && targetState.getValue(LayeredCauldronBlock.LEVEL) >= 3) {
       int simFill = tank.fill(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
       if (simFill == FluidAttributes.BUCKET_VOLUME
           && level.setBlockAndUpdate(posTarget, Blocks.CAULDRON.defaultBlockState())) {

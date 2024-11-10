@@ -410,21 +410,18 @@ public class ConfigRegistry {
     CABLE_FACADES = CFG.comment("\r\n Allow cables to have blocks placed in them as facades (sneak-left-click to set; use empty hand to remove).  Set to false to disable facades")
         .define("cables.enabled", true);
     //a few default
-    List<String> list = Arrays.asList("minecraft:ladder", "minecraft:double_plant", "minecraft:waterlily",
+    List<String> list = Arrays.asList("minecraft:double_plant", "minecraft:waterlily",
         "minecraft:torch", "minecraft:*_torch", "minecraft:redstone", "minecraft:iron_bars",
         "minecraft:chest", "minecraft:ender_chest", "minecraft:sculk_vein", "minecraft:string", "minecraft:vine",
-        "minecraft:rail",
-        "minecraft:*_rail",
         "minecraft:brewing_stand",
         "minecraft:*_dripleaf",
         "minecraft:*_pane",
         "minecraft:*_sapling", "minecraft:*_sign",
         "minecraft:*_door",
         "minecraft:*_banner", "minecraft:*_shulker_box",
-        "cyclic:*_pipe", "cyclic:*_bars",
         "storagenetwork:*");
-    FACADE_IGNORELIST = CFG.comment("\r\n  These blocks are not allowed to be used as Facades for blocks because they look weird (used by cables and Glowstone Facade and Soundproofing Facade and others)")
-        .define("itemsNotAllowed", list);
+    FACADE_IGNORELIST = CFG.comment("\r\n  These blocks are not allowed to be used as Facades for blocks because they look weird (used by cables and Glowstone Facade and Soundproofing Facade and others).  If you want to ignore one entire mod use an entry like this : storagenetwork:* ")
+        .defineList("itemsNotAllowed", list, it -> it instanceof String);
     CFG.pop();
     // 
     TRANSFER_NODES_DIMENSIONAL = CFG.comment("  Allows the dimensional Transfer Nodes to cross dimensions "
@@ -639,6 +636,11 @@ public class ConfigRegistry {
     return (List<String>) GLOOM_IGNORE_LIST.get();
   }
 
+  @SuppressWarnings("unchecked")
+  public static List<String> getFacadeIgnoreList() {
+    return (List<String>) FACADE_IGNORELIST.get();
+  }
+
   public static Map<String, String> getMappedBeheading() {
     Map<String, String> mappedBeheading = new HashMap<String, String>();
     for (String s : BEHEADING_SKINS.get()) {
@@ -656,11 +658,11 @@ public class ConfigRegistry {
   }
 
   public static BooleanValue CABLE_FACADES;
-  private static ConfigValue<List<String>> FACADE_IGNORELIST;
+  private static ConfigValue<List<? extends String>> FACADE_IGNORELIST;
 
   public static boolean isFacadeAllowed(ItemStack item) {
     ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(item.getItem());
-    if (StringParseUtil.isInList(FACADE_IGNORELIST.get(), itemId)) {
+    if (StringParseUtil.isInList(getFacadeIgnoreList(), itemId)) {
       return false;
     }
     return true;

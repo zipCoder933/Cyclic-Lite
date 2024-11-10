@@ -33,31 +33,17 @@ public class GuiSliderInteger extends AbstractSliderButton implements IHasToolti
     this.pos = pos;
     this.min = min;
     this.max = max;
-    setSliderValueActual((int) initialVal);
+    setSliderPercentageOfMax((int) initialVal);
+    this.updateMessage();
   }
-  /**
-   * exact copy of super() but replaced hardcoded 20 with this.height
-   */
-  //  @Override
-  //  protected void renderWidget(PoseStack matrixStack, Minecraft minecraft, int mouseX, int mouseY) {
-  //    //    minecraft.getTextureManager().bind(WIDGETS_LOCATION);
-  //    RenderSystem.setShader(GameRenderer::getPositionTexShader);
-  //    RenderSystem.setShaderTexture(0, WIDGETS_LOCATION);
-  //    RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-  //    int i = (this.isHovered ? 2 : 1) * 20;
-  //    if (this.height != 20) {
-  //      this.blit(matrixStack, this.getX() + (int) (this.value * (this.width - 8)), this.getY(), 0, 46 + i + 20 - this.height, 4, this.height);
-  //      this.blit(matrixStack, this.getX() + (int) (this.value * (this.width - 8)) + 4, this.getY(), 196, 46 + i + 20 - this.height, 4, this.height);
-  //      int height = this.height - 2;
-  //      this.blit(matrixStack, this.getX() + (int) (this.value * (this.width - 8)), this.getY(), 0, 46 + i, 4, height);
-  //      this.blit(matrixStack, this.getX() + (int) (this.value * (this.width - 8)) + 4, this.getY(), 196, 46 + i, 4, height);
-  //    }
-  //    else {
-  //      this.blit(matrixStack, this.getX() + (int) (this.value * (this.width - 8)), this.getY(), 0, 46 + i, 4, this.height);
-  //      this.blit(matrixStack, this.getX() + (int) (this.value * (this.width - 8)) + 4, this.getY(), 196, 46 + i, 4, this.height);
-  //    }
-  //  }
 
+  public double getSliderValue() {
+    return this.value; // sliderValue
+  }
+
+  public int getField() {
+    return this.field;
+  }
   /**
    * Call from Screen class to render tooltip during mouseover
    */
@@ -87,8 +73,7 @@ public class GuiSliderInteger extends AbstractSliderButton implements IHasToolti
   @Override
   public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
     if (delta != 0) {
-      setSliderValueActual(this.getSliderValueActual() + (int) delta);
-      this.updateMessage();
+      moveSliderAndUpdate((int) delta);
       return true;
     }
     return super.mouseScrolled(mouseX, mouseY, delta);
@@ -116,8 +101,7 @@ public class GuiSliderInteger extends AbstractSliderButton implements IHasToolti
       else if (Screen.hasAltDown()) {
         delta = delta * 10;
       }
-      setSliderValueActual(this.getSliderValueActual() + delta);
-      this.updateMessage();
+      moveSliderAndUpdate(delta);
       return true;
     }
     return super.keyPressed(keyCode, scanCode, modifiers);
@@ -127,43 +111,49 @@ public class GuiSliderInteger extends AbstractSliderButton implements IHasToolti
    * Refresh display message
    */
   @Override
-  protected void updateMessage() {
-    int val = getSliderValueActual();
+  protected void updateMessage() { // func_230972_a_();
+    int val = getSliderAsInteger();
     this.setMessage(Component.translatable("" + val));
   }
 
   /**
-   * SAVE to tile entity with packet
+   * Save to tile entity with packet
    */
   @Override
-  protected void applyValue() {
-    int val = getSliderValueActual();
+  protected void applyValue() { // func_230979_b_();
+    int val = getSliderAsInteger();
     PacketRegistry.INSTANCE.sendToServer(new PacketTileData(this.field, val, pos));
   }
 
   @Override
   protected void onDrag(double mouseX, double mouseY, double dragX, double dragY) {
-    //    this.changeSliderValueActual(mouseX);
     super.onDrag(mouseX, mouseY, dragX, dragY);
-    //     ("ondrag" + mouseX);
     applyValue();
     updateMessage();
   }
 
   /**
-   * Set inner [0,1] value relative to maximum and trigger save/ & refresh
+   * clamp sliderValue to an integer between min and max
    */
-  private void setSliderValueActual(int val) {
-    this.value = val / max;
+  public int getSliderAsInteger() {
+    return Mth.floor(Mth.clampedLerp(min, max, this.value));
+  }
+
+  /**
+   * move position by delta and save and refresh. adds delta to integer version of slider value and sends both updates
+   * 
+   * @param delta
+   */
+  private void moveSliderAndUpdate(int delta) {
+    setSliderPercentageOfMax(this.getSliderAsInteger() + delta);
     this.updateMessage();
     this.applyValue();
   }
 
-  public int getSliderValueActual() {
-    return Mth.floor(Mth.clampedLerp(min, max, this.value));
-  }
-
-  public int getField() {
-    return this.field;
+  /**
+   * Set inner [0,1] value relative to maximum and trigger save/ & refresh
+   */
+  private void setSliderPercentageOfMax(int val) {
+    this.value = val / max;
   }
 }

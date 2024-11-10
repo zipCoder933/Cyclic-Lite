@@ -37,7 +37,7 @@ public class ScreenDropper extends ScreenBase<ContainerDropper> {
     x = leftPos + 32;
     y = topPos + 18;
     w = 120;
-    h = 16;
+    h = 18;
     int f = TileDropper.Fields.DROPCOUNT.ordinal();
     GuiSliderInteger dropcount = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),
         1, 64, menu.tile.getField(f)));
