@@ -14,30 +14,29 @@ public class ScreenClock extends ScreenBase<ContainerClock> {
 
   public ScreenClock(ContainerClock screenContainer, Inventory inv, Component titleIn) {
     super(screenContainer, inv, titleIn);
-    this.imageHeight = 256;
   }
 
   @Override
   public void init() {
     super.init();
     int x, y;
-    x = leftPos + 8;
-    y = topPos + 8;
+    x = leftPos + 6;
+    y = topPos + 6;
     btnRedstone = addRenderableWidget(new ButtonMachineField(x, y, TileRedstoneClock.Fields.REDSTONE.ordinal(), menu.tile.getBlockPos()));
     int w = 160;
-    int h = 20;
+    int h = 18;
     int f = TileRedstoneClock.Fields.DURATION.ordinal();
     x = leftPos + 8;
-    y = topPos + 38;
+    y = topPos + 26;
     GuiSliderInteger dur = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),
         1, 200, menu.tile.getField(f)));
     dur.setTooltip("cyclic.clock.duration");
-    y += 26;
+    y += h + 1;
     f = TileRedstoneClock.Fields.DELAY.ordinal();
     GuiSliderInteger delay = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),
         1, 200, menu.tile.getField(f)));
     delay.setTooltip("cyclic.clock.delay");
-    y += 26;
+    y += h + 1;
     f = TileRedstoneClock.Fields.POWER.ordinal();
     GuiSliderInteger power = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),
         1, 15, menu.tile.getField(f)));
@@ -60,9 +59,6 @@ public class ScreenClock extends ScreenBase<ContainerClock> {
 
   @Override
   protected void renderBg(GuiGraphics ms, float partialTicks, int mouseX, int mouseY) {
-    this.drawBackground(ms, TextureRegistry.INVENTORY_LARGE_PLAIN);
-    //    this.txtDuration.render(ms, mouseX, mouseX, partialTicks);
-    //    this.txtDelay.render(ms, mouseX, mouseX, partialTicks);
-    //    this.txtPower.render(ms, mouseX, mouseX, partialTicks);
+    this.drawBackground(ms, TextureRegistry.INVENTORY);
   }
 }

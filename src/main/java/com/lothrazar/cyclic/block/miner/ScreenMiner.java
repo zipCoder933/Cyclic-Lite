@@ -43,14 +43,14 @@ public class ScreenMiner extends ScreenBase<ContainerMiner> {
     //
     int w = 120;
     int h = 20;
-    x = leftPos + 32;
-    y += h + 1;
+    x = leftPos + 30;
+    y += h + 4;
     // height fi
     f = TileMiner.Fields.HEIGHT.ordinal();
     GuiSliderInteger heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),
         0, TileMiner.MAX_HEIGHT, menu.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");
-    y += h + 1;
+    y += h + 4;
     //
     f = TileMiner.Fields.SIZE.ordinal();
     sizeSlider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),

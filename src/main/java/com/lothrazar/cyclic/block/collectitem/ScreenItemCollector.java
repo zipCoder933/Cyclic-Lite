@@ -14,13 +14,13 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
 
   private ButtonMachineField btnRedstone;
   private ButtonMachineField btnRender;
-  private GuiSliderInteger sizeSlider;
   private ButtonMachineField btnDirection;
+  private GuiSliderInteger sizeSlider;
   private GuiSliderInteger heightslider;
 
   public ScreenItemCollector(ContainerItemCollector screenContainer, Inventory inv, Component titleIn) {
     super(screenContainer, inv, titleIn);
-    this.imageHeight = 256;
+    this.imageHeight = 214;
   }
 
   @Override
@@ -29,29 +29,29 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
     int x = leftPos + 6;
     int y = topPos + 6;
     int f = TileItemCollector.Fields.REDSTONE.ordinal();
+    int h = 20;
     btnRedstone = addRenderableWidget(new ButtonMachineField(x, y, f, menu.tile.getBlockPos()));
     f = TileItemCollector.Fields.RENDER.ordinal();
-    y += 20;
+    y += h;
     btnRender = addRenderableWidget(new ButtonMachineField(x, y, f,
         menu.tile.getBlockPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
     //then toggle
     f = TileItemCollector.Fields.DIRECTION.ordinal();
-    y += 20;
+    y += h;
     btnDirection = addRenderableWidget(new ButtonMachineField(x, y, f,
         menu.tile.getBlockPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"));
-    int w = 110;
-    int h = 18;
+    int w = 140;
     //now start sliders
     //
-    y = topPos + 22;
-    x = leftPos + 34;
+    x = leftPos + 30;
+    y = topPos + 34;
     f = TileItemCollector.Fields.HEIGHT.ordinal();
     heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileItemCollector.Fields.HEIGHT.ordinal(), menu.tile.getBlockPos(),
         0, TileItemCollector.MAX_HEIGHT, menu.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");
     //then size
     f = TileItemCollector.Fields.SIZE.ordinal();
-    y += h + 1;
+    y += h + 4;
     sizeSlider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileItemCollector.Fields.SIZE.ordinal(),
         menu.tile.getBlockPos(), 0, TileItemCollector.MAX_SIZE, menu.tile.getField(f)));
     sizeSlider.setTooltip("buildertype.size.tooltip");
@@ -77,7 +77,7 @@ public class ScreenItemCollector extends ScreenBase<ContainerItemCollector> {
 
   @Override
   protected void renderBg(GuiGraphics ms, float partialTicks, int mouseX, int mouseY) {
-    this.drawBackground(ms, TextureRegistry.INVENTORY_LARGE_PLAIN);
+    this.drawBackground(ms, TextureRegistry.INVENTORY_MEDIUM);
     for (int i = 0; i < 9; i++) {
       int y = 81;
       this.drawSlot(ms, 7 + i * Const.SQ, y);

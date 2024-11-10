@@ -37,7 +37,7 @@ public class ContainerItemCollector extends ContainerBase {
       }
     }
     addSlot(new SlotItemHandler(tile.filter, 0, 152, 9));
-    layoutPlayerInventorySlots(8, 153);
+    layoutPlayerInventorySlots(8, 132);
     this.trackAllIntFields(tile, TileItemCollector.Fields.values().length);
   }
 

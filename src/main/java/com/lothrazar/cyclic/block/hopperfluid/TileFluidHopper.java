@@ -73,7 +73,10 @@ public class TileFluidHopper extends TileBlockEntityCyclic {
     //then pull from hopper facey side
     Direction exportToSide = this.getBlockState().getValue(BlockFluidHopper.FACING);
     if (exportToSide != null && exportToSide != Direction.UP) {
+      //if the target is a tank
       moveFluids(exportToSide, worldPosition.relative(exportToSide), FLOW, tank);
+      //if the target is a cauldron
+      FluidHelpers.insertSourceCauldron(level, worldPosition.relative(exportToSide), tank);
       this.updateComparatorOutputLevel();
       this.updateComparatorOutputLevelAt(worldPosition.relative(exportToSide));
     }

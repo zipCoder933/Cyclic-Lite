@@ -27,26 +27,27 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
   public void init() {
     super.init();
     this.energy = new EnergyBar(this.font, TileForester.MAX);
-    int x, y;
+    int x = leftPos + 6;
+    int y = topPos + 6;
     energy.guiLeft = leftPos;
     energy.guiTop = topPos;
     energy.visible = TileForester.POWERCONF.get() > 0;
-    x = leftPos + 6;
-    y = topPos + 6;
-    btnRedstone = addRenderableWidget(new ButtonMachineField(x, y, TileForester.Fields.REDSTONE.ordinal(), menu.tile.getBlockPos()));
-    y += 20;
-    btnRender = addRenderableWidget(new ButtonMachineField(x, y, TileForester.Fields.RENDER.ordinal(),
+    final int w = 120;
+    final int h = 20;
+    int f = TileForester.Fields.REDSTONE.ordinal();
+    btnRedstone = addRenderableWidget(new ButtonMachineField(x, y, f, menu.tile.getBlockPos()));
+    y += h;
+    f = TileForester.Fields.RENDER.ordinal();
+    btnRender = addRenderableWidget(new ButtonMachineField(x, y, f,
         menu.tile.getBlockPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
-    int w = 110;
-    int h = 18;
-    int f = TileForester.Fields.HEIGHT.ordinal();
-    x += 28;
-    y += 12;
+    x += 30;
+    y += 36;
+    f = TileForester.Fields.HEIGHT.ordinal();
     heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileForester.Fields.HEIGHT.ordinal(), menu.tile.getBlockPos(),
         0, TileForester.MAX_HEIGHT, menu.tile.getField(f)));
     //
+    y += h + 4;
     f = TileForester.Fields.SIZE.ordinal();
-    y += 20;
     size = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(), 0, 10, menu.tile.getField(f)));
   }
 

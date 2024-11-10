@@ -34,7 +34,7 @@ public class PeatBlock extends BlockCyclic {
       //try to bake if SOURCE water is nearby
       //using FluidState instead of Block
       FluidState fluid = world.getFluidState(p);
-      if (fluid.getType() == Fluids.WATER.getSource()) {
+      if (fluid != null && fluid.is(Fluids.WATER)) {
         sidesWet++;
         waters.add(p);
       }
