@@ -8,6 +8,7 @@ import com.lothrazar.cyclic.util.ChatUtil;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.AbstractSliderButton;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
@@ -106,5 +107,18 @@ public abstract class ScreenBase<T extends AbstractContainerMenu> extends Abstra
         }
       }
     }
+  }
+
+  /**
+   * Propogate mouse drag events down to slider widgets
+   */
+  @Override
+  public boolean mouseDragged(double mouseX, double mouseY, int button, double dragX, double dragY) {
+    for (GuiEventListener btn : this.children()) {
+      if (btn.isMouseOver(mouseX, mouseY) && btn instanceof AbstractSliderButton) {
+        ((AbstractSliderButton) btn).mouseDragged(mouseX, mouseY, button, dragX, dragY);
+      }
+    }
+    return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
   }
 }

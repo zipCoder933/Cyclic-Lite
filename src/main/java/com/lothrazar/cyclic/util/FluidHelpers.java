@@ -43,6 +43,11 @@ public class FluidHelpers {
   public static final FluidRenderMap<Int2ObjectMap<Model3D>> CACHED_FLUIDS = new FluidRenderMap<>();
   public static final int STAGES = 1400;
 
+  public static class FluidAttributes {
+
+    public static final int BUCKET_VOLUME = net.minecraftforge.fluids.FluidType.BUCKET_VOLUME;
+  }
+
   public static int getColorFromFluid(FluidStack fstack) {
     if (fstack != null && fstack.getFluid() != null) {
       //first check mine
@@ -74,9 +79,41 @@ public class FluidHelpers {
     return COLOUR_DEFAULT;
   }
 
-  public static class FluidAttributes {
-
-    public static final int BUCKET_VOLUME = net.minecraftforge.fluids.FluidType.BUCKET_VOLUME;
+  /**
+   * 
+   * @param level
+   * @param posTarget
+   *          where the cauldron exists
+   * @param tank
+   *          of myself that i want to extract frm for the target
+   * @return
+   */
+  public static boolean insertSourceCauldron(Level level, BlockPos posTarget, IFluidHandler tank) {
+    //for mc 1.16.5 cauldrons only allow water. lava cauldron added in 1.17 and levels blockstate removed
+    BlockState targetState = level.getBlockState(posTarget);
+    if (targetState.getBlock() == Blocks.CAULDRON) {
+      //cauldron is hardcoded mojang with two fluids
+      FluidStack simulate = tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlock(posTarget, Blocks.WATER_CAULDRON.defaultBlockState(), 3)) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.WATER, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+      //try the same thing with lava
+      simulate = tank.drain(new FluidStack(new FluidStack(Fluids.LAVA, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.SIMULATE);
+      if (simulate.getAmount() == FluidAttributes.BUCKET_VOLUME) {
+        //we are able to fill the tank
+        if (level.setBlock(posTarget, Blocks.LAVA_CAULDRON.defaultBlockState(), 3)) {
+          //we filled the cauldron, so now drain with execute
+          tank.drain(new FluidStack(new FluidStack(Fluids.LAVA, FluidAttributes.BUCKET_VOLUME), FluidAttributes.BUCKET_VOLUME), FluidAction.EXECUTE);
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   public static void extractSourceWaterloggedCauldron(Level level, BlockPos posTarget, IFluidHandler tank) {
