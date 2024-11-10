@@ -215,12 +215,9 @@ public class EventRender {
           if (distance < LaserItem.RANGE_MAX) {
             //first vector is FROM, second is TO
             BlockHitResult miss = mc.level.clip(new ClipContext(cameraEyePosition, entityHitResultLocation, ClipContext.Block.VISUAL, ClipContext.Fluid.NONE, mc.player));
-            //              BlockHitResult miss = BlockHitResult.miss(entityHitResultLocation, Direction.getNearest(cameraViewVector.x, cameraViewVector.y, cameraViewVector.z),                new BlockPos(entityHitResultLocation));
-            if (miss.getType() == HitResult.Type.BLOCK) {
-              //we hit a wall, dont shoot thru walls
-            }
-            else {
-              //Render and Shoot
+            //Render and Shoot
+            if (miss.getType() != HitResult.Type.BLOCK) {
+              //dont shoot thru walls
               RenderMiningLaser.renderLaser(event, player, mc.getFrameTime(), stack, InteractionHand.MAIN_HAND);
               if (world.getGameTime() % 4 == 0) {
                 PacketRegistry.INSTANCE.sendToServer(new PacketEntityLaser(ehr.getEntity().getId(), false));
@@ -228,6 +225,10 @@ public class EventRender {
               }
             }
           }
+        }
+        else {
+          //we missed
+          RenderMiningLaser.renderLaser(event, player, mc.getFrameTime(), stack, InteractionHand.MAIN_HAND);
         }
       }
     }
