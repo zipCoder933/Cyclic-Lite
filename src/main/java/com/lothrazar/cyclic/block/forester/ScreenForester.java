@@ -40,8 +40,8 @@ public class ScreenForester extends ScreenBase<ContainerForester> {
     f = TileForester.Fields.RENDER.ordinal();
     btnRender = addRenderableWidget(new ButtonMachineField(x, y, f,
         menu.tile.getBlockPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
-    x += 30;
-    y += 36;
+    x = leftPos + 30;
+    y = topPos + 36;
     f = TileForester.Fields.HEIGHT.ordinal();
     heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, TileForester.Fields.HEIGHT.ordinal(), menu.tile.getBlockPos(),
         0, TileForester.MAX_HEIGHT, menu.tile.getField(f)));
