@@ -47,8 +47,8 @@ public class ScreenHarvester extends ScreenBase<ContainerHarvester> {
         menu.tile.getBlockPos(), TextureEnum.DIR_DOWN, TextureEnum.DIR_UPWARDS, "gui.cyclic.direction"));
     //now start sliders
     //
-    y = topPos + 30;
-    x = leftPos + 36;
+    x = leftPos + 30;
+    y = topPos + 26;
     f = TileHarvester.Fields.HEIGHT.ordinal();
     heightslider = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(), 0, TileHarvester.MAX_HEIGHT, menu.tile.getField(f)));
     heightslider.setTooltip("buildertype.height.tooltip");

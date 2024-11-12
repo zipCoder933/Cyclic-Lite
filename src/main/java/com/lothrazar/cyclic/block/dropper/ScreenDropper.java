@@ -34,10 +34,10 @@ public class ScreenDropper extends ScreenBase<ContainerDropper> {
     y += 20;
     btnRender = addRenderableWidget(new ButtonMachineField(x, y, TileDropper.Fields.RENDER.ordinal(),
         menu.tile.getBlockPos(), TextureEnum.RENDER_HIDE, TextureEnum.RENDER_SHOW, "gui.cyclic.render"));
-    x = leftPos + 32;
-    y = topPos + 18;
     w = 120;
-    h = 18;
+    h = 20;
+    x = leftPos + 32;
+    y = topPos + h - 4;
     int f = TileDropper.Fields.DROPCOUNT.ordinal();
     GuiSliderInteger dropcount = this.addRenderableWidget(new GuiSliderInteger(x, y, w, h, f, menu.tile.getBlockPos(),
         1, 64, menu.tile.getField(f)));
