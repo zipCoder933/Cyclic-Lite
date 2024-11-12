@@ -153,5 +153,9 @@
 
 
 		,"1.9.0":"Add mouse-dragging capability to the slider controls in machines.  Fluid Hoppers can now insert into cauldrons.  Backport #2399 Dry Peat Bog can now hydrate from waterlogged blocks such as scaffolding.  Fix spelling #2435.  Clock gui-screen size reduced from large to normal. Added an optional item slot in the Block Breaker using the BlockState Data Card so players have the option to limit the block breaker to only the targets listed in the data card.  Add new block data tags cyclic:ignored/breaker and cyclic:ignored/miner so that pack devs can customize these machines to not break certain blocks (regardless of hardness). Many blocks now allow minecraft:comparator to pull a redstone signal based on inventory contents (most machines and blocks that have inventory).  Fluid collector will now place air and scoop up the fluid if the itemslot is empty.  New feature: some machines can now be placed facing Up or Down vertically for convenience (harvester, forester, miner, item collector, fluid collector, dropper).  Backported machine feature 'Preview Outline' mode on machines that already have the button. Backported cable (fluid & energy) buffer and flow speed configs from 1.20.1.  Facades overhaul backported from 1.20.1: Renamed 'Concentrated Glowstone' to 'Glowstone Facade' and 'Concentrated Soundproofing' to 'Soundproofing Facade'  . Backport cable facades from 1.20.1 (New feature with cables: hide them using solid blocks with a feature called 'facades', just sneak-left-click a block onto the cable; empty hand to remove it) "
+
+
+
+		,"1.9.1":"Fixed some visual glitches"
 	}
 }
