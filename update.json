@@ -189,6 +189,6 @@
 
 
 		,"1.13.1":"Fixed some visual glitches"
-		,"1.13.2":"Two recipes have updated to use tag-ingredients forge:storage_blocks/ender_eye forge:storage_blocks/ender_pearl instead of item ids (this makes no difference to players experience).  Re-added/Ported the alternate recipe for Tempered Dark Glass using obsidian and black stained glass"
+		,"1.13.2":"Fix patchouli Guidebook doesn't show in JEI (and creative tab). Two recipes have updated to use tag-ingredients forge:storage_blocks/ender_eye forge:storage_blocks/ender_pearl instead of item ids (this makes no difference to players experience).  Re-added/Ported the alternate recipe for Tempered Dark Glass using obsidian and black stained glass"
 	}
 }
