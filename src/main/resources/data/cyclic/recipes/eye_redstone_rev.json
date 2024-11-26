@@ -1,13 +1,9 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "e"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [{
+    "tag": "forge:storage_blocks/ender_eye"
+  }
   ],
-  "key": {
-    "e": {
-      "item": "cyclic:eye_redstone"
-    }
-  },
   "result": {
     "item": "minecraft:ender_eye",
     "count": 9

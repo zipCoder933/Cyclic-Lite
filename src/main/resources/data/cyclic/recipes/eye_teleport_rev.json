@@ -1,13 +1,9 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "e"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [ {
+    "tag": "forge:storage_blocks/ender_pearl"
+  }
   ],
-  "key": {
-    "e": {
-      "item": "cyclic:eye_teleport"
-    }
-  },
   "result": {
     "item": "minecraft:ender_pearl",
     "count": 9
