@@ -26,9 +26,9 @@ public class SleepingMatItem extends ItemBaseCyclic {
     ItemStack itemstack = player.getItemInHand(handIn);
     BlockPos pos = player.blockPosition();
     if (!worldIn.isDay()) {
-      trySleep(player, pos, itemstack).ifLeft((p) -> {
-        if (p != null) {
-          player.displayClientMessage(p.getMessage(), true);
+      trySleep(player, pos, itemstack).ifLeft((bsp) -> {
+        if (bsp != null && bsp.getMessage() != null) {
+          player.displayClientMessage(bsp.getMessage(), true);
         }
       });
     }
