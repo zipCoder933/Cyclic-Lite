@@ -61,4 +61,8 @@ public class ModCyclic {
     LootModifierRegistry.LOOT.register(bus);
     ForgeMod.enableMilkFluid();
   }
+
+  public static void log(String string) {
+    LOGGER.info(string);
+  }
 }

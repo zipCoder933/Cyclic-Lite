@@ -1,7 +1,6 @@
 package com.lothrazar.cyclic.block.melter;
 
 import java.util.List;
-import java.util.function.Predicate;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.capabilities.block.FluidTankBase;
 import com.lothrazar.cyclic.registry.BlockRegistry;
@@ -40,7 +39,7 @@ public class TileMelter extends TileBlockEntityCyclic implements MenuProvider {
   static final int MAX = 64000;
   public static final int CAPACITY = 64 * FluidType.BUCKET_VOLUME;
   public static final int TRANSFER_FLUID_PER_TICK = FluidType.BUCKET_VOLUME / 20;
-  public FluidTankBase tank = new FluidTankBase(this, CAPACITY, isFluidValid());
+  FluidTankBase tank = new FluidTankBase(this, CAPACITY, p -> true);
   CustomEnergyStorage energy = new CustomEnergyStorage(MAX, MAX);
   ItemStackHandler inventory = new ItemStackHandler(2);
   private LazyOptional<IEnergyStorage> energyCap = LazyOptional.of(() -> energy);
@@ -126,10 +125,6 @@ public class TileMelter extends TileBlockEntityCyclic implements MenuProvider {
         return this.burnTimeMax;
     }
     return 0;
-  }
-
-  public Predicate<FluidStack> isFluidValid() {
-    return p -> true;
   }
 
   @Override

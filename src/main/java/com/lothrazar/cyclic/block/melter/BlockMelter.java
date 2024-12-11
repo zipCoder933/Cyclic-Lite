@@ -23,6 +23,7 @@ public class BlockMelter extends BlockCyclic {
   public BlockMelter(Properties properties) {
     super(properties.strength(1.2F).noOcclusion());
     this.setHasGui();
+    this.setHasFluidInteract();
   }
 
   @Override
@@ -62,6 +63,11 @@ public class BlockMelter extends BlockCyclic {
   }
 
   @Override
+  protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+    builder.add(LIT);
+  }
+
+  @Override
   public boolean shouldDisplayFluidOverlay(BlockState state, BlockAndTintGetter world, BlockPos pos, FluidState fluidState) {
     return true;
   }
@@ -69,10 +75,5 @@ public class BlockMelter extends BlockCyclic {
   @Override
   public void registerClient() {
     MenuScreens.register(MenuTypeRegistry.MELTER.get(), ScreenMelter::new);
-  }
-
-  @Override
-  protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-    builder.add(LIT);
   }
 }

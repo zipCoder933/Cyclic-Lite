@@ -113,14 +113,14 @@ public class TravellerEnchant extends EnchantmentFlib {
     }
     int level = getCurrentArmorLevelSlot(event.getEntity(), EquipmentSlot.LEGS);
     DamageSource source = event.getSource(); // .type();
-    DamageSources bullshit = event.getEntity().level().damageSources();
-    if (level > 0 && (source == bullshit.cactus()
-        || source == bullshit.flyIntoWall()
-        || source == bullshit.sweetBerryBush()
-        || source == bullshit.sting(null))) {
+    DamageSources sourcesList = event.getEntity().level().damageSources();
+    if (level > 0 && (source == sourcesList.cactus()
+        || source == sourcesList.flyIntoWall()
+        || source == sourcesList.sweetBerryBush()
+        || source == sourcesList.sting(null))) {
       event.setAmount(0.1F);
     }
-    if (level > 0 && source == bullshit.fall()) {
+    if (level > 0 && source == sourcesList.fall()) {
       //normal is zero damage up to 3 distance. 1 damage (half heart) at 4 distance. and each distance up goes up by that
       // so 8 fall damage would be 5 damage
       if (event.getEntity().fallDistance <= 8) {

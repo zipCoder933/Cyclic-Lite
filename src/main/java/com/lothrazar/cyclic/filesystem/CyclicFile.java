@@ -16,6 +16,7 @@ public class CyclicFile {
   public boolean storageVisible = false;
   public boolean todoVisible = false;
   public boolean stepHeight = false;
+  public boolean stepHeightForceOff; // revived the latch used in 1.16.5
   public List<String> todoTasks = new ArrayList<>();
   public int spectatorTicks = 0;
   // first 27 slots are for inventory cake storage. remaining unused
@@ -36,6 +37,7 @@ public class CyclicFile {
     spectatorTicks = tag.getInt("spectatorTicks");
     storageVisible = tag.getBoolean("storageVisible");
     stepHeight = tag.getBoolean("stepHeight");
+    stepHeightForceOff = tag.getBoolean("stepHeightForceOff");
     if (tag.contains("tasks")) {
       ListTag glist = tag.getList("tasks", Tag.TAG_COMPOUND);
       for (int i = 0; i < glist.size(); i++) {
@@ -50,6 +52,7 @@ public class CyclicFile {
     tag.put(NBTINV, inventory.serializeNBT());
     tag.putInt("spectatorTicks", spectatorTicks);
     tag.putBoolean("stepHeight", stepHeight);
+    tag.putBoolean("stepHeightForceOff", stepHeightForceOff);
     tag.putBoolean("storageVisible", storageVisible);
     ListTag glist = new ListTag();
     int i = 0;
@@ -65,5 +68,8 @@ public class CyclicFile {
 
   public void toggleStepHeight() {
     this.stepHeight = !this.stepHeight;
+    if (!this.stepHeight) {
+      this.stepHeightForceOff = true;
+    }
   }
 }

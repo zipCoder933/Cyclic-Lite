@@ -1,5 +1,6 @@
 package com.lothrazar.cyclic.item.food;
 
+import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.event.PlayerDataEvents;
 import com.lothrazar.cyclic.filesystem.CyclicFile;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
@@ -58,7 +59,9 @@ public class LoftyStatureApple extends ItemBaseCyclic {
       AttributesUtil.enableStepHeight(player);
     }
     else {
-      AttributesUtil.disableStepHeight(player);
+      if (datFile.stepHeightForceOff) {
+        AttributesUtil.disableStepHeight(player);
+      }
     }
   }
 }

@@ -102,14 +102,12 @@ public class StepEnchant extends EnchantmentFlib {
     int level = 0;
     if (armor.isEmpty() == false && EnchantmentHelper.getEnchantments(armor) != null
         && EnchantmentHelper.getEnchantments(armor).containsKey(this)) {
-      //todo: maybe any armor?
       level = EnchantmentHelper.getEnchantments(armor).get(this);
     }
     if (level > 0) {
       turnOn(player, armor);
     }
     else {
-      //      ModCyclic.log(" level " + level + " and " + armor.getOrCreateTag().getBoolean(NBT_ON));
       turnOff(player, armor);
     }
   }
@@ -117,7 +115,6 @@ public class StepEnchant extends EnchantmentFlib {
   private void turnOn(Player player, ItemStack armor) {
     player.getPersistentData().putBoolean(NBT_ON, true);
     AttributesUtil.enableStepHeight(player);
-    //    ModCyclic.log("ON " + player.getPersistentData().getBoolean(NBT_ON));
   }
 
   private void turnOff(Player player, ItemStack armor) {
