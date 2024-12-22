@@ -208,7 +208,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
         if (!harvested) {
           //            world.destroyBlock(targetPos, true, fakePlayer.get());
           //removedByPlayer
-          harvested = level.getBlockState(targetPos).onDestroyedByPlayer(level, worldPosition, fakePlayer.get(), true, level.getFluidState(worldPosition));
+          harvested = level.getBlockState(targetPos).onDestroyedByPlayer(level, targetPos, fakePlayer.get(), true, level.getFluidState(targetPos));
           //   ModCyclic.LOGGER.info("Miner:removedByPlayer hacky workaround " + targetPos);
         }
         if (harvested) {
