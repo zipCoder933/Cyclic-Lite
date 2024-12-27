@@ -12,6 +12,7 @@ import com.lothrazar.library.util.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
@@ -201,6 +202,13 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
 
   @Override
   public void load(CompoundTag tag) {
+    // For backwards-compatibility: these weren't always stored, so keep the default
+    if (tag.contains("size", Tag.TAG_INT)) {
+      radius = tag.getInt("size");
+    }
+    if (tag.contains("height", Tag.TAG_INT)) {
+      height = tag.getInt("height");
+    }
     shapeIndex = tag.getInt("shapeIndex");
     tank.readFromNBT(tag.getCompound(NBTFLUID));
     energy.deserializeNBT(tag.getCompound(NBTENERGY));
@@ -210,6 +218,8 @@ public class TileFluidCollect extends TileBlockEntityCyclic implements MenuProvi
 
   @Override
   public void saveAdditional(CompoundTag tag) {
+    tag.putInt("size", radius);
+    tag.putInt("height", height);
     tag.put(NBTENERGY, energy.serializeNBT());
     tag.put(NBTINV, inventory.serializeNBT());
     CompoundTag fluid = new CompoundTag();
