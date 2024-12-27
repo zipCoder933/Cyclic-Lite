@@ -1,6 +1,7 @@
 package com.lothrazar.cyclic.block.shapedata;
 
 import java.util.List;
+import javax.annotation.Nullable;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
 import com.lothrazar.cyclic.data.PreviewOutlineType;
@@ -214,6 +215,7 @@ public class TileShapedata extends TileBlockEntityCyclic implements MenuProvider
     return true;
   }
 
+  @Nullable
   public BlockPos getTarget(int s) {
     ItemStack stackA = inventory.getStackInSlot(s);
     BlockPosDim loc = LocationGpsCard.getPosition(stackA);
