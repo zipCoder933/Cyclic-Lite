@@ -135,6 +135,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     radius = tag.getInt("size");
     height = tag.getInt("height");
     isCurrentlyMining = tag.getBoolean("isCurrentlyMining");
+    shapeIndex = tag.getInt("shapeIndex");
     directionIsUp = tag.getBoolean("directionIsUp");
     energy.deserializeNBT(tag.getCompound(NBTENERGY));
     inventory.deserializeNBT(tag.getCompound(NBTINV));
@@ -146,6 +147,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     tag.putInt("size", radius);
     tag.putInt("height", height);
     tag.putBoolean("isCurrentlyMining", isCurrentlyMining);
+    tag.putInt("shapeIndex", shapeIndex);
     tag.putBoolean("directionIsUp", directionIsUp);
     tag.put(NBTENERGY, energy.serializeNBT());
     tag.put(NBTINV, inventory.serializeNBT());
