@@ -80,17 +80,23 @@ public class TileCableItem extends TileCableBase implements MenuProvider {
         if (outgoingSide == incomingSide) {
           continue;
         }
-        EnumConnectType outgoingConnection = this.getBlockState().getValue(CableBase.FACING_TO_PROPERTY_MAP.get(outgoingSide));
-        if (outgoingConnection.isExtraction() || outgoingConnection.isBlocked()) {
+        if (!canPushToSide(outgoingSide)) {
           continue;
         }
         if (this.moveItems(outgoingSide, FLOW_QTY, sideHandler)) {
           continue incomingSideLoop; //if items have been moved then change side
         }
       }
-      //if no items have been moved then move items in from adjacent
-      this.moveItems(incomingSide, FLOW_QTY, sideHandler);
+      if (canPushToSide(incomingSide)) {
+        // allow items to travel backwards if they have nowhere else to go, instead of getting stuck (see #1677)
+        this.moveItems(incomingSide, FLOW_QTY, sideHandler);
+      }
     }
+  }
+
+  private boolean canPushToSide(Direction outgoingSide) {
+    EnumConnectType outgoingConnection = getBlockState().getValue(CableBase.FACING_TO_PROPERTY_MAP.get(outgoingSide));
+    return !outgoingConnection.isExtraction() && !outgoingConnection.isBlocked();
   }
 
   @Override
