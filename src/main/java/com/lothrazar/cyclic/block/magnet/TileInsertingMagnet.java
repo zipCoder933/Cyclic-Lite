@@ -16,6 +16,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
+import static com.lothrazar.cyclic.block.BlockCyclic.LIT;
+
 public class TileInsertingMagnet extends TileBlockEntityCyclic {
 
   private static final double ENTITY_PULL_DIST = 0.2; //closer than this and nothing happens
@@ -38,15 +40,17 @@ public class TileInsertingMagnet extends TileBlockEntityCyclic {
   }
 
   public static void serverTick(Level level, BlockPos blockPos, BlockState blockState, TileInsertingMagnet e) {
-    Set<Item> filter = new HashSet<>(); // TODO: filter from DATACARD if present
-    final int radius = BlockMagnetPanel.RADIUS.get();
-    int vradius = 0;
-    int x = blockPos.getX();
-    int y = blockPos.getY();
-    int z = blockPos.getZ();
-    AABB axisalignedbb = (new AABB(x, y, z, x + 1, y + 1, z + 1)).inflate(radius, vradius, radius);
-    List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, axisalignedbb);
-    pullEntityList(x + 0.5, y + 0.1, z + 0.5, true, list, filter);
+    if(blockState.getValue(LIT)) {
+      Set<Item> filter = new HashSet<>(); // TODO: filter from DATACARD if present
+      final int radius = BlockMagnetPanel.RADIUS.get();
+      int vradius = 0;
+      int x = blockPos.getX();
+      int y = blockPos.getY();
+      int z = blockPos.getZ();
+      AABB axisalignedbb = (new AABB(x, y, z, x + 1, y + 1, z + 1)).inflate(radius, vradius, radius);
+      List<ItemEntity> list = level.getEntitiesOfClass(ItemEntity.class, axisalignedbb);
+      pullEntityList(x + 0.5, y + 0.1, z + 0.5, true, list, filter);
+    }
   }
 
   public static int pullEntityList(double x, double y, double z, boolean towardsPos, List<ItemEntity> all, Set<Item> filter) {
