@@ -12,6 +12,7 @@ import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.ItemRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.library.cap.CustomEnergyStorage;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import com.lothrazar.library.util.ShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -29,6 +30,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
@@ -135,6 +137,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     radius = tag.getInt("size");
     height = tag.getInt("height");
     isCurrentlyMining = tag.getBoolean("isCurrentlyMining");
+    shapeIndex = tag.getInt("shapeIndex");
     directionIsUp = tag.getBoolean("directionIsUp");
     energy.deserializeNBT(tag.getCompound(NBTENERGY));
     inventory.deserializeNBT(tag.getCompound(NBTINV));
@@ -146,6 +149,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     tag.putInt("size", radius);
     tag.putInt("height", height);
     tag.putBoolean("isCurrentlyMining", isCurrentlyMining);
+    tag.putInt("shapeIndex", shapeIndex);
     tag.putBoolean("directionIsUp", directionIsUp);
     tag.put(NBTENERGY, energy.serializeNBT());
     tag.put(NBTINV, inventory.serializeNBT());
@@ -187,7 +191,7 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
       isCurrentlyMining = true;
       //then keep current target
     }
-    else { // no valid target, back out 
+    else { // no valid target, back out
       updateTargetPos(shape);
       resetProgress();
     }
@@ -195,20 +199,22 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
     if (energy.getEnergyStored() < cost && cost > 0) {
       return false;
     }
+    FakePlayer fakePlayer = this.fakePlayer.get();
     //currentlyMining may have changed, and we are still turned on:
     if (isCurrentlyMining) {
       BlockState targetState = level.getBlockState(targetPos);
-      float relative = targetState.getDestroyProgress(fakePlayer.get(), level, targetPos);
+      float relative = targetState.getDestroyProgress(fakePlayer, level, targetPos);
       //state.getPlayerRelativeBlockHardness(player, worldIn, pos);UtilItemStack.getPlayerRelativeBlockHardness(targetState.getBlock(), targetState, fakePlayer.get(), world, targetPos);
       curBlockDamage += relative;
       //
       //if hardness is relative, jus fekin break it like air eh
       if (curBlockDamage >= 1.0f || relative == 0) {
-        boolean harvested = fakePlayer.get().gameMode.destroyBlock(targetPos);
+        placePlayerBehindBlock(fakePlayer, targetPos);
+        boolean harvested = fakePlayer.gameMode.destroyBlock(targetPos);
         if (!harvested) {
           //            world.destroyBlock(targetPos, true, fakePlayer.get());
           //removedByPlayer
-          harvested = level.getBlockState(targetPos).onDestroyedByPlayer(level, worldPosition, fakePlayer.get(), true, level.getFluidState(worldPosition));
+          harvested = level.getBlockState(targetPos).onDestroyedByPlayer(level, targetPos, fakePlayer, true, level.getFluidState(targetPos));
           //   ModCyclic.LOGGER.info("Miner:removedByPlayer hacky workaround " + targetPos);
         }
         if (harvested) {
@@ -217,14 +223,26 @@ public class TileMiner extends TileBlockEntityCyclic implements MenuProvider {
           resetProgress();
         }
         else {
-          level.destroyBlockProgress(fakePlayer.get().getUUID().hashCode(), targetPos, (int) (curBlockDamage * 10.0F) - 1);
+          level.destroyBlockProgress(fakePlayer.getUUID().hashCode(), targetPos, (int) (curBlockDamage * 10.0F) - 1);
         }
       }
     }
-    else { //is mining is false 
-      level.destroyBlockProgress(fakePlayer.get().getUUID().hashCode(), targetPos, (int) (curBlockDamage * 10.0F) - 1);
+    else { //is mining is false
+      level.destroyBlockProgress(fakePlayer.getUUID().hashCode(), targetPos, (int) (curBlockDamage * 10.0F) - 1);
     }
     return false;
+  }
+
+  private void placePlayerBehindBlock(FakePlayer player, BlockPos targetPos) {
+    // Some items (such as Mattock) use the position of the player relative to the block to determine mining behavior
+    // Place the fake player just behind the block
+    Direction facing = getBlockState().getValue(BlockStateProperties.FACING);
+    player.moveTo(
+        targetPos.getX() - facing.getStepX() + 0.5,
+        targetPos.getY() - facing.getStepY() + 0.5 - player.getEyeHeight(),
+        targetPos.getZ() - facing.getStepZ() + 0.5
+    );
+    player.lookAt(EntityAnchorArgument.Anchor.EYES, Vec3.atCenterOf(targetPos));
   }
 
   /***
