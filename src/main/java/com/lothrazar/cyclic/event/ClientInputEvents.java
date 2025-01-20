@@ -3,13 +3,13 @@ package com.lothrazar.cyclic.event;
 import java.util.List;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
-import com.lothrazar.cyclic.item.crafting.CraftingBagItem;
+//import com.lothrazar.cyclic.item.crafting.CraftingBagItem;
 import com.lothrazar.cyclic.item.crafting.PacketItemGui;
 import com.lothrazar.cyclic.item.crafting.simple.CraftingStickItem;
 import com.lothrazar.cyclic.item.enderbook.PacketItemScroll;
-import com.lothrazar.cyclic.item.food.inventorycake.ItemCakeInventory;
+//import com.lothrazar.cyclic.item.food.inventorycake.ItemCakeInventory;
 import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
-import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
+//import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.lothrazar.cyclic.registry.ClientRegistryCyclic;
 import com.lothrazar.cyclic.registry.EnchantRegistry;
 import com.lothrazar.cyclic.registry.ItemRegistry;
@@ -35,9 +35,9 @@ public class ClientInputEvents {
   @SubscribeEvent
   public void onKeyInput(InputEvent.Key event) {
     EnchantRegistry.LAUNCH.get().onKeyInput(Minecraft.getInstance().player);
-    if (ClientRegistryCyclic.CAKE.consumeClick()) {
-      ItemCakeInventory.onKeyInput(Minecraft.getInstance().player);
-    }
+//    if (ClientRegistryCyclic.CAKE.consumeClick()) {
+//      ItemCakeInventory.onKeyInput(Minecraft.getInstance().player);
+//    }
   }
 
   @SubscribeEvent // MouseScrollEvent -> MouseScrollingEvent
@@ -119,9 +119,7 @@ public class ClientInputEvents {
           event.setCanceled(true);
           //            UtilSound.playSound(ModCyclic.proxy.getClientPlayer(), SoundEvents.UI_BUTTON_CLICK);
         }
-        else if (maybeCharm.getItem() instanceof ItemStorageBag
-            || maybeCharm.getItem() instanceof CraftingStickItem
-            || maybeCharm.getItem() instanceof CraftingBagItem) {
+        else if (maybeCharm.getItem() instanceof CraftingStickItem) {
               PacketRegistry.INSTANCE.sendToServer(new PacketItemGui(slotHit.index, maybeCharm.getItem()));
               event.setCanceled(true);
             }

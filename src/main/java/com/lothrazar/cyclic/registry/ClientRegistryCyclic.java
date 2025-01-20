@@ -39,7 +39,7 @@ import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
 import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
-import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
+//import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -185,12 +185,12 @@ public class ClientRegistryCyclic {
       return ItemLunchbox.getColour(stack);
     }, ItemRegistry.LUNCHBOX.get());
     //
-    event.register((stack, tintIndex) -> {
-      if (tintIndex == 0) { //layer zero is outline, ignore this 
-        return 0xFFFFFFFF;
-      }
-      return ItemStorageBag.getColour(stack);
-    }, ItemRegistry.STORAGE_BAG.get());
+//    event.register((stack, tintIndex) -> {
+//      if (tintIndex == 0) { //layer zero is outline, ignore this
+//        return 0xFFFFFFFF;
+//      }
+//      return ItemStorageBag.getColour(stack);
+//    }, ItemRegistry.STORAGE_BAG.get());
     //
     event.register((stack, tintIndex) -> {
       if (stack.hasTag() && tintIndex > 0) {

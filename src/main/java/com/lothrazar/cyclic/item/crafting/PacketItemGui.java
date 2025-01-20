@@ -5,8 +5,8 @@ import com.lothrazar.cyclic.item.crafting.simple.CraftingStickContainer;
 import com.lothrazar.cyclic.item.crafting.simple.CraftingStickContainerProvider;
 import com.lothrazar.cyclic.item.lunchbox.ContainerProviderLunchbox;
 import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
-import com.lothrazar.cyclic.item.storagebag.ContainerStorageBag;
-import com.lothrazar.cyclic.item.storagebag.StorageBagContainerProvider;
+//import com.lothrazar.cyclic.item.storagebag.ContainerStorageBag;
+//import com.lothrazar.cyclic.item.storagebag.StorageBagContainerProvider;
 import com.lothrazar.cyclic.registry.ItemRegistry;
 import com.lothrazar.library.packet.PacketFlib;
 import net.minecraft.network.FriendlyByteBuf;
@@ -42,12 +42,12 @@ public class PacketItemGui extends PacketFlib {
         }
         //else it is not edible so do nothing
       } // end of lunchbox flow
-      else if (message.item == ItemRegistry.STORAGE_BAG.get() && (player.containerMenu instanceof ContainerStorageBag) == false) {
-        NetworkHooks.openScreen(player, new StorageBagContainerProvider(message.slot), buf -> buf.writeInt(message.slot));
-      }
-      else if (message.item == ItemRegistry.CRAFTING_BAG.get() && (player.containerMenu instanceof CraftingBagContainer) == false) {
-        NetworkHooks.openScreen(player, new CraftingBagContainerProvider(message.slot), buf -> buf.writeInt(message.slot));
-      }
+//      else if (message.item == ItemRegistry.STORAGE_BAG.get() && (player.containerMenu instanceof ContainerStorageBag) == false) {
+//        NetworkHooks.openScreen(player, new StorageBagContainerProvider(message.slot), buf -> buf.writeInt(message.slot));
+//      }
+//      else if (message.item == ItemRegistry.CRAFTING_BAG.get() && (player.containerMenu instanceof CraftingBagContainer) == false) {
+//        NetworkHooks.openScreen(player, new CraftingBagContainerProvider(message.slot), buf -> buf.writeInt(message.slot));
+//      }
       else if (message.item == ItemRegistry.CRAFTING_STICK.get() && (player.containerMenu instanceof CraftingStickContainer) == false) {
         NetworkHooks.openScreen(player, new CraftingStickContainerProvider(message.slot), buf -> buf.writeInt(message.slot));
       }

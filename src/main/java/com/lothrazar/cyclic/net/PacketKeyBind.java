@@ -26,7 +26,7 @@ package com.lothrazar.cyclic.net;
 import java.util.function.Supplier;
 import com.lothrazar.cyclic.event.PlayerDataEvents;
 import com.lothrazar.cyclic.filesystem.CyclicFile;
-import com.lothrazar.cyclic.item.food.inventorycake.ContainerProviderCake;
+//import com.lothrazar.cyclic.item.food.inventorycake.ContainerProviderCake;
 import com.lothrazar.library.packet.PacketFlib;
 import com.lothrazar.library.util.ChatUtil;
 import net.minecraft.network.FriendlyByteBuf;
@@ -51,21 +51,21 @@ public class PacketKeyBind extends PacketFlib {
   }
 
   public static void handle(PacketKeyBind message, Supplier<NetworkEvent.Context> ctx) {
-    ctx.get().enqueueWork(() -> {
+    ctx.get().enqueueWork(() -> {//TODO: (CYCLIC_LITE) Keep this?
       //      ContainerCraf
       //rotate type
-      ServerPlayer sender = ctx.get().getSender();
+//      ServerPlayer sender = ctx.get().getSender();
       // datfile
-      CyclicFile datFile = PlayerDataEvents.getOrCreate(sender);
-      if (datFile.storageVisible) {
-        NetworkHooks.openScreen(sender, new ContainerProviderCake(), sender.blockPosition());
-      }
-      else {
-        ChatUtil.addServerChatMessage(sender, "cyclic.unlocks.extended.locked");
+//      CyclicFile datFile = PlayerDataEvents.getOrCreate(sender);
+//      if (datFile.storageVisible) {
+//        NetworkHooks.openScreen(sender, new ContainerProviderCake(), sender.blockPosition());
+//      }
+//      else {
+//        ChatUtil.addServerChatMessage(sender, "cyclic.unlocks.extended.locked");
         //        Triple<String, Integer, ItemStack> result = CharmUtil.isCurioOrInventory(sender, ItemRegistry.CRAFTING_STICK.get());
         //        if (!result.getRight().isEmpty())
         //          NetworkHooks.openGui(sender, new CraftingStickContainerProvider(null), sender.blockPosition());
-      }
+//      }
     });
     message.done(ctx);
   }

@@ -20,7 +20,6 @@ import com.lothrazar.cyclic.item.enderbook.EnderBookItem;
 import com.lothrazar.cyclic.item.equipment.GlowingHelmetItem;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 import com.lothrazar.cyclic.item.food.LoftyStatureApple;
-import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.lothrazar.cyclic.net.BlockFacadeMessage;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.EnchantRegistry;
@@ -571,31 +570,31 @@ public class ItemEvents {
 
   @SubscribeEvent
   public void onPlayerPickup(EntityItemPickupEvent event) {
-    if (event.getEntity() instanceof Player) {
-      Player player = event.getEntity();
-      ItemEntity itemEntity = event.getItem();
-      ItemStack resultStack = itemEntity.getItem();
-      int origCount = resultStack.getCount();
-      for (Integer i : ItemStorageBag.getAllBagSlots(player)) {
-        ItemStack bag = player.getInventory().getItem(i);
-        switch (ItemStorageBag.getPickupMode(bag)) {
-          case EVERYTHING:
-            resultStack = ItemStorageBag.tryInsert(bag, resultStack);
-          break;
-          case FILTER:
-            resultStack = ItemStorageBag.tryFilteredInsert(bag, resultStack);
-          break;
-          case NOTHING:
-          break;
-        }
-        if (resultStack.isEmpty()) {
-          break;
-        }
-      }
-      if (resultStack.getCount() != origCount) {
-        itemEntity.setItem(resultStack);
-        event.setResult(Result.ALLOW);
-      }
-    }
+//    if (event.getEntity() instanceof Player) {
+//      Player player = event.getEntity();
+//      ItemEntity itemEntity = event.getItem();
+//      ItemStack resultStack = itemEntity.getItem();
+//      int origCount = resultStack.getCount();
+//      for (Integer i : ItemStorageBag.getAllBagSlots(player)) {
+//        ItemStack bag = player.getInventory().getItem(i);
+//        switch (ItemStorageBag.getPickupMode(bag)) {
+//          case EVERYTHING:
+//            resultStack = ItemStorageBag.tryInsert(bag, resultStack);
+//          break;
+//          case FILTER:
+//            resultStack = ItemStorageBag.tryFilteredInsert(bag, resultStack);
+//          break;
+//          case NOTHING:
+//          break;
+//        }
+//        if (resultStack.isEmpty()) {
+//          break;
+//        }
+//      }
+//      if (resultStack.getCount() != origCount) {
+//        itemEntity.setItem(resultStack);
+//        event.setResult(Result.ALLOW);
+//      }
+//    }
   }
 }

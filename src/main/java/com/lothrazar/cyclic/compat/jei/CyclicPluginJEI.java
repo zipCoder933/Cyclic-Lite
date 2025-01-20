@@ -15,7 +15,7 @@ import com.lothrazar.cyclic.block.melter.ScreenMelter;
 import com.lothrazar.cyclic.block.solidifier.ContainerSolidifier;
 import com.lothrazar.cyclic.block.solidifier.ScreenSolidifier;
 import com.lothrazar.cyclic.block.workbench.ContainerWorkbench;
-import com.lothrazar.cyclic.item.crafting.CraftingBagContainer;
+//import com.lothrazar.cyclic.item.crafting.CraftingBagContainer;
 import com.lothrazar.cyclic.item.crafting.simple.CraftingStickContainer;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.CyclicRecipeType;
@@ -72,7 +72,7 @@ public class CyclicPluginJEI implements IModPlugin {
   public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 //    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.PACKAGER.get()), PackagerRecipeCategory.TYPE);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRAFTER.get()), RecipeTypes.CRAFTING);
-    registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_BAG.get()), RecipeTypes.CRAFTING);
+//    registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_BAG.get()), RecipeTypes.CRAFTING);
     registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_STICK.get()), RecipeTypes.CRAFTING);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.WORKBENCH.get()), RecipeTypes.CRAFTING);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.MELTER.get()), MelterRecipeCategory.TYPE);
@@ -131,9 +131,9 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipeTransferHandler(ContainerSolidifier.class, MenuTypeRegistry.SOLIDIFIER.get(), SolidifierRecipeCategory.TYPE,
         0, 3, //recipeSLotStart, recipeSlotCount
         4, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
-    registry.addRecipeTransferHandler(CraftingBagContainer.class, MenuTypeRegistry.CRAFTING_BAG.get(), RecipeTypes.CRAFTING,
-        1, 9, //recipeSLotStart, recipeSlotCount
-        10, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
+//    registry.addRecipeTransferHandler(CraftingBagContainer.class, MenuTypeRegistry.CRAFTING_BAG.get(), RecipeTypes.CRAFTING,
+//        1, 9, //recipeSLotStart, recipeSlotCount
+//        10, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
     registry.addRecipeTransferHandler(CraftingStickContainer.class, MenuTypeRegistry.CRAFTING_STICK.get(), RecipeTypes.CRAFTING,
         1, 9, //recipeSLotStart, recipeSlotCount
         10, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount

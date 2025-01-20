@@ -7,7 +7,7 @@ import com.lothrazar.cyclic.item.datacard.filter.PacketFilterCard;
 import com.lothrazar.cyclic.item.enderbook.PacketItemScroll;
 import com.lothrazar.cyclic.item.random.PacketRandomize;
 import com.lothrazar.cyclic.item.scythe.PacketScythe;
-import com.lothrazar.cyclic.item.storagebag.PacketStorageBagScreen;
+//import com.lothrazar.cyclic.item.storagebag.PacketStorageBagScreen;
 import com.lothrazar.cyclic.item.transporter.PacketChestSack;
 import com.lothrazar.cyclic.net.BlockFacadeMessage;
 import com.lothrazar.cyclic.net.PacketCraftAction;
@@ -60,7 +60,7 @@ public class PacketRegistry {
     INSTANCE.registerMessage(id++, PacketTileString.class, PacketTileString::encode, PacketTileString::decode, PacketTileString::handle);
     INSTANCE.registerMessage(id++, PacketSyncEnergy.class, PacketSyncEnergy::encode, PacketSyncEnergy::decode, PacketSyncEnergy::handle);
 //    INSTANCE.registerMessage(id++, PacketTileInventoryToClient.class, PacketTileInventoryToClient::encode, PacketTileInventoryToClient::decode, PacketTileInventoryToClient::handle);
-    INSTANCE.registerMessage(id++, PacketStorageBagScreen.class, PacketStorageBagScreen::encode, PacketStorageBagScreen::decode, PacketStorageBagScreen::handle);
+//    INSTANCE.registerMessage(id++, PacketStorageBagScreen.class, PacketStorageBagScreen::encode, PacketStorageBagScreen::decode, PacketStorageBagScreen::handle);
     INSTANCE.registerMessage(id++, PacketCraftAction.class, PacketCraftAction::encode, PacketCraftAction::decode, PacketCraftAction::handle);
     INSTANCE.registerMessage(id++, PacketFilterCard.class, PacketFilterCard::encode, PacketFilterCard::decode, PacketFilterCard::handle);
     INSTANCE.registerMessage(id++, PacketItemScroll.class, PacketItemScroll::encode, PacketItemScroll::decode, PacketItemScroll::handle);
