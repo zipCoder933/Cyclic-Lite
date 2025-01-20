@@ -191,28 +191,35 @@ public class ItemEvents {
     if (shooter instanceof Player) {
       Player ply = (Player) shooter;
       //      ply.isSprinting()
-      ItemStack find = CharmUtil.getIfEnabled(ply, ItemRegistry.QUIVER_DMG.get());
-      if (!find.isEmpty() && arrow instanceof AbstractArrow) {
-        //        ModCyclic.LOGGER.info("before " + event.getArrow().getDamage());
-        AbstractArrow arroww = (AbstractArrow) arrow;
-        double boost = arroww.getBaseDamage() / 2;
-        arroww.setBaseDamage(arroww.getBaseDamage() + boost);
-        ItemStackUtil.damageItem(ply, find);
-      }
-      find = CharmUtil.getIfEnabled(ply, ItemRegistry.QUIVER_LIT.get());
-      if (!find.isEmpty() && world.random.nextDouble() < 0.25) {
-        if (hit == HitResult.Type.ENTITY && ((EntityHitResult) event.getRayTraceResult()).getEntity() instanceof LivingEntity) {
-          LivingEntity target = (LivingEntity) ((EntityHitResult) event.getRayTraceResult()).getEntity();
-          target.setGlowingTag(true);
-          //          ModCyclic.LOGGER.info(event.getEntity() + " eeeee" + event.getArrow().getDamage());
-          BlockPos p = target.blockPosition();
-          // lightning? 
-          LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
-          lightningboltentity.moveTo(p.getX(), p.getY(), p.getZ());
-          world.addFreshEntity(lightningboltentity);
-          ItemStackUtil.damageItem(ply, find);
-        }
-      }
+      /**
+       * Quiver hit event
+       */
+//      ItemStack find = CharmUtil.getIfEnabled(ply, ItemRegistry.QUIVER_DMG.get());
+//      if (!find.isEmpty() && arrow instanceof AbstractArrow) {
+//        //        ModCyclic.LOGGER.info("before " + event.getArrow().getDamage());
+//        AbstractArrow arroww = (AbstractArrow) arrow;
+//        double boost = arroww.getBaseDamage() / 2;
+//        arroww.setBaseDamage(arroww.getBaseDamage() + boost);
+//        ItemStackUtil.damageItem(ply, find);
+//      }
+//      find = CharmUtil.getIfEnabled(ply, ItemRegistry.QUIVER_LIT.get());
+//      if (!find.isEmpty() && world.random.nextDouble() < 0.25) {
+//        if (hit == HitResult.Type.ENTITY && ((EntityHitResult) event.getRayTraceResult()).getEntity() instanceof LivingEntity) {
+//          LivingEntity target = (LivingEntity) ((EntityHitResult) event.getRayTraceResult()).getEntity();
+//          target.setGlowingTag(true);
+//          //          ModCyclic.LOGGER.info(event.getEntity() + " eeeee" + event.getArrow().getDamage());
+//          BlockPos p = target.blockPosition();
+//          // lightning?
+//          LightningBolt lightningboltentity = EntityType.LIGHTNING_BOLT.create(world);
+//          lightningboltentity.moveTo(p.getX(), p.getY(), p.getZ());
+//          world.addFreshEntity(lightningboltentity);
+//          ItemStackUtil.damageItem(ply, find);
+//        }
+//      }
+
+
+
+
     }
   }
 
