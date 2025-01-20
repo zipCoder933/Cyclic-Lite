@@ -368,7 +368,7 @@ public class ItemRegistry {
     //Charms
     public static final RegistryObject<Item> CHORUS_FLIGHT = ITEMS.register("chorus_flight", () -> new EdibleFlightItem(new Item.Properties()));
     public static final RegistryObject<Item> CHORUS_SPECTRAL = ITEMS.register("chorus_spectral", () -> new EdibleSpecItem(new Item.Properties()));
-    public static final RegistryObject<Item> CHARM_LONGFALL = ITEMS.register("charm_longfall", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
+//    public static final RegistryObject<Item> CHARM_LONGFALL = ITEMS.register("charm_longfall", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
     public static final RegistryObject<Item> CHARM_CREEPER = ITEMS.register("charm_creeper", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
     public static final RegistryObject<Item> CHARM_STONE = ITEMS.register("charm_stone", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
     public static final RegistryObject<Item> CHARM_ANTIPOTION = ITEMS.register("charm_antipotion", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
@@ -376,7 +376,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CHARM_CRIT = ITEMS.register("charm_crit", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> QUIVER_DMG = ITEMS.register("quiver_damage", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> QUIVER_LIT = ITEMS.register("quiver_lightning", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
-    public static final RegistryObject<Item> CLOAK_INVISIBLE = ITEMS.register("charm_invisible", () -> new CharmInvisible(new Item.Properties().durability(256 * 4)));
+//    public static final RegistryObject<Item> CLOAK_INVISIBLE = ITEMS.register("charm_invisible", () -> new CharmInvisible(new Item.Properties().durability(256 * 4)));
     public static final RegistryObject<Item> CHARM_MAGICDEF = ITEMS.register("charm_magicdefense", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
     public static final RegistryObject<Item> CHARM_STARVATION = ITEMS.register("charm_starvation", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 256)));
     public static final RegistryObject<Item> CHARM_VENOM = ITEMS.register("charm_venom", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
@@ -388,15 +388,15 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CHARM_XPSPEED = ITEMS.register("charm_xp_speed", () -> new ItemBaseToggle(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CHARM_XPSTOPPER = ITEMS.register("charm_xp_blocker", () -> new ItemBaseToggle(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> CHARM_TORCH = ITEMS.register("charm_torch", () -> new AutoTorchItem(new Item.Properties().durability(256 * 4)));
-    public static final RegistryObject<Item> CHARM_TORCH_CAVE = ITEMS.register("charm_torch_cave", () -> new AutoCaveTorchItem(new Item.Properties().durability(256 * 4)));
-    public static final RegistryObject<Item> CHARM_HOME = ITEMS.register("charm_home", () -> new EnderWingItem(new Item.Properties().durability(256)));
+//    public static final RegistryObject<Item> CHARM_TORCH_CAVE = ITEMS.register("charm_torch_cave", () -> new AutoCaveTorchItem(new Item.Properties().durability(256 * 4)));
+//    public static final RegistryObject<Item> CHARM_HOME = ITEMS.register("charm_home", () -> new EnderWingItem(new Item.Properties().durability(256)));
     public static final RegistryObject<Item> CHARM_WORLD = ITEMS.register("charm_world", () -> new EnderWingSp(new Item.Properties().durability(256)));
-    public static final RegistryObject<Item> ANTIGRAVITY = ITEMS.register("antigravity", () -> new AirAntiGravity(new Item.Properties().durability(1024 * 4)));
+//    public static final RegistryObject<Item> ANTIGRAVITY = ITEMS.register("antigravity", () -> new AirAntiGravity(new Item.Properties().durability(1024 * 4)));
     public static final RegistryObject<Item> CHARM_VOID = ITEMS.register("charm_void", () -> new CharmVoid(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> CHARM_ANTIDOTE = ITEMS.register("charm_antidote", () -> new CharmAntidote(new Item.Properties().durability(64)));
+//    public static final RegistryObject<Item> CHARM_ANTIDOTE = ITEMS.register("charm_antidote", () -> new CharmAntidote(new Item.Properties().durability(64)));
     public static final RegistryObject<Item> CHARM_FIRE = ITEMS.register("charm_fire", () -> new CharmFire(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> CHARM_WITHER = ITEMS.register("charm_wither", () -> new CharmWither(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> CHARM_ULTIMATE = ITEMS.register("charm_ultimate", () -> new CharmOverpowered(new Item.Properties().durability(256)));
+//    public static final RegistryObject<Item> CHARM_WITHER = ITEMS.register("charm_wither", () -> new CharmWither(new Item.Properties().durability(64)));
+//    public static final RegistryObject<Item> CHARM_ULTIMATE = ITEMS.register("charm_ultimate", () -> new CharmOverpowered(new Item.Properties().durability(256)));
 
 
 //    public static final RegistryObject<Item> ELEVATION_WAND = ITEMS.register("elevation_wand", () -> new ElevationWandItem(new Item.Properties().durability(256)));

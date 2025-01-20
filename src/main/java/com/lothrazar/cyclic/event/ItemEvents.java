@@ -256,9 +256,9 @@ public class ItemEvents {
         //explosion thingy
         this.damageFinder(event, player, ItemRegistry.CHARM_CREEPER.get(), 0);
       }
-      if (src.is(DamageTypes.FALL) || src.is(DamageTypes.CACTUS) || src.is(DamageTypes.SWEET_BERRY_BUSH)) {
-        this.damageFinder(event, player, ItemRegistry.CHARM_LONGFALL.get(), 0);
-      }
+//      if (src.is(DamageTypes.FALL) || src.is(DamageTypes.CACTUS) || src.is(DamageTypes.SWEET_BERRY_BUSH)) {
+//        this.damageFinder(event, player, ItemRegistry.CHARM_LONGFALL.get(), 0);
+//      }
       else if (src.is(DamageTypes.FLY_INTO_WALL) || src.is(DamageTypes.IN_WALL)) {
         //stone lung
         this.damageFinder(event, player, ItemRegistry.CHARM_STONE.get(), 0);
@@ -282,7 +282,7 @@ public class ItemEvents {
       }
       else if (src.is(DamageTypes.LAVA) || src.is(DamageTypes.IN_FIRE) || src.is(DamageTypes.ON_FIRE)) {
         this.damageFinder(event, player, ItemRegistry.CHARM_FIRE.get(), 0);
-        this.damageFinder(event, player, ItemRegistry.CHARM_ULTIMATE.get(), 0);
+//        this.damageFinder(event, player, ItemRegistry.CHARM_ULTIMATE.get(), 0);
       }
     }
     else if (src.getEntity() instanceof Player) {
