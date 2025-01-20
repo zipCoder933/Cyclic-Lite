@@ -1,26 +1,33 @@
 {
+	"credit": "Made with Blockbench",
 	"parent": "block/block",
-
+	"ambientocclusion": false,
 	"textures": {
 		"side": "blocks/stone",
 		"base_up": "blocks/stone",
-		"down": "blocks/stone",
 		"particle": "blocks/stone"
 	},
-
 	"elements": [
 		{
-			"name": "Base",
-			"from": [ 0, 0, 0 ], 
-			"to": [ 16, 2, 16 ], 
+			"from": [0, 0, 0],
+			"to": [16, 1, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 16, 0]},
 			"faces": {
-				"north": { "texture": "#base_up" },
-				"east": { "texture": "#base_up" },
-				"south": { "texture": "#base_up" },
-				"west": { "texture": "#base_up" },
-				"up": { "texture": "#base_up" },
-				"down": { "texture": "#down", "cullface": "down" }
+				"north": {"uv": [0, 15, 16, 16], "texture": "#side"},
+				"east": {"uv": [0, 15, 16, 16], "texture": "#side"},
+				"south": {"uv": [0, 15, 16, 16], "texture": "#side"},
+				"west": {"uv": [0, 15, 16, 16], "texture": "#side"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#base_up"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#base_up", "cullface": "south"}
 			}
+		}
+	],
+	"groups": [
+		{
+			"name": "spikes_on",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
 		}
 	]
 }

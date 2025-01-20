@@ -1,5 +1,8 @@
 {
 	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
+	"textures": {
+		"texture": "cable_item"
+	},
 	"elements": [
 		{
 			"name": "cubeOuterH",
@@ -11,6 +14,14 @@
 				"up": {"uv": [6, 0, 10, 6], "texture": "#texture", "tintindex": 0},
 				"down": {"uv": [6, 10, 10, 16], "texture": "#texture", "tintindex": 0}
 			}
+		}
+	],
+	"groups": [
+		{
+			"name": "cable_side",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
 		}
 	]
 }
