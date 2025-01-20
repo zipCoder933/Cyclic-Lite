@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-
-    "oio",
+    "iii",
+    "ooo",
     "o o"
   ],
   "key": {
     "i": {
-      "item":"cyclic:gem_amber"
+      "item": "minecraft:gold_ingot"
     },
     "o": {
-      "item":"minecraft:glowstone"
+      "item": "minecraft:glowstone"
     }
   },
   "result": {

@@ -54,7 +54,8 @@ public class TilePotionBeacon extends TileBlockEntityCyclic implements MenuProvi
 
     @Override
     public boolean isItemValid(int slot, ItemStack stack) {
-      return stack.getItem() == ItemRegistry.ENTITY_DATA.get();
+      return true;
+      //stack.getItem() == ItemRegistry.ENTITY_DATA.get()
     }
   };
   /**

@@ -44,7 +44,8 @@ public class TileCableFluid extends TileCableBase implements MenuProvider {
 
     @Override
     public boolean isItemValid(int slot, ItemStack stack) {
-      return stack.getItem() == ItemRegistry.FILTER_DATA.get();
+//      return stack.getItem() == ItemRegistry.FILTER_DATA.get();
+      return true;
     }
   };
   private final Map<Direction, LazyOptional<FluidTankBase>> flow = new ConcurrentHashMap<>();

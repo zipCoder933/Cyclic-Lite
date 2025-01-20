@@ -2,9 +2,9 @@ package com.lothrazar.cyclic.registry;
 
 import com.lothrazar.cyclic.ModCyclic;
 //import com.lothrazar.cyclic.block.conveyor.ConveyorItemEntity;
-import com.lothrazar.cyclic.item.boomerang.BoomerangEntityCarry;
-import com.lothrazar.cyclic.item.boomerang.BoomerangEntityDamage;
-import com.lothrazar.cyclic.item.boomerang.BoomerangEntityStun;
+//import com.lothrazar.cyclic.item.boomerang.BoomerangEntityCarry;
+//import com.lothrazar.cyclic.item.boomerang.BoomerangEntityDamage;
+//import com.lothrazar.cyclic.item.boomerang.BoomerangEntityStun;
 import com.lothrazar.cyclic.item.elemental.DarkFireEntity;
 import com.lothrazar.cyclic.item.elemental.FireEntity;
 //import com.lothrazar.cyclic.item.elemental.FishingEnderEntity;
@@ -37,24 +37,24 @@ public class EntityRegistry {
       .setTrackingRange(128)
       .sized(.6F, .6F)
       .build("torch_bolt"));
-  public static final RegistryObject<EntityType<BoomerangEntityStun>> BOOMERANG_STUN = ENTITIES.register("boomerang_stun", () -> EntityType.Builder.<BoomerangEntityStun> of(BoomerangEntityStun::new, MobCategory.MISC)
-      .setShouldReceiveVelocityUpdates(true)
-      .setUpdateInterval(1)
-      .setTrackingRange(128)
-      .sized(.6F, .6F)
-      .build("boomerang_stun"));
-  public static final RegistryObject<EntityType<BoomerangEntityCarry>> BOOMERANG_CARRY = ENTITIES.register("boomerang_carry", () -> EntityType.Builder.<BoomerangEntityCarry> of(BoomerangEntityCarry::new, MobCategory.MISC)
-      .setShouldReceiveVelocityUpdates(true)
-      .setUpdateInterval(1)
-      .setTrackingRange(128)
-      .sized(.6F, .6F)
-      .build("boomerang_carry"));
-  public static final RegistryObject<EntityType<BoomerangEntityDamage>> BOOMERANG_DAMAGE = ENTITIES.register("boomerang_damage", () -> EntityType.Builder.<BoomerangEntityDamage> of(BoomerangEntityDamage::new, MobCategory.MISC)
-      .setShouldReceiveVelocityUpdates(true)
-      .setUpdateInterval(1)
-      .setTrackingRange(128)
-      .sized(.6F, .6F)
-      .build("boomerang_damage"));
+//  public static final RegistryObject<EntityType<BoomerangEntityStun>> BOOMERANG_STUN = ENTITIES.register("boomerang_stun", () -> EntityType.Builder.<BoomerangEntityStun> of(BoomerangEntityStun::new, MobCategory.MISC)
+//      .setShouldReceiveVelocityUpdates(true)
+//      .setUpdateInterval(1)
+//      .setTrackingRange(128)
+//      .sized(.6F, .6F)
+//      .build("boomerang_stun"));
+//  public static final RegistryObject<EntityType<BoomerangEntityCarry>> BOOMERANG_CARRY = ENTITIES.register("boomerang_carry", () -> EntityType.Builder.<BoomerangEntityCarry> of(BoomerangEntityCarry::new, MobCategory.MISC)
+//      .setShouldReceiveVelocityUpdates(true)
+//      .setUpdateInterval(1)
+//      .setTrackingRange(128)
+//      .sized(.6F, .6F)
+//      .build("boomerang_carry"));
+//  public static final RegistryObject<EntityType<BoomerangEntityDamage>> BOOMERANG_DAMAGE = ENTITIES.register("boomerang_damage", () -> EntityType.Builder.<BoomerangEntityDamage> of(BoomerangEntityDamage::new, MobCategory.MISC)
+//      .setShouldReceiveVelocityUpdates(true)
+//      .setUpdateInterval(1)
+//      .setTrackingRange(128)
+//      .sized(.6F, .6F)
+//      .build("boomerang_damage"));
   public static final RegistryObject<EntityType<EntityDungeonEye>> DUNGEON = ENTITIES.register("dungeon", () -> EntityType.Builder.<EntityDungeonEye> of(EntityDungeonEye::new, MobCategory.MISC)
       .setShouldReceiveVelocityUpdates(true)
       .setUpdateInterval(1)

@@ -158,7 +158,7 @@ public abstract class CharmBase extends ItemBaseToggle {
   }
 
   static void charmSwimming(Player player) {
-    toggleAttribute(player, ItemRegistry.FLIPPERS.get(), ForgeMod.SWIM_SPEED.get(), ID_SPEED, 3, 0, MUL);
+    //toggleAttribute(player, ItemRegistry.FLIPPERS.get(), ForgeMod.SWIM_SPEED.get(), ID_SPEED, 3, 0, MUL);
   }
 
   static void charmGravity(Player player) {

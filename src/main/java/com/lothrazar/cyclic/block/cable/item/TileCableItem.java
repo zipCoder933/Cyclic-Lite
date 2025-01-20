@@ -36,7 +36,8 @@ public class TileCableItem extends TileCableBase implements MenuProvider {
 
     @Override
     public boolean isItemValid(int slot, ItemStack stack) {
-      return stack.getItem() == ItemRegistry.FILTER_DATA.get();
+     // return stack.getItem() == ItemRegistry.FILTER_DATA.get();
+      return true;
     }
   };
   private Map<Direction, LazyOptional<IItemHandler>> flow = new ConcurrentHashMap<>();
