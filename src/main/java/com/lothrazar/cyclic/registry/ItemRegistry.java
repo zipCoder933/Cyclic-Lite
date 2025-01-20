@@ -398,7 +398,7 @@ public class ItemRegistry {
   public static final RegistryObject<Item> TRASH = ITEMS.register("trash", () -> new BlockItem(BlockRegistry.TRASH.get(), new Item.Properties()));
   public static final RegistryObject<Item> BATTERY_INFINITE = ITEMS.register("battery_infinite", () -> new BlockItem(BlockRegistry.BATTERY_INFINITE.get(), new Item.Properties()));
   public static final RegistryObject<Item> ITEM_INFINITE = ITEMS.register("item_infinite", () -> new BlockItem(BlockRegistry.ITEM_INFINITE.get(), new Item.Properties()));
-  public static final RegistryObject<Item> DICE = ITEMS.register("dice", () -> new BlockItem(BlockRegistry.DICE.get(), new Item.Properties()));
+//  public static final RegistryObject<Item> DICE = ITEMS.register("dice", () -> new BlockItem(BlockRegistry.DICE.get(), new Item.Properties()));
   public static final RegistryObject<Item> TERRA_PRETA = ITEMS.register("terra_preta", () -> new BlockItem(BlockRegistry.TERRA_PRETA.get(), new Item.Properties()));
   public static final RegistryObject<Item> FIREPLACE = ITEMS.register("fireplace", () -> new BlockItem(BlockRegistry.FIREPLACE.get(), new Item.Properties()));
   public static final RegistryObject<Item> CRAFTER = ITEMS.register("crafter", () -> new BlockItem(BlockRegistry.CRAFTER.get(), new Item.Properties()));

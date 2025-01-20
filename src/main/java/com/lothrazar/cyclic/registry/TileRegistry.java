@@ -28,7 +28,7 @@ import com.lothrazar.cyclic.block.detectmoon.TileMoon;
 import com.lothrazar.cyclic.block.detectorentity.TileDetector;
 import com.lothrazar.cyclic.block.detectoritem.TileDetectorItem;
 import com.lothrazar.cyclic.block.detectweather.TileWeather;
-import com.lothrazar.cyclic.block.dice.TileDice;
+//import com.lothrazar.cyclic.block.dice.TileDice;
 import com.lothrazar.cyclic.block.disenchant.TileDisenchant;
 import com.lothrazar.cyclic.block.dropper.TileDropper;
 import com.lothrazar.cyclic.block.enderctrl.TileEnderCtrl;
@@ -132,7 +132,7 @@ public class TileRegistry {
   public static final RegistryObject<BlockEntityType<TilePotionBeacon>> BEACON = TILES.register("beacon", () -> BlockEntityType.Builder.of(TilePotionBeacon::new, BlockRegistry.BEACON.get()).build(null));
   public static final RegistryObject<BlockEntityType<TileBatteryInfinite>> BATTERY_INFINITE = TILES.register("battery_infinite", () -> BlockEntityType.Builder.of(TileBatteryInfinite::new, BlockRegistry.BATTERY_INFINITE.get()).build(null));
   public static final RegistryObject<BlockEntityType<TileItemInfinite>> ITEM_INFINITE = TILES.register("item_infinite", () -> BlockEntityType.Builder.of(TileItemInfinite::new, BlockRegistry.ITEM_INFINITE.get()).build(null));
-  public static final RegistryObject<BlockEntityType<TileDice>> DICE = TILES.register("dice", () -> BlockEntityType.Builder.of(TileDice::new, BlockRegistry.DICE.get()).build(null));
+//  public static final RegistryObject<BlockEntityType<TileDice>> DICE = TILES.register("dice", () -> BlockEntityType.Builder.of(TileDice::new, BlockRegistry.DICE.get()).build(null));
   public static final RegistryObject<BlockEntityType<TileDropper>> DROPPER = TILES.register("dropper", () -> BlockEntityType.Builder.of(TileDropper::new, BlockRegistry.DROPPER.get()).build(null));
   public static final RegistryObject<BlockEntityType<TileForester>> FORESTER = TILES.register("forester", () -> BlockEntityType.Builder.of(TileForester::new, BlockRegistry.FORESTER.get()).build(null));
   public static final RegistryObject<BlockEntityType<TileMiner>> MINER = TILES.register("miner", () -> BlockEntityType.Builder.of(TileMiner::new, BlockRegistry.MINER.get()).build(null));

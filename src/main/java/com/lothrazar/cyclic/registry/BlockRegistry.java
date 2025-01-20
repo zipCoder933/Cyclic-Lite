@@ -47,7 +47,6 @@ import com.lothrazar.cyclic.block.detectmoon.BlockMoon;
 import com.lothrazar.cyclic.block.detectorentity.BlockDetector;
 import com.lothrazar.cyclic.block.detectoritem.BlockDetectorItem;
 import com.lothrazar.cyclic.block.detectweather.BlockWeather;
-import com.lothrazar.cyclic.block.dice.BlockDice;
 import com.lothrazar.cyclic.block.disenchant.BlockDisenchant;
 import com.lothrazar.cyclic.block.dropper.BlockDropper;
 import com.lothrazar.cyclic.block.enderctrl.BlockEnderCtrl;
@@ -311,7 +310,7 @@ public class BlockRegistry {
   public static final RegistryObject<Block> EXPERIENCE_PYLON = BLOCKS.register("experience_pylon", () -> new BlockExpPylon(Block.Properties.of()));
   public static final RegistryObject<Block> FAN = BLOCKS.register("fan", () -> new BlockFan(Block.Properties.of()));
   public static final RegistryObject<Block> TRASH = BLOCKS.register("trash", () -> new BlockTrash(Block.Properties.of()));
-  public static final RegistryObject<Block> DICE = BLOCKS.register("dice", () -> new BlockDice(Block.Properties.of()));
+//  public static final RegistryObject<Block> DICE = BLOCKS.register("dice", () -> new BlockDice(Block.Properties.of()));
   public static final RegistryObject<Block> SCREEN = BLOCKS.register("screen", () -> new BlockScreentext(Block.Properties.of()));
   public static final RegistryObject<Block> DETECTOR_ITEM = BLOCKS.register("detector_item", () -> new BlockDetectorItem(Block.Properties.of()));
   public static final RegistryObject<Block> DETECTOR_ENTITY = BLOCKS.register("detector_entity", () -> new BlockDetector(Block.Properties.of()));
