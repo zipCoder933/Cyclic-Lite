@@ -1,6 +1,6 @@
 {
   "_comments": "Thanks to https://tterrag.com/lang2json/",
-  "itemGroup.cyclic": "Cyclic Blocks",
+  "itemGroup.cyclic": "Cyclic",
   "itemGroup.cyclicitems": "Cyclic Items",
   "curios.identifier.quiver": "Quiver",
   "curios.identifier.feet": "Feet",
@@ -61,7 +61,7 @@
   "item.cyclic.fireball":"Fireball",
   "item.cyclic.fireball.tooltip":"Fire in your hands",
   "item.cyclic.fireball.guide":"Throwable like a fire charge.  Crafting ingredient",
-  "item.cyclic.fireball_dark":"Dark Fireball",	
+  "item.cyclic.fireball_dark":"Dark Fireball",
   "item.cyclic.fireball_dark.tooltip":"Fire in your hands",
   "item.cyclic.fireball_dark.guide":"Throwable like a fire charge.  Crafting ingredient",
   "item.cyclic.shield_wood":"Wooden Shield",
@@ -314,15 +314,15 @@
   "block.cyclic.crate": "Crate",
   "block.cyclic.crate.tooltip": "Reinforced and keeps contents when broken",
   "block.cyclic.crate.guide": "The Crate is a container, like a chest, that is reinforced to survive explosions and wither attacks.",
-  
+
   "block.cyclic.crate_mini": "Mini-Crate",
   "block.cyclic.crate_mini.tooltip": "Small explosion-proof chest",
-  "block.cyclic.crate_mini.guide": "The Crate is a container, like a chest, that is reinforced to survive explosions.  Can be waterlogged",
-  
-  
+  "block.cyclic.crate_mini.guide": "The Crate is a container, like a chest, that is reinforced to survive explosions. Can be waterlogged",
+
+
   "block.cyclic.dark_glass": "Tempered Dark Glass",
   "block.cyclic.dark_glass.tooltip": "Immune to light, explosions, and wither blasts",
-  "block.cyclic.dark_glass.guide": "Dark Glass, unlike regular glass, does not let light pass through.Oh, and it's also immune explosions, including those caused by the Wither.  See connected version",
+  "block.cyclic.dark_glass.guide": "Dark Glass, unlike regular glass it does not allow light to pass through. It's also immune explosions including those caused by the Wither. See connected version",
   "block.cyclic.dark_glass_connected": "Dark Connected Glass",
   "block.cyclic.dark_glass_connected.tooltip": "Immune to light, explosions, and wither blasts",
   "block.cyclic.dark_glass_connected.guide": "Self-connecting textures. Unlike regular glass, does not let light pass through.Oh, and it's also immune explosions, including those caused by the Wither.",
@@ -1055,7 +1055,7 @@
   "block.cyclic.anti_beacon": "Artemis Beacon",
   "block.cyclic.anti_beacon.tooltip": "Cures most harmful potion effects nearby",
   "block.cyclic.anti_beacon.guide": "Nearby potions get cleared every few ticks, and on placement.  Many settings for this are in the config file.",
-  
+
   "block.cyclic.beacon_potion.players": "Players",
   "block.cyclic.beacon_potion.nonplayer": "Non-Players",
   "block.cyclic.beacon_potion.all": "All",
@@ -1364,18 +1364,18 @@
   "energy.button.top": "Fuel Bar Above",
   "energy.button.side": "Fuel Bar Side",
   "potion.butter.oops": "Butterfingers!  Dropped something when you moved.",
-  
-  
+
+
   "effect.cyclic.flight": "Flight",
   "effect.cyclic.flight.description": "Players can fly using this effect",
   "item.minecraft.potion.effect.cyclic_flight": "Potion of Flight",
   "item.minecraft.splash_potion.effect.cyclic_flight": "Splash Potion of Flight",
   "item.minecraft.lingering_potion.effect.cyclic_flight": "Lingering Potion of Flight",
   "item.minecraft.tipped_arrow.effect.cyclic_flight": "Arrow of Flight",
-   
+
   "item.cyclic.tile_transporter_empty.guide": "Right click on any machine or container with the Sack of Holding to pick it up.  Right click on any block with a filled Sack of Holding to place the machine again.",
 
-  
+
   "effect.cyclic.butter": "Butterfingers",
   "effect.cyclic.butter.description": "Chance to drop items while moving or attacking",
   "item.minecraft.potion.effect.cyclic_butter": "Potion of Butterfingers",
@@ -1388,7 +1388,7 @@
   "item.minecraft.splash_potion.effect.cyclic_waterwalk": "Splash Potion of Waterwalking",
   "item.minecraft.lingering_potion.effect.cyclic_waterwalk": "Lingering Potion of Waterwalking",
   "item.minecraft.tipped_arrow.effect.cyclic_waterwalk": "Arrow of Waterwalking",
-  
+
   "effect.cyclic.magnetic": "Magnetism",
   "effect.cyclic.magnetic.description": "Pull items and XP towards you with range of 8 blocks per level",
   "item.minecraft.potion.effect.cyclic_magnetic": "Potion of Magnetism",
@@ -1417,7 +1417,7 @@
   "item.minecraft.splash_potion.effect.cyclic_swimspeed": "Splash Potion of Swim Speed",
   "item.minecraft.lingering_potion.effect.cyclic_swimspeed": "Lingering Potion of Swim Speed",
   "item.minecraft.tipped_arrow.effect.cyclic_swimspeed": "Arrow of Swim Speed",
-  
+
   "effect.cyclic.bounce": "Bouncing",
   "effect.cyclic.ender": "Ender Aura",
   "effect.cyclic.slowfall": "Slowfall",
@@ -1445,7 +1445,7 @@
   "item.minecraft.splash_potion.effect.cyclic_reach_distance": "Splash Potion of Reach Distance",
   "item.minecraft.lingering_potion.effect.cyclic_reach_distance": "Lingering Potion of Reach Distance",
   "item.minecraft.tipped_arrow.effect.cyclic_reach_distance": "Arrow of Reach Distance",
-  
+
   "effect.cyclic.haste": "Haste",
   "item.minecraft.potion.effect.cyclic_haste": "Potion of Haste",
   "item.minecraft.splash_potion.effect.cyclic_haste": "Splash Potion of Haste",
@@ -1458,7 +1458,7 @@
   "item.minecraft.tipped_arrow.effect.cyclic_strong_haste": "Arrow of Haste II",
   "item.minecraft.potion.effect.cyclic_haste.guide": "The Potion of Haste apples the Haste effect to the target, increasing their mining speed.",
   "item.minecraft.potion.effect.cyclic_swimspeed.guide": "The Potion of Swim Speed greatly increases its target's speed while moving through liquids.",
-  
+
   "effect.cyclic.stun": "Paralyze",
   "effect.cyclic.stun.description": "Stun the entity so it cannot move for a time",
   "item.minecraft.potion.effect.cyclic_stun": "Potion of Paralyze",
@@ -1466,7 +1466,7 @@
   "item.minecraft.lingering_potion.effect.cyclic_stun": "Lingering Potion of Paralyze",
   "item.minecraft.tipped_arrow.effect.cyclic_stun": "Arrow of Paralyze",
   "item.minecraft.potion.effect.cyclic_stun.guide": "The Potion of Paralyze completely immobilizes its target.",
-  
+
   "effect.cyclic.blind": "Blindness",
   "item.minecraft.potion.effect.cyclic_blind": "Potion of Blindness",
   "item.minecraft.splash_potion.effect.cyclic_blind": "Splash Potion of Blindness",
