@@ -139,25 +139,25 @@ public class ItemEvents {
 
     @SubscribeEvent
     public void onArrowLooseEvent(ArrowLooseEvent event) {
-        //this event is only used for multishot enchantment
-        if (!MultiBowEnchant.CFG.get()) {
-            return;
-        }
-        ItemStack stackBow = event.getBow();
-        Player player = event.getEntity();
-        Level worldIn = player.level();
-        if (worldIn.isClientSide == false) {
-            int level = EnchantRegistry.MULTIBOW.get().getCurrentLevelTool(stackBow);
-            if (level <= 0) {
-                return;
-            }
-            //use cross product to push arrows out to left and right
-            Vec3 playerDirection = EntityUtil.lookVector(player.getYRot(), player.getXRot());
-            Vec3 left = playerDirection.cross(new Vec3(0, 1, 0));
-            Vec3 right = playerDirection.cross(new Vec3(0, -1, 0));
-            MultiBowEnchant.spawnArrow(worldIn, player, stackBow, event.getCharge(), left.normalize());
-            MultiBowEnchant.spawnArrow(worldIn, player, stackBow, event.getCharge(), right.normalize());
-        }
+        //this event is only used for multibow enchantment
+//        if (!MultiBowEnchant.CFG.get()) {
+//            return;
+//        }
+//        ItemStack stackBow = event.getBow();
+//        Player player = event.getEntity();
+//        Level worldIn = player.level();
+//        if (worldIn.isClientSide == false) {
+//            int level = EnchantRegistry.MULTIBOW.get().getCurrentLevelTool(stackBow);
+//            if (level <= 0) {
+//                return;
+//            }
+//            //use cross product to push arrows out to left and right
+//            Vec3 playerDirection = EntityUtil.lookVector(player.getYRot(), player.getXRot());
+//            Vec3 left = playerDirection.cross(new Vec3(0, 1, 0));
+//            Vec3 right = playerDirection.cross(new Vec3(0, -1, 0));
+//            MultiBowEnchant.spawnArrow(worldIn, player, stackBow, event.getCharge(), left.normalize());
+//            MultiBowEnchant.spawnArrow(worldIn, player, stackBow, event.getCharge(), right.normalize());
+//        }
     }
 
     @SubscribeEvent

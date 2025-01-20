@@ -81,11 +81,11 @@ public class ClientConfigCyclic {
     }
 
     public static Color getColor(ItemStack item) {
-        if (item.getItem() == ItemRegistry.LOCATION_DATA.get()) {
-            return parseColor(LOCATION.get());
-        } else if (item.getItem() == ItemRegistry.SHAPE_DATA.get()) {
-            return parseColor(SHAPE_DATA.get());
-        }
+//        if (item.getItem() == ItemRegistry.LOCATION_DATA.get()) {
+//            return parseColor(LOCATION.get());
+//        } else if (item.getItem() == ItemRegistry.SHAPE_DATA.get()) {
+//            return parseColor(SHAPE_DATA.get());
+//        }
 //        else if (item.getItem() == ItemRegistry.RANDOMIZE_SCEPTER.get()) {
 //            return parseColor(RANDOMIZE_SCEPTER.get());
 //        } else if (item.getItem() == ItemRegistry.OFFSET_SCEPTER.get()) {
@@ -95,9 +95,9 @@ public class ClientConfigCyclic {
 //        } else if (item.getItem() == ItemRegistry.BUILD_SCEPTER.get()) {
 //            return parseColor(BUILD_SCEPTER.get());
 //        }
-        else {
-            ModCyclic.LOGGER.error("Default color for item " + item.getItem());
+//        else {
+//            ModCyclic.LOGGER.error("Default color for item " + item.getItem());
             return DEFAULTC;
-        }
+//        }
     }
 }

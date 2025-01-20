@@ -38,7 +38,7 @@ public class EnchantRegistry {
 
 //Enchanements we dont want
 //    public static final RegistryObject<MultiJumpEnchant> LAUNCH = ENCHANTMENTS.register(MultiJumpEnchant.ID, () -> new MultiJumpEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.WEARABLE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.FEET}));
-    public static final RegistryObject<MultiBowEnchant> MULTIBOW = ENCHANTMENTS.register(MultiBowEnchant.ID, () -> new MultiBowEnchant(Enchantment.Rarity.COMMON, EnchantmentCategory.BOW, EquipmentSlot.MAINHAND));
+//    public static final RegistryObject<MultiBowEnchant> MULTIBOW = ENCHANTMENTS.register(MultiBowEnchant.ID, () -> new MultiBowEnchant(Enchantment.Rarity.COMMON, EnchantmentCategory.BOW, EquipmentSlot.MAINHAND));
 //    public static final RegistryObject<ExcavationEnchant> EXCAVATE = ENCHANTMENTS.register(ExcavationEnchant.ID, () -> new ExcavationEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
 //    public static final RegistryObject<BeheadingEnchant> BEHEADING = ENCHANTMENTS.register(BeheadingEnchant.ID, () -> new BeheadingEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 //    public static final RegistryObject<GrowthEnchant> GROWTH = ENCHANTMENTS.register(GrowthEnchant.ID, () -> new GrowthEnchant(Enchantment.Rarity.COMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
