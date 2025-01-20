@@ -317,15 +317,19 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> ENTITY_DATA = ITEMS.register("entity_data", () -> new EntityDataCard(new Item.Properties()));
 
 
-    //Flowers
-    public static final RegistryObject<Item> FLOWER_CYAN = ITEMS.register("flower_cyan", () -> new BlockItem(BlockRegistry.FLOWER_CYAN.get(), new Item.Properties()));
-    public static final RegistryObject<Item> FLOWER_PURPLE = ITEMS.register("flower_purple_tulip", () -> new BlockItem(BlockRegistry.FLOWER_PURPLE_TULIP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> FLOWER_BROWN = ITEMS.register("flower_absalon_tulip", () -> new BlockItem(BlockRegistry.FLOWER_ABSALON_TULIP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> FLOWER_LIME = ITEMS.register("flower_lime_carnation", () -> new BlockItem(BlockRegistry.FLOWER_LIME_CARNATION.get(), new Item.Properties()));
 
     //Candles
     public static final RegistryObject<Item> WATER_CANDLE = ITEMS.register("water_candle", () -> new BlockItem(BlockRegistry.WATER_CANDLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> PEACE_CANDLE = ITEMS.register("peace_candle", () -> new BlockItem(BlockRegistry.PEACE_CANDLE.get(), new Item.Properties()));
+
+
+    //Flowers
+//    public static final RegistryObject<Item> FLOWER_CYAN = ITEMS.register("flower_cyan", () -> new BlockItem(BlockRegistry.FLOWER_CYAN.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> FLOWER_PURPLE = ITEMS.register("flower_purple_tulip", () -> new BlockItem(BlockRegistry.FLOWER_PURPLE_TULIP.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> FLOWER_BROWN = ITEMS.register("flower_absalon_tulip", () -> new BlockItem(BlockRegistry.FLOWER_ABSALON_TULIP.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> FLOWER_LIME = ITEMS.register("flower_lime_carnation", () -> new BlockItem(BlockRegistry.FLOWER_LIME_CARNATION.get(), new Item.Properties()));
+
+
     //  public static final RegistryObject<Item> TELEPORT = ITEMS.register("teleport", () -> new BlockItem(BlockRegistry.TELEPORT.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> STORAGE_BAG = ITEMS.register("storage_bag", () -> new ItemStorageBag(new Item.Properties().stacksTo(1).setNoRepair()));
 //    public static final RegistryObject<Item> CRAFTING_BAG = ITEMS.register("crafting_bag", () -> new CraftingBagItem(new Item.Properties().stacksTo(1).setNoRepair()));

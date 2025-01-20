@@ -392,37 +392,37 @@ public class ItemEvents {
 
     @SubscribeEvent
     public void onBonemealEvent(BonemealEvent event) {
-        Level world = event.getLevel();
-        BlockPos pos = event.getPos();
-        BlockState state = world.getBlockState(pos);
-        if (ConfigRegistry.CYAN_PODZOL_LEGACY.get()) {
-            //legacy feature, i meant to remove it in minecraft 1.16.2ish but forgot so now its a config
-            if (state.getBlock() == Blocks.PODZOL && world.isEmptyBlock(pos.above())) {
-                event.setResult(Result.ALLOW);
-                world.setBlockAndUpdate(pos.above(), BlockRegistry.FLOWER_CYAN.get().defaultBlockState());
-            }
-        }
-        if (state.getBlock() == BlockRegistry.FLOWER_CYAN.get()) {
-            event.setResult(Result.ALLOW);
-            if (world.random.nextDouble() < 0.5) {
-                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_CYAN.get()));
-            }
-        } else if (state.getBlock() == BlockRegistry.FLOWER_PURPLE_TULIP.get()) {
-            event.setResult(Result.ALLOW);
-            if (world.random.nextDouble() < 0.25) {
-                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_PURPLE_TULIP.get()));
-            }
-        } else if (state.getBlock() == BlockRegistry.FLOWER_ABSALON_TULIP.get()) {
-            event.setResult(Result.ALLOW);
-            if (world.random.nextDouble() < 0.25) {
-                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_ABSALON_TULIP.get()));
-            }
-        } else if (state.getBlock() == BlockRegistry.FLOWER_LIME_CARNATION.get()) {
-            event.setResult(Result.ALLOW);
-            if (world.random.nextDouble() < 0.25) {
-                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_LIME_CARNATION.get()));
-            }
-        }
+//        Level world = event.getLevel();
+//        BlockPos pos = event.getPos();
+//        BlockState state = world.getBlockState(pos);
+//        if (ConfigRegistry.CYAN_PODZOL_LEGACY.get()) {
+//            //legacy feature, i meant to remove it in minecraft 1.16.2ish but forgot so now its a config
+//            if (state.getBlock() == Blocks.PODZOL && world.isEmptyBlock(pos.above())) {
+//                event.setResult(Result.ALLOW);
+//                world.setBlockAndUpdate(pos.above(), BlockRegistry.FLOWER_CYAN.get().defaultBlockState());
+//            }
+//        }
+//        if (state.getBlock() == BlockRegistry.FLOWER_CYAN.get()) {
+//            event.setResult(Result.ALLOW);
+//            if (world.random.nextDouble() < 0.5) {
+//                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_CYAN.get()));
+//            }
+//        } else if (state.getBlock() == BlockRegistry.FLOWER_PURPLE_TULIP.get()) {
+//            event.setResult(Result.ALLOW);
+//            if (world.random.nextDouble() < 0.25) {
+//                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_PURPLE_TULIP.get()));
+//            }
+//        } else if (state.getBlock() == BlockRegistry.FLOWER_ABSALON_TULIP.get()) {
+//            event.setResult(Result.ALLOW);
+//            if (world.random.nextDouble() < 0.25) {
+//                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_ABSALON_TULIP.get()));
+//            }
+//        } else if (state.getBlock() == BlockRegistry.FLOWER_LIME_CARNATION.get()) {
+//            event.setResult(Result.ALLOW);
+//            if (world.random.nextDouble() < 0.25) {
+//                ItemStackUtil.drop(world, pos, new ItemStack(BlockRegistry.FLOWER_LIME_CARNATION.get()));
+//            }
+//        }
     }
 
     @SubscribeEvent
