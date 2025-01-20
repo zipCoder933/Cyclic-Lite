@@ -25,7 +25,7 @@ import com.lothrazar.cyclic.block.crafter.TileCrafter;
 //import com.lothrazar.cyclic.block.dropper.TileDropper;
 //import com.lothrazar.cyclic.block.enderctrl.EnderShelfHelper;
 //import com.lothrazar.cyclic.block.endershelf.EnderShelfItemHandler;
-import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
+//import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
 import com.lothrazar.cyclic.block.eye.TileEye;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
 //import com.lothrazar.cyclic.block.fishing.TileFisher;
@@ -570,9 +570,9 @@ public class ConfigRegistry extends ConfigTemplate {
     CFG.pop();
     //
     //
-    CFG.comment(" experience_pylon settings").push("experience_pylon");
-    TileExpPylon.RADIUS = CFG.comment(" Radius to pickup xp orbs").defineInRange("radius", 16, 1, 64);
-    CFG.pop();
+//    CFG.comment(" experience_pylon settings").push("experience_pylon");
+//    TileExpPylon.RADIUS = CFG.comment(" Radius to pickup xp orbs").defineInRange("radius", 16, 1, 64);
+//    CFG.pop();
     //
 //    CFG.comment(" fisher settings").push("fisher");
 //    TileFisher.RADIUS = CFG.comment(" Radius to Fish from nearby water").defineInRange("radius", 12, 1, 32);

@@ -7,8 +7,8 @@ import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.battery.ItemBlockBattery;
 import com.lothrazar.cyclic.block.batteryclay.ItemBlockClayBattery;
 import com.lothrazar.cyclic.block.cable.CableWrench;
-import com.lothrazar.cyclic.block.expcollect.ExpItemGain;
-import com.lothrazar.cyclic.block.expcollect.ItemBlockPylon;
+//import com.lothrazar.cyclic.block.expcollect.ExpItemGain;
+//import com.lothrazar.cyclic.block.expcollect.ItemBlockPylon;
 import com.lothrazar.cyclic.block.scaffolding.ItemScaffolding;
 import com.lothrazar.cyclic.block.tank.ItemBlockTank;
 import com.lothrazar.cyclic.block.tankcask.ItemBlockCask;
@@ -236,6 +236,7 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> DOORBELL = ITEMS.register("doorbell", () -> new BlockItem(BlockRegistry.DOORBELL.get(), new Item.Properties()));
 
 
+    public static final RegistryObject<Item> CABLE_WRENCH = ITEMS.register("cable_wrench", () -> new CableWrench(new Item.Properties()));
     public static final RegistryObject<Item> ITEM_PIPE = ITEMS.register("item_pipe", () -> new BlockItem(BlockRegistry.ITEM_PIPE.get(), new Item.Properties()));
 
     //remove energy and fluid related items
@@ -252,10 +253,10 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> WIRELESS_RECEIVER = ITEMS.register("wireless_receiver", () -> new BlockItem(BlockRegistry.WIRELESS_RECEIVER.get(), new Item.Properties()));
 
 
-    public static final RegistryObject<Item> BUILD_SCEPTER = ITEMS.register("build_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.NORMAL));
-    public static final RegistryObject<Item> REPLACE_SCEPTER = ITEMS.register("replace_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.REPLACE));
-    public static final RegistryObject<Item> OFFSET_SCEPTER = ITEMS.register("offset_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.OFFSET));
-    public static final RegistryObject<Item> RANDOMIZE_SCEPTER = ITEMS.register("randomize_scepter", () -> new RandomizerItem(new Item.Properties()));
+    //    public static final RegistryObject<Item> BUILD_SCEPTER = ITEMS.register("build_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.NORMAL));
+//    public static final RegistryObject<Item> REPLACE_SCEPTER = ITEMS.register("replace_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.REPLACE));
+//    public static final RegistryObject<Item> OFFSET_SCEPTER = ITEMS.register("offset_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.OFFSET));
+//    public static final RegistryObject<Item> RANDOMIZE_SCEPTER = ITEMS.register("randomize_scepter", () -> new RandomizerItem(new Item.Properties()));
 //    public static final RegistryObject<Item> SPAWNINSPECTOR = ITEMS.register("spawn_inspector", () -> new SpawnInspectorTool(new Item.Properties().durability(256)));
     public static final RegistryObject<Item> CHARM_WING = ITEMS.register("charm_wing", () -> new CharmWing(new Item.Properties().durability(64)));
     public static final RegistryObject<Item> SLINGSHOT = ITEMS.register("slingshot", () -> new SlingshotItem(new Item.Properties().durability(64)));
@@ -275,6 +276,10 @@ public class ItemRegistry {
 //  public static final RegistryObject<Item> SOIL = ITEMS.register("soil", () -> new BlockItem(BlockRegistry.SOIL.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> CLOUD = ITEMS.register("cloud", () -> new BlockItem(BlockRegistry.CLOUD.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> CLOUD_MEMBRANE = ITEMS.register("cloud_membrane", () -> new BlockItem(BlockRegistry.CLOUD_MEMBRANE.get(), new Item.Properties()));
+
+
+    public static final RegistryObject<Item> MELTER = ITEMS.register("melter", () -> new BlockItem(BlockRegistry.MELTER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SOLIDIFIER = ITEMS.register("solidifier", () -> new BlockItem(BlockRegistry.SOLIDIFIER.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> GEM_OBSIDIAN = ITEMS.register("gem_obsidian", () -> new GemstoneItem(new Item.Properties()));
     public static final RegistryObject<Item> GEM_AMBER = ITEMS.register("gem_amber", () -> new GemstoneItem(new Item.Properties()));
@@ -378,9 +383,7 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> BATTERY = ITEMS.register("battery", () -> new ItemBlockBattery(BlockRegistry.BATTERY.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> PEAT_UNBAKED = ITEMS.register("peat_unbaked", () -> new BlockItem(BlockRegistry.PEAT_UNBAKED.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> PEAT_BAKED = ITEMS.register("peat_baked", () -> new BlockItem(BlockRegistry.PEAT_BAKED.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SOLIDIFIER = ITEMS.register("solidifier", () -> new BlockItem(BlockRegistry.SOLIDIFIER.get(), new Item.Properties()));
     //    public static final RegistryObject<Item> PEAT_FARM = ITEMS.register("peat_farm", () -> new BlockItem(BlockRegistry.PEAT_FARM.get(), new Item.Properties()));
-    public static final RegistryObject<Item> MELTER = ITEMS.register("melter", () -> new BlockItem(BlockRegistry.MELTER.get(), new Item.Properties()));
     //  public static final RegistryObject<Item> PLACER = ITEMS.register("placer", () -> new BlockItem(BlockRegistry.PLACER.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> BREAKER = ITEMS.register("breaker", () -> new BlockItem(BlockRegistry.BREAKER.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> USER = ITEMS.register("user", () -> new BlockItem(BlockRegistry.USER.get(), new Item.Properties()));
@@ -420,18 +423,18 @@ public class ItemRegistry {
 //  public static final RegistryObject<Item> DICE = ITEMS.register("dice", () -> new BlockItem(BlockRegistry.DICE.get(), new Item.Properties()));
     public static final RegistryObject<Item> TERRA_PRETA = ITEMS.register("terra_preta", () -> new BlockItem(BlockRegistry.TERRA_PRETA.get(), new Item.Properties()));
     //  public static final RegistryObject<Item> FIREPLACE = ITEMS.register("fireplace", () -> new BlockItem(BlockRegistry.FIREPLACE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> CRAFTER = ITEMS.register("crafter", () -> new BlockItem(BlockRegistry.CRAFTER.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> CRAFTER = ITEMS.register("crafter", () -> new BlockItem(BlockRegistry.CRAFTER.get(), new Item.Properties()));
     public static final RegistryObject<Item> UNBREAKABLE_BLOCK = ITEMS.register("unbreakable_block", () -> new BlockItem(BlockRegistry.UNBREAKABLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> UNBREAKABLE_REACTIVE = ITEMS.register("unbreakable_reactive", () -> new BlockItem(BlockRegistry.UNBREAKABLE_REACTIVE.get(), new Item.Properties()));
     //  public static final RegistryObject<Item> CONVEYOR = ITEMS.register("conveyor", () -> new BlockItem(BlockRegistry.CONVEYOR.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> ENDER_SHELF = ITEMS.register("ender_shelf", () -> new BlockItem(BlockRegistry.ENDER_SHELF.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> ENDER_CONTROLLER = ITEMS.register("ender_controller", () -> new BlockItem(BlockRegistry.ENDER_CONTROLLER.get(), new Item.Properties()));
     public static final RegistryObject<Item> WORKBENCH = ITEMS.register("workbench", () -> new BlockItem(BlockRegistry.WORKBENCH.get(), new Item.Properties()));
-    public static final RegistryObject<Item> EXPERIENCE_PYLON = ITEMS.register("experience_pylon", () -> new ItemBlockPylon(BlockRegistry.EXPERIENCE_PYLON.get(), new Item.Properties()));
-    public static final RegistryObject<Item> EXPERIENCE_FOOD = ITEMS.register("experience_food", () -> new ExpItemGain(new Item.Properties()));
-    public static final RegistryObject<Item> PEAT_FUEL = ITEMS.register("peat_fuel", () -> new ItemBaseCyclic(new Item.Properties()));
-    public static final RegistryObject<Item> PEAT_FUEL_ENRICHED = ITEMS.register("peat_fuel_enriched", () -> new ItemBaseCyclic(new Item.Properties()));
-    public static final RegistryObject<Item> BIOMASS = ITEMS.register("biomass", () -> new ItemBaseCyclic(new Item.Properties()));
+//    public static final RegistryObject<Item> EXPERIENCE_PYLON = ITEMS.register("experience_pylon", () -> new ItemBlockPylon(BlockRegistry.EXPERIENCE_PYLON.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> EXPERIENCE_FOOD = ITEMS.register("experience_food", () -> new ExpItemGain(new Item.Properties()));
+//    public static final RegistryObject<Item> PEAT_FUEL = ITEMS.register("peat_fuel", () -> new ItemBaseCyclic(new Item.Properties()));
+//    public static final RegistryObject<Item> PEAT_FUEL_ENRICHED = ITEMS.register("peat_fuel_enriched", () -> new ItemBaseCyclic(new Item.Properties()));
+//    public static final RegistryObject<Item> BIOMASS = ITEMS.register("biomass", () -> new ItemBaseCyclic(new Item.Properties()));
 
     public static final RegistryObject<Item> MATTOCK = ITEMS.register("mattock", () -> new MattockItem(Tiers.DIAMOND, new Item.Properties().durability(9000), 1));
     public static final RegistryObject<Item> MATTOCK_NETHER = ITEMS.register("mattock_nether", () -> new MattockItem(Tiers.NETHERITE, new Item.Properties().durability(9001), 2));
@@ -444,7 +447,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> SCAFFOLD_FRAGILE = ITEMS.register("scaffold_fragile", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_FRAGILE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SCAFFOLD_RESPONSIVE = ITEMS.register("scaffold_responsive", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_RESPONSIVE.get(), new Item.Properties()));
 
-    public static final RegistryObject<Item> CABLE_WRENCH = ITEMS.register("cable_wrench", () -> new CableWrench(new Item.Properties()));
     //    public static final RegistryObject<Item> CARROT_ENDER = ITEMS.register("carrot_ender", () -> new ItemHorseEnder(new Item.Properties()));
     public static final RegistryObject<Item> DIAMOND_CARROT_HEALTH = ITEMS.register("diamond_carrot_health", () -> new ItemHorseHealthDiamondCarrot(new Item.Properties()));
     public static final RegistryObject<Item> REDSTONE_CARROT_SPEED = ITEMS.register("redstone_carrot_speed", () -> new ItemHorseRedstoneSpeed(new Item.Properties()));

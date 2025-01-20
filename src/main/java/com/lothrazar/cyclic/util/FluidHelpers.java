@@ -1,11 +1,11 @@
 package com.lothrazar.cyclic.util;
 
 import com.lothrazar.cyclic.ModCyclic;
-import com.lothrazar.cyclic.fluid.FluidBiomassHolder;
+//import com.lothrazar.cyclic.fluid.FluidBiomassHolder;
 import com.lothrazar.cyclic.fluid.FluidHoneyHolder;
 import com.lothrazar.cyclic.fluid.FluidMagmaHolder;
 import com.lothrazar.cyclic.fluid.FluidSlimeHolder;
-import com.lothrazar.cyclic.fluid.FluidXpJuiceHolder;
+//import com.lothrazar.cyclic.fluid.FluidXpJuiceHolder;
 import com.lothrazar.library.data.Model3D;
 import com.lothrazar.library.render.FluidRenderMap;
 import com.lothrazar.library.render.FluidRenderMap.FluidFlow;
@@ -57,10 +57,10 @@ public class FluidHelpers {
   public static int getColorFromFluid(FluidStack fstack) {
     if (fstack != null && fstack.getFluid() != null) {
       //first check mine
-      if (fstack.getFluid() == FluidBiomassHolder.STILL.get()) {
-        return FluidBiomassHolder.COLOR;
-      }
-      else if (fstack.getFluid() == FluidHoneyHolder.STILL.get()) {
+//      if (fstack.getFluid() == FluidBiomassHolder.STILL.get()) {
+//        return FluidBiomassHolder.COLOR;
+//      }
+       if (fstack.getFluid() == FluidHoneyHolder.STILL.get()) {
         return FluidHoneyHolder.COLOR;
       }
       else if (fstack.getFluid() == FluidMagmaHolder.STILL.get()) {
@@ -69,9 +69,9 @@ public class FluidHelpers {
       else if (fstack.getFluid() == FluidSlimeHolder.STILL.get()) {
         return FluidSlimeHolder.COLOR;
       }
-      else if (fstack.getFluid() == FluidXpJuiceHolder.STILL.get()) {
-        return FluidXpJuiceHolder.COLOR;
-      }
+//      else if (fstack.getFluid() == FluidXpJuiceHolder.STILL.get()) {
+//        return FluidXpJuiceHolder.COLOR;
+//      }
       else if (fstack.getFluid() == ForgeMod.MILK.get()) {
         return COLOUR_MILK;
       }

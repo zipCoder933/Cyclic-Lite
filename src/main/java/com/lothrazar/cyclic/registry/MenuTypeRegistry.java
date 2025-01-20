@@ -21,7 +21,7 @@ import com.lothrazar.cyclic.block.detectorentity.ContainerDetector;
 import com.lothrazar.cyclic.block.detectoritem.ContainerDetectorItem;
 //import com.lothrazar.cyclic.block.disenchant.ContainerDisenchant;
 //import com.lothrazar.cyclic.block.dropper.ContainerDropper;
-import com.lothrazar.cyclic.block.expcollect.ContainerExpPylon;
+//import com.lothrazar.cyclic.block.expcollect.ContainerExpPylon;
 //import com.lothrazar.cyclic.block.fan.ContainerFan;
 //import com.lothrazar.cyclic.block.fishing.ContainerFisher;
 //import com.lothrazar.cyclic.block.forester.ContainerForester;
@@ -79,7 +79,7 @@ public class MenuTypeRegistry {
   public static final RegistryObject<MenuType<ContainerMelter>> MELTER = CONTAINERS.register("melter", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerMelter(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
   public static final RegistryObject<MenuType<ContainerSolidifier>> SOLIDIFIER = CONTAINERS.register("solidifier", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerSolidifier(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
 //  public static final RegistryObject<MenuType<ContainerBreaker>> BREAKER = CONTAINERS.register("breaker", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerBreaker(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
-  public static final RegistryObject<MenuType<ContainerExpPylon>> EXPERIENCE_PYLON = CONTAINERS.register("experience_pylon", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerExpPylon(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
+//  public static final RegistryObject<MenuType<ContainerExpPylon>> EXPERIENCE_PYLON = CONTAINERS.register("experience_pylon", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerExpPylon(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
 //  public static final RegistryObject<MenuType<ContainerUser>> USER = CONTAINERS.register("user", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerUser(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
   public static final RegistryObject<MenuType<ContainerDetector>> DETECTOR_ENTITY = CONTAINERS.register("detector_entity", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerDetector(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
   public static final RegistryObject<MenuType<ContainerDetectorItem>> DETECTOR_ITEM = CONTAINERS.register("detector_item", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerDetectorItem(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));

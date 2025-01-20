@@ -34,7 +34,7 @@ import com.lothrazar.cyclic.block.detectweather.TileWeather;
 //import com.lothrazar.cyclic.block.enderctrl.TileEnderCtrl;
 //import com.lothrazar.cyclic.block.enderitemshelf.TileItemShelf;
 //import com.lothrazar.cyclic.block.endershelf.TileEnderShelf;
-import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
+//import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
 import com.lothrazar.cyclic.block.eye.TileEye;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
 import com.lothrazar.cyclic.block.facade.light.TileLightFacade;
@@ -155,7 +155,7 @@ public class TileRegistry {
 //  public static final RegistryObject<BlockEntityType<TileBreaker>> BREAKER = TILES.register("breaker", () -> BlockEntityType.Builder.of(TileBreaker::new, BlockRegistry.BREAKER.get()).build(null));
 //  public static final RegistryObject<BlockEntityType<TileItemCollector>> COLLECTOR = TILES.register("collector", () -> BlockEntityType.Builder.of(TileItemCollector::new, BlockRegistry.COLLECTOR.get()).build(null));
 //  public static final RegistryObject<BlockEntityType<TileFan>> FAN = TILES.register("fan", () -> BlockEntityType.Builder.of(TileFan::new, BlockRegistry.FAN.get()).build(null));
-  public static final RegistryObject<BlockEntityType<TileExpPylon>> EXPERIENCE_PYLON = TILES.register("experience_pylon", () -> BlockEntityType.Builder.of(TileExpPylon::new, BlockRegistry.EXPERIENCE_PYLON.get()).build(null));
+//  public static final RegistryObject<BlockEntityType<TileExpPylon>> EXPERIENCE_PYLON = TILES.register("experience_pylon", () -> BlockEntityType.Builder.of(TileExpPylon::new, BlockRegistry.EXPERIENCE_PYLON.get()).build(null));
 //  public static final RegistryObject<BlockEntityType<TileTrash>> TRASH = TILES.register("trash", () -> BlockEntityType.Builder.of(TileTrash::new, BlockRegistry.TRASH.get()).build(null));
 //  public static final RegistryObject<BlockEntityType<TileInsertingMagnet>> MAGNET = TILES.register("magnet", () -> BlockEntityType.Builder.of(TileInsertingMagnet::new, BlockRegistry.MAGNET_BLOCK.get()).build(null));
   public static final RegistryObject<BlockEntityType<TilePeatFarm>> PEAT_FARM = TILES.register("peat_farm", () -> BlockEntityType.Builder.of(TilePeatFarm::new, BlockRegistry.PEAT_FARM.get()).build(null));

@@ -85,15 +85,17 @@ public class ClientConfigCyclic {
             return parseColor(LOCATION.get());
         } else if (item.getItem() == ItemRegistry.SHAPE_DATA.get()) {
             return parseColor(SHAPE_DATA.get());
-        } else if (item.getItem() == ItemRegistry.RANDOMIZE_SCEPTER.get()) {
-            return parseColor(RANDOMIZE_SCEPTER.get());
-        } else if (item.getItem() == ItemRegistry.OFFSET_SCEPTER.get()) {
-            return parseColor(OFFSET_SCEPTER.get());
-        } else if (item.getItem() == ItemRegistry.REPLACE_SCEPTER.get()) {
-            return parseColor(REPLACE_SCEPTER.get());
-        } else if (item.getItem() == ItemRegistry.BUILD_SCEPTER.get()) {
-            return parseColor(BUILD_SCEPTER.get());
-        } else {
+        }
+//        else if (item.getItem() == ItemRegistry.RANDOMIZE_SCEPTER.get()) {
+//            return parseColor(RANDOMIZE_SCEPTER.get());
+//        } else if (item.getItem() == ItemRegistry.OFFSET_SCEPTER.get()) {
+//            return parseColor(OFFSET_SCEPTER.get());
+//        } else if (item.getItem() == ItemRegistry.REPLACE_SCEPTER.get()) {
+//            return parseColor(REPLACE_SCEPTER.get());
+//        } else if (item.getItem() == ItemRegistry.BUILD_SCEPTER.get()) {
+//            return parseColor(BUILD_SCEPTER.get());
+//        }
+        else {
             ModCyclic.LOGGER.error("Default color for item " + item.getItem());
             return DEFAULTC;
         }
