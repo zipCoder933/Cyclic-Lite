@@ -8,7 +8,7 @@ import com.lothrazar.cyclic.item.crafting.PacketItemGui;
 import com.lothrazar.cyclic.item.crafting.simple.CraftingStickItem;
 import com.lothrazar.cyclic.item.enderbook.PacketItemScroll;
 //import com.lothrazar.cyclic.item.food.inventorycake.ItemCakeInventory;
-import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
+//import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
 //import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.lothrazar.cyclic.registry.ClientRegistryCyclic;
 import com.lothrazar.cyclic.registry.EnchantRegistry;
@@ -54,16 +54,16 @@ public class ClientInputEvents {
   }
 
   @SubscribeEvent
-  public void onScreenRender(ScreenEvent.Render.Pre event) {
-    Minecraft mc = Minecraft.getInstance();
-    Screen screen = mc.screen;
-    if (screen instanceof AbstractContainerScreen<?> gui && !(screen instanceof CreativeModeInventoryScreen)) {
-      ItemStack maybeFood = mc.player.containerMenu.getCarried();
-      List<ItemStack> boxes = ItemBaseCyclic.findAmmos(mc.player, ItemRegistry.LUNCHBOX.get());
-      for (ItemStack box : boxes) {
-        ItemLunchbox.setHoldingEdible(box, maybeFood.isEdible());
-      }
-    }
+  public void onScreenRender(ScreenEvent.Render.Pre event) { //TODO: (LITE) remove?
+//    Minecraft mc = Minecraft.getInstance();
+//    Screen screen = mc.screen;
+//    if (screen instanceof AbstractContainerScreen<?> gui && !(screen instanceof CreativeModeInventoryScreen)) {
+//      ItemStack maybeFood = mc.player.containerMenu.getCarried();
+//      List<ItemStack> boxes = ItemBaseCyclic.findAmmos(mc.player, ItemRegistry.LUNCHBOX.get());
+//      for (ItemStack box : boxes) {
+//        ItemLunchbox.setHoldingEdible(box, maybeFood.isEdible());
+//      }
+//    }
   }
 
   /**
@@ -75,31 +75,31 @@ public class ClientInputEvents {
    */
   @SubscribeEvent
   public void onMouseButtonReleased(ScreenEvent.MouseButtonReleased.Pre event) {
-    Minecraft mc = Minecraft.getInstance();
-    Screen screen = mc.screen;
-    boolean rightClickDown = event.getButton() == 1;
-    if (screen instanceof AbstractContainerScreen<?> gui && !(screen instanceof CreativeModeInventoryScreen)) {
-      if (gui.getSlotUnderMouse() != null) {
-        Slot slotHit = gui.getSlotUnderMouse();
-        ItemStack stackTarget = slotHit.getItem();
-        if (rightClickDown) {
-          if (stackTarget.getItem() instanceof ItemLunchbox
-              && mc.player != null
-              && mc.player.containerMenu != null) {
-            ItemStack maybeFood = mc.player.containerMenu.getCarried();
-            if (maybeFood.isEdible()) {
-              // inserting food must be done onMouse Released event
-              // this is important. opening screens is on the other event
-              // send the slot and info to the server to process with the lunchbox
-              int slotId = gui.getSlotUnderMouse().getContainerSlot();
-              SoundUtil.playSound(mc.player, SoundEvents.UI_BUTTON_CLICK.get());
-              PacketRegistry.INSTANCE.sendToServer(new PacketItemGui(slotId, stackTarget.getItem()));
-              event.setCanceled(true);
-            }
-          }
-        }
-      }
-    }
+//    Minecraft mc = Minecraft.getInstance();
+//    Screen screen = mc.screen;
+//    boolean rightClickDown = event.getButton() == 1;
+//    if (screen instanceof AbstractContainerScreen<?> gui && !(screen instanceof CreativeModeInventoryScreen)) {
+//      if (gui.getSlotUnderMouse() != null) {
+//        Slot slotHit = gui.getSlotUnderMouse();
+//        ItemStack stackTarget = slotHit.getItem();
+//        if (rightClickDown) {
+//          if (stackTarget.getItem() instanceof ItemLunchbox
+//              && mc.player != null
+//              && mc.player.containerMenu != null) {
+//            ItemStack maybeFood = mc.player.containerMenu.getCarried();
+//            if (maybeFood.isEdible()) {
+//              // inserting food must be done onMouse Released event
+//              // this is important. opening screens is on the other event
+//              // send the slot and info to the server to process with the lunchbox
+//              int slotId = gui.getSlotUnderMouse().getContainerSlot();
+//              SoundUtil.playSound(mc.player, SoundEvents.UI_BUTTON_CLICK.get());
+//              PacketRegistry.INSTANCE.sendToServer(new PacketItemGui(slotId, stackTarget.getItem()));
+//              event.setCanceled(true);
+//            }
+//          }
+//        }
+//      }
+//    }
   }
 
   @SubscribeEvent(priority = EventPriority.HIGH) // WAS MouseClickedEvent
@@ -123,14 +123,14 @@ public class ClientInputEvents {
               PacketRegistry.INSTANCE.sendToServer(new PacketItemGui(slotHit.index, maybeCharm.getItem()));
               event.setCanceled(true);
             }
-        else if (maybeCharm.getItem() instanceof ItemLunchbox) {
-          // if you have an EMPTY hand, use this to open the GUI screen of the lunchbox
-          ItemStack maybeFood = mc.player.containerMenu.getCarried();
-          if (maybeFood.isEmpty()) {
-            PacketRegistry.INSTANCE.sendToServer(new PacketItemGui(slotHit.index, maybeCharm.getItem()));
-            event.setCanceled(true);
-          }
-        }
+//        else if (maybeCharm.getItem() instanceof ItemLunchbox) {
+//          // if you have an EMPTY hand, use this to open the GUI screen of the lunchbox
+//          ItemStack maybeFood = mc.player.containerMenu.getCarried();
+//          if (maybeFood.isEmpty()) {
+//            PacketRegistry.INSTANCE.sendToServer(new PacketItemGui(slotHit.index, maybeCharm.getItem()));
+//            event.setCanceled(true);
+//          }
+//        }
       }
     }
     catch (Exception e) { //array out of bounds, or we are in a strange third party GUI that doesnt have slots like this

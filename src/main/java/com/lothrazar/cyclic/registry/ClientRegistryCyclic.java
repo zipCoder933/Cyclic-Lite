@@ -37,7 +37,7 @@ import com.lothrazar.cyclic.event.ClientInputEvents;
 import com.lothrazar.cyclic.event.EventRender;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
-import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
+//import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
 import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
 //import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -177,13 +177,13 @@ public class ClientRegistryCyclic {
   @OnlyIn(Dist.CLIENT)
   @SubscribeEvent
   public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-    event.register((stack, tintIndex) -> {
-      if (tintIndex == 0) { //layer zero is outline, ignore this 
-        return 0xFFFFFFFF;
-      }
-      //layer 1 is overlay  
-      return ItemLunchbox.getColour(stack);
-    }, ItemRegistry.LUNCHBOX.get());
+//    event.register((stack, tintIndex) -> {
+//      if (tintIndex == 0) { //layer zero is outline, ignore this
+//        return 0xFFFFFFFF;
+//      }
+//      //layer 1 is overlay
+//      return ItemLunchbox.getColour(stack);
+//    }, ItemRegistry.LUNCHBOX.get());
     //
 //    event.register((stack, tintIndex) -> {
 //      if (tintIndex == 0) { //layer zero is outline, ignore this
