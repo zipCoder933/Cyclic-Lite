@@ -20,7 +20,7 @@ import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.common.MinecraftForge;
 
 public class DisarmEnchant extends EnchantmentFlib {
-  //halves the desired base chance to activate because onEntityDamage gets called twice and it's currently a 
+  //halves the desired base chance to activate because onEntityDamage gets called twice and it's currently a
   // "won't fix" situation for Forge https://github.com/MinecraftForge/MinecraftForge/issues/6556#issuecomment-596441220
 
   public static IntValue PERCENTPERLEVEL;

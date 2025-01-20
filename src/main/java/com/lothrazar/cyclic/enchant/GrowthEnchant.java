@@ -106,7 +106,7 @@ public class GrowthEnchant extends EnchantmentFlib {
     //Ticking
     int level = getCurrentLevelTool(entity.getItemInHand(InteractionHand.MAIN_HAND));
     if (level > 0 && entity.level() instanceof ServerLevel sw) {
-      final int growthLimit = level * 2 + (entity.level().isRaining() ? 4 : 1); //faster when raining too 
+      final int growthLimit = level * 2 + (entity.level().isRaining() ? 4 : 1); //faster when raining too
       int grown = 0;
       List<BlockPos> shape = ShapeUtil.squareHorizontalFull(entity.blockPosition().below(), level + RADIUSFACTOR.get());
       shape = ShapeUtil.repeatShapeByHeight(shape, HEIGHT);

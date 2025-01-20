@@ -48,15 +48,15 @@ import com.lothrazar.cyclic.block.terrasoil.TileTerraPreta;
 //import com.lothrazar.cyclic.block.tp.BlockTeleport;
 //import com.lothrazar.cyclic.block.uncrafter.TileUncraft;
 //import com.lothrazar.cyclic.block.user.TileUser;
-import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
+//import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
 import com.lothrazar.cyclic.enchant.BeekeeperEnchant;
 import com.lothrazar.cyclic.enchant.BeheadingEnchant;
 import com.lothrazar.cyclic.enchant.DisarmEnchant;
 import com.lothrazar.cyclic.enchant.EnderPearlEnchant;
-import com.lothrazar.cyclic.enchant.ExcavationEnchant;
+//import com.lothrazar.cyclic.enchant.ExcavationEnchant;
 import com.lothrazar.cyclic.enchant.GloomCurseEnchant;
 import com.lothrazar.cyclic.enchant.GrowthEnchant;
-import com.lothrazar.cyclic.enchant.LastStandEnchant;
+//import com.lothrazar.cyclic.enchant.LastStandEnchant;
 import com.lothrazar.cyclic.enchant.LifeLeechEnchant;
 import com.lothrazar.cyclic.enchant.MagnetEnchant;
 import com.lothrazar.cyclic.enchant.MultiBowEnchant;
@@ -67,7 +67,7 @@ import com.lothrazar.cyclic.enchant.SteadyEnchant;
 import com.lothrazar.cyclic.enchant.StepEnchant;
 import com.lothrazar.cyclic.enchant.TravellerEnchant;
 import com.lothrazar.cyclic.enchant.VenomEnchant;
-import com.lothrazar.cyclic.enchant.XpEnchant;
+//import com.lothrazar.cyclic.enchant.XpEnchant;
 import com.lothrazar.cyclic.item.OreProspector;
 import com.lothrazar.cyclic.item.TeleporterWandItem;
 import com.lothrazar.cyclic.item.WandHypnoItem;
@@ -278,7 +278,7 @@ public class ConfigRegistry extends ConfigTemplate {
     CFG.comment(WALL, " Enchantment related configs (if disabled, they may still show up as NBT on books and such but have functions disabled and are not obtainable in survival)", WALL)
         .push("enchantment");
     ////////////////////////////////////////////////////////////////// enchantment
-    AutoSmeltEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(AutoSmeltEnchant.ID + ".enabled", true);
+//    AutoSmeltEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(AutoSmeltEnchant.ID + ".enabled", true);
     BeekeeperEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(BeekeeperEnchant.ID + ".enabled", true);
     BeheadingEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(BeheadingEnchant.ID + ".enabled", true);
     GLOOM_IGNORE_LIST = CFG.comment(" Set list of effects for Gloom enchant (cyclic:curse) to ignore and not use these")
@@ -290,7 +290,7 @@ public class ConfigRegistry extends ConfigTemplate {
     BeheadingEnchant.PERCPERLEVEL = CFG.comment(" Percentage increase per level of enchant. Formula [percent + (level - 1) * per_level] ").defineInRange(BeheadingEnchant.ID + ".per_level", 25, 1, 99);
     GloomCurseEnchant.CFG = CFG.comment(" (Gloom) Set false to stop enchantment from working").define(GloomCurseEnchant.ID + ".enabled", true);
     DisarmEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(DisarmEnchant.ID + ".enabled", true);
-    ExcavationEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
+//    ExcavationEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
     GrowthEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(GrowthEnchant.ID + ".enabled", true);
     GrowthEnchant.RADIUSFACTOR = CFG.comment(" Radius per level.  size around player to perform growth logic").defineInRange(GrowthEnchant.ID + ".radius", 2, 1, 16);
     MultiJumpEnchant.CFG = CFG.comment(" (Multijump) Set false to disable Multi Jump enchantment").define(MultiJumpEnchant.ID + ".enabled", true);
@@ -302,13 +302,13 @@ public class ConfigRegistry extends ConfigTemplate {
     ReachEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(ReachEnchant.ID + ".enabled", true);
     StepEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(StepEnchant.ID + ".enabled", true);
     SteadyEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(SteadyEnchant.ID + ".enabled", true);
-    LastStandEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(LastStandEnchant.ID + ".enabled", true);
-    LastStandEnchant.COST = CFG.comment(" Base XP cost to activate at level 1 (level 2 is this/2)").defineInRange(LastStandEnchant.ID + ".xp_cost", 50, 1, 9999);
-    LastStandEnchant.ABS = CFG.comment(" How many ticks of Absorption hearts given on trigger, 0 to disable").defineInRange(LastStandEnchant.ID + ".potion_ticks", 600, 0, 9999);
-    LastStandEnchant.COOLDOWN = CFG.comment(" How many ticks of cooldown, 0 to disable").defineInRange(LastStandEnchant.ID + ".cooldown", 20, 0, 99999);
+//    LastStandEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(LastStandEnchant.ID + ".enabled", true);
+//    LastStandEnchant.COST = CFG.comment(" Base XP cost to activate at level 1 (level 2 is this/2)").defineInRange(LastStandEnchant.ID + ".xp_cost", 50, 1, 9999);
+//    LastStandEnchant.ABS = CFG.comment(" How many ticks of Absorption hearts given on trigger, 0 to disable").defineInRange(LastStandEnchant.ID + ".potion_ticks", 600, 0, 9999);
+//    LastStandEnchant.COOLDOWN = CFG.comment(" How many ticks of cooldown, 0 to disable").defineInRange(LastStandEnchant.ID + ".cooldown", 20, 0, 99999);
     TravellerEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(TravellerEnchant.ID + ".enabled", true);
     VenomEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(VenomEnchant.ID + ".enabled", true);
-    XpEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(XpEnchant.ID + ".enabled", true);
+//    XpEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(XpEnchant.ID + ".enabled", true);
     DisarmEnchant.PERCENTPERLEVEL = CFG.comment(" Enchant level drop rate.  % = drop + (level-1)*drop").defineInRange(DisarmEnchant.ID + ".percentPerLevel", 15, 1, 100);
     DISARM_IGNORE_LIST = CFG.comment(" Mobs in this list cannot be disarmed and have their weapon stolen by the disarm enchantment")
         .defineList(DisarmEnchant.ID + ".ingoredMobs", DISARM_IGNORE,

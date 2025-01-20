@@ -129,7 +129,7 @@ public class BeheadingEnchant extends EnchantmentFlib {
       @Nullable
       ResourceLocation type = ForgeRegistries.ENTITY_TYPES.getKey(target.getType());
       String key = type == null ? "" : type.toString();
-      ////we allow all these, which include config, to override the vanilla skulls below 
+      ////we allow all these, which include config, to override the vanilla skulls below
       Map<String, String> mappedBeheading = ConfigRegistry.getMappedBeheading();
       if (target.getType() == EntityType.ENDER_DRAGON) {
         ItemStackUtil.drop(world, pos, new ItemStack(Items.DRAGON_HEAD));
@@ -146,7 +146,7 @@ public class BeheadingEnchant extends EnchantmentFlib {
       else if (target.getType() == EntityType.WITHER_SKELETON) {
         ItemStackUtil.drop(world, pos, new ItemStack(Items.WITHER_SKELETON_SKULL));
       }
-      else if (target.getType() == EntityType.WITHER) { //Drop number of heads equal to level of enchant [1,3] 
+      else if (target.getType() == EntityType.WITHER) { //Drop number of heads equal to level of enchant [1,3]
         ItemStackUtil.drop(world, pos, new ItemStack(Items.WITHER_SKELETON_SKULL, Math.max(level, 3)));
       }
       else if (ModList.get().isLoaded(CompatConstants.TCONSTRUCT)) {

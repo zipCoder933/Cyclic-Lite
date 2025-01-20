@@ -87,7 +87,7 @@ public class EnderPearlEnchant extends EnchantmentFlib {
         EntityUtil.setCooldownItem(player, event.getItemStack().getItem(), adjustedCooldown);
         SoundUtil.playSound(player, SoundEvents.ENDER_PEARL_THROW, 0.5F, 0.4F / (world.random.nextFloat() * 0.4F + 0.8F));
         world.addFreshEntity(pearl);
-        //block propogation of event 
+        //block propogation of event
         event.setResult(Result.DENY);
         event.setCanceled(true);
       }
