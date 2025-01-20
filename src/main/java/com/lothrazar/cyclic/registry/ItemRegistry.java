@@ -261,7 +261,7 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> GENERATOR_FLUID = ITEMS.register("generator_fluid", () -> new BlockItem(BlockRegistry.GENERATOR_FLUID.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> GENERATOR_ITEM = ITEMS.register("generator_item", () -> new BlockItem(BlockRegistry.GENERATOR_ITEM.get(), new Item.Properties()));
     //  public static final RegistryObject<Item> PACKAGER = ITEMS.register("packager", () -> new BlockItem(BlockRegistry.PACKAGER.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SOUND_DATA = ITEMS.register("sound_data", () -> new SoundCard(new Item.Properties()));
+//    public static final RegistryObject<Item> SOUND_DATA = ITEMS.register("sound_data", () -> new SoundCard(new Item.Properties()));
     //  public static final RegistryObject<Item> MEMBRANE = ITEMS.register("membrane", () -> new BlockItem(BlockRegistry.MEMBRANE.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> LAMP = ITEMS.register("lamp", () -> new BlockItem(BlockRegistry.LAMP.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> SOIL = ITEMS.register("soil", () -> new BlockItem(BlockRegistry.SOIL.get(), new Item.Properties()));
@@ -325,7 +325,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CHARM_ULTIMATE = ITEMS.register("charm_ultimate", () -> new CharmOverpowered(new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> HEART = ITEMS.register("heart", () -> new HeartItem(new Item.Properties().stacksTo(16)));
 //    public static final RegistryObject<Item> HEART_EMPTY = ITEMS.register("heart_empty", () -> new HeartToxicItem(new Item.Properties().stacksTo(16)));
-    public static final RegistryObject<Item> CARBON_PAPER = ITEMS.register("carbon_paper", () -> new CarbonPaperItem(new Item.Properties()));
+//    public static final RegistryObject<Item> CARBON_PAPER = ITEMS.register("carbon_paper", () -> new CarbonPaperItem(new Item.Properties()));
     public static final RegistryObject<Item> ICE_SCEPTER = ITEMS.register("ice_scepter", () -> new SnowScepter(new Item.Properties().durability(256)));
     public static final RegistryObject<Item> FIRE_SCEPTER = ITEMS.register("fire_scepter", () -> new FireScepter(new Item.Properties().durability(256)));
     public static final RegistryObject<Item> LIGHTNING_SCEPTER = ITEMS.register("lightning_scepter", () -> new LightningScepter(new Item.Properties().durability(256)));
