@@ -487,7 +487,7 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> SLEEPING_MAT = ITEMS.register("sleeping_mat", () -> new SleepingMatItem(new Item.Properties()));
 
     //Durable shears
-    public static final RegistryObject<Item> SHEARS_OBSIDIAN = ITEMS.register("shears_obsidian", () -> new ShearsMaterial(new Item.Properties().durability(1024 * 1024)));
+//    public static final RegistryObject<Item> SHEARS_OBSIDIAN = ITEMS.register("shears_obsidian", () -> new ShearsMaterial(new Item.Properties().durability(1024 * 1024)));
 
     //Scaffolding
     public static final RegistryObject<Item> SCAFFOLD_REPLACE = ITEMS.register("scaffold_replace", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_REPLACE.get(), new Item.Properties()));
