@@ -35,19 +35,19 @@ import com.lothrazar.cyclic.block.generatorfood.TileGeneratorFood;
 import com.lothrazar.cyclic.block.generatorfuel.TileGeneratorFuel;
 import com.lothrazar.cyclic.block.generatorsolar.BlockGeneratorSolar;
 //import com.lothrazar.cyclic.block.harvester.TileHarvester;
-import com.lothrazar.cyclic.block.magnet.BlockMagnetPanel;
+//import com.lothrazar.cyclic.block.magnet.BlockMagnetPanel;
 import com.lothrazar.cyclic.block.miner.TileMiner;
-import com.lothrazar.cyclic.block.packager.TilePackager;
+//import com.lothrazar.cyclic.block.packager.TilePackager;
 import com.lothrazar.cyclic.block.peatfarm.TilePeatFarm;
 import com.lothrazar.cyclic.block.shapebuilder.TileStructure;
 import com.lothrazar.cyclic.block.spawntriggers.BlockAltarNoTraders;
 import com.lothrazar.cyclic.block.spawntriggers.CandlePeaceBlock;
-import com.lothrazar.cyclic.block.sprinkler.TileSprinkler;
+//import com.lothrazar.cyclic.block.sprinkler.TileSprinkler;
 import com.lothrazar.cyclic.block.terraglass.TileTerraGlass;
 import com.lothrazar.cyclic.block.terrasoil.TileTerraPreta;
-import com.lothrazar.cyclic.block.tp.BlockTeleport;
+//import com.lothrazar.cyclic.block.tp.BlockTeleport;
 //import com.lothrazar.cyclic.block.uncrafter.TileUncraft;
-import com.lothrazar.cyclic.block.user.TileUser;
+//import com.lothrazar.cyclic.block.user.TileUser;
 import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
 import com.lothrazar.cyclic.enchant.BeekeeperEnchant;
 import com.lothrazar.cyclic.enchant.BeheadingEnchant;
@@ -492,13 +492,13 @@ public class ConfigRegistry extends ConfigTemplate {
     CandlePeaceBlock.RADIUS = CFG.comment(" Reach of the candle for spawn prevention").defineInRange("peace_candle.radius", 32, 0, 64);
     BlockDestruction.HEIGHT = CFG.comment(" Height for explosion prevention").defineInRange("altar_destruction.height", 8, 1, 512);
     BlockDestruction.RADIUS = CFG.comment(" Reach for explosion prevention").defineInRange("altar_destruction.radius", 32, 1, 128);
-    BlockMagnetPanel.RADIUS = CFG.comment(" Reach for magnet distance to find items").defineInRange("magnet_block.radius", 16, 1, 128);
+//    BlockMagnetPanel.RADIUS = CFG.comment(" Reach for magnet distance to find items").defineInRange("magnet_block.radius", 16, 1, 128);
     BlockAltarNoTraders.HEIGHT = CFG.comment(" Height reach of the no_soliciting for spawn prevention").defineInRange("no_soliciting.height", 4, 0, 512);
     BlockAltarNoTraders.RADIUS = CFG.comment(" Reach of the no_soliciting for spawn prevention").defineInRange("no_soliciting.radius", 32, 0, 64);
     CandleWaterBlock.RADIUS = CFG.comment(" Reach of the candle").defineInRange("water_candle.radius", 8, 1, 64);
     CandleWaterBlock.TICK_RATE = CFG.comment(" Tick rate of the candle").defineInRange("water_candle.tick_rate", 60, 1, Integer.MAX_VALUE);
-    TilePackager.POWERCONF = CFG.comment(" Power per recipe in the packager").defineInRange("packager.energy_cost", 50, 0, Integer.MAX_VALUE);
-    TileUser.POWERCONF = CFG.comment(" Power per use user").defineInRange("user.energy_cost", 0, 0, Integer.MAX_VALUE);
+//    TilePackager.POWERCONF = CFG.comment(" Power per recipe in the packager").defineInRange("packager.energy_cost", 50, 0, Integer.MAX_VALUE);
+//    TileUser.POWERCONF = CFG.comment(" Power per use user").defineInRange("user.energy_cost", 0, 0, Integer.MAX_VALUE);
     TileAnvilAuto.POWERCONF = CFG.comment(" Power per repair anvil").defineInRange("anvil.energy_cost", 250, 0, Integer.MAX_VALUE);
 //    TileDropper.POWERCONF = CFG.comment(" Power per use dropper").defineInRange("dropper.energy_cost", 50, 0, Integer.MAX_VALUE);
 //    TileForester.POWERCONF = CFG.comment(" Power per use forester").defineInRange("forester.energy_cost", 50, 0, Integer.MAX_VALUE);
@@ -510,8 +510,8 @@ public class ConfigRegistry extends ConfigTemplate {
     TilePeatFarm.POWERCONF = CFG.comment(" Power per use peat_farm").defineInRange("peat_farm.energy_cost", 500, 0, Integer.MAX_VALUE);
     TileCrafter.POWERCONF = CFG.comment(" Power per use crafter").defineInRange("crafter.energy_cost", 500, 0, Integer.MAX_VALUE);
     TileStructure.POWERCONF = CFG.comment(" Power per tick while in use").defineInRange("structure.energy_cost", 10, 0, Integer.MAX_VALUE);
-    BlockTeleport.POWERCONF = CFG.comment(" Power per use").defineInRange("teleport.energy_cost", 400, 0, Integer.MAX_VALUE);
-    BlockTeleport.COSTDIM = CFG.comment(" Power per use while crossing dimensions").defineInRange("teleport.energy_cost_xdim", 8000, 0, Integer.MAX_VALUE);
+//    BlockTeleport.POWERCONF = CFG.comment(" Power per use").defineInRange("teleport.energy_cost", 400, 0, Integer.MAX_VALUE);
+//    BlockTeleport.COSTDIM = CFG.comment(" Power per use while crossing dimensions").defineInRange("teleport.energy_cost_xdim", 8000, 0, Integer.MAX_VALUE);
     TilePotionBeacon.POWERCONF = CFG.comment(" Power per tick while in use").defineInRange("beacon.energy_cost", 0, 0, 64000);
     PeatBlock.PEATCHANCE = CFG.comment(" Chance that Peat Bog converts to Peat when wet (is multiplied by the number of surrounding water blocks)")
         .defineInRange("peat.conversion_chance",
@@ -536,9 +536,9 @@ public class ConfigRegistry extends ConfigTemplate {
     SOUND_RADIUS = CFG.comment(" Radius of sound proofing (distance from each block that it will listen)").defineInRange("radius", 6, 1, 16);
     CFG.pop(); //soundproofing
     CFG.comment(" Sprinkler settings").push("sprinkler");
-    TileSprinkler.RADIUS = CFG.comment(" Radius").defineInRange("radius", 4, 1, 32);
-    TileSprinkler.WATERCOST = CFG.comment(" Water consumption").defineInRange("water", 5, 0, 1000);
-    TileSprinkler.TIMER_FULL = CFG.comment(" Tick rate.  20 will fire one block per second").defineInRange("ticks", 20, 1, 20);
+//    TileSprinkler.RADIUS = CFG.comment(" Radius").defineInRange("radius", 4, 1, 32);
+//    TileSprinkler.WATERCOST = CFG.comment(" Water consumption").defineInRange("water", 5, 0, 1000);
+//    TileSprinkler.TIMER_FULL = CFG.comment(" Tick rate.  20 will fire one block per second").defineInRange("ticks", 20, 1, 20);
     CFG.pop(); // sprinkler
     CFG.push("terra_preta");
     TileTerraPreta.TIMER_FULL = CFG.comment(" Growth interval in ticks (100 would be every 5 seconds). ").defineInRange("growth_interval", 100, 1, 64000);

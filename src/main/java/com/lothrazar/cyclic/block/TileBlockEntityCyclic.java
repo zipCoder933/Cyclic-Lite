@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import com.lothrazar.cyclic.ModCyclic;
-import com.lothrazar.cyclic.block.breaker.BlockBreaker;
+//import com.lothrazar.cyclic.block.breaker.BlockBreaker;
 import com.lothrazar.cyclic.block.cable.energy.TileCableEnergy;
 import com.lothrazar.cyclic.item.datacard.filter.FilterCardItem;
 import com.lothrazar.cyclic.registry.PacketRegistry;
@@ -223,10 +223,10 @@ public abstract class TileBlockEntityCyclic extends BlockEntity implements Conta
     if (!st.hasProperty(BlockCyclic.LIT)) {
       return;
     }
-    boolean previous = st.getValue(BlockBreaker.LIT);
-    if (previous != lit) {
-      this.level.setBlockAndUpdate(worldPosition, st.setValue(BlockBreaker.LIT, lit));
-    }
+//    boolean previous = st.getValue(BlockBreaker.LIT);
+//    if (previous != lit) {
+//      this.level.setBlockAndUpdate(worldPosition, st.setValue(BlockBreaker.LIT, lit));
+//    }
   }
 
   public Direction getCurrentFacing() {

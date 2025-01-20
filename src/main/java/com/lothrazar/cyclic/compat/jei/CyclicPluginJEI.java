@@ -10,8 +10,8 @@ import com.lothrazar.cyclic.block.generatoritem.ContainerGeneratorDrops;
 import com.lothrazar.cyclic.block.generatoritem.ScreenGeneratorDrops;
 import com.lothrazar.cyclic.block.melter.ContainerMelter;
 import com.lothrazar.cyclic.block.melter.ScreenMelter;
-import com.lothrazar.cyclic.block.packager.ContainerPackager;
-import com.lothrazar.cyclic.block.packager.ScreenPackager;
+//import com.lothrazar.cyclic.block.packager.ContainerPackager;
+//import com.lothrazar.cyclic.block.packager.ScreenPackager;
 import com.lothrazar.cyclic.block.solidifier.ContainerSolidifier;
 import com.lothrazar.cyclic.block.solidifier.ScreenSolidifier;
 import com.lothrazar.cyclic.block.workbench.ContainerWorkbench;
@@ -64,13 +64,13 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipeCategories(new SolidifierRecipeCategory(guiHelper));
     registry.addRecipeCategories(new GenitemRecipeCategory(guiHelper));
     registry.addRecipeCategories(new GenfluidRecipeCategory(guiHelper));
-    registry.addRecipeCategories(new PackagerRecipeCategory(guiHelper));
+//    registry.addRecipeCategories(new PackagerRecipeCategory(guiHelper));
     registry.addRecipeCategories(new CrusherRecipeCategory(guiHelper));
   }
 
   @Override
   public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.PACKAGER.get()), PackagerRecipeCategory.TYPE);
+//    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.PACKAGER.get()), PackagerRecipeCategory.TYPE);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRAFTER.get()), RecipeTypes.CRAFTING);
     registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_BAG.get()), RecipeTypes.CRAFTING);
     registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_STICK.get()), RecipeTypes.CRAFTING);
@@ -92,7 +92,7 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipes(GenitemRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_ITEM.get())));
     registry.addRecipes(GenfluidRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_FLUID.get())));
     registry.addRecipes(CrusherRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.CRUSHER.get())));
-    registry.addRecipes(PackagerRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(RecipeType.CRAFTING)));
+//    registry.addRecipes(PackagerRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(RecipeType.CRAFTING)));
     for (RegistryObject<Item> item : ItemRegistry.ITEMS.getEntries()) {
       ItemStack st = new ItemStack(item.get());
       if (!st.isEmpty() && (st.getItem() instanceof BucketItem == false)) {
@@ -115,9 +115,9 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipeClickArea(ScreenGeneratorFluid.class,
         28, 6,
         120, 10, GenfluidRecipeCategory.TYPE);
-    registry.addRecipeClickArea(ScreenPackager.class,
-        60, 4,
-        52, 12, PackagerRecipeCategory.TYPE);
+//    registry.addRecipeClickArea(ScreenPackager.class,
+//        60, 4,
+//        52, 12, PackagerRecipeCategory.TYPE);
     registry.addRecipeClickArea(ScreenCrusher.class,
         76, 38,
         20, 20, CrusherRecipeCategory.TYPE);
@@ -146,8 +146,8 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipeTransferHandler(ContainerCrusher.class, MenuTypeRegistry.CRUSHER.get(), CrusherRecipeCategory.TYPE,
         0, 1, //recipeSLotStart, recipeSlotCount
         1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
-    registry.addRecipeTransferHandler(ContainerPackager.class, MenuTypeRegistry.PACKAGER.get(), PackagerRecipeCategory.TYPE,
-        0, 1, //recipeSLotStart, recipeSlotCount
-        1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount 
+//    registry.addRecipeTransferHandler(ContainerPackager.class, MenuTypeRegistry.PACKAGER.get(), PackagerRecipeCategory.TYPE,
+//        0, 1, //recipeSLotStart, recipeSlotCount
+//        1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
   }
 }
