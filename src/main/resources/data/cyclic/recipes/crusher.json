@@ -10,7 +10,7 @@
       "item": "minecraft:stonecutter"
     },
     "b": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "i": {
       "tag": "forge:nuggets/copper"

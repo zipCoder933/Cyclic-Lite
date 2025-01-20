@@ -10,7 +10,7 @@
       "item": "minecraft:diamond"
     },
     "o": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "g": {
       "tag": "forge:nuggets/copper"

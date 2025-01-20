@@ -10,7 +10,7 @@
       "item": "minecraft:stick"
     },
     "s": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "g": {
       "tag": "forge:dyes/light_blue"

@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " s ",
-    " b ",
+    "bbb",
+    "bsb",
     "ooo"
   ],
   "key": {
     "b": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "o": {
-      "item": "minecraft:blackstone"
+      "item": "minecraft:obsidian"
     },
     "s": {
-      "item": "minecraft:creeper_head"
+      "item": "minecraft:nether_star"
     }
   },
   "result": {

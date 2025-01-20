@@ -7,7 +7,7 @@
   ],
   "key": {
     "s": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "g": {
       "item": "minecraft:gold_nugget"

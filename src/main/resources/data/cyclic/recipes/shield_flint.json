@@ -10,7 +10,7 @@
       "tag": "minecraft:planks"
     },
     "o": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     }
   },
   "result": {

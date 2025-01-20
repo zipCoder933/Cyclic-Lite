@@ -10,7 +10,7 @@
       "item": "cyclic:gem_amber"
     },
     "f": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "p": {
       "tag": "forge:glass/purple"

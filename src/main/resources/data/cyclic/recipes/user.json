@@ -7,7 +7,7 @@
   ],
   "key": {
     "o": {
-      "tag": "forge:storage_blocks/flint"
+      "item": "minecraft:flint"
     },
     "s": {
       "item": "minecraft:dispenser"
