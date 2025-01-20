@@ -50,15 +50,15 @@ public class ClientConfigCyclic {
     else if (tile.getType() == TileRegistry.DETECTOR_ITEM.get()) {
       return parseColor(DETECTOR_ITEM.get());
     }
-    else if (tile.getType() == TileRegistry.DROPPER.get()) {
-      return parseColor(DROPPER.get());
-    }
-    else if (tile.getType() == TileRegistry.FORESTER.get()) {
-      return parseColor(FORESTER.get());
-    }
-    else if (tile.getType() == TileRegistry.HARVESTER.get()) {
-      return parseColor(HARVESTER.get());
-    }
+//    else if (tile.getType() == TileRegistry.DROPPER.get()) {
+//      return parseColor(DROPPER.get());
+//    }
+//    else if (tile.getType() == TileRegistry.FORESTER.get()) {
+//      return parseColor(FORESTER.get());
+//    }
+//    else if (tile.getType() == TileRegistry.HARVESTER.get()) {
+//      return parseColor(HARVESTER.get());
+//    }
     else if (tile.getType() == TileRegistry.MINER.get()) {
       return parseColor(MINER.get());
     }

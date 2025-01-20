@@ -12,8 +12,8 @@ import com.lothrazar.cyclic.block.LavaSpongeBlock;
 import com.lothrazar.cyclic.block.PeatBlock;
 import com.lothrazar.cyclic.block.antipotion.TileAntiBeacon;
 import com.lothrazar.cyclic.block.anvil.TileAnvilAuto;
-import com.lothrazar.cyclic.block.anvilmagma.TileAnvilMagma;
-import com.lothrazar.cyclic.block.anvilvoid.TileAnvilVoid;
+//import com.lothrazar.cyclic.block.anvilmagma.TileAnvilMagma;
+//import com.lothrazar.cyclic.block.anvilvoid.TileAnvilVoid;
 import com.lothrazar.cyclic.block.battery.TileBattery;
 import com.lothrazar.cyclic.block.batteryclay.TileClayBattery;
 import com.lothrazar.cyclic.block.beaconpotion.TilePotionBeacon;
@@ -21,20 +21,20 @@ import com.lothrazar.cyclic.block.cable.energy.TileCableEnergy;
 import com.lothrazar.cyclic.block.cable.fluid.TileCableFluid;
 import com.lothrazar.cyclic.block.collectfluid.TileFluidCollect;
 import com.lothrazar.cyclic.block.crafter.TileCrafter;
-import com.lothrazar.cyclic.block.disenchant.TileDisenchant;
-import com.lothrazar.cyclic.block.dropper.TileDropper;
-import com.lothrazar.cyclic.block.enderctrl.EnderShelfHelper;
-import com.lothrazar.cyclic.block.endershelf.EnderShelfItemHandler;
+//import com.lothrazar.cyclic.block.disenchant.TileDisenchant;
+//import com.lothrazar.cyclic.block.dropper.TileDropper;
+//import com.lothrazar.cyclic.block.enderctrl.EnderShelfHelper;
+//import com.lothrazar.cyclic.block.endershelf.EnderShelfItemHandler;
 import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
 import com.lothrazar.cyclic.block.eye.TileEye;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
-import com.lothrazar.cyclic.block.fishing.TileFisher;
-import com.lothrazar.cyclic.block.forester.TileForester;
+//import com.lothrazar.cyclic.block.fishing.TileFisher;
+//import com.lothrazar.cyclic.block.forester.TileForester;
 import com.lothrazar.cyclic.block.generatorexpl.BlockDestruction;
 import com.lothrazar.cyclic.block.generatorfood.TileGeneratorFood;
 import com.lothrazar.cyclic.block.generatorfuel.TileGeneratorFuel;
 import com.lothrazar.cyclic.block.generatorsolar.BlockGeneratorSolar;
-import com.lothrazar.cyclic.block.harvester.TileHarvester;
+//import com.lothrazar.cyclic.block.harvester.TileHarvester;
 import com.lothrazar.cyclic.block.magnet.BlockMagnetPanel;
 import com.lothrazar.cyclic.block.miner.TileMiner;
 import com.lothrazar.cyclic.block.packager.TilePackager;
@@ -46,7 +46,7 @@ import com.lothrazar.cyclic.block.sprinkler.TileSprinkler;
 import com.lothrazar.cyclic.block.terraglass.TileTerraGlass;
 import com.lothrazar.cyclic.block.terrasoil.TileTerraPreta;
 import com.lothrazar.cyclic.block.tp.BlockTeleport;
-import com.lothrazar.cyclic.block.uncrafter.TileUncraft;
+//import com.lothrazar.cyclic.block.uncrafter.TileUncraft;
 import com.lothrazar.cyclic.block.user.TileUser;
 import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
 import com.lothrazar.cyclic.enchant.BeekeeperEnchant;
@@ -500,12 +500,12 @@ public class ConfigRegistry extends ConfigTemplate {
     TilePackager.POWERCONF = CFG.comment(" Power per recipe in the packager").defineInRange("packager.energy_cost", 50, 0, Integer.MAX_VALUE);
     TileUser.POWERCONF = CFG.comment(" Power per use user").defineInRange("user.energy_cost", 0, 0, Integer.MAX_VALUE);
     TileAnvilAuto.POWERCONF = CFG.comment(" Power per repair anvil").defineInRange("anvil.energy_cost", 250, 0, Integer.MAX_VALUE);
-    TileDropper.POWERCONF = CFG.comment(" Power per use dropper").defineInRange("dropper.energy_cost", 50, 0, Integer.MAX_VALUE);
-    TileForester.POWERCONF = CFG.comment(" Power per use forester").defineInRange("forester.energy_cost", 50, 0, Integer.MAX_VALUE);
-    TileHarvester.POWERCONF = CFG.comment(" Power per use harvester").defineInRange("harvester.energy_cost", 250, 0, Integer.MAX_VALUE);
+//    TileDropper.POWERCONF = CFG.comment(" Power per use dropper").defineInRange("dropper.energy_cost", 50, 0, Integer.MAX_VALUE);
+//    TileForester.POWERCONF = CFG.comment(" Power per use forester").defineInRange("forester.energy_cost", 50, 0, Integer.MAX_VALUE);
+//    TileHarvester.POWERCONF = CFG.comment(" Power per use harvester").defineInRange("harvester.energy_cost", 250, 0, Integer.MAX_VALUE);
     TilePotionBeacon.POWERCONF = CFG.comment(" Power per tick beacon").defineInRange("beacon.energy_cost", 10, 0, Integer.MAX_VALUE);
     TileMiner.POWERCONF = CFG.comment(" Power per use miner").defineInRange("miner.energy_cost", 10, 0, Integer.MAX_VALUE);
-    TileUncraft.POWERCONF = CFG.comment(" Power per use uncraft").defineInRange("uncraft.energy_cost", 1000, 0, Integer.MAX_VALUE);
+//    TileUncraft.POWERCONF = CFG.comment(" Power per use uncraft").defineInRange("uncraft.energy_cost", 1000, 0, Integer.MAX_VALUE);
     TileFluidCollect.POWERCONF = CFG.comment(" Power per use collector_fluid").defineInRange("collector_fluid.energy_cost", 500, 0, Integer.MAX_VALUE);
     TilePeatFarm.POWERCONF = CFG.comment(" Power per use peat_farm").defineInRange("peat_farm.energy_cost", 500, 0, Integer.MAX_VALUE);
     TileCrafter.POWERCONF = CFG.comment(" Power per use crafter").defineInRange("crafter.energy_cost", 500, 0, Integer.MAX_VALUE);
@@ -517,21 +517,21 @@ public class ConfigRegistry extends ConfigTemplate {
         .defineInRange("peat.conversion_chance",
             0.08000000000000F,
             0.0010000000000F, 1F);
-    TileAnvilMagma.FLUIDCOST = CFG.comment(" Cost of magma fluid per action").defineInRange("anvil_magma.fluid_cost", 100, 1, 64000);
-    CFG.push("disenchanter");
-    TileDisenchant.FLUIDCOST = CFG.comment(" Cost of (or payment for if negative) per enchanted book generated").defineInRange("fluid_cost", 100, -1000, 16000);
-    TileDisenchant.POWERCONF = CFG.comment(" Power per use disenchanter").defineInRange("energy_cost", 2500, 0, Integer.MAX_VALUE);
-    CFG.pop();
-    CFG.push("anvil_void");
-    TileAnvilVoid.FLUIDPAY = CFG.comment(" Payment per void action, if not zero").defineInRange("fluid_cost", 25, 0, Integer.MAX_VALUE);
-    CFG.pop();
+//    TileAnvilMagma.FLUIDCOST = CFG.comment(" Cost of magma fluid per action").defineInRange("anvil_magma.fluid_cost", 100, 1, 64000);
+//    CFG.push("disenchanter");
+//    TileDisenchant.FLUIDCOST = CFG.comment(" Cost of (or payment for if negative) per enchanted book generated").defineInRange("fluid_cost", 100, -1000, 16000);
+//    TileDisenchant.POWERCONF = CFG.comment(" Power per use disenchanter").defineInRange("energy_cost", 2500, 0, Integer.MAX_VALUE);
+//    CFG.pop();
+//    CFG.push("anvil_void");
+//    TileAnvilVoid.FLUIDPAY = CFG.comment(" Payment per void action, if not zero").defineInRange("fluid_cost", 25, 0, Integer.MAX_VALUE);
+//    CFG.pop();
     CFG.push("sound");
     RECORDER_RADIUS = CFG.comment(" Sound Recorder - how far out does it listen to record sounds").defineInRange("radius", 8, 1, 64);
     CFG.pop();
-    CFG.comment(" Ender shelf settings").push("ender_shelf");
-    EnderShelfItemHandler.BOOKS_PER_ROW = CFG.comment(" Each shelf has five rows.  Set the number of books stored per row here").defineInRange("books_per_row", 256, 1, 1024);
-    EnderShelfHelper.MAX_DIST = CFG.comment(" Controller Max distance to search (using manhattan distance)").defineInRange("controller_distance", 64, 1, 256);
-    CFG.pop(); // ender_shelf*6
+//    CFG.comment(" Ender shelf settings").push("ender_shelf");
+//    EnderShelfItemHandler.BOOKS_PER_ROW = CFG.comment(" Each shelf has five rows.  Set the number of books stored per row here").defineInRange("books_per_row", 256, 1, 1024);
+//    EnderShelfHelper.MAX_DIST = CFG.comment(" Controller Max distance to search (using manhattan distance)").defineInRange("controller_distance", 64, 1, 256);
+//    CFG.pop(); // ender_shelf*6
     CFG.comment(" soundproofing settings").push("soundproofing"); //soundproofing
     SOUND_RADIUS = CFG.comment(" Radius of sound proofing (distance from each block that it will listen)").defineInRange("radius", 6, 1, 16);
     CFG.pop(); //soundproofing
@@ -574,25 +574,25 @@ public class ConfigRegistry extends ConfigTemplate {
     TileExpPylon.RADIUS = CFG.comment(" Radius to pickup xp orbs").defineInRange("radius", 16, 1, 64);
     CFG.pop();
     //
-    CFG.comment(" fisher settings").push("fisher");
-    TileFisher.RADIUS = CFG.comment(" Radius to Fish from nearby water").defineInRange("radius", 12, 1, 32);
-    TileFisher.CHANCE = CFG.comment(" Chance to Fish from nearby water.  Smaller values is slower fish").defineInRange("chance", 0.06, 0.000001, 0.999);
-    CFG.pop();
+//    CFG.comment(" fisher settings").push("fisher");
+//    TileFisher.RADIUS = CFG.comment(" Radius to Fish from nearby water").defineInRange("radius", 12, 1, 32);
+//    TileFisher.CHANCE = CFG.comment(" Chance to Fish from nearby water.  Smaller values is slower fish").defineInRange("chance", 0.06, 0.000001, 0.999);
+//    CFG.pop();
     //
     CFG.comment(" Ender Trigger settings").push("eye_redstone");
     TileEye.RANGE = CFG.comment(" Maximum distance to activate").defineInRange("range", 32, 2, 256);
     TileEye.FREQUENCY = CFG.comment(" Tick delay between checks, faster checks can consume server resources (1 means check every tick; 20 means only check once per second)")
         .defineInRange("frequency", 5, 1, 20);
     CFG.pop();
-    CFG.push("uncrafter");
-    TileUncraft.NBT_IGNORED = CFG.comment(" When searching for a recipe, does it ignore all NBT values (such as enchantments, RepairCost, Damage, etc).  "
-        + "For example, if false it will not uncraft damaged or enchanted items")
-        .define("nbt_ignored", false);
-    TileUncraft.IGNORE_LIST = CFG.comment(" ITEM IDS HERE.  Block ALL recipes that output this item, no matter which recipe they use").defineList("ignore_list", IGNORE_LIST_UNCRAFTER, it -> it instanceof String);
-    TileUncraft.IGNORE_RECIPES = CFG.comment(" RECIPE IDS HERE.  Block these recipe ids from being reversed, but do not block all recipes for this output item")
-        .defineList("ignore_recipes", IGNORE_RECIPES_UNCRAFTER, it -> it instanceof String);
-    TileUncraft.TIMER = CFG.comment(" Ticks used for each uncraft").defineInRange("ticks", 60, 1, 9999);
-    CFG.pop(); //uncrafter
+//    CFG.push("uncrafter");
+//    TileUncraft.NBT_IGNORED = CFG.comment(" When searching for a recipe, does it ignore all NBT values (such as enchantments, RepairCost, Damage, etc).  "
+//        + "For example, if false it will not uncraft damaged or enchanted items")
+//        .define("nbt_ignored", false);
+//    TileUncraft.IGNORE_LIST = CFG.comment(" ITEM IDS HERE.  Block ALL recipes that output this item, no matter which recipe they use").defineList("ignore_list", IGNORE_LIST_UNCRAFTER, it -> it instanceof String);
+//    TileUncraft.IGNORE_RECIPES = CFG.comment(" RECIPE IDS HERE.  Block these recipe ids from being reversed, but do not block all recipes for this output item")
+//        .defineList("ignore_recipes", IGNORE_RECIPES_UNCRAFTER, it -> it instanceof String);
+//    TileUncraft.TIMER = CFG.comment(" Ticks used for each uncraft").defineInRange("ticks", 60, 1, 9999);
+//    CFG.pop(); //uncrafter
     CFG.pop(); //blocks
     CFG.pop(); //ROOT
     COMMON_CONFIG = CFG.build();
