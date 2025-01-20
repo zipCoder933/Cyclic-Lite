@@ -146,7 +146,7 @@ public abstract class CharmBase extends ItemBaseToggle {
   static final AttributeModifier.Operation MUL = AttributeModifier.Operation.MULTIPLY_BASE;
 
   static void charmSpeed(Player player) {
-    toggleAttribute(player, ItemRegistry.CHARM_SPEED.get(), Attributes.MOVEMENT_SPEED, ID_SPEED, ConfigRegistry.CHARM_SPEED.get().floatValue(), 0, ADD);
+    //toggleAttribute(player, ItemRegistry.CHARM_SPEED.get(), Attributes.MOVEMENT_SPEED, ID_SPEED, ConfigRegistry.CHARM_SPEED.get().floatValue(), 0, ADD);
   }
 
   static void charmLuck(Player player) {
@@ -154,7 +154,7 @@ public abstract class CharmBase extends ItemBaseToggle {
   }
 
   static void charmAttackSpeed(Player player) {
-    toggleAttribute(player, ItemRegistry.CHARM_ATTACKSPEED.get(), Attributes.ATTACK_SPEED, ID_ATTACKSPEED, ConfigRegistry.CHARM_ATTACKSPEED.get().floatValue(), 0, ADD);
+//    toggleAttribute(player, ItemRegistry.CHARM_ATTACKSPEED.get(), Attributes.ATTACK_SPEED, ID_ATTACKSPEED, ConfigRegistry.CHARM_ATTACKSPEED.get().floatValue(), 0, ADD);
   }
 
   static void charmSwimming(Player player) {
