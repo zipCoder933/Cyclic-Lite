@@ -112,16 +112,16 @@ public class ItemEvents {
 
   @SubscribeEvent
   public void onLivingJumpEvent(LivingJumpEvent event) {
-    if (!(event.getEntity() instanceof Player)) {
-      return;
-    }
-    Player player = (Player) event.getEntity();
-    if (player.getMainHandItem().getItem() == ItemRegistry.ENDER_BOOK.get()) {
-      EnderBookItem.cancelTeleport(player.getMainHandItem());
-    }
-    if (player.getOffhandItem().getItem() == ItemRegistry.ENDER_BOOK.get()) {
-      EnderBookItem.cancelTeleport(player.getOffhandItem());
-    }
+//    if (!(event.getEntity() instanceof Player)) {
+//      return;
+//    }
+//    Player player = (Player) event.getEntity();
+//    if (player.getMainHandItem().getItem() == ItemRegistry.ENDER_BOOK.get()) {
+//      EnderBookItem.cancelTeleport(player.getMainHandItem());
+//    }
+//    if (player.getOffhandItem().getItem() == ItemRegistry.ENDER_BOOK.get()) {
+//      EnderBookItem.cancelTeleport(player.getOffhandItem());
+//    }
   }
 
   @SubscribeEvent

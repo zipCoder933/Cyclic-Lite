@@ -28,7 +28,7 @@ public class PotionRegistry {
   public static final RegistryObject<Potion> ANTIGRAVITY = POTIONS.register("antigravity", () -> new Potion(ModCyclic.MODID + "_antigravity", new MobEffectInstance(PotionEffectRegistry.ANTIGRAVITY.get(), normal, 3)));
   public static final RegistryObject<Potion> ATTACK_RANGE = POTIONS.register("attack_range", () -> new Potion(ModCyclic.MODID + "_attack_range", new MobEffectInstance(PotionEffectRegistry.ATTACK_RANGE.get(), normal)));
   public static final RegistryObject<Potion> BLIND = POTIONS.register("blind", () -> new Potion(ModCyclic.MODID + "_blind", new MobEffectInstance(MobEffects.BLINDNESS, normal)));
-  public static final RegistryObject<Potion> BUTTERFINGERS = POTIONS.register("butter", () -> new Potion(ModCyclic.MODID + "_butter", new MobEffectInstance(PotionEffectRegistry.BUTTERFINGERS.get(), normal)));
+//  public static final RegistryObject<Potion> BUTTERFINGERS = POTIONS.register("butter", () -> new Potion(ModCyclic.MODID + "_butter", new MobEffectInstance(PotionEffectRegistry.BUTTERFINGERS.get(), normal)));
   public static final RegistryObject<Potion> FLIGHT = POTIONS.register("flight", () -> new Potion(ModCyclic.MODID + "_flight", new MobEffectInstance(PotionEffectRegistry.FLIGHT.get(), normal)));
   public static final RegistryObject<Potion> FROST_WALKER = POTIONS.register("frost_walker", () -> new Potion(ModCyclic.MODID + "_frost_walker", new MobEffectInstance(PotionEffectRegistry.FROST_WALKER.get(), normal)));
   public static final RegistryObject<Potion> GRAVITY = POTIONS.register("gravity", () -> new Potion(ModCyclic.MODID + "_gravity", new MobEffectInstance(PotionEffectRegistry.GRAVITY.get(), normal)));
@@ -105,9 +105,9 @@ public class PotionRegistry {
     if (PotionRecipeConfig.SNOWWALK.get()) {
       basicBrewing(awkwardPotion.copy(), PotionRegistry.SNOWWALK.get(), Items.SNOWBALL);
     }
-    if (PotionRecipeConfig.BUTTERFINGERS.get()) {
-      basicBrewing(awkwardPotion.copy(), PotionRegistry.BUTTERFINGERS.get(), Items.GOLD_INGOT);
-    }
+//    if (PotionRecipeConfig.BUTTERFINGERS.get()) {
+//      basicBrewing(awkwardPotion.copy(), PotionRegistry.BUTTERFINGERS.get(), Items.GOLD_INGOT);
+//    }
     if (PotionRecipeConfig.FROST_WALKER.get()) {
       basicBrewing(awkwardPotion.copy(), PotionRegistry.FROST_WALKER.get(), Blocks.ICE.asItem());
     }

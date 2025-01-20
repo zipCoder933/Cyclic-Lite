@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.potion.CyclicMobEffect;
-import com.lothrazar.cyclic.potion.effect.ButterEffect;
+//import com.lothrazar.cyclic.potion.effect.ButterEffect;
 import com.lothrazar.cyclic.potion.effect.FlightMayflyEffect;
 import com.lothrazar.cyclic.potion.effect.FrostEffect;
 import com.lothrazar.cyclic.potion.effect.MagneticEffect;
@@ -36,7 +36,7 @@ public class PotionEffectRegistry {
       .addAttributeModifier(ForgeMod.ENTITY_REACH.get(), "5207DE5E-7CE8-4030-940E-514C1F160890", 2, AttributeModifier.Operation.MULTIPLY_TOTAL));
   public static final RegistryObject<MobEffect> REACH_DISTANCE = MOB_EFFECTS.register("reach_distance", () -> new CyclicMobEffect(MobEffectCategory.BENEFICIAL, 0x500980)
       .addAttributeModifier(ForgeMod.BLOCK_REACH.get(), "5207DE5E-7CE8-4030-940E-514C1F160890", 2, AttributeModifier.Operation.MULTIPLY_TOTAL));
-  public static final RegistryObject<MobEffect> BUTTERFINGERS = MOB_EFFECTS.register("butter", () -> new ButterEffect(MobEffectCategory.HARMFUL, 0xe5e500));
+//  public static final RegistryObject<MobEffect> BUTTERFINGERS = MOB_EFFECTS.register("butter", () -> new ButterEffect(MobEffectCategory.HARMFUL, 0xe5e500));
   public static final RegistryObject<MobEffect> FROST_WALKER = MOB_EFFECTS.register("frost_walker", () -> new FrostEffect(MobEffectCategory.BENEFICIAL, 0x42f4d7));
   public static final RegistryObject<MobEffect> MAGNETIC = MOB_EFFECTS.register("magnetic", () -> new MagneticEffect(MobEffectCategory.NEUTRAL, 0x224BAF));
   public static final RegistryObject<MobEffect> FLIGHT = MOB_EFFECTS.register("flight", () -> new FlightMayflyEffect(MobEffectCategory.BENEFICIAL, 0xF24BAF));

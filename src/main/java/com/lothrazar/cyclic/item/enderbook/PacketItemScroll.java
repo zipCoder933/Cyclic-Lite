@@ -18,12 +18,12 @@ public class PacketItemScroll extends PacketFlib {
   }
 
   public static void handle(PacketItemScroll message, Supplier<NetworkEvent.Context> ctx) {
-    ctx.get().enqueueWork(() -> {
-      ServerPlayer player = ctx.get().getSender();
-      player.getCooldowns().addCooldown(ItemRegistry.ENDER_BOOK.get(), 5);
-      EnderBookItem.scroll(player, message.slot, message.isDown);
-    });
-    message.done(ctx);
+//    ctx.get().enqueueWork(() -> {
+//      ServerPlayer player = ctx.get().getSender();
+//      player.getCooldowns().addCooldown(ItemRegistry.ENDER_BOOK.get(), 5);
+//      EnderBookItem.scroll(player, message.slot, message.isDown);
+//    });
+//    message.done(ctx);
   }
 
   public static PacketItemScroll decode(FriendlyByteBuf buf) {

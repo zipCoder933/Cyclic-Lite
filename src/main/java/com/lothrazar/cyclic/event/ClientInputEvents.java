@@ -42,15 +42,15 @@ public class ClientInputEvents {
 
   @SubscribeEvent // MouseScrollEvent -> MouseScrollingEvent
   public void onMouseEvent(InputEvent.MouseScrollingEvent event) {
-    LocalPlayer player = Minecraft.getInstance().player;
-    if (player.isCrouching() && player.getMainHandItem().getItem() == ItemRegistry.ENDER_BOOK.get()) {
-      //
-      event.setCanceled(true);
-      if (!player.getCooldowns().isOnCooldown(ItemRegistry.ENDER_BOOK.get())) {
-        boolean isDown = event.getScrollDelta() < 0;
-        PacketRegistry.INSTANCE.sendToServer(new PacketItemScroll(player.getInventory().selected, isDown));
-      }
-    }
+//    LocalPlayer player = Minecraft.getInstance().player;
+//    if (player.isCrouching() && player.getMainHandItem().getItem() == ItemRegistry.ENDER_BOOK.get()) {
+//      //
+//      event.setCanceled(true);
+//      if (!player.getCooldowns().isOnCooldown(ItemRegistry.ENDER_BOOK.get())) {
+//        boolean isDown = event.getScrollDelta() < 0;
+//        PacketRegistry.INSTANCE.sendToServer(new PacketItemScroll(player.getInventory().selected, isDown));
+//      }
+//    }
   }
 
   @SubscribeEvent
