@@ -16,7 +16,7 @@ import com.lothrazar.cyclic.block.collectfluid.ContainerFluidCollect;
 import com.lothrazar.cyclic.block.crafter.ContainerCrafter;
 //import com.lothrazar.cyclic.block.crate.ContainerCrate;
 //import com.lothrazar.cyclic.block.cratemini.ContainerCrateMini;
-import com.lothrazar.cyclic.block.crusher.ContainerCrusher;
+//import com.lothrazar.cyclic.block.crusher.ContainerCrusher;
 import com.lothrazar.cyclic.block.detectorentity.ContainerDetector;
 import com.lothrazar.cyclic.block.detectoritem.ContainerDetectorItem;
 //import com.lothrazar.cyclic.block.disenchant.ContainerDisenchant;
@@ -117,7 +117,7 @@ public class MenuTypeRegistry {
 //  public static final RegistryObject<MenuType<ContainerPackager>> PACKAGER = CONTAINERS.register("packager", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerPackager(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
 //  public static final RegistryObject<MenuType<ContainerSoundRecorder>> SOUND_RECORDER = CONTAINERS.register("sound_recorder", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerSoundRecorder(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
 //  public static final RegistryObject<MenuType<ContainerSoundPlayer>> SOUND_PLAYER = CONTAINERS.register("sound_player", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerSoundPlayer(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
-  public static final RegistryObject<MenuType<ContainerCrusher>> CRUSHER = CONTAINERS.register("crusher", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerCrusher(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
+//  public static final RegistryObject<MenuType<ContainerCrusher>> CRUSHER = CONTAINERS.register("crusher", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerCrusher(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
 //  public static final RegistryObject<MenuType<ContainerTeleport>> TELEPORT = CONTAINERS.register("teleport", () -> IForgeMenuType.create((windowId, inv, data) -> new ContainerTeleport(windowId, inv.player.level(), data.readBlockPos(), inv, inv.player)));
   //  Items with containers
   public static final RegistryObject<MenuType<EnderBookContainer>> ENDER_BOOK = CONTAINERS.register("ender_book", () -> IForgeMenuType.create((windowId, inv, data) -> new EnderBookContainer(windowId, inv, inv.player)));

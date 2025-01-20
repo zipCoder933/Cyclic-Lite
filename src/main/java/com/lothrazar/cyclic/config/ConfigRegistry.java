@@ -75,7 +75,7 @@ import com.lothrazar.cyclic.item.bauble.AutoCaveTorchItem;
 import com.lothrazar.cyclic.item.bauble.AutoTorchItem;
 import com.lothrazar.cyclic.item.elemental.IceWand;
 import com.lothrazar.cyclic.item.elemental.WaterSpreaderItem;
-import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
+//import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 import com.lothrazar.cyclic.item.food.EdibleFlightItem;
 import com.lothrazar.cyclic.item.food.EdibleSpecItem;
@@ -400,7 +400,7 @@ public class ConfigRegistry extends ConfigTemplate {
     MaterialRegistry.OBS_CHEST = CFG.comment(" Damage Reduction").defineInRange("chest", 11, 1, 99);
     MaterialRegistry.OBS_LEG = CFG.comment(" Damage Reduction").defineInRange("leg", 10, 1, 99);
     CFG.pop();
-    ItemProjectileDungeon.RANGE = CFG.comment(" Range in all directions to search for spawner").defineInRange("spawner_seeker.range", 64, 1, 256);
+//    ItemProjectileDungeon.RANGE = CFG.comment(" Range in all directions to search for spawner").defineInRange("spawner_seeker.range", 64, 1, 256);
     CHARM_LUCK = CFG.comment(" Boost given by item charm_luck").defineInRange("charm_luck.boost", 10, 0, 100);
     CHARM_SPEED = CFG.comment(" Boost given by item charm_speed").defineInRange("charm_speed.boost", 0.5F, 0, 2F);
     CHARM_ATTACKSPEED = CFG.comment(" Boost given by item charm_attackspeed").defineInRange("charm_attack_speed.boost", 0.5F, 0, 2F);

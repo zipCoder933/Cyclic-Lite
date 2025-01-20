@@ -11,7 +11,7 @@ import com.lothrazar.cyclic.enchant.MultiBowEnchant;
 import com.lothrazar.cyclic.item.SleepingMatItem;
 import com.lothrazar.cyclic.item.animal.ItemHorseEnder;
 import com.lothrazar.cyclic.item.bauble.CharmBase;
-import com.lothrazar.cyclic.item.bauble.SoulstoneCharm;
+//import com.lothrazar.cyclic.item.bauble.SoulstoneCharm;
 import com.lothrazar.cyclic.item.builder.BuilderActionType;
 import com.lothrazar.cyclic.item.builder.BuilderItem;
 import com.lothrazar.cyclic.item.datacard.ShapeCard;
@@ -310,14 +310,14 @@ public class ItemEvents {
   @SubscribeEvent
   public void onPlayerDeath(LivingDeathEvent event) {
     //
-    if (event.getEntity() instanceof Player) {
-      Player player = (Player) event.getEntity();
-      //      Items.TOTEM_OF_UNDYING
-      ItemStack charmStack = CharmUtil.getIfEnabled(player, ItemRegistry.SOULSTONE.get());
-      if (SoulstoneCharm.checkTotemDeathProtection(event.getSource(), player, charmStack)) {
-        event.setCanceled(true);
-      }
-    }
+//    if (event.getEntity() instanceof Player) {
+//      Player player = (Player) event.getEntity();
+//      //      Items.TOTEM_OF_UNDYING
+//      ItemStack charmStack = CharmUtil.getIfEnabled(player, ItemRegistry.SOULSTONE.get());
+//      if (SoulstoneCharm.checkTotemDeathProtection(event.getSource(), player, charmStack)) {
+//        event.setCanceled(true);
+//      }
+//    }
   }
 
   @SubscribeEvent

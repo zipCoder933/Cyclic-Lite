@@ -216,7 +216,7 @@ public class ClientRegistryCyclic {
 //    event.registerEntityRenderer(EntityRegistry.BOOMERANG_DAMAGE.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.MAGIC_NET.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.TORCH_BOLT.get(), ThrownItemRenderer::new);
-    event.registerEntityRenderer(EntityRegistry.DUNGEON.get(), ThrownItemRenderer::new);
+//    event.registerEntityRenderer(EntityRegistry.DUNGEON.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.EYE.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.FIRE_BOLT.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.DARKFIRE_BOLT.get(), ThrownItemRenderer::new);

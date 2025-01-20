@@ -1,7 +1,7 @@
 package com.lothrazar.cyclic.registry;
 
 import com.lothrazar.cyclic.ModCyclic;
-import com.lothrazar.cyclic.block.crusher.RecipeCrusher;
+//import com.lothrazar.cyclic.block.crusher.RecipeCrusher;
 import com.lothrazar.cyclic.block.generatorfluid.RecipeGeneratorFluid;
 import com.lothrazar.cyclic.block.generatorfluid.RecipeGeneratorFluid.SerializeGenerateFluid;
 import com.lothrazar.cyclic.block.generatoritem.RecipeGeneratorItem;
@@ -27,8 +27,8 @@ public class CyclicRecipeType {
   public static final RegistryObject<RecipeType<RecipeMelter>> MELTER = RECIPE_TYPES.register("melter", () -> new RecipeType<RecipeMelter>() {});
   public static final RegistryObject<SerializeMelter> MELTER_S = RECIPE_SERIALIZERS.register("melter", () -> new RecipeMelter.SerializeMelter());
   //
-  public static final RegistryObject<RecipeType<RecipeCrusher>> CRUSHER = RECIPE_TYPES.register("crusher", () -> new RecipeType<RecipeCrusher>() {});
-  public static final RegistryObject<RecipeCrusher.SerializeCrusher> CRUSHER_S = RECIPE_SERIALIZERS.register("crusher", () -> new RecipeCrusher.SerializeCrusher());
+//  public static final RegistryObject<RecipeType<RecipeCrusher>> CRUSHER = RECIPE_TYPES.register("crusher", () -> new RecipeType<RecipeCrusher>() {});
+//  public static final RegistryObject<RecipeCrusher.SerializeCrusher> CRUSHER_S = RECIPE_SERIALIZERS.register("crusher", () -> new RecipeCrusher.SerializeCrusher());
   //
   public static final RegistryObject<RecipeType<RecipeGeneratorItem>> GENERATOR_ITEM = RECIPE_TYPES.register("generator_item", () -> new RecipeType<RecipeGeneratorItem>() {});
   public static final RegistryObject<RecipeGeneratorItem.SerializeGenerateItem> GENERATOR_ITEM_S = RECIPE_SERIALIZERS.register("generator_item", () -> new RecipeGeneratorItem.SerializeGenerateItem());

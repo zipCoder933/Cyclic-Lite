@@ -3,8 +3,8 @@ package com.lothrazar.cyclic.compat.jei;
 import java.util.List;
 import java.util.Objects;
 import com.lothrazar.cyclic.ModCyclic;
-import com.lothrazar.cyclic.block.crusher.ContainerCrusher;
-import com.lothrazar.cyclic.block.crusher.ScreenCrusher;
+//import com.lothrazar.cyclic.block.crusher.ContainerCrusher;
+//import com.lothrazar.cyclic.block.crusher.ScreenCrusher;
 import com.lothrazar.cyclic.block.generatorfluid.ScreenGeneratorFluid;
 import com.lothrazar.cyclic.block.generatoritem.ContainerGeneratorDrops;
 import com.lothrazar.cyclic.block.generatoritem.ScreenGeneratorDrops;
@@ -65,7 +65,7 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipeCategories(new GenitemRecipeCategory(guiHelper));
     registry.addRecipeCategories(new GenfluidRecipeCategory(guiHelper));
 //    registry.addRecipeCategories(new PackagerRecipeCategory(guiHelper));
-    registry.addRecipeCategories(new CrusherRecipeCategory(guiHelper));
+//    registry.addRecipeCategories(new CrusherRecipeCategory(guiHelper));
   }
 
   @Override
@@ -79,7 +79,7 @@ public class CyclicPluginJEI implements IModPlugin {
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.SOLIDIFIER.get()), SolidifierRecipeCategory.TYPE);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.GENERATOR_ITEM.get()), GenitemRecipeCategory.TYPE);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.GENERATOR_FLUID.get()), GenfluidRecipeCategory.TYPE);
-    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRUSHER.get()), CrusherRecipeCategory.TYPE);
+//    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRUSHER.get()), CrusherRecipeCategory.TYPE);
   }
 
   @Override
@@ -91,7 +91,7 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipes(SolidifierRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.SOLID.get())));
     registry.addRecipes(GenitemRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_ITEM.get())));
     registry.addRecipes(GenfluidRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_FLUID.get())));
-    registry.addRecipes(CrusherRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.CRUSHER.get())));
+//    registry.addRecipes(CrusherRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.CRUSHER.get())));
 //    registry.addRecipes(PackagerRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(RecipeType.CRAFTING)));
     for (RegistryObject<Item> item : ItemRegistry.ITEMS.getEntries()) {
       ItemStack st = new ItemStack(item.get());
@@ -118,9 +118,9 @@ public class CyclicPluginJEI implements IModPlugin {
 //    registry.addRecipeClickArea(ScreenPackager.class,
 //        60, 4,
 //        52, 12, PackagerRecipeCategory.TYPE);
-    registry.addRecipeClickArea(ScreenCrusher.class,
-        76, 38,
-        20, 20, CrusherRecipeCategory.TYPE);
+//    registry.addRecipeClickArea(ScreenCrusher.class,
+//        76, 38,
+//        20, 20, CrusherRecipeCategory.TYPE);
   }
 
   @Override
@@ -143,9 +143,9 @@ public class CyclicPluginJEI implements IModPlugin {
     registry.addRecipeTransferHandler(ContainerGeneratorDrops.class, MenuTypeRegistry.GENERATOR_DROPS.get(), GenitemRecipeCategory.TYPE,
         0, 1, //recipeSLotStart, recipeSlotCount
         1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
-    registry.addRecipeTransferHandler(ContainerCrusher.class, MenuTypeRegistry.CRUSHER.get(), CrusherRecipeCategory.TYPE,
-        0, 1, //recipeSLotStart, recipeSlotCount
-        1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
+//    registry.addRecipeTransferHandler(ContainerCrusher.class, MenuTypeRegistry.CRUSHER.get(), CrusherRecipeCategory.TYPE,
+//        0, 1, //recipeSLotStart, recipeSlotCount
+//        1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount
 //    registry.addRecipeTransferHandler(ContainerPackager.class, MenuTypeRegistry.PACKAGER.get(), PackagerRecipeCategory.TYPE,
 //        0, 1, //recipeSLotStart, recipeSlotCount
 //        1, PLAYER_INV_SIZE); // inventorySlotStart, inventorySlotCount

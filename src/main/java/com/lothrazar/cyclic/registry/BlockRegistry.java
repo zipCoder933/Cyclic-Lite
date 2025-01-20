@@ -43,7 +43,7 @@ import com.lothrazar.cyclic.block.crafter.BlockCrafter;
 //import com.lothrazar.cyclic.block.crate.BlockCrate;
 //import com.lothrazar.cyclic.block.cratemini.BlockCrateMini;
 //import com.lothrazar.cyclic.block.creativeitem.BlockItemInfinite;
-import com.lothrazar.cyclic.block.crusher.BlockCrusher;
+//import com.lothrazar.cyclic.block.crusher.BlockCrusher;
 import com.lothrazar.cyclic.block.detectmoon.BlockMoon;
 import com.lothrazar.cyclic.block.detectorentity.BlockDetector;
 import com.lothrazar.cyclic.block.detectoritem.BlockDetectorItem;
@@ -282,7 +282,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> NETHERITE_PRESSURE_PLATE = BLOCKS.register("netherite_pressure_plate", () -> new PressurePlateBlock(PressurePlateBlock.Sensitivity.MOBS, Block.Properties.of().noCollission().strength(0.5F), BlockSetType.STONE));
     public static final RegistryObject<Block> SPONGE_LAVA = BLOCKS.register("sponge_lava", () -> new LavaSpongeBlock(Block.Properties.of().sound(SoundType.SPORE_BLOSSOM).lightLevel(p -> 2)));
     public static final RegistryObject<Block> SPONGE_MILK = BLOCKS.register("sponge_milk", () -> new MilkSpongeBlock(Block.Properties.of().lightLevel(p -> 1)));
-    public static final RegistryObject<Block> CRUSHER = BLOCKS.register("crusher", () -> new BlockCrusher(Block.Properties.of()));
+//    public static final RegistryObject<Block> CRUSHER = BLOCKS.register("crusher", () -> new BlockCrusher(Block.Properties.of()));
     public static final RegistryObject<Block> PEACE_CANDLE = BLOCKS.register("peace_candle", () -> new CandlePeaceBlock(Block.Properties.of()
             .lightLevel(p -> p.getValue(BlockCyclic.LIT) ? 6 : 0)));
     public static final RegistryObject<Block> WATER_CANDLE = BLOCKS.register("water_candle", () -> new CandleWaterBlock(Block.Properties.of()

@@ -44,7 +44,7 @@ import com.lothrazar.cyclic.item.bauble.CharmWing;
 import com.lothrazar.cyclic.item.bauble.CharmWither;
 import com.lothrazar.cyclic.item.bauble.GloveItem;
 import com.lothrazar.cyclic.item.bauble.ItemBaseToggle;
-import com.lothrazar.cyclic.item.bauble.SoulstoneCharm;
+//import com.lothrazar.cyclic.item.bauble.SoulstoneCharm;
 //import com.lothrazar.cyclic.item.boomerang.BoomerangItem;
 //import com.lothrazar.cyclic.item.boomerang.BoomerangItem.Boomer;
 import com.lothrazar.cyclic.item.builder.BuildStyle;
@@ -77,7 +77,7 @@ import com.lothrazar.cyclic.item.ender.EnderPearlMount;
 import com.lothrazar.cyclic.item.ender.EnderPearlReuse;
 import com.lothrazar.cyclic.item.ender.EnderWingItem;
 import com.lothrazar.cyclic.item.ender.EnderWingSp;
-import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
+//import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
 import com.lothrazar.cyclic.item.enderbook.EnderBookItem;
 import com.lothrazar.cyclic.item.equipment.AmethystAxeItem;
 import com.lothrazar.cyclic.item.equipment.AmethystHoeItem;
@@ -139,11 +139,16 @@ public class ItemRegistry {
     static final int SMALLPOTIONDUR = 20 * 90; // 1:30
     static final int LARGEPOTIONDUR = 3 * 20 * 60; // 3:00
     static final float APPLESATUR = Foods.APPLE.getSaturationModifier();
+
+
     public static final RegistryObject<Item> APPLE_ENDER = ITEMS.register("apple_ender", () -> new EnderApple(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(0).alwaysEat().build())));
+
     public static final RegistryObject<Item> APPLE_LOFTY_STATURE = ITEMS.register("apple_lofty_stature", () -> new LoftyStatureApple(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(0).alwaysEat()
             .build())));
-    public static final RegistryObject<Item> APPLE_HONEY = ITEMS.register("apple_honey", () -> new ItemBaseCyclic(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition() * 4).saturationMod(APPLESATUR * 4)
+
+    public static final RegistryObject<Item> APPLE_HONEY = ITEMS.register("apple_honey", () -> new ItemBaseCyclic(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition() * 2).saturationMod(APPLESATUR * 2)
             .build())));
+
     public static final RegistryObject<Item> APPLE_CHORUS = ITEMS.register("apple_chorus", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
             .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, LARGEPOTIONDUR, 1), 1)
             .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, LARGEPOTIONDUR, 0), 1)
@@ -151,44 +156,46 @@ public class ItemRegistry {
             .effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, SMALLPOTIONDUR, 1), 1)
             .alwaysEat()
             .build())));
-    public static final RegistryObject<Item> APPLE_BONE = ITEMS.register("apple_bone", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
-            .effect(() -> new MobEffectInstance(MobEffects.JUMP, LARGEPOTIONDUR, 4 + 5), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, LARGEPOTIONDUR, 2), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.UNLUCK, LARGEPOTIONDUR, 0), 1)
-            .alwaysEat()
-            .build())));
-    public static final RegistryObject<Item> APPLE_PRISMARINE = ITEMS.register("apple_prismarine", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
-            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.GLOWING, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, LARGEPOTIONDUR, 0), 1)
-            .alwaysEat()
-            .build())));
-    public static final RegistryObject<Item> APPLE_LAPIS = ITEMS.register("apple_lapis", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR * 4)
-            .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.CONDUIT_POWER, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, LARGEPOTIONDUR, 0), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, LARGEPOTIONDUR, 0), 1)
-            .fast().alwaysEat()
-            .build())));
-    public static final RegistryObject<Item> APPLE_IRON = ITEMS.register("apple_iron", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
-            .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, LARGEPOTIONDUR, 2), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, LARGEPOTIONDUR, 2), 1)
-            .fast().alwaysEat()
-            .build())));
-    public static final RegistryObject<Item> APPLE_DIAMOND = ITEMS.register("apple_diamond", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationMod(1)
-            .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, SMALLPOTIONDUR, 4), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, SMALLPOTIONDUR, 4), 1)
-            .fast().alwaysEat()
-            .build())));
-    public static final RegistryObject<Item> APPLE_EMERALD = ITEMS.register("apple_emerald", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition() * 3).saturationMod(APPLESATUR)
-            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, SMALLPOTIONDUR, 2), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.LUCK, SMALLPOTIONDUR, 1), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, SMALLPOTIONDUR, 1), 1)
-            .effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, SMALLPOTIONDUR, 1), 1)
-            .alwaysEat().build())));
-    public static final RegistryObject<Item> APPLE_CHOCOLATE = ITEMS.register("apple_chocolate", () -> new AppleChocolate(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR * 4)
+
+//    public static final RegistryObject<Item> APPLE_BONE = ITEMS.register("apple_bone", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
+//            .effect(() -> new MobEffectInstance(MobEffects.JUMP, LARGEPOTIONDUR, 4 + 5), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.INVISIBILITY, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.WEAKNESS, LARGEPOTIONDUR, 2), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.UNLUCK, LARGEPOTIONDUR, 0), 1)
+//            .alwaysEat()
+//            .build())));
+//    public static final RegistryObject<Item> APPLE_PRISMARINE = ITEMS.register("apple_prismarine", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
+//            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.GLOWING, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, LARGEPOTIONDUR, 0), 1)
+//            .alwaysEat()
+//            .build())));
+//    public static final RegistryObject<Item> APPLE_LAPIS = ITEMS.register("apple_lapis", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR * 4)
+//            .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.WATER_BREATHING, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.CONDUIT_POWER, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, LARGEPOTIONDUR, 0), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, LARGEPOTIONDUR, 0), 1)
+//            .fast().alwaysEat()
+//            .build())));
+//    public static final RegistryObject<Item> APPLE_IRON = ITEMS.register("apple_iron", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
+//            .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, LARGEPOTIONDUR, 2), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, LARGEPOTIONDUR, 2), 1)
+//            .fast().alwaysEat()
+//            .build())));
+//    public static final RegistryObject<Item> APPLE_DIAMOND = ITEMS.register("apple_diamond", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationMod(1)
+//            .effect(() -> new MobEffectInstance(MobEffects.HEALTH_BOOST, SMALLPOTIONDUR, 4), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, SMALLPOTIONDUR, 4), 1)
+//            .fast().alwaysEat()
+//            .build())));
+//    public static final RegistryObject<Item> APPLE_EMERALD = ITEMS.register("apple_emerald", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition() * 3).saturationMod(APPLESATUR)
+//            .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, SMALLPOTIONDUR, 2), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.LUCK, SMALLPOTIONDUR, 1), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_BOOST, SMALLPOTIONDUR, 1), 1)
+//            .effect(() -> new MobEffectInstance(MobEffects.SLOW_FALLING, SMALLPOTIONDUR, 1), 1)
+//            .alwaysEat().build())));
+
+    public static final RegistryObject<Item> APPLE_CHOCOLATE = ITEMS.register("apple_chocolate", () -> new AppleChocolate(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR * 2)
             .alwaysEat().build())));
 
 
@@ -202,10 +209,15 @@ public class ItemRegistry {
 //  public static final RegistryObject<Item> ANVILVOID = ITEMS.register("anvil_void", () -> new BlockItem(BlockRegistry.ANVILVOID.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> FANSLAB = ITEMS.register("fan_slab", () -> new BlockItem(BlockRegistry.FANSLAB.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> ROTATOR = ITEMS.register("rotator", () -> new BlockItem(BlockRegistry.ROTATOR.get(), new Item.Properties()));
+
+
+
     public static final RegistryObject<Item> DETECTORMOON = ITEMS.register("detector_moon", () -> new BlockItem(BlockRegistry.DETECTORMOON.get(), new Item.Properties()));
+
     //    public static final RegistryObject<Item> DETECTORWEATHER = ITEMS.register("detector_weather", () -> new BlockItem(BlockRegistry.DETECTORWEATHER.get(), new Item.Properties()));
     //  public static final RegistryObject<Item> SPRINKLER = ITEMS.register("sprinkler", () -> new BlockItem(BlockRegistry.SPRINKLER.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> SHEARING = ITEMS.register("shearing", () -> new BlockItem(BlockRegistry.SHEARING.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> DOORBELL = ITEMS.register("doorbell", () -> new BlockItem(BlockRegistry.DOORBELL.get(), new Item.Properties()));
 
 
     //    public static final RegistryObject<Item> PROSPECTOR = ITEMS.register("prospector", () -> new OreProspector(new Item.Properties().durability(256)));
@@ -223,7 +235,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> SPIKES_IRON = ITEMS.register("spikes_iron", () -> new BlockItem(BlockRegistry.SPIKES_IRON.get(), new Item.Properties()));
     public static final RegistryObject<Item> SPIKES_CURSE = ITEMS.register("spikes_curse", () -> new BlockItem(BlockRegistry.SPIKES_CURSE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SPIKES_FIRE = ITEMS.register("spikes_fire", () -> new BlockItem(BlockRegistry.SPIKES_FIRE.get(), new Item.Properties()));
-//    public static final RegistryObject<Item> DOORBELL = ITEMS.register("doorbell", () -> new BlockItem(BlockRegistry.DOORBELL.get(), new Item.Properties()));
 
 
     public static final RegistryObject<Item> CABLE_WRENCH = ITEMS.register("cable_wrench", () -> new CableWrench(new Item.Properties()));
@@ -248,9 +259,9 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> OFFSET_SCEPTER = ITEMS.register("offset_scepter", () -> new BuilderItem(new Item.Properties(), BuildStyle.OFFSET));
 //    public static final RegistryObject<Item> RANDOMIZE_SCEPTER = ITEMS.register("randomize_scepter", () -> new RandomizerItem(new Item.Properties()));
 //    public static final RegistryObject<Item> SPAWNINSPECTOR = ITEMS.register("spawn_inspector", () -> new SpawnInspectorTool(new Item.Properties().durability(256)));
-    public static final RegistryObject<Item> CHARM_WING = ITEMS.register("charm_wing", () -> new CharmWing(new Item.Properties().durability(64)));
+//    public static final RegistryObject<Item> CHARM_WING = ITEMS.register("charm_wing", () -> new CharmWing(new Item.Properties().durability(64)));
     public static final RegistryObject<Item> SLINGSHOT = ITEMS.register("slingshot", () -> new SlingshotItem(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> SOULSTONE = ITEMS.register("soulstone", () -> new SoulstoneCharm(new Item.Properties().durability(8)));
+//    public static final RegistryObject<Item> SOULSTONE = ITEMS.register("soulstone", () -> new SoulstoneCharm(new Item.Properties().durability(8)));
 
     //    public static final RegistryObject<Item> INVENTORY_CAKE = ITEMS.register("inventory_cake", () -> new ItemCakeInventory(new Item.Properties().stacksTo(1).food(new FoodProperties.Builder().nutrition(1).saturationMod(10).alwaysEat().build())));
     //  public static final RegistryObject<Item> SOUND_RECORDER = ITEMS.register("sound_recorder", () -> new BlockItem(BlockRegistry.SOUND_RECORDER.get(), new Item.Properties()));
@@ -326,7 +337,7 @@ public class ItemRegistry {
     //    public static final RegistryObject<Item> BOOMERANG_STUN = ITEMS.register("boomerang_stun", () -> new BoomerangItem(Boomer.STUN, new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> BOOMERANG_CARRY = ITEMS.register("boomerang_carry", () -> new BoomerangItem(Boomer.CARRY, new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> BOOMERANG_DAMAGE = ITEMS.register("boomerang_damage", () -> new BoomerangItem(Boomer.DAMAGE, new Item.Properties().durability(256)));
-    public static final RegistryObject<Item> SPAWNER_SEEKER = ITEMS.register("spawner_seeker", () -> new ItemProjectileDungeon(new Item.Properties()));
+//    public static final RegistryObject<Item> SPAWNER_SEEKER = ITEMS.register("spawner_seeker", () -> new ItemProjectileDungeon(new Item.Properties()));
 //    public static final RegistryObject<Item> GLOVE_CLIMB = ITEMS.register("glove_climb", () -> new GloveItem(new Item.Properties().durability(256 * 8)));
 //    public static final RegistryObject<Item> FLIPPERS = ITEMS.register("flippers", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
     //    public static final RegistryObject<Item> HEART = ITEMS.register("heart", () -> new HeartItem(new Item.Properties().stacksTo(16)));

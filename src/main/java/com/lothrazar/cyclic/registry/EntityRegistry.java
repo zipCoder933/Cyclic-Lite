@@ -10,7 +10,7 @@ import com.lothrazar.cyclic.item.elemental.FireEntity;
 //import com.lothrazar.cyclic.item.elemental.FishingEnderEntity;
 import com.lothrazar.cyclic.item.elemental.LightningEntity;
 import com.lothrazar.cyclic.item.elemental.SnowEntity;
-import com.lothrazar.cyclic.item.ender.EntityDungeonEye;
+//import com.lothrazar.cyclic.item.ender.EntityDungeonEye;
 import com.lothrazar.cyclic.item.ender.EyeOfEnderEntityNodrop;
 import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
 import com.lothrazar.cyclic.item.missile.MagicMissileEntity;
@@ -55,12 +55,12 @@ public class EntityRegistry {
 //      .setTrackingRange(128)
 //      .sized(.6F, .6F)
 //      .build("boomerang_damage"));
-  public static final RegistryObject<EntityType<EntityDungeonEye>> DUNGEON = ENTITIES.register("dungeon", () -> EntityType.Builder.<EntityDungeonEye> of(EntityDungeonEye::new, MobCategory.MISC)
-      .setShouldReceiveVelocityUpdates(true)
-      .setUpdateInterval(1)
-      .setTrackingRange(128)
-      .sized(.6F, .6F)
-      .build("dungeon"));
+//  public static final RegistryObject<EntityType<EntityDungeonEye>> DUNGEON = ENTITIES.register("dungeon", () -> EntityType.Builder.<EntityDungeonEye> of(EntityDungeonEye::new, MobCategory.MISC)
+//      .setShouldReceiveVelocityUpdates(true)
+//      .setUpdateInterval(1)
+//      .setTrackingRange(128)
+//      .sized(.6F, .6F)
+//      .build("dungeon"));
   public static final RegistryObject<EntityType<EyeOfEnderEntityNodrop>> EYE = ENTITIES.register("eye", () -> EntityType.Builder.<EyeOfEnderEntityNodrop> of(EyeOfEnderEntityNodrop::new, MobCategory.MISC)
       .setShouldReceiveVelocityUpdates(true)
       .setUpdateInterval(1)
