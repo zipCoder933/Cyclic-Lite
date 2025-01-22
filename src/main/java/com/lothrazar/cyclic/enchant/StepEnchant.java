@@ -83,7 +83,7 @@ public class StepEnchant extends EnchantmentFlib {
     //anything that goes on your feet
     boolean yes = isEnabled()
         && (stack.getItem() instanceof ArmorItem)
-        && ((ArmorItem) stack.getItem()).getType() == ArmorItem.Type.LEGGINGS;
+        && ((ArmorItem) stack.getItem()).getType() == ArmorItem.Type.BOOTS;
     return yes;
   }
 
@@ -98,7 +98,7 @@ public class StepEnchant extends EnchantmentFlib {
     }
     Player player = (Player) event.getEntity();
     //Ticking
-    ItemStack armor = player.getItemBySlot(EquipmentSlot.LEGS);
+    ItemStack armor = player.getItemBySlot(EquipmentSlot.FEET);
     int level = 0;
     if (armor.isEmpty() == false && EnchantmentHelper.getEnchantments(armor) != null
         && EnchantmentHelper.getEnchantments(armor).containsKey(this)) {
