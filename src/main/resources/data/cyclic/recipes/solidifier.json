@@ -17,6 +17,9 @@
     },
     "h": {
       "item": "minecraft:obsidian"
+    },
+    "q": {
+      "item": "minecraft:iron_block"
     }
   },
   "result": {

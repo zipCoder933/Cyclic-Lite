@@ -62,8 +62,9 @@ public class CyclicPluginJEI implements IModPlugin {
     IGuiHelper guiHelper = registry.getJeiHelpers().getGuiHelper();
     registry.addRecipeCategories(new MelterRecipeCategory(guiHelper));
     registry.addRecipeCategories(new SolidifierRecipeCategory(guiHelper));
-    registry.addRecipeCategories(new GenitemRecipeCategory(guiHelper));
-    registry.addRecipeCategories(new GenfluidRecipeCategory(guiHelper));
+
+//    registry.addRecipeCategories(new GenitemRecipeCategory(guiHelper));
+//    registry.addRecipeCategories(new GenfluidRecipeCategory(guiHelper));
 //    registry.addRecipeCategories(new PackagerRecipeCategory(guiHelper));
 //    registry.addRecipeCategories(new CrusherRecipeCategory(guiHelper));
   }
@@ -71,14 +72,17 @@ public class CyclicPluginJEI implements IModPlugin {
   @Override
   public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
 //    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.PACKAGER.get()), PackagerRecipeCategory.TYPE);
-    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRAFTER.get()), RecipeTypes.CRAFTING);
+//    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRAFTER.get()), RecipeTypes.CRAFTING);
 //    registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_BAG.get()), RecipeTypes.CRAFTING);
-    registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_STICK.get()), RecipeTypes.CRAFTING);
-    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.WORKBENCH.get()), RecipeTypes.CRAFTING);
+
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.MELTER.get()), MelterRecipeCategory.TYPE);
     registration.addRecipeCatalyst(new ItemStack(BlockRegistry.SOLIDIFIER.get()), SolidifierRecipeCategory.TYPE);
-    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.GENERATOR_ITEM.get()), GenitemRecipeCategory.TYPE);
-    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.GENERATOR_FLUID.get()), GenfluidRecipeCategory.TYPE);
+
+    registration.addRecipeCatalyst(new ItemStack(ItemRegistry.CRAFTING_STICK.get()), RecipeTypes.CRAFTING);
+    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.WORKBENCH.get()), RecipeTypes.CRAFTING);
+
+//    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.GENERATOR_ITEM.get()), GenitemRecipeCategory.TYPE);
+//    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.GENERATOR_FLUID.get()), GenfluidRecipeCategory.TYPE);
 //    registration.addRecipeCatalyst(new ItemStack(BlockRegistry.CRUSHER.get()), CrusherRecipeCategory.TYPE);
   }
 
@@ -86,11 +90,13 @@ public class CyclicPluginJEI implements IModPlugin {
   public void registerRecipes(IRecipeRegistration registry) {
     ClientLevel world = Objects.requireNonNull(Minecraft.getInstance().level);
     RecipeManager rm = world.getRecipeManager();
+    
     registry.addRecipes(RecipeTypes.CRAFTING, rm.getAllRecipesFor(RecipeType.CRAFTING));
     registry.addRecipes(MelterRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.MELTER.get())));
     registry.addRecipes(SolidifierRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.SOLID.get())));
-    registry.addRecipes(GenitemRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_ITEM.get())));
-    registry.addRecipes(GenfluidRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_FLUID.get())));
+
+//    registry.addRecipes(GenitemRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_ITEM.get())));
+//    registry.addRecipes(GenfluidRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.GENERATOR_FLUID.get())));
 //    registry.addRecipes(CrusherRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(CyclicRecipeType.CRUSHER.get())));
 //    registry.addRecipes(PackagerRecipeCategory.TYPE, List.copyOf(rm.getAllRecipesFor(RecipeType.CRAFTING)));
     for (RegistryObject<Item> item : ItemRegistry.ITEMS.getEntries()) {
