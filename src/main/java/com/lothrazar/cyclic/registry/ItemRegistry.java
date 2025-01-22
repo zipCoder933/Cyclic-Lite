@@ -100,8 +100,8 @@ import com.lothrazar.cyclic.item.food.LoftyStatureApple;
 import com.lothrazar.cyclic.item.food.MilkBottle;
 //import com.lothrazar.cyclic.item.food.inventorycake.ItemCakeInventory;
 //import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
-import com.lothrazar.cyclic.item.magicnet.ItemMagicNet;
-import com.lothrazar.cyclic.item.magicnet.ItemMobContainer;
+//import com.lothrazar.cyclic.item.magicnet.ItemMagicNet;
+//import com.lothrazar.cyclic.item.magicnet.ItemMobContainer;
 import com.lothrazar.cyclic.item.missile.WandMissileItem;
 import com.lothrazar.cyclic.item.random.RandomizerItem;
 import com.lothrazar.cyclic.item.redstone.LeverRemote;
@@ -141,13 +141,16 @@ public class ItemRegistry {
     static final float APPLESATUR = Foods.APPLE.getSaturationModifier();
 
 
-    public static final RegistryObject<Item> APPLE_ENDER = ITEMS.register("apple_ender", () -> new EnderApple(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(0).alwaysEat().build())));
+//    public static final RegistryObject<Item> APPLE_ENDER = ITEMS.register("apple_ender", () -> new EnderApple(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(0).alwaysEat().build())));
 
-    public static final RegistryObject<Item> APPLE_LOFTY_STATURE = ITEMS.register("apple_lofty_stature", () -> new LoftyStatureApple(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(0).alwaysEat()
-            .build())));
 
     public static final RegistryObject<Item> APPLE_HONEY = ITEMS.register("apple_honey", () -> new ItemBaseCyclic(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition() * 2).saturationMod(APPLESATUR * 2)
             .build())));
+
+    //The step up enchantment already does this
+//    public static final RegistryObject<Item> APPLE_LOFTY_STATURE = ITEMS.register("apple_lofty_stature", () -> new LoftyStatureApple(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(0).alwaysEat()
+//            .build())));
+
 
     public static final RegistryObject<Item> APPLE_CHORUS = ITEMS.register("apple_chorus", () -> new AppleBuffs(new Item.Properties().food(new FoodProperties.Builder().nutrition(Foods.APPLE.getNutrition()).saturationMod(APPLESATUR)
             .effect(() -> new MobEffectInstance(MobEffects.LEVITATION, LARGEPOTIONDUR, 1), 1)
@@ -209,7 +212,6 @@ public class ItemRegistry {
 //  public static final RegistryObject<Item> ANVILVOID = ITEMS.register("anvil_void", () -> new BlockItem(BlockRegistry.ANVILVOID.get(), new Item.Properties()));
 //  public static final RegistryObject<Item> FANSLAB = ITEMS.register("fan_slab", () -> new BlockItem(BlockRegistry.FANSLAB.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> ROTATOR = ITEMS.register("rotator", () -> new BlockItem(BlockRegistry.ROTATOR.get(), new Item.Properties()));
-
 
 
     public static final RegistryObject<Item> DETECTORMOON = ITEMS.register("detector_moon", () -> new BlockItem(BlockRegistry.DETECTORMOON.get(), new Item.Properties()));
@@ -318,26 +320,15 @@ public class ItemRegistry {
 
 
 
-    //Candles
-    public static final RegistryObject<Item> WATER_CANDLE = ITEMS.register("water_candle", () -> new BlockItem(BlockRegistry.WATER_CANDLE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> PEACE_CANDLE = ITEMS.register("peace_candle", () -> new BlockItem(BlockRegistry.PEACE_CANDLE.get(), new Item.Properties()));
-
-
-    //Flowers
-//    public static final RegistryObject<Item> FLOWER_CYAN = ITEMS.register("flower_cyan", () -> new BlockItem(BlockRegistry.FLOWER_CYAN.get(), new Item.Properties()));
-//    public static final RegistryObject<Item> FLOWER_PURPLE = ITEMS.register("flower_purple_tulip", () -> new BlockItem(BlockRegistry.FLOWER_PURPLE_TULIP.get(), new Item.Properties()));
-//    public static final RegistryObject<Item> FLOWER_BROWN = ITEMS.register("flower_absalon_tulip", () -> new BlockItem(BlockRegistry.FLOWER_ABSALON_TULIP.get(), new Item.Properties()));
-//    public static final RegistryObject<Item> FLOWER_LIME = ITEMS.register("flower_lime_carnation", () -> new BlockItem(BlockRegistry.FLOWER_LIME_CARNATION.get(), new Item.Properties()));
-
-
     //  public static final RegistryObject<Item> TELEPORT = ITEMS.register("teleport", () -> new BlockItem(BlockRegistry.TELEPORT.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> STORAGE_BAG = ITEMS.register("storage_bag", () -> new ItemStorageBag(new Item.Properties().stacksTo(1).setNoRepair()));
 //    public static final RegistryObject<Item> CRAFTING_BAG = ITEMS.register("crafting_bag", () -> new CraftingBagItem(new Item.Properties().stacksTo(1).setNoRepair()));
     public static final RegistryObject<Item> CRAFTING_STICK = ITEMS.register("crafting_stick", () -> new CraftingStickItem(new Item.Properties().stacksTo(1).setNoRepair()));
-    public static final RegistryObject<Item> MOB_CONTAINER = ITEMS.register("mob_container", () -> new ItemMobContainer(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> TILE_TRANSPORTER_EMPTY = ITEMS.register("tile_transporter_empty", () -> new TileTransporterEmptyItem(new Item.Properties()));
+
+    //    public static final RegistryObject<Item> MOB_CONTAINER = ITEMS.register("mob_container", () -> new ItemMobContainer(new Item.Properties().stacksTo(1)));
     //    public static final RegistryObject<Item> TILE_TRANSPORTER = ITEMS.register("tile_transporter", () -> new TileTransporterItem(new Item.Properties()));
-    public static final RegistryObject<Item> MAGIC_NET = ITEMS.register("magic_net", () -> new ItemMagicNet(new Item.Properties()));
+//    public static final RegistryObject<Item> MAGIC_NET = ITEMS.register("magic_net", () -> new ItemMagicNet(new Item.Properties()));
     //    public static final RegistryObject<Item> BOOMERANG_STUN = ITEMS.register("boomerang_stun", () -> new BoomerangItem(Boomer.STUN, new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> BOOMERANG_CARRY = ITEMS.register("boomerang_carry", () -> new BoomerangItem(Boomer.CARRY, new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> BOOMERANG_DAMAGE = ITEMS.register("boomerang_damage", () -> new BoomerangItem(Boomer.DAMAGE, new Item.Properties().durability(256)));
@@ -369,39 +360,38 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> ENDER_PEARL_MOUNTED = ITEMS.register("ender_pearl_mounted", () -> new EnderPearlMount(new Item.Properties()));
 //    public static final RegistryObject<Item> SPELUNKER = ITEMS.register("spelunker", () -> new SpelunkerCaveFinder(new Item.Properties().durability(256)));
 
-    //Charms
-    public static final RegistryObject<Item> CHORUS_FLIGHT = ITEMS.register("chorus_flight", () -> new EdibleFlightItem(new Item.Properties()));
+    //Charms (Only keep charms that are unique, ones where no other mod has the same functionality)
+//    public static final RegistryObject<Item> CHORUS_FLIGHT = ITEMS.register("chorus_flight", () -> new EdibleFlightItem(new Item.Properties()));
 //    public static final RegistryObject<Item> CHORUS_SPECTRAL = ITEMS.register("chorus_spectral", () -> new EdibleSpecItem(new Item.Properties()));
 //    public static final RegistryObject<Item> CHARM_LONGFALL = ITEMS.register("charm_longfall", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> CHARM_CREEPER = ITEMS.register("charm_creeper", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> CHARM_STONE = ITEMS.register("charm_stone", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
- //   public static final RegistryObject<Item> CHARM_ANTIPOTION = ITEMS.register("charm_antipotion", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
- //   public static final RegistryObject<Item> CHARM_BOOSTPOTION = ITEMS.register("charm_boostpotion", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
+    //   public static final RegistryObject<Item> CHARM_ANTIPOTION = ITEMS.register("charm_antipotion", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
+    //   public static final RegistryObject<Item> CHARM_BOOSTPOTION = ITEMS.register("charm_boostpotion", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> CHARM_CRIT = ITEMS.register("charm_crit", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> QUIVER_DMG = ITEMS.register("quiver_damage", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> QUIVER_LIT = ITEMS.register("quiver_lightning", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> CLOAK_INVISIBLE = ITEMS.register("charm_invisible", () -> new CharmInvisible(new Item.Properties().durability(256 * 4)));
     public static final RegistryObject<Item> CHARM_MAGICDEF = ITEMS.register("charm_magicdefense", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
     public static final RegistryObject<Item> CHARM_STARVATION = ITEMS.register("charm_starvation", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 256)));
-//    public static final RegistryObject<Item> CHARM_VENOM = ITEMS.register("charm_venom", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
-    public static final RegistryObject<Item> CHARM_WATER = ITEMS.register("charm_water", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
+    //    public static final RegistryObject<Item> CHARM_VENOM = ITEMS.register("charm_venom", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
+//    public static final RegistryObject<Item> CHARM_WATER = ITEMS.register("charm_water", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> CHARM_SPEED = ITEMS.register("charm_speed", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> CHARM_KNOCKBACK_RESIST = ITEMS.register("charm_knockback_resistance", () -> new ItemBaseToggle(new Item.Properties().durability(256)));
     public static final RegistryObject<Item> CHARM_LUCK = ITEMS.register("charm_luck", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
-//    public static final RegistryObject<Item> CHARM_ATTACKSPEED = ITEMS.register("charm_attack_speed", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
-    public static final RegistryObject<Item> CHARM_XPSPEED = ITEMS.register("charm_xp_speed", () -> new ItemBaseToggle(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> CHARM_XPSTOPPER = ITEMS.register("charm_xp_blocker", () -> new ItemBaseToggle(new Item.Properties().stacksTo(1)));
-    public static final RegistryObject<Item> CHARM_TORCH = ITEMS.register("charm_torch", () -> new AutoTorchItem(new Item.Properties().durability(256 * 4)));
+    //    public static final RegistryObject<Item> CHARM_ATTACKSPEED = ITEMS.register("charm_attack_speed", () -> new ItemBaseToggle(new Item.Properties().durability(256 * 4)));
+//    public static final RegistryObject<Item> CHARM_XPSPEED = ITEMS.register("charm_xp_speed", () -> new ItemBaseToggle(new Item.Properties().stacksTo(1)));
+//    public static final RegistryObject<Item> CHARM_XPSTOPPER = ITEMS.register("charm_xp_blocker", () -> new ItemBaseToggle(new Item.Properties().stacksTo(1)));
 //    public static final RegistryObject<Item> CHARM_TORCH_CAVE = ITEMS.register("charm_torch_cave", () -> new AutoCaveTorchItem(new Item.Properties().durability(256 * 4)));
 //    public static final RegistryObject<Item> CHARM_HOME = ITEMS.register("charm_home", () -> new EnderWingItem(new Item.Properties().durability(256)));
-  //  public static final RegistryObject<Item> CHARM_WORLD = ITEMS.register("charm_world", () -> new EnderWingSp(new Item.Properties().durability(256)));
+    //  public static final RegistryObject<Item> CHARM_WORLD = ITEMS.register("charm_world", () -> new EnderWingSp(new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> ANTIGRAVITY = ITEMS.register("antigravity", () -> new AirAntiGravity(new Item.Properties().durability(1024 * 4)));
     public static final RegistryObject<Item> CHARM_VOID = ITEMS.register("charm_void", () -> new CharmVoid(new Item.Properties().durability(64)));
-//    public static final RegistryObject<Item> CHARM_ANTIDOTE = ITEMS.register("charm_antidote", () -> new CharmAntidote(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> CHARM_FIRE = ITEMS.register("charm_fire", () -> new CharmFire(new Item.Properties().durability(64)));
+    //    public static final RegistryObject<Item> CHARM_ANTIDOTE = ITEMS.register("charm_antidote", () -> new CharmAntidote(new Item.Properties().durability(64)));
+//    public static final RegistryObject<Item> CHARM_FIRE = ITEMS.register("charm_fire", () -> new CharmFire(new Item.Properties().durability(64)));
 //    public static final RegistryObject<Item> CHARM_WITHER = ITEMS.register("charm_wither", () -> new CharmWither(new Item.Properties().durability(64)));
 //    public static final RegistryObject<Item> CHARM_ULTIMATE = ITEMS.register("charm_ultimate", () -> new CharmOverpowered(new Item.Properties().durability(256)));
-
+    public static final RegistryObject<Item> CHARM_TORCH = ITEMS.register("charm_torch", () -> new AutoTorchItem(new Item.Properties().durability(256 * 4)));
 
 //    public static final RegistryObject<Item> ELEVATION_WAND = ITEMS.register("elevation_wand", () -> new ElevationWandItem(new Item.Properties().durability(256)));
 //    public static final RegistryObject<Item> TELEPORT_WAND = ITEMS.register("teleport_wand", () -> new TeleporterWandItem(new Item.Properties().durability(64)));
@@ -504,52 +494,69 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> EMERALD_CARROT_JUMP = ITEMS.register("emerald_carrot_jump", () -> new ItemHorseEmeraldJump(new Item.Properties()));
 //    public static final RegistryObject<Item> LAPIS_CARROT_VARIANT = ITEMS.register("lapis_carrot_variant", () -> new ItemHorseLapisVariant(new Item.Properties()));
 //    public static final RegistryObject<Item> TOXIC_CARROT = ITEMS.register("toxic_carrot", () -> new ItemHorseToxic(new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_BOOTS = ITEMS.register("crystal_boots", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.BOOTS, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_HELMET = ITEMS.register("crystal_helmet", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.HELMET, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_CHESTPLATE = ITEMS.register("crystal_chestplate", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_LEGGINGS = ITEMS.register("crystal_leggings", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+
     public static final RegistryObject<Item> EMERALD_BOOTS = ITEMS.register("emerald_boots", () -> new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.BOOTS, new Item.Properties()));
     public static final RegistryObject<Item> EMERALD_HELMET = ITEMS.register("emerald_helmet", () -> new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> EMERALD_CHESTPLATE = ITEMS.register("emerald_chestplate", () -> new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> EMERALD_LEGGINGS = ITEMS.register("emerald_leggings", () -> new ArmorItem(MaterialRegistry.ArmorMats.EMERALD, ArmorItem.Type.LEGGINGS, new Item.Properties()));
-    public static final RegistryObject<Item> AMETHYST_PICKAXE = ITEMS.register("amethyst_pickaxe", () -> new AmethystPickaxeItem(MaterialRegistry.ToolMats.AMETHYST, 1, -2.8F, new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.COPPER, 1, -2.8F, new Item.Properties()));
-    public static final RegistryObject<Item> EMERALD_PICKAXE = ITEMS.register("emerald_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.EMERALD, 1, -2.8F, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_PICKAXE = ITEMS.register("crystal_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 1, -2.8F, new Item.Properties()));
-    public static final RegistryObject<Item> SANDSTONE_PICKAXE = ITEMS.register("sandstone_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.SANDSTONE, 1, -2.8F, new Item.Properties()));
-    public static final RegistryObject<Item> NETHERBRICK_PICKAXE = ITEMS.register("netherbrick_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.NETHERBRICK, 1, -2.8F, new Item.Properties()));
-    public static final RegistryObject<Item> AMETHYST_AXE = ITEMS.register("amethyst_axe", () -> new AmethystAxeItem(MaterialRegistry.ToolMats.AMETHYST, 6.0F, -3.1F, new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_AXE = ITEMS.register("copper_axe", () -> new AxeItem(MaterialRegistry.ToolMats.COPPER, 6.0F, -3.1F, new Item.Properties()));
-    public static final RegistryObject<Item> EMERALD_AXE = ITEMS.register("emerald_axe", () -> new AxeItem(MaterialRegistry.ToolMats.EMERALD, 5.0F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_AXE = ITEMS.register("crystal_axe", () -> new AxeItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 5.0F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> SANDSTONE_AXE = ITEMS.register("sandstone_axe", () -> new AxeItem(MaterialRegistry.ToolMats.SANDSTONE, 5.0F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> NETHERBRICK_AXE = ITEMS.register("netherbrick_axe", () -> new AxeItem(MaterialRegistry.ToolMats.NETHERBRICK, 5.0F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> AMETHYST_HOE = ITEMS.register("amethyst_hoe", () -> new AmethystHoeItem(ToolMats.AMETHYST, -4, 0F, new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_HOE = ITEMS.register("copper_hoe", () -> new HoeItem(ToolMats.COPPER, -4, 0F, new Item.Properties()));
-    public static final RegistryObject<Item> EMERALD_HOE = ITEMS.register("emerald_hoe", () -> new HoeItem(ToolMats.EMERALD, -4, 0F, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_HOE = ITEMS.register("crystal_hoe", () -> new HoeItem(ToolMats.GEMOBSIDIAN, -4, 0F, new Item.Properties()));
-    public static final RegistryObject<Item> SANDSTONE_HOE = ITEMS.register("sandstone_hoe", () -> new HoeItem(ToolMats.SANDSTONE, -4, 0F, new Item.Properties()));
-    public static final RegistryObject<Item> NETHERBRICK_HOE = ITEMS.register("netherbrick_hoe", () -> new HoeItem(ToolMats.NETHERBRICK, -4, 0F, new Item.Properties()));
-    public static final RegistryObject<Item> AMETHYST_SHOVEL = ITEMS.register("amethyst_shovel", () -> new AmethystShovelItem(MaterialRegistry.ToolMats.AMETHYST, 1.5F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> COPPER_SHOVEL = ITEMS.register("copper_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.COPPER, 1.5F, -3.0F, new Item.Properties()));
     public static final RegistryObject<Item> EMERALD_SHOVEL = ITEMS.register("emerald_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.EMERALD, 1.5F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> CRYSTAL_SHOVEL = ITEMS.register("crystal_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 1.5F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> SANDSTONE_SHOVEL = ITEMS.register("sandstone_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.SANDSTONE, 1.5F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> NETHERBRICK_SHOVEL = ITEMS.register("netherbrick_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.NETHERBRICK, 1.5F, -3.0F, new Item.Properties()));
-    public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", () -> new SwordItem(MaterialRegistry.ToolMats.AMETHYST, 3, -2.4F, (new Item.Properties())));
-    public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", () -> new SwordItem(MaterialRegistry.ToolMats.COPPER, 3, -2.4F, (new Item.Properties())));
+    public static final RegistryObject<Item> EMERALD_HOE = ITEMS.register("emerald_hoe", () -> new HoeItem(ToolMats.EMERALD, -4, 0F, new Item.Properties()));
     public static final RegistryObject<Item> EMERALD_SWORD = ITEMS.register("emerald_sword", () -> new SwordItem(MaterialRegistry.ToolMats.EMERALD, 3, -2.4F, (new Item.Properties())));
+    public static final RegistryObject<Item> EMERALD_PICKAXE = ITEMS.register("emerald_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.EMERALD, 1, -2.8F, new Item.Properties()));
+    public static final RegistryObject<Item> EMERALD_AXE = ITEMS.register("emerald_axe", () -> new AxeItem(MaterialRegistry.ToolMats.EMERALD, 5.0F, -3.0F, new Item.Properties()));
+
+
+    public static final RegistryObject<Item> CRYSTAL_BOOTS = ITEMS.register("crystal_boots", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.BOOTS, new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTAL_HELMET = ITEMS.register("crystal_helmet", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.HELMET, new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTAL_CHESTPLATE = ITEMS.register("crystal_chestplate", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTAL_LEGGINGS = ITEMS.register("crystal_leggings", () -> new ArmorItem(MaterialRegistry.ArmorMats.GEMOBSIDIAN, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTAL_SHOVEL = ITEMS.register("crystal_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 1.5F, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTAL_HOE = ITEMS.register("crystal_hoe", () -> new HoeItem(ToolMats.GEMOBSIDIAN, -4, 0F, new Item.Properties()));
     public static final RegistryObject<Item> CRYSTAL_SWORD = ITEMS.register("crystal_sword", () -> new SwordItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 3, -2.4F, (new Item.Properties())));
-    public static final RegistryObject<Item> SANDSTONE_SWORD = ITEMS.register("sandstone_sword", () -> new SwordItem(MaterialRegistry.ToolMats.SANDSTONE, 3, -2.4F, (new Item.Properties())));
-    public static final RegistryObject<Item> NETHERBRICK_SWORD = ITEMS.register("netherbrick_sword", () -> new SwordItem(MaterialRegistry.ToolMats.NETHERBRICK, 3, -2.4F, (new Item.Properties())));
+    public static final RegistryObject<Item> CRYSTAL_PICKAXE = ITEMS.register("crystal_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 1, -2.8F, new Item.Properties()));
+    public static final RegistryObject<Item> CRYSTAL_AXE = ITEMS.register("crystal_axe", () -> new AxeItem(MaterialRegistry.ToolMats.GEMOBSIDIAN, 5.0F, -3.0F, new Item.Properties()));
+
+
+    public static final RegistryObject<Item> AMETHYST_SHOVEL = ITEMS.register("amethyst_shovel", () -> new AmethystShovelItem(MaterialRegistry.ToolMats.AMETHYST, 1.5F, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_HOE = ITEMS.register("amethyst_hoe", () -> new AmethystHoeItem(ToolMats.AMETHYST, -4, 0F, new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_SWORD = ITEMS.register("amethyst_sword", () -> new SwordItem(MaterialRegistry.ToolMats.AMETHYST, 3, -2.4F, (new Item.Properties())));
+    public static final RegistryObject<Item> AMETHYST_PICKAXE = ITEMS.register("amethyst_pickaxe", () -> new AmethystPickaxeItem(MaterialRegistry.ToolMats.AMETHYST, 1, -2.8F, new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_AXE = ITEMS.register("amethyst_axe", () -> new AmethystAxeItem(MaterialRegistry.ToolMats.AMETHYST, 6.0F, -3.1F, new Item.Properties()));
+
+
+    public static final RegistryObject<Item> COPPER_SHOVEL = ITEMS.register("copper_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.COPPER, 1.5F, -3.0F, new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_HOE = ITEMS.register("copper_hoe", () -> new HoeItem(ToolMats.COPPER, -4, 0F, new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_SWORD = ITEMS.register("copper_sword", () -> new SwordItem(MaterialRegistry.ToolMats.COPPER, 3, -2.4F, (new Item.Properties())));
+    public static final RegistryObject<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.COPPER, 1, -2.8F, new Item.Properties()));
+    public static final RegistryObject<Item> COPPER_AXE = ITEMS.register("copper_axe", () -> new AxeItem(MaterialRegistry.ToolMats.COPPER, 6.0F, -3.1F, new Item.Properties()));
+
+
+
+    //    public static final RegistryObject<Item> SANDSTONE_AXE = ITEMS.register("sandstone_axe", () -> new AxeItem(MaterialRegistry.ToolMats.SANDSTONE, 5.0F, -3.0F, new Item.Properties()));
+//    public static final RegistryObject<Item> NETHERBRICK_AXE = ITEMS.register("netherbrick_axe", () -> new AxeItem(MaterialRegistry.ToolMats.NETHERBRICK, 5.0F, -3.0F, new Item.Properties()));
+    //    public static final RegistryObject<Item> SANDSTONE_PICKAXE = ITEMS.register("sandstone_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.SANDSTONE, 1, -2.8F, new Item.Properties()));
+//    public static final RegistryObject<Item> NETHERBRICK_PICKAXE = ITEMS.register("netherbrick_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.NETHERBRICK, 1, -2.8F, new Item.Properties()));
+    //    public static final RegistryObject<Item> SANDSTONE_HOE = ITEMS.register("sandstone_hoe", () -> new HoeItem(ToolMats.SANDSTONE, -4, 0F, new Item.Properties()));
+//    public static final RegistryObject<Item> NETHERBRICK_HOE = ITEMS.register("netherbrick_hoe", () -> new HoeItem(ToolMats.NETHERBRICK, -4, 0F, new Item.Properties()));
+    //    public static final RegistryObject<Item> SANDSTONE_SHOVEL = ITEMS.register("sandstone_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.SANDSTONE, 1.5F, -3.0F, new Item.Properties()));
+//    public static final RegistryObject<Item> NETHERBRICK_SHOVEL = ITEMS.register("netherbrick_shovel", () -> new ShovelItem(MaterialRegistry.ToolMats.NETHERBRICK, 1.5F, -3.0F, new Item.Properties()));
+//    public static final RegistryObject<Item> SANDSTONE_SWORD = ITEMS.register("sandstone_sword", () -> new SwordItem(MaterialRegistry.ToolMats.SANDSTONE, 3, -2.4F, (new Item.Properties())));
+//    public static final RegistryObject<Item> NETHERBRICK_SWORD = ITEMS.register("netherbrick_sword", () -> new SwordItem(MaterialRegistry.ToolMats.NETHERBRICK, 3, -2.4F, (new Item.Properties())));
+
+
+    //Shields
     public static final RegistryObject<Item> SHIELD_WOOD = ITEMS.register("shield_wood", () -> new ShieldCyclicItem(new Item.Properties().durability(84), ShieldType.WOOD));
     public static final RegistryObject<Item> SHIELD_LEATHER = ITEMS.register("shield_leather", () -> new ShieldCyclicItem(new Item.Properties().durability(168), ShieldType.LEATHER));
     public static final RegistryObject<Item> SHIELD_FLINT = ITEMS.register("shield_flint", () -> new ShieldCyclicItem(new Item.Properties().durability(168 + 84), ShieldType.FLINT));
     public static final RegistryObject<Item> SHIELD_OBSIDIAN = ITEMS.register("shield_obsidian", () -> new ShieldCyclicItem(new Item.Properties().durability(168 * 8), ShieldType.OBSIDIAN));
     public static final RegistryObject<Item> SHIELD_BONE = ITEMS.register("shield_bone", () -> new ShieldCyclicItem(new Item.Properties().durability(168 + 84), ShieldType.BONE));
+
+
     public static final RegistryObject<Item> FIRE_KILLER = ITEMS.register("fire_killer", () -> new FireExtinguishItem(new Item.Properties()));
-//    public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_bottle", () -> new MilkBottle(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().build())));
+    //    public static final RegistryObject<Item> MILK_BOTTLE = ITEMS.register("milk_bottle", () -> new MilkBottle(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().build())));
     public static final RegistryObject<Item> FIREBALL_ORANGE = ITEMS.register("fireball", () -> new FireballItem(new Item.Properties()));
+    public static final RegistryObject<Item> FIREBALL_DARK = ITEMS.register("fireball_dark", () -> new DarkFireballItem(new Item.Properties()));
 
 
     //  public static final RegistryObject<Item> MAGNET_BLOCK = ITEMS.register("magnet_block", () -> new BlockItem(BlockRegistry.MAGNET_BLOCK.get(), new Item.Properties()));
@@ -560,9 +567,20 @@ public class ItemRegistry {
     public static final RegistryObject<Item> NO_SOLICITING = ITEMS.register("no_soliciting", () -> new BlockItem(BlockRegistry.NO_SOLICITING.get(), new Item.Properties()));
     //    public static final RegistryObject<Item> FLUTE = ITEMS.register("flute_summoning", () -> new FluteItem(new Item.Properties()));
     //    public static final RegistryObject<Item> SPARK = ITEMS.register("spark", () -> new GlowingSpark(new Item.Properties()));
-    public static final RegistryObject<Item> FIREBALL_DARK = ITEMS.register("fireball_dark", () -> new DarkFireballItem(new Item.Properties()));
     public static final RegistryObject<Item> WAXED_REDSTONE = ITEMS.register("waxed_redstone", () -> new BlockItem(BlockRegistry.WAXED_REDSTONE.get(), new Item.Properties()));
     //    public static final RegistryObject<Item> LUNCHBOX = ITEMS.register("lunchbox", () -> new ItemLunchbox(new Item.Properties()));
     //  public static final RegistryObject<Item> ENDER_FISHING = ITEMS.register("ender_fishing", () -> new FishingMagicItem(new Item.Properties()));
     public static final RegistryObject<Item> ENDER_TORCH = ITEMS.register("ender_torch", () -> new TorchThrowingItem(new Item.Properties()));
+
+    //Candles
+    public static final RegistryObject<Item> WATER_CANDLE = ITEMS.register("water_candle", () -> new BlockItem(BlockRegistry.WATER_CANDLE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PEACE_CANDLE = ITEMS.register("peace_candle", () -> new BlockItem(BlockRegistry.PEACE_CANDLE.get(), new Item.Properties()));
+
+
+    //Flowers
+//    public static final RegistryObject<Item> FLOWER_CYAN = ITEMS.register("flower_cyan", () -> new BlockItem(BlockRegistry.FLOWER_CYAN.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> FLOWER_PURPLE = ITEMS.register("flower_purple_tulip", () -> new BlockItem(BlockRegistry.FLOWER_PURPLE_TULIP.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> FLOWER_BROWN = ITEMS.register("flower_absalon_tulip", () -> new BlockItem(BlockRegistry.FLOWER_ABSALON_TULIP.get(), new Item.Properties()));
+//    public static final RegistryObject<Item> FLOWER_LIME = ITEMS.register("flower_lime_carnation", () -> new BlockItem(BlockRegistry.FLOWER_LIME_CARNATION.get(), new Item.Properties()));
+
 }

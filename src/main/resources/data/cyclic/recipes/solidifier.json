@@ -13,13 +13,10 @@
       "tag": "forge:glass/colorless"
     },
     "r": {
-      "tag": "forge:storage_blocks/lapis"
+      "item": "minecraft:ice"
     },
     "h": {
-      "item": "cyclic:obsidian_pressure_plate"
-    },
-    "q": {
-      "tag": "forge:storage_blocks/cobblestone"
+      "item": "minecraft:obsidian"
     }
   },
   "result": {

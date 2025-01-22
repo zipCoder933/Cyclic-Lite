@@ -38,7 +38,7 @@ import com.lothrazar.cyclic.event.EventRender;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 //import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
-import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
+//import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
 //import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
@@ -191,20 +191,22 @@ public class ClientRegistryCyclic {
 //      }
 //      return ItemStorageBag.getColour(stack);
 //    }, ItemRegistry.STORAGE_BAG.get());
-    //
-    event.register((stack, tintIndex) -> {
-      if (stack.hasTag() && tintIndex > 0) {
-        //what entity is inside
-        EntityType<?> thing = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(stack.getTag().getString(EntityMagicNetEmpty.NBT_ENTITYID)));
-        //pull the colours from the egg
-        for (SpawnEggItem spawneggitem : SpawnEggItem.eggs()) {
-          if (spawneggitem.getType(null) == thing) {
-            return spawneggitem.getColor(tintIndex - 1);
-          }
-        }
-      }
-      return 0xFFFFFFFF;
-    }, ItemRegistry.MOB_CONTAINER.get());
+
+
+//Magic Net
+//    event.register((stack, tintIndex) -> {
+//      if (stack.hasTag() && tintIndex > 0) {
+//        //what entity is inside
+//        EntityType<?> thing = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(stack.getTag().getString(EntityMagicNetEmpty.NBT_ENTITYID)));
+//        //pull the colours from the egg
+//        for (SpawnEggItem spawneggitem : SpawnEggItem.eggs()) {
+//          if (spawneggitem.getType(null) == thing) {
+//            return spawneggitem.getColor(tintIndex - 1);
+//          }
+//        }
+//      }
+//      return 0xFFFFFFFF;
+//    }, ItemRegistry.MOB_CONTAINER.get());
   }
 
   @OnlyIn(Dist.CLIENT)
@@ -214,7 +216,7 @@ public class ClientRegistryCyclic {
 //    event.registerEntityRenderer(EntityRegistry.BOOMERANG_STUN.get(), ThrownItemRenderer::new);
 //    event.registerEntityRenderer(EntityRegistry.BOOMERANG_CARRY.get(), ThrownItemRenderer::new);
 //    event.registerEntityRenderer(EntityRegistry.BOOMERANG_DAMAGE.get(), ThrownItemRenderer::new);
-    event.registerEntityRenderer(EntityRegistry.MAGIC_NET.get(), ThrownItemRenderer::new);
+//    event.registerEntityRenderer(EntityRegistry.MAGIC_NET.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.TORCH_BOLT.get(), ThrownItemRenderer::new);
 //    event.registerEntityRenderer(EntityRegistry.DUNGEON.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.EYE.get(), ThrownItemRenderer::new);

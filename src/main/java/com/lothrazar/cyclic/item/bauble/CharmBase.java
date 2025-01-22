@@ -167,10 +167,10 @@ public abstract class CharmBase extends ItemBaseToggle {
   }
 
   static void charmExpSpeed(Player player) {
-    ItemStack charmStack = CharmUtil.getIfEnabled(player, ItemRegistry.CHARM_XPSPEED.get());
-    if (!charmStack.isEmpty()) {
-      player.takeXpDelay = 0;
-    }
+//    ItemStack charmStack = CharmUtil.getIfEnabled(player, ItemRegistry.CHARM_XPSPEED.get());
+//    if (!charmStack.isEmpty()) {
+//      player.takeXpDelay = 0;
+//    }
   }
 
   public static void onEntityUpdate(Player player) {

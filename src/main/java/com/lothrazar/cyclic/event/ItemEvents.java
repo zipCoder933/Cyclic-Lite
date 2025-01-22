@@ -262,24 +262,25 @@ public class ItemEvents {
 //                //stone lung
 //                this.damageFinder(event, player, ItemRegistry.CHARM_STONE.get(), 0);
 //            }
-             if (src.is(DamageTypes.MAGIC) || src.is(DamageTypes.DRAGON_BREATH)) {
+            if (src.is(DamageTypes.MAGIC) || src.is(DamageTypes.DRAGON_BREATH)) {
                 this.damageFinder(event, player, ItemRegistry.CHARM_MAGICDEF.get(), 0.5F);
             } else if (src.is(DamageTypes.STARVE)) {
                 if (this.damageFinder(event, player, ItemRegistry.CHARM_STARVATION.get(), 0)) {
                     player.getFoodData().eat(0, 0.2F);
                 }
-            } else if (src.is(DamageTypes.DROWN)) {
-                if (this.damageFinder(event, player, ItemRegistry.CHARM_WATER.get(), 0)) {
-                    //and a holdover bonus
-                    MobEffectInstance eff = new MobEffectInstance(MobEffects.WATER_BREATHING, 20 * 10, 1);
-                    eff.visible = false;
-                    eff.showIcon = false;
-                    player.addEffect(eff);
-                }
-            } else if (src.is(DamageTypes.LAVA) || src.is(DamageTypes.IN_FIRE) || src.is(DamageTypes.ON_FIRE)) {
-                this.damageFinder(event, player, ItemRegistry.CHARM_FIRE.get(), 0);
-//        this.damageFinder(event, player, ItemRegistry.CHARM_ULTIMATE.get(), 0);
             }
+//             else if (src.is(DamageTypes.DROWN)) {
+//                if (this.damageFinder(event, player, ItemRegistry.CHARM_WATER.get(), 0)) {
+//                    //and a holdover bonus
+//                    MobEffectInstance eff = new MobEffectInstance(MobEffects.WATER_BREATHING, 20 * 10, 1);
+//                    eff.visible = false;
+//                    eff.showIcon = false;
+//                    player.addEffect(eff);
+//                }
+//            } else if (src.is(DamageTypes.LAVA) || src.is(DamageTypes.IN_FIRE) || src.is(DamageTypes.ON_FIRE)) {
+//                this.damageFinder(event, player, ItemRegistry.CHARM_FIRE.get(), 0);
+////        this.damageFinder(event, player, ItemRegistry.CHARM_ULTIMATE.get(), 0);
+//            }
         }
 //    else if (src.getEntity() instanceof Player) {
 //      //player DEALING damage
@@ -348,11 +349,11 @@ public class ItemEvents {
 
     @SubscribeEvent
     public void onXpPickup(PlayerXpEvent.PickupXp event) {
-        Player player = event.getEntity();
-        ItemStack charmStack = CharmUtil.getIfEnabled(player, ItemRegistry.CHARM_XPSTOPPER.get());
-        if (!charmStack.isEmpty()) {
-            event.setCanceled(true);
-        }
+//        Player player = event.getEntity();
+//        ItemStack charmStack = CharmUtil.getIfEnabled(player, ItemRegistry.CHARM_XPSTOPPER.get());
+//        if (!charmStack.isEmpty()) {
+//            event.setCanceled(true);
+//        }
     }
 
     private void tryItemHorseEnder(LivingEntity liv) {

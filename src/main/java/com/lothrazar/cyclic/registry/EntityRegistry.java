@@ -12,7 +12,7 @@ import com.lothrazar.cyclic.item.elemental.LightningEntity;
 import com.lothrazar.cyclic.item.elemental.SnowEntity;
 //import com.lothrazar.cyclic.item.ender.EntityDungeonEye;
 import com.lothrazar.cyclic.item.ender.EyeOfEnderEntityNodrop;
-import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
+//import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
 import com.lothrazar.cyclic.item.missile.MagicMissileEntity;
 import com.lothrazar.cyclic.item.slingshot.StoneEntity;
 import com.lothrazar.cyclic.item.torchthrow.EntityTorchBolt;
@@ -25,12 +25,12 @@ import net.minecraftforge.registries.RegistryObject;
 public class EntityRegistry {
 
   public static final DeferredRegister<EntityType<?>> ENTITIES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, ModCyclic.MODID);
-  public static final RegistryObject<EntityType<EntityMagicNetEmpty>> MAGIC_NET = ENTITIES.register("magic_net", () -> EntityType.Builder.<EntityMagicNetEmpty> of(EntityMagicNetEmpty::new, MobCategory.MISC)
-      .setShouldReceiveVelocityUpdates(true)
-      .setUpdateInterval(1)
-      .setTrackingRange(128)
-      .sized(.6F, .6F)
-      .build("magic_net"));
+//  public static final RegistryObject<EntityType<EntityMagicNetEmpty>> MAGIC_NET = ENTITIES.register("magic_net", () -> EntityType.Builder.<EntityMagicNetEmpty> of(EntityMagicNetEmpty::new, MobCategory.MISC)
+//      .setShouldReceiveVelocityUpdates(true)
+//      .setUpdateInterval(1)
+//      .setTrackingRange(128)
+//      .sized(.6F, .6F)
+//      .build("magic_net"));
   public static final RegistryObject<EntityType<EntityTorchBolt>> TORCH_BOLT = ENTITIES.register("torch_bolt", () -> EntityType.Builder.<EntityTorchBolt> of(EntityTorchBolt::new, MobCategory.MISC)
       .setShouldReceiveVelocityUpdates(true)
       .setUpdateInterval(1)

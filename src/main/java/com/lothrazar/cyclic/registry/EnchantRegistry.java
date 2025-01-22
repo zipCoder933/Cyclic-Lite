@@ -56,6 +56,9 @@ public class EnchantRegistry {
     public static final RegistryObject<TravellerEnchant> TRAVELLER = ENCHANTMENTS.register(TravellerEnchant.ID, () -> new TravellerEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.ARMOR_LEGS, EquipmentSlot.LEGS));
     public static final RegistryObject<SteadyEnchant> STEADY = ENCHANTMENTS.register(SteadyEnchant.ID, () -> new SteadyEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.WEARABLE, new EquipmentSlot[]{EquipmentSlot.CHEST, EquipmentSlot.LEGS}));
     public static final RegistryObject<MagnetEnchant> MAGNET = ENCHANTMENTS.register(MagnetEnchant.ID, () -> new MagnetEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.BREAKABLE, EquipmentSlot.MAINHAND));
-    public static final RegistryObject<StepEnchant> STEP = ENCHANTMENTS.register(StepEnchant.ID, () -> new StepEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.ARMOR_LEGS, EquipmentSlot.LEGS));
+
+    //Allows you to step up (like step up apple)
+    public static final RegistryObject<StepEnchant> STEP = ENCHANTMENTS.register(StepEnchant.ID, () -> new StepEnchant(Enchantment.Rarity.COMMON, EnchantmentCategory.ARMOR_FEET, EquipmentSlot.FEET));
+
     public static final RegistryObject<BeekeeperEnchant> BEEKEEPER = ENCHANTMENTS.register(BeekeeperEnchant.ID, () -> new BeekeeperEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.ARMOR_HEAD, EquipmentSlot.HEAD));
 }
