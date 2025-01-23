@@ -13,7 +13,7 @@
       "tag": "forge:dyes/red"
     },
     "r": {
-      "tag": "minecraft:flint"
+      "item": "minecraft:flint"
     },
     "i": {
       "item": "minecraft:iron_ingot"

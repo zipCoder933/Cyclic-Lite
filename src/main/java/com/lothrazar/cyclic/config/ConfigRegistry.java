@@ -291,7 +291,7 @@ public class ConfigRegistry extends ConfigTemplate {
         TileEyeTp.HUNGER = CFG.comment(" Hunger cost on teleport").defineInRange("hunger", 1, 0, 20);
         TileEyeTp.EXP = CFG.comment(" Exp cost on teleport").defineInRange("exp", 0, 0, 500);
         TileEyeTp.FREQUENCY = CFG.comment(" Tick delay between checks, faster checks can consume server resources (1 means check every tick; 20 means only check once per second)")
-                .defineInRange("frequency", 1, 1, 10);
+                .defineInRange("frequency", 40, 1, 100);
         CFG.pop(); // eye_teleport
 
 

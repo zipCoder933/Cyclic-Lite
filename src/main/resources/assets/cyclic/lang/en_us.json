@@ -67,26 +67,18 @@
   "item.cyclic.shield_wood": "Wooden Shield",
   "item.cyclic.shield_wood.tooltip": "Fragile shield that increases knockback ",
   "item.cyclic.shield_wood.guide": "Gets destroyed in a single hit from explosions. Config sets this as weaker than regular shields.  ",
-
-
   "item.cyclic.shield_flint": "Flint Shield",
   "item.cyclic.shield_flint.tooltip": "Slightly more durable than a traditional wooden shield.",
   "item.cyclic.shield_flint.guide": "Slightly more durable than a traditional wooden shield.",
-
   "item.cyclic.shield_leather": "Leather Shield",
   "item.cyclic.shield_leather.tooltip": "More durable than a traditional wooden shield.",
   "item.cyclic.shield_leather.guide": "More durable than a traditional wooden shield.",
-
   "item.cyclic.shield_bone": "Bone Shield",
   "item.cyclic.shield_bone.tooltip": "More durable than a leather shield.",
   "item.cyclic.shield_bone.guide": "More durable than a leather shield.",
-
   "item.cyclic.shield_obsidian": "Obsidian Shield",
   "item.cyclic.shield_obsidian.tooltip": "Significantly more durable than a traditional wooden shield.",
   "item.cyclic.shield_obsidian.guide": "Significantly more durable than a traditional wooden shield.",
-
-
-
   "item.cyclic.flute_summoning": "Summoning Flute",
   "item.cyclic.flute_summoning.tooltip": "Tap on a specific entity to summon it later",
   "item.cyclic.flute_summoning.teleported": "Attempting teleport...",
@@ -1527,7 +1519,7 @@
   "block.cyclic.generator_fuel.guide": "Generate power from anything that burns as fuel in Furnaces.  Burn time is the same number of ticks as the furnace time, for example 1 coal = 1600 ticks.  Energy per ticks is in the config file, defaults to 80 RF/t",
   "block.cyclic.generator_solar": "Solar Panel Generator",
   "block.cyclic.generator_solar.tooltip": "Generate power with sunlight",
-  "block.cyclic.generator_solar.guide": "WHen these blocks can see they skylight during the day, they will generate small amounts of energy",
+  "block.cyclic.generator_solar.guide": "Generates small amounts of energy when in direct sunlight",
   "block.cyclic.generator_food": "Devouring Generator",
   "block.cyclic.generator_food.tooltip": "Generate power from anything that can be eaten",
   "block.cyclic.generator_food.guide": "Generate power from food type items.  Burn time and energy per tick are set up in the config file.  It uses both food and saturation values multiplied by a factor.  Energy speed defaults to 80 RF/t",
