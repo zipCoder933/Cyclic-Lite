@@ -240,6 +240,7 @@ public class ConfigRegistry extends ConfigTemplate {
 //    CYAN_PODZOL_LEGACY = CFG.comment(" Enable the legacy feature that will spawn a Cyan flower when bonemeal is used on Podzol")
 //        .define("cyan_podzol_legacy.enabled", false);
 //    CFG.pop();
+
     CFG.comment(WALL, " Edit the permissions of all commands added by the mod.  false means anyone can use, true means only OP players can use  ", WALL)
         .push("command");
     CommandRegistry.COMMANDGETHOME = CFG.comment(" True means only players with OP can use this /cyclic command").define(CyclicCommands.GETHOME.toString(), false);
@@ -249,6 +250,7 @@ public class ConfigRegistry extends ConfigTemplate {
     CommandRegistry.COMMANDDEV = CFG.comment(" True means only players with OP can use this /cyclic command").define(CyclicCommands.DEV.toString(), false);
     CommandRegistry.COMMANDPING = CFG.comment(" True means only players with OP can use this /cyclic command").define(CyclicCommands.PING.toString(), false);
     CFG.pop(); //command
+
     CFG.comment(WALL, " Logging related configs", WALL)
         .push("logging");
     CyclicLogger.LOGINFO = CFG.comment(" Unblock info logs; very spammy; can be useful for testing certain issues").define("info", false);
@@ -263,32 +265,21 @@ public class ConfigRegistry extends ConfigTemplate {
     LaserItemDamageFar = CFG.comment(" Damage dealt when firing at range").defineInRange("damage_far", 12, 1, Integer.MAX_VALUE);
     LaserItemEnergy = CFG.comment(" Energy cost per firing; only drained when living targets are hit").defineInRange("energy", 10, 1, Integer.MAX_VALUE);
     LaserRenderMisses = CFG.comment(" Render the laser beam even when there is no living target (used to be hardcoded as false, so change this back to restore legacy behavior)").define("render_misses", true);
-    //
     CFG.pop();
 
     CFG.comment(WALL, " spell_water settings", WALL).push("spell_water");
     WaterSpreaderItem.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
     CFG.pop();
-    //
+
     CFG.comment(WALL, " spell_ice settings", WALL).push("spell_ice");
     IceWand.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
     CFG.pop();
+
     CFG.comment(" apple_ender settings").push("apple_ender");
     EnderApple.STRUCTURE_TAGS = CFG.comment(" Which structure tags are looked for").defineList("structure_tags", ENDERAPPLE, it -> it instanceof String);
     EnderApple.PRINTED = CFG.comment(" How many results the client will see").defineInRange("printed", 5, 1, 60);
     CFG.pop();
-    //
-//    ShieldCyclicItem.LEATHER_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_leather.blocked_damage_percent", 20, 0, 100);
-//    ShieldCyclicItem.WOOD_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_wood.blocked_damage_percent", 60, 0, 100);
-//    ShieldCyclicItem.FLINT_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_flint.blocked_damage_percent", 30, 0, 100);
-//    ShieldCyclicItem.FLINT_THORNS_PCT = CFG.comment(" What % chance does this have to apply thorns damage against ranged non-explosive attackers").defineInRange("shield_flint.damage", 50, 0, 100);
-//    WandHypnoItem.COST = CFG.comment(" Energy cost per item use").defineInRange("wand_hypno.energy", 500, 1, 50000);
-//    WandHypnoItem.RANGE = CFG.comment(" Range to search out enemies for this multi-target attack").defineInRange("wand_hypno.range", 16, 1, 256);
-//    WandMissileItem.COST = CFG.comment(" Energy cost per item use").defineInRange("wand_missile.energy", 150, 1, 50000);
-//    WandMissileItem.RANGE = CFG.comment(" Range to search out enemies for this attack").defineInRange("wand_missile.range", 64, 1, 512);
-//    OreProspector.RANGE = CFG.comment(" Ore Prospector radius around player to search for ores").defineInRange("prospector.range", 32, 1, 256);
-//    OreProspector.HEIGHT = CFG.comment(" Ore Prospector height around player to search for ores").defineInRange("prospector.height", 8, 1, 128);
-    ///
+
     CFG.comment(WALL, " Emerald gear settings", WALL).push("emerald");
     MaterialRegistry.EMERALD_TOUGH = CFG.comment(" Armor toughness").defineInRange("toughness", 3.0F, 0.1F, 99F);
     MaterialRegistry.EMERALD_DMG = CFG.comment(" Weapon damage").defineInRange("damage", 4.5F, 0.1F, 99F);
@@ -436,21 +427,11 @@ public class ConfigRegistry extends ConfigTemplate {
     SOUND_RADIUS = CFG.comment(" Radius of sound proofing (distance from each block that it will listen)").defineInRange("radius", 6, 1, 16);
     CFG.pop(); //soundproofing
 
-    CFG.pop(); // sprinkler
-
     CFG.comment(" terra_glass settings").push("terra_glass");
     TileTerraGlass.TIMER_FULL = CFG.comment(" ticks between growth cycles").defineInRange("timer", 100, 1, 10000);
     TileTerraGlass.HEIGHT = CFG.comment(" growth height below the glass").defineInRange("height", 8, 0, 32);
     CFG.pop(); // terra_preta
-    CFG.comment(" Ender Anchor settings").push("eye_teleport");
-    TileEyeTp.RANGE = CFG.comment(" Maximum distance to activate").defineInRange("range", 128, 2, 256);
-    TileEyeTp.HUNGER = CFG.comment(" Hunger cost on teleport").defineInRange("hunger", 1, 0, 20);
-    TileEyeTp.EXP = CFG.comment(" Exp cost on teleport").defineInRange("exp", 0, 0, 500);
-    TileEyeTp.FREQUENCY = CFG.comment(" Tick delay between checks, faster checks can consume server resources (1 means check every tick; 20 means only check once per second)")
-        .defineInRange("frequency", 5, 1, 20);
-    CFG.pop(); // eye_teleport
-    //
-    //
+
     CFG.comment(" battery_clay settings").push("battery_clay");
     TileClayBattery.MAX = CFG.comment(" Maximum storage capacity; default 16000 [warning: energy contents of items in world may be reset when changing this value]")
         .defineInRange("capacity", 16000, 1, Integer.MAX_VALUE);
@@ -463,25 +444,19 @@ public class ConfigRegistry extends ConfigTemplate {
     CFG.pop();
 
 
-    CFG.comment(" Ender Trigger settings").push("eye_redstone");
-    TileEye.RANGE = CFG.comment(" Maximum distance to activate").defineInRange("range", 32, 2, 256);
-    TileEye.FREQUENCY = CFG.comment(" Tick delay between checks, faster checks can consume server resources (1 means check every tick; 20 means only check once per second)")
-        .defineInRange("frequency", 5, 1, 20);
-    CFG.pop();
-
 
     CFG.pop(); //blocks
     CFG.pop(); //ROOT
     COMMON_CONFIG = CFG.build();
-    initClientConfig();
-  }
 
-  private static void initClientConfig() {
+    /**
+     * Begin client configs
+     */
     final ForgeConfigSpec.Builder CFGC = builder();
     CFGC.comment(WALL, "Client-side properties", WALL)
-        .push(ModCyclic.MODID);
+            .push(ModCyclic.MODID);
     CFGC.comment(WALL, "Block Rendering properties.  Color MUST have one # symbol and then six spots after so #000000 up to #FFFFFF", WALL)
-        .push("blocks");
+            .push("blocks");
     CFGC.push("colors");
     ClientConfigCyclic.COLLECTOR_ITEM = CFGC.comment(" Specify hex color of preview mode.  default #444044").define("collector_item", "#444044");
     ClientConfigCyclic.COLLECTOR_FLUID = CFGC.comment(" Specify hex color of preview mode.  default #444044").define("collector_fluid", "#444044");
@@ -499,7 +474,7 @@ public class ConfigRegistry extends ConfigTemplate {
     CFGC.pop();
     CFGC.pop(); //end of blocks
     CFGC.comment(WALL, "Item Rendering properties.  Color MUST have one # symbol and then six spots after so #000000 up to #FFFFFF", WALL)
-        .push("items");
+            .push("items");
     //
     CFGC.push("colors");
     ClientConfigCyclic.LOCATION = CFGC.comment(" Specify hex color of preview mode for the GPS data card.  default #0000FF").define("location", "#0000FF");
@@ -512,7 +487,9 @@ public class ConfigRegistry extends ConfigTemplate {
     CFGC.pop(); //end of items
     CFGC.pop();
     CLIENT_CONFIG = CFGC.build();
+
   }
+
 
   @SuppressWarnings("unchecked")
   public static List<String> getMagicNetList() {
