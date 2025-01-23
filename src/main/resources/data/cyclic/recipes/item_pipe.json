@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "sis",
-    "i i",
-    "sis"
+    "   ",
+    "isi",
+    "   "
   ],
   "key": {
     "s": {
-      "item": "minecraft:brick_stairs"
+      "item": "minecraft:bricks"
     },
     "i": {
-      "tag": "forge:nuggets/copper"
+      "item": "minecraft:copper_ingot"
     }
   },
   "result": {
     "item": "cyclic:item_pipe",
-    "count": 8
+    "count": 4
   }
 }
