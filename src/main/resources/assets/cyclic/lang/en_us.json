@@ -560,7 +560,7 @@
   "enchantment.cyclic.reach.desc": "Increases your building and mining reach",
   "enchantment.cyclic.reach.guide": "Increases your building and mining reach.  Can apply to chestplate armor or Elytra",
   "enchantment.cyclic.step": "Step Height",
-  "enchantment.cyclic.step.desc": "Increases your step height to a full block, similar to horses.",
+  "enchantment.cyclic.step.desc": "Increases your step height to a full block, (applies to boots only)",
   "enchantment.cyclic.step.guide": "Increases your step height to a full block, similar to horses. (Can be applied to boots only)",
   "enchantment.cyclic.traveler": "Traveler",
   "enchantment.cyclic.traveler.desc": "Protects against exploration hazards (elytra, ender pearls, cacti, bees, fall resistance)",
