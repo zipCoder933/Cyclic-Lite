@@ -231,28 +231,6 @@ public class ConfigRegistry extends ConfigTemplate {
   private static void initConfig() {
     final ForgeConfigSpec.Builder CFG = builder();
     CFG.comment(WALL, "Features with configurable properties are split into categories", WALL).push(ModCyclic.MODID);
-    CFG.comment(WALL, " Configs make sure players will not be able to craft any in survival "
-        + " (api only allows me to disable original base level potion, stuff like splash/tipped arrows are out of my control, for futher steps i suggest modpacks hide them from JEI as well if desired, or bug Mojang to implement JSON brewing stand recipes)", WALL)
-        .push("potion");
-    PotionRegistry.PotionRecipeConfig.ANTIGRAVITY = CFG.comment(" Set false to disable the base recipe").define("antigravity.enabled", true);
-    PotionRegistry.PotionRecipeConfig.ATTACK_RANGE = CFG.comment(" Set false to disable the base recipe").define("attack_range.enabled", true);
-    PotionRegistry.PotionRecipeConfig.BLIND = CFG.comment(" Set false to disable the base recipe").define("blind.enabled", true);
-    PotionRegistry.PotionRecipeConfig.BUTTERFINGERS = CFG.comment(" Set false to disable the base recipe").define("butterfingers.enabled", true);
-    PotionRegistry.PotionRecipeConfig.FLIGHT = CFG.comment(" Set false to disable the base recipe").define("flight.enabled", true);
-    PotionRegistry.PotionRecipeConfig.FROST_WALKER = CFG.comment(" Set false to disable the base recipe").define("frost_walker.enabled", true);
-    PotionRegistry.PotionRecipeConfig.GRAVITY = CFG.comment(" Set false to disable the base recipe").define("gravity.enabled", true);
-    PotionRegistry.PotionRecipeConfig.HASTE = CFG.comment(" Set false to disable the base recipe").define("haste.enabled", true);
-    PotionRegistry.PotionRecipeConfig.HUNGER = CFG.comment(" Set false to disable the base recipe").define("hunger.enabled", true);
-    PotionRegistry.PotionRecipeConfig.LEVITATION = CFG.comment(" Set false to disable the base recipe").define("levitation.enabled", true);
-    PotionRegistry.PotionRecipeConfig.MAGNETIC = CFG.comment(" Set false to disable the base recipe").define("magnetic.enabled", true);
-    PotionRegistry.PotionRecipeConfig.REACH_DISTANCE = CFG.comment(" Set false to disable the base recipe").define("reach_distance.enabled", true);
-    PotionRegistry.PotionRecipeConfig.RESISTANCE = CFG.comment(" Set false to disable the base recipe").define("resistance.enabled", true);
-    PotionRegistry.PotionRecipeConfig.STUN = CFG.comment(" Set false to disable the base recipe").define("stun.enabled", true);
-    PotionRegistry.PotionRecipeConfig.SWIMSPEED = CFG.comment(" Set false to disable the base recipe").define("swimspeed.enabled", true);
-    PotionRegistry.PotionRecipeConfig.SNOWWALK = CFG.comment(" Set false to disable the base recipe").define("snowwalk.enabled", true);
-    PotionRegistry.PotionRecipeConfig.WATERWALK = CFG.comment(" Set false to disable the base recipe").define("waterwalk.enabled", true);
-    PotionRegistry.PotionRecipeConfig.WITHER = CFG.comment(" Set false to disable the base recipe").define("wither.enabled", true);
-    CFG.pop();
 
 //    CFG.comment(WALL, " Worldgen settings  ", WALL).push("worldgen"); //////////////////////////////////////////////////////////////////////////////////////////// worldgen
 //    GENERATE_FLOWERS = CFG.comment(" Do the four generate in the world. "
@@ -287,20 +265,7 @@ public class ConfigRegistry extends ConfigTemplate {
     LaserRenderMisses = CFG.comment(" Render the laser beam even when there is no living target (used to be hardcoded as false, so change this back to restore legacy behavior)").define("render_misses", true);
     //
     CFG.pop();
-    //
-//    CFG.comment(WALL, " scythe_brush settings. note radius is halved while player is sneaking", WALL).push("scythe_brush");
-//    ScytheBrush.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-//    CFG.pop();
-//    CFG.comment(WALL, " scythe_forage settings. note radius is halved while player is sneaking", WALL).push("scythe_forage");
-//    ScytheForage.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-//    CFG.pop();
-//    CFG.comment(WALL, " scythe_leaves settings. note radius is halved while player is sneaking", WALL).push("scythe_leaves");
-//    ScytheLeaves.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-//    CFG.pop();
-//    CFG.comment(WALL, " scythe_harvest settings. note radius is halved while player is sneaking", WALL).push("scythe_harvest");
-//    ScytheHarvest.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-//    CFG.pop();
-    //
+
     CFG.comment(WALL, " spell_water settings", WALL).push("spell_water");
     WaterSpreaderItem.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
     CFG.pop();
@@ -465,13 +430,8 @@ public class ConfigRegistry extends ConfigTemplate {
 //    CFG.push("anvil_void");
 //    TileAnvilVoid.FLUIDPAY = CFG.comment(" Payment per void action, if not zero").defineInRange("fluid_cost", 25, 0, Integer.MAX_VALUE);
 //    CFG.pop();
-    CFG.push("sound");
-    RECORDER_RADIUS = CFG.comment(" Sound Recorder - how far out does it listen to record sounds").defineInRange("radius", 8, 1, 64);
-    CFG.pop();
-//    CFG.comment(" Ender shelf settings").push("ender_shelf");
-//    EnderShelfItemHandler.BOOKS_PER_ROW = CFG.comment(" Each shelf has five rows.  Set the number of books stored per row here").defineInRange("books_per_row", 256, 1, 1024);
-//    EnderShelfHelper.MAX_DIST = CFG.comment(" Controller Max distance to search (using manhattan distance)").defineInRange("controller_distance", 64, 1, 256);
-//    CFG.pop(); // ender_shelf*6
+
+
     CFG.comment(" soundproofing settings").push("soundproofing"); //soundproofing
     SOUND_RADIUS = CFG.comment(" Radius of sound proofing (distance from each block that it will listen)").defineInRange("radius", 6, 1, 16);
     CFG.pop(); //soundproofing
@@ -501,31 +461,15 @@ public class ConfigRegistry extends ConfigTemplate {
     TileBattery.MAX = CFG.comment(" Maximum storage capacity; default 6400000 [warning: energy contents of items in world may be reset when changing this value]")
         .defineInRange("capacity", 6400000, 1, Integer.MAX_VALUE);
     CFG.pop();
-    //
-    //
-//    CFG.comment(" experience_pylon settings").push("experience_pylon");
-//    TileExpPylon.RADIUS = CFG.comment(" Radius to pickup xp orbs").defineInRange("radius", 16, 1, 64);
-//    CFG.pop();
-    //
-//    CFG.comment(" fisher settings").push("fisher");
-//    TileFisher.RADIUS = CFG.comment(" Radius to Fish from nearby water").defineInRange("radius", 12, 1, 32);
-//    TileFisher.CHANCE = CFG.comment(" Chance to Fish from nearby water.  Smaller values is slower fish").defineInRange("chance", 0.06, 0.000001, 0.999);
-//    CFG.pop();
-    //
+
+
     CFG.comment(" Ender Trigger settings").push("eye_redstone");
     TileEye.RANGE = CFG.comment(" Maximum distance to activate").defineInRange("range", 32, 2, 256);
     TileEye.FREQUENCY = CFG.comment(" Tick delay between checks, faster checks can consume server resources (1 means check every tick; 20 means only check once per second)")
         .defineInRange("frequency", 5, 1, 20);
     CFG.pop();
-//    CFG.push("uncrafter");
-//    TileUncraft.NBT_IGNORED = CFG.comment(" When searching for a recipe, does it ignore all NBT values (such as enchantments, RepairCost, Damage, etc).  "
-//        + "For example, if false it will not uncraft damaged or enchanted items")
-//        .define("nbt_ignored", false);
-//    TileUncraft.IGNORE_LIST = CFG.comment(" ITEM IDS HERE.  Block ALL recipes that output this item, no matter which recipe they use").defineList("ignore_list", IGNORE_LIST_UNCRAFTER, it -> it instanceof String);
-//    TileUncraft.IGNORE_RECIPES = CFG.comment(" RECIPE IDS HERE.  Block these recipe ids from being reversed, but do not block all recipes for this output item")
-//        .defineList("ignore_recipes", IGNORE_RECIPES_UNCRAFTER, it -> it instanceof String);
-//    TileUncraft.TIMER = CFG.comment(" Ticks used for each uncraft").defineInRange("ticks", 60, 1, 9999);
-//    CFG.pop(); //uncrafter
+
+
     CFG.pop(); //blocks
     CFG.pop(); //ROOT
     COMMON_CONFIG = CFG.build();
