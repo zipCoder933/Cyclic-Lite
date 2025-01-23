@@ -532,7 +532,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.COPPER, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> COPPER_AXE = ITEMS.register("copper_axe", () -> new AxeItem(MaterialRegistry.ToolMats.COPPER, 6.0F, -3.1F, new Item.Properties()));
 
-//    public static final RegistryObject<Item> CREATIVE_SWORD = ITEMS.register("creative_sword", () -> new SwordItem(ToolMats.GEMOBSIDIAN, 3, -2.4F, (new Item.Properties())));
+    public static final RegistryObject<Item> CREATIVE_SWORD = ITEMS.register("creative_sword", () -> new SwordItem(ToolMats.CREATIVE, 3, -2.4F, (new Item.Properties())));
 
 
     //    public static final RegistryObject<Item> SANDSTONE_AXE = ITEMS.register("sandstone_axe", () -> new AxeItem(MaterialRegistry.ToolMats.SANDSTONE, 5.0F, -3.0F, new Item.Properties()));
