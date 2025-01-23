@@ -395,7 +395,7 @@ public class ConfigRegistry extends ConfigTemplate {
     CandleWaterBlock.TICK_RATE = CFG.comment(" Tick rate of the candle").defineInRange("water_candle.tick_rate", 60, 1, Integer.MAX_VALUE);
 //    TilePackager.POWERCONF = CFG.comment(" Power per recipe in the packager").defineInRange("packager.energy_cost", 50, 0, Integer.MAX_VALUE);
 //    TileUser.POWERCONF = CFG.comment(" Power per use user").defineInRange("user.energy_cost", 0, 0, Integer.MAX_VALUE);
-    TileAnvilAuto.POWERCONF = CFG.comment(" Power per repair anvil").defineInRange("anvil.energy_cost", 250, 0, Integer.MAX_VALUE);
+    TileAnvilAuto.POWERCONF = CFG.comment(" Power per repair anvil").defineInRange("anvil.energy_cost", 6500, 0, Integer.MAX_VALUE);
 //    TileDropper.POWERCONF = CFG.comment(" Power per use dropper").defineInRange("dropper.energy_cost", 50, 0, Integer.MAX_VALUE);
 //    TileForester.POWERCONF = CFG.comment(" Power per use forester").defineInRange("forester.energy_cost", 50, 0, Integer.MAX_VALUE);
 //    TileHarvester.POWERCONF = CFG.comment(" Power per use harvester").defineInRange("harvester.energy_cost", 250, 0, Integer.MAX_VALUE);
