@@ -1,16 +1,18 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients": [
-    {
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CTC",
+    "CCC"
+  ],
+  "key": {
+    "T": {
       "item": "minecraft:crafting_table"
     },
-    {
-      "tag": "minecraft:stone_tool_materials"
-    },
-    {
-      "tag": "minecraft:stone_tool_materials"
+    "C": {
+      "item": "cyclic:compressed_cobbstone"
     }
-  ],
+  },
   "result": {
     "item": "cyclic:workbench",
     "count": 1

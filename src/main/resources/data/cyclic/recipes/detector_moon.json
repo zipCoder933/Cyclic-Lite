@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "c c",
-    " q ",
-    "r r"
+    "ggg",
+    "o o",
+    "ddd"
   ],
   "key": {
-    "r": {
+    "d": {
       "item": "minecraft:daylight_detector"
     },
-    "q": {
-      "item": "minecraft:daylight_detector"
+    "g": {
+      "item": "minecraft:glass"
     },
-    "c": {
+    "o": {
       "item": "minecraft:observer"
     }
   },
