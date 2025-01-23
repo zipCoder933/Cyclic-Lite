@@ -2,6 +2,22 @@
   "replace": "false",
   "values": [
     {
+      "id": "cyclic:charm_ultimate",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_stealthpotion",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_torch_cave",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_torch",
+      "required": false
+    },
+    {
       "id": "cyclic:charm_speed",
       "required": false
     },
@@ -67,6 +83,26 @@
     },
     {
       "id": "cyclic:antigravity",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_attack_speed",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_starvation",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_antipotion",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_boostpotion",
+      "required": false
+    },
+    {
+      "id": "cyclic:charm_stone",
       "required": false
     },
     {
