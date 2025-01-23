@@ -45,29 +45,7 @@ import com.lothrazar.cyclic.block.spawntriggers.CandlePeaceBlock;
 //import com.lothrazar.cyclic.block.sprinkler.TileSprinkler;
 import com.lothrazar.cyclic.block.terraglass.TileTerraGlass;
 import com.lothrazar.cyclic.block.terrasoil.TileTerraPreta;
-//import com.lothrazar.cyclic.block.tp.BlockTeleport;
-//import com.lothrazar.cyclic.block.uncrafter.TileUncraft;
-//import com.lothrazar.cyclic.block.user.TileUser;
-//import com.lothrazar.cyclic.enchant.AutoSmeltEnchant;
-import com.lothrazar.cyclic.enchant.BeekeeperEnchant;
-import com.lothrazar.cyclic.enchant.BeheadingEnchant;
-import com.lothrazar.cyclic.enchant.DisarmEnchant;
-import com.lothrazar.cyclic.enchant.EnderPearlEnchant;
-//import com.lothrazar.cyclic.enchant.ExcavationEnchant;
-import com.lothrazar.cyclic.enchant.GloomCurseEnchant;
-import com.lothrazar.cyclic.enchant.GrowthEnchant;
-//import com.lothrazar.cyclic.enchant.LastStandEnchant;
-import com.lothrazar.cyclic.enchant.LifeLeechEnchant;
-import com.lothrazar.cyclic.enchant.MagnetEnchant;
-import com.lothrazar.cyclic.enchant.MultiBowEnchant;
-import com.lothrazar.cyclic.enchant.MultiJumpEnchant;
-import com.lothrazar.cyclic.enchant.QuickdrawEnchant;
-import com.lothrazar.cyclic.enchant.ReachEnchant;
-import com.lothrazar.cyclic.enchant.SteadyEnchant;
-import com.lothrazar.cyclic.enchant.StepEnchant;
-import com.lothrazar.cyclic.enchant.TravellerEnchant;
-import com.lothrazar.cyclic.enchant.VenomEnchant;
-//import com.lothrazar.cyclic.enchant.XpEnchant;
+
 import com.lothrazar.cyclic.item.OreProspector;
 import com.lothrazar.cyclic.item.TeleporterWandItem;
 import com.lothrazar.cyclic.item.WandHypnoItem;
@@ -275,53 +253,15 @@ public class ConfigRegistry extends ConfigTemplate {
     PotionRegistry.PotionRecipeConfig.WATERWALK = CFG.comment(" Set false to disable the base recipe").define("waterwalk.enabled", true);
     PotionRegistry.PotionRecipeConfig.WITHER = CFG.comment(" Set false to disable the base recipe").define("wither.enabled", true);
     CFG.pop();
-    CFG.comment(WALL, " Enchantment related configs (if disabled, they may still show up as NBT on books and such but have functions disabled and are not obtainable in survival)", WALL)
-        .push("enchantment");
-    ////////////////////////////////////////////////////////////////// enchantment
-//    AutoSmeltEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(AutoSmeltEnchant.ID + ".enabled", true);
-    BeekeeperEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(BeekeeperEnchant.ID + ".enabled", true);
-    BeheadingEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(BeheadingEnchant.ID + ".enabled", true);
-    GLOOM_IGNORE_LIST = CFG.comment(" Set list of effects for Gloom enchant (cyclic:curse) to ignore and not use these")
-        .defineList(GloomCurseEnchant.ID + ".ignored", Arrays.asList("minecraft:bad_omen", "minecraft:nausea", "botania:clear"),
-            it -> it instanceof String);
-    BEHEADING_SKINS = CFG.comment(" Beheading enchant add player skin head drop, add any mob id and any skin")
-        .defineList(BeheadingEnchant.ID + ".EntityMHF", BEHEADING, it -> it instanceof String);
-    BeheadingEnchant.PERCDROP = CFG.comment(" Base perecentage chance to drop a head on kill").defineInRange(BeheadingEnchant.ID + ".percent", 20, 1, 99);
-    BeheadingEnchant.PERCPERLEVEL = CFG.comment(" Percentage increase per level of enchant. Formula [percent + (level - 1) * per_level] ").defineInRange(BeheadingEnchant.ID + ".per_level", 25, 1, 99);
-    GloomCurseEnchant.CFG = CFG.comment(" (Gloom) Set false to stop enchantment from working").define(GloomCurseEnchant.ID + ".enabled", true);
-    DisarmEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(DisarmEnchant.ID + ".enabled", true);
-//    ExcavationEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(ExcavationEnchant.ID + ".enabled", true);
-    GrowthEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(GrowthEnchant.ID + ".enabled", true);
-    GrowthEnchant.RADIUSFACTOR = CFG.comment(" Radius per level.  size around player to perform growth logic").defineInRange(GrowthEnchant.ID + ".radius", 2, 1, 16);
-    MultiJumpEnchant.CFG = CFG.comment(" (Multijump) Set false to disable Multi Jump enchantment").define(MultiJumpEnchant.ID + ".enabled", true);
-    LifeLeechEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(LifeLeechEnchant.ID + ".enabled", true);
-    MagnetEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(MagnetEnchant.ID + ".enabled", true);
-    MultiBowEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(MultiBowEnchant.ID + ".enabled", true);
-    EnderPearlEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(EnderPearlEnchant.ID + ".enabled", true);
-    QuickdrawEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(QuickdrawEnchant.ID + ".enabled", true);
-    ReachEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(ReachEnchant.ID + ".enabled", true);
-    StepEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(StepEnchant.ID + ".enabled", true);
-    SteadyEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(SteadyEnchant.ID + ".enabled", true);
-//    LastStandEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(LastStandEnchant.ID + ".enabled", true);
-//    LastStandEnchant.COST = CFG.comment(" Base XP cost to activate at level 1 (level 2 is this/2)").defineInRange(LastStandEnchant.ID + ".xp_cost", 50, 1, 9999);
-//    LastStandEnchant.ABS = CFG.comment(" How many ticks of Absorption hearts given on trigger, 0 to disable").defineInRange(LastStandEnchant.ID + ".potion_ticks", 600, 0, 9999);
-//    LastStandEnchant.COOLDOWN = CFG.comment(" How many ticks of cooldown, 0 to disable").defineInRange(LastStandEnchant.ID + ".cooldown", 20, 0, 99999);
-    TravellerEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(TravellerEnchant.ID + ".enabled", true);
-    VenomEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(VenomEnchant.ID + ".enabled", true);
-//    XpEnchant.CFG = CFG.comment(" Set false to stop enchantment from working").define(XpEnchant.ID + ".enabled", true);
-    DisarmEnchant.PERCENTPERLEVEL = CFG.comment(" Enchant level drop rate.  % = drop + (level-1)*drop").defineInRange(DisarmEnchant.ID + ".percentPerLevel", 15, 1, 100);
-    DISARM_IGNORE_LIST = CFG.comment(" Mobs in this list cannot be disarmed and have their weapon stolen by the disarm enchantment")
-        .defineList(DisarmEnchant.ID + ".ingoredMobs", DISARM_IGNORE,
-            it -> it instanceof String);
-    CFG.pop(); //enchantment
-    CFG.comment(WALL, " Worldgen settings  ", WALL).push("worldgen"); //////////////////////////////////////////////////////////////////////////////////////////// worldgen
-    GENERATE_FLOWERS = CFG.comment(" Do the four generate in the world. "
-        + " If false, the 4 flower blocks and 3 features (flower_all, flower_tulip_ flower_lime) will still be registered and can be used externally (data packs etc), "
-        + "but the mod will not use the features to generate/place flowers in world-generation")
-        .define("flowers.enabled", false); // TODO: ad recipes for flowers
-    CYAN_PODZOL_LEGACY = CFG.comment(" Enable the legacy feature that will spawn a Cyan flower when bonemeal is used on Podzol")
-        .define("cyan_podzol_legacy.enabled", false);
-    CFG.pop();
+
+//    CFG.comment(WALL, " Worldgen settings  ", WALL).push("worldgen"); //////////////////////////////////////////////////////////////////////////////////////////// worldgen
+//    GENERATE_FLOWERS = CFG.comment(" Do the four generate in the world. "
+//        + " If false, the 4 flower blocks and 3 features (flower_all, flower_tulip_ flower_lime) will still be registered and can be used externally (data packs etc), "
+//        + "but the mod will not use the features to generate/place flowers in world-generation")
+//        .define("flowers.enabled", false); // TODO: ad recipes for flowers
+//    CYAN_PODZOL_LEGACY = CFG.comment(" Enable the legacy feature that will spawn a Cyan flower when bonemeal is used on Podzol")
+//        .define("cyan_podzol_legacy.enabled", false);
+//    CFG.pop();
     CFG.comment(WALL, " Edit the permissions of all commands added by the mod.  false means anyone can use, true means only OP players can use  ", WALL)
         .push("command");
     CommandRegistry.COMMANDGETHOME = CFG.comment(" True means only players with OP can use this /cyclic command").define(CyclicCommands.GETHOME.toString(), false);
@@ -348,18 +288,18 @@ public class ConfigRegistry extends ConfigTemplate {
     //
     CFG.pop();
     //
-    CFG.comment(WALL, " scythe_brush settings. note radius is halved while player is sneaking", WALL).push("scythe_brush");
-    ScytheBrush.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-    CFG.pop();
-    CFG.comment(WALL, " scythe_forage settings. note radius is halved while player is sneaking", WALL).push("scythe_forage");
-    ScytheForage.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-    CFG.pop();
-    CFG.comment(WALL, " scythe_leaves settings. note radius is halved while player is sneaking", WALL).push("scythe_leaves");
-    ScytheLeaves.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-    CFG.pop();
-    CFG.comment(WALL, " scythe_harvest settings. note radius is halved while player is sneaking", WALL).push("scythe_harvest");
-    ScytheHarvest.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
-    CFG.pop();
+//    CFG.comment(WALL, " scythe_brush settings. note radius is halved while player is sneaking", WALL).push("scythe_brush");
+//    ScytheBrush.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
+//    CFG.pop();
+//    CFG.comment(WALL, " scythe_forage settings. note radius is halved while player is sneaking", WALL).push("scythe_forage");
+//    ScytheForage.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
+//    CFG.pop();
+//    CFG.comment(WALL, " scythe_leaves settings. note radius is halved while player is sneaking", WALL).push("scythe_leaves");
+//    ScytheLeaves.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
+//    CFG.pop();
+//    CFG.comment(WALL, " scythe_harvest settings. note radius is halved while player is sneaking", WALL).push("scythe_harvest");
+//    ScytheHarvest.RADIUS = CFG.comment(" Radius defines how far it reaches (for example radius 6 is 13x13 square)").defineInRange("radius", 6, 0, 32);
+//    CFG.pop();
     //
     CFG.comment(WALL, " spell_water settings", WALL).push("spell_water");
     WaterSpreaderItem.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
@@ -373,16 +313,16 @@ public class ConfigRegistry extends ConfigTemplate {
     EnderApple.PRINTED = CFG.comment(" How many results the client will see").defineInRange("printed", 5, 1, 60);
     CFG.pop();
     //
-    ShieldCyclicItem.LEATHER_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_leather.blocked_damage_percent", 20, 0, 100);
-    ShieldCyclicItem.WOOD_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_wood.blocked_damage_percent", 60, 0, 100);
-    ShieldCyclicItem.FLINT_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_flint.blocked_damage_percent", 30, 0, 100);
-    ShieldCyclicItem.FLINT_THORNS_PCT = CFG.comment(" What % chance does this have to apply thorns damage against ranged non-explosive attackers").defineInRange("shield_flint.damage", 50, 0, 100);
-    WandHypnoItem.COST = CFG.comment(" Energy cost per item use").defineInRange("wand_hypno.energy", 500, 1, 50000);
-    WandHypnoItem.RANGE = CFG.comment(" Range to search out enemies for this multi-target attack").defineInRange("wand_hypno.range", 16, 1, 256);
-    WandMissileItem.COST = CFG.comment(" Energy cost per item use").defineInRange("wand_missile.energy", 150, 1, 50000);
-    WandMissileItem.RANGE = CFG.comment(" Range to search out enemies for this attack").defineInRange("wand_missile.range", 64, 1, 512);
-    OreProspector.RANGE = CFG.comment(" Ore Prospector radius around player to search for ores").defineInRange("prospector.range", 32, 1, 256);
-    OreProspector.HEIGHT = CFG.comment(" Ore Prospector height around player to search for ores").defineInRange("prospector.height", 8, 1, 128);
+//    ShieldCyclicItem.LEATHER_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_leather.blocked_damage_percent", 20, 0, 100);
+//    ShieldCyclicItem.WOOD_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_wood.blocked_damage_percent", 60, 0, 100);
+//    ShieldCyclicItem.FLINT_PCT = CFG.comment(" How much weaker than the regular shield is this item (used to calculate damage blocked)").defineInRange("shield_flint.blocked_damage_percent", 30, 0, 100);
+//    ShieldCyclicItem.FLINT_THORNS_PCT = CFG.comment(" What % chance does this have to apply thorns damage against ranged non-explosive attackers").defineInRange("shield_flint.damage", 50, 0, 100);
+//    WandHypnoItem.COST = CFG.comment(" Energy cost per item use").defineInRange("wand_hypno.energy", 500, 1, 50000);
+//    WandHypnoItem.RANGE = CFG.comment(" Range to search out enemies for this multi-target attack").defineInRange("wand_hypno.range", 16, 1, 256);
+//    WandMissileItem.COST = CFG.comment(" Energy cost per item use").defineInRange("wand_missile.energy", 150, 1, 50000);
+//    WandMissileItem.RANGE = CFG.comment(" Range to search out enemies for this attack").defineInRange("wand_missile.range", 64, 1, 512);
+//    OreProspector.RANGE = CFG.comment(" Ore Prospector radius around player to search for ores").defineInRange("prospector.range", 32, 1, 256);
+//    OreProspector.HEIGHT = CFG.comment(" Ore Prospector height around player to search for ores").defineInRange("prospector.height", 8, 1, 128);
     ///
     CFG.comment(WALL, " Emerald gear settings", WALL).push("emerald");
     MaterialRegistry.EMERALD_TOUGH = CFG.comment(" Armor toughness").defineInRange("toughness", 3.0F, 0.1F, 99F);
@@ -535,16 +475,9 @@ public class ConfigRegistry extends ConfigTemplate {
     CFG.comment(" soundproofing settings").push("soundproofing"); //soundproofing
     SOUND_RADIUS = CFG.comment(" Radius of sound proofing (distance from each block that it will listen)").defineInRange("radius", 6, 1, 16);
     CFG.pop(); //soundproofing
-    CFG.comment(" Sprinkler settings").push("sprinkler");
-//    TileSprinkler.RADIUS = CFG.comment(" Radius").defineInRange("radius", 4, 1, 32);
-//    TileSprinkler.WATERCOST = CFG.comment(" Water consumption").defineInRange("water", 5, 0, 1000);
-//    TileSprinkler.TIMER_FULL = CFG.comment(" Tick rate.  20 will fire one block per second").defineInRange("ticks", 20, 1, 20);
+
     CFG.pop(); // sprinkler
-    CFG.push("terra_preta");
-    TileTerraPreta.TIMER_FULL = CFG.comment(" Growth interval in ticks (100 would be every 5 seconds). ").defineInRange("growth_interval", 100, 1, 64000);
-    TileTerraPreta.CHANCE = CFG.comment(" Chance that the crop will grow after the interval").defineInRange("growth_chance", 0.5, 0, 1);
-    TileTerraPreta.HEIGHT = CFG.comment(" growth height above the soil").defineInRange("height", 8, 2, 32);
-    CFG.pop(); // terra_preta
+
     CFG.comment(" terra_glass settings").push("terra_glass");
     TileTerraGlass.TIMER_FULL = CFG.comment(" ticks between growth cycles").defineInRange("timer", 100, 1, 10000);
     TileTerraGlass.HEIGHT = CFG.comment(" growth height below the glass").defineInRange("height", 8, 0, 32);
