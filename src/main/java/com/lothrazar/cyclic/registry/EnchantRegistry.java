@@ -44,7 +44,7 @@ public class EnchantRegistry {
 //    public static final RegistryObject<GrowthEnchant> GROWTH = ENCHANTMENTS.register(GrowthEnchant.ID, () -> new GrowthEnchant(Enchantment.Rarity.COMMON, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
 //    public static final RegistryObject<LifeLeechEnchant> LIFELEECH = ENCHANTMENTS.register(LifeLeechEnchant.ID, () -> new LifeLeechEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 //    public static final RegistryObject<QuickdrawEnchant> QUICKDRAW = ENCHANTMENTS.register(QuickdrawEnchant.ID, () -> new QuickdrawEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.BOW, EquipmentSlot.MAINHAND));
-    public static final RegistryObject<ReachEnchant> REACH = ENCHANTMENTS.register(ReachEnchant.ID, () -> new ReachEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEARABLE, ARMOR_SLOTS));
+//    public static final RegistryObject<ReachEnchant> REACH = ENCHANTMENTS.register(ReachEnchant.ID, () -> new ReachEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEARABLE, ARMOR_SLOTS));
 //    public static final RegistryObject<VenomEnchant> VENOM = ENCHANTMENTS.register(VenomEnchant.ID, () -> new VenomEnchant(Enchantment.Rarity.VERY_RARE, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));
 ////    public static final RegistryObject<AutoSmeltEnchant> AUTOSMELT = ENCHANTMENTS.register(AutoSmeltEnchant.ID, () -> new AutoSmeltEnchant(Enchantment.Rarity.RARE, EnchantmentCategory.DIGGER, EquipmentSlot.MAINHAND));
 //    public static final RegistryObject<DisarmEnchant> DISARM = ENCHANTMENTS.register(DisarmEnchant.ID, () -> new DisarmEnchant(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.WEAPON, EquipmentSlot.MAINHAND));

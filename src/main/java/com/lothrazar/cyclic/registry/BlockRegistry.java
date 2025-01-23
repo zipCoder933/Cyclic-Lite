@@ -91,7 +91,7 @@ import com.lothrazar.cyclic.block.peatfarm.BlockPeatFarm;
 import com.lothrazar.cyclic.block.placerfluid.BlockPlacerFluid;
 import com.lothrazar.cyclic.block.rotator.BlockRotator;
 import com.lothrazar.cyclic.block.scaffolding.BlockScaffolding;
-import com.lothrazar.cyclic.block.scaffolding.BlockScaffoldingReplace;
+//import com.lothrazar.cyclic.block.scaffolding.BlockScaffoldingReplace;
 import com.lothrazar.cyclic.block.scaffolding.BlockScaffoldingResponsive;
 import com.lothrazar.cyclic.block.screen.BlockScreentext;
 import com.lothrazar.cyclic.block.shapebuilder.BlockStructure;
@@ -294,9 +294,11 @@ public class BlockRegistry {
     public static final RegistryObject<Block> APPLE_SPROUT_DIAMOND = BLOCKS.register("apple_sprout_diamond", () -> new AppleCropBlock(Block.Properties.of(), false));
     public static final RegistryObject<Block> APPLE_SPROUT = BLOCKS.register("apple_sprout", () -> new AppleCropBlock(Block.Properties.of(), true));
     public static final RegistryObject<Block> COMPUTER_SHAPE = BLOCKS.register("computer_shape", () -> new BlockShapedata(Block.Properties.of()));
+
     public static final RegistryObject<Block> SCAFFOLD_FRAGILE = BLOCKS.register("scaffold_fragile", () -> new BlockScaffolding(Block.Properties.of(), true));
     public static final RegistryObject<Block> SCAFFOLD_RESPONSIVE = BLOCKS.register("scaffold_responsive", () -> new BlockScaffoldingResponsive(Block.Properties.of(), false));
-    public static final RegistryObject<Block> SCAFFOLD_REPLACE = BLOCKS.register("scaffold_replace", () -> new BlockScaffoldingReplace(Block.Properties.of()));
+//    public static final RegistryObject<Block> SCAFFOLD_REPLACE = BLOCKS.register("scaffold_replace", () -> new BlockScaffoldingReplace(Block.Properties.of()));
+
     public static final RegistryObject<Block> DARK_GLASS = BLOCKS.register("dark_glass", () -> new DarkGlassBlock(Block.Properties.of()));
     public static final RegistryObject<Block> PEAT_UNBAKED = BLOCKS.register("peat_unbaked", () -> new PeatBlock(Block.Properties.of().sound(SoundType.GRAVEL)));
     public static final RegistryObject<Block> PEAT_BAKED = BLOCKS.register("peat_baked", () -> new PeatFuelBlock(Block.Properties.of().sound(SoundType.GRAVEL)));

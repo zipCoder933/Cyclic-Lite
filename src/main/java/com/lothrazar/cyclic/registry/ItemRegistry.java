@@ -484,7 +484,8 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> SHEARS_OBSIDIAN = ITEMS.register("shears_obsidian", () -> new ShearsMaterial(new Item.Properties().durability(1024 * 1024)));
 
     //Scaffolding
-    public static final RegistryObject<Item> SCAFFOLD_REPLACE = ITEMS.register("scaffold_replace", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_REPLACE.get(), new Item.Properties()));
+    //Responsive and replacable are kinda redundant, so I just have fragile and responsive (replacable)
+//    public static final RegistryObject<Item> SCAFFOLD_REPLACE = ITEMS.register("scaffold_replace", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_REPLACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SCAFFOLD_FRAGILE = ITEMS.register("scaffold_fragile", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_FRAGILE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SCAFFOLD_RESPONSIVE = ITEMS.register("scaffold_responsive", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_RESPONSIVE.get(), new Item.Properties()));
 
@@ -531,6 +532,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.COPPER, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> COPPER_AXE = ITEMS.register("copper_axe", () -> new AxeItem(MaterialRegistry.ToolMats.COPPER, 6.0F, -3.1F, new Item.Properties()));
 
+//    public static final RegistryObject<Item> CREATIVE_SWORD = ITEMS.register("creative_sword", () -> new SwordItem(ToolMats.GEMOBSIDIAN, 3, -2.4F, (new Item.Properties())));
 
 
     //    public static final RegistryObject<Item> SANDSTONE_AXE = ITEMS.register("sandstone_axe", () -> new AxeItem(MaterialRegistry.ToolMats.SANDSTONE, 5.0F, -3.0F, new Item.Properties()));
