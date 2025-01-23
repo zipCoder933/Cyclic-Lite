@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:scaffold_fragile"
+  },
+  "result": "cyclic:scaffold_responsive",
+  "experience": 0.0,
+  "cookingtime": 5000
+}

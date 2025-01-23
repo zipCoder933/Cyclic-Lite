@@ -478,7 +478,7 @@ public class ItemRegistry {
     //Responsive and replacable are kinda redundant, so I just have fragile and responsive (replacable)
 //    public static final RegistryObject<Item> SCAFFOLD_REPLACE = ITEMS.register("scaffold_replace", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_REPLACE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SCAFFOLD_FRAGILE = ITEMS.register("scaffold_fragile", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_FRAGILE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SCAFFOLD_RESPONSIVE = ITEMS.register("scaffold_responsive.json", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_RESPONSIVE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SCAFFOLD_RESPONSIVE = ITEMS.register("scaffold_responsive", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_RESPONSIVE.get(), new Item.Properties()));
 
     //    public static final RegistryObject<Item> CARROT_ENDER = ITEMS.register("carrot_ender", () -> new ItemHorseEnder(new Item.Properties()));
 //    public static final RegistryObject<Item> DIAMOND_CARROT_HEALTH = ITEMS.register("diamond_carrot_health", () -> new ItemHorseHealthDiamondCarrot(new Item.Properties()));

@@ -1,19 +1,22 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "GGG",
-    "DCD",
-    "GGG"
+    "gag",
+    "fsf",
+    "gag"
   ],
   "key": {
-    "D": {
+    "s": {
       "item": "minecraft:flint"
     },
-    "C": {
-      "item": "minecraft:redstone"
-    },
-    "G": {
+    "g": {
       "item": "minecraft:gold_nugget"
+    },
+    "f": {
+      "item": "minecraft:gunpowder"
+    },
+    "a": {
+      "item": "minecraft:redstone"
     }
   },
   "result": {
