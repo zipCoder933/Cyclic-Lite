@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:apple"
+    },
+    {
+      "item": "minecraft:gold_apple"
+    },
+    {
+      "item": "minecraft:gold_apple"
+    },
+    {
+      "item": "minecraft:gold_apple"
+    },
+    {
+      "item": "minecraft:gold_apple"
+    },
+    {
+      "item": "minecraft:honey_block"
+    }
+  ],
+  "result": {
+    "item": "cyclic:apple_honey",
+    "count": 1
+  }
+}

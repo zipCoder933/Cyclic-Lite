@@ -1,19 +1,19 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " th",
-    " st",
-    "s  "
+    " it",
+    " hi",
+    "h  "
   ],
   "key": {
-    "s": {
-      "item": "minecraft:stick"
+    "h": {
+      "item": "minecraft:copper_ingot"
     },
     "t": {
       "item": "minecraft:redstone"
     },
-    "h": {
-      "item": "minecraft:heavy_weighted_pressure_plate"
+    "i": {
+      "item": "minecraft:iron_ingot"
     }
   },
   "result": {
