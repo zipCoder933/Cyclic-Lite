@@ -43,7 +43,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class TravellerEnchant extends EnchantmentFlib {
 
   public static final String ID = "traveler";
-  public static BooleanValue CFG;
+
 
   public TravellerEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -80,7 +80,7 @@ public class TravellerEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

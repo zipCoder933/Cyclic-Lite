@@ -35,7 +35,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class SteadyEnchant extends EnchantmentFlib {
 
   public static final String ID = "steady";
-  public static BooleanValue CFG;
+
 
   public SteadyEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -69,7 +69,7 @@ public class SteadyEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

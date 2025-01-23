@@ -43,7 +43,7 @@ public class VenomEnchant extends EnchantmentFlib {
 
   public static final int TICKSPERLEVEL = 3 * Const.TICKS_PER_SEC;
   public static final String ID = "venom";
-  public static BooleanValue CFG;
+
 
   public VenomEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -77,7 +77,7 @@ public class VenomEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

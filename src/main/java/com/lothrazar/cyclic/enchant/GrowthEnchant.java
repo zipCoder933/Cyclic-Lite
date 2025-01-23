@@ -49,7 +49,7 @@ public class GrowthEnchant extends EnchantmentFlib {
   public static final int HEIGHT = 2;
   public static final double ODDS = 0.04;
   public static final String ID = "growth";
-  public static BooleanValue CFG;
+
   public static IntValue RADIUSFACTOR;
 
   public GrowthEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
@@ -59,7 +59,7 @@ public class GrowthEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

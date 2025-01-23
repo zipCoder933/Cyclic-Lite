@@ -41,7 +41,7 @@ public class StepEnchant extends EnchantmentFlib {
 
   private static final String NBT_ON = ModCyclic.MODID + "_stepenchant";
   public static final String ID = "step";
-  public static BooleanValue CFG;
+
 
   public StepEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -70,7 +70,7 @@ public class StepEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

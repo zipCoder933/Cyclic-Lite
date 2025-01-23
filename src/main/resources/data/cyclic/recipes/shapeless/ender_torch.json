@@ -2,7 +2,10 @@
 	"type": "minecraft:crafting_shapeless",
 	"ingredients": [
 		{
-			"tag": "minecraft:leaves"
+			"tag": "minecraft:feather"
+		},
+		{
+			"tag": "minecraft:ender_pearl"
 		},
 		{
 			"item": "minecraft:torch"

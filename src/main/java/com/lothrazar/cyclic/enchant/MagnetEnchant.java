@@ -42,7 +42,6 @@ public class MagnetEnchant extends EnchantmentFlib {
   private static final int HRADIUS_PER_LEVEL = 4;
   private static final int ITEM_VRADIUS = 4;
   public static final String ID = "magnet";
-  public static BooleanValue CFG;
 
   public MagnetEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -51,7 +50,7 @@ public class MagnetEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

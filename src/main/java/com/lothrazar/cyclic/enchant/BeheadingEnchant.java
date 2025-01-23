@@ -54,7 +54,7 @@ public class BeheadingEnchant extends EnchantmentFlib {
   public static IntValue PERCDROP;
   public static IntValue PERCPERLEVEL;
   public static final String ID = "beheading";
-  public static BooleanValue CFG;
+
 
   public BeheadingEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -63,7 +63,7 @@ public class BeheadingEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

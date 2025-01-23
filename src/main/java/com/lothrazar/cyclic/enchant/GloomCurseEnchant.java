@@ -34,12 +34,12 @@ public class GloomCurseEnchant extends EnchantmentFlib {
     MinecraftForge.EVENT_BUS.register(this);
   }
 
-  public static BooleanValue CFG;
+
   public static final String ID = "curse";
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

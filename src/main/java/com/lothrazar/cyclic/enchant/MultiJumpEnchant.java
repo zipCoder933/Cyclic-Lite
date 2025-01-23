@@ -49,7 +49,7 @@ public class MultiJumpEnchant extends EnchantmentFlib {
   public static final int COOLDOWN = 7 * Const.TICKS_PER_SEC;
   public static final float POWER = 1.07F;
   public static final int ROTATIONPITCH = 68;
-  public static BooleanValue CFG;
+
   private static final String NBT_USES = "launchuses";
 
   public MultiJumpEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
@@ -59,7 +59,7 @@ public class MultiJumpEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

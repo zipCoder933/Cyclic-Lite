@@ -38,7 +38,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class LifeLeechEnchant extends EnchantmentFlib {
 
   public static final String ID = "life_leech";
-  public static BooleanValue CFG;
+
 
   public LifeLeechEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -47,7 +47,7 @@ public class LifeLeechEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

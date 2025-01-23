@@ -25,7 +25,7 @@ public class EnderPearlEnchant extends EnchantmentFlib {
   private static final float VELOCITY = 1.5F; //Same as EnderPearlItem
   private static final float INNACCURACY = 1F; //Same as EnderPearlItem
   public static final String ID = "ender";
-  public static BooleanValue CFG;
+
 
   public EnderPearlEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -34,7 +34,7 @@ public class EnderPearlEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

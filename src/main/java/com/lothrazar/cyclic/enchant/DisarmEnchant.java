@@ -30,12 +30,12 @@ public class DisarmEnchant extends EnchantmentFlib {
     MinecraftForge.EVENT_BUS.register(this);
   }
 
-  public static BooleanValue CFG;
+
   public static final String ID = "disarm";
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

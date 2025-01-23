@@ -41,7 +41,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class BeekeeperEnchant extends EnchantmentFlib {
 
   public static final String ID = "beekeeper";
-  public static BooleanValue CFG;
+ 
 
   public BeekeeperEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -49,8 +49,8 @@ public class BeekeeperEnchant extends EnchantmentFlib {
   }
 
   @Override
-  public boolean isEnabled() {
-    return CFG.get();
+    public boolean isEnabled() {
+    return true;
   }
 
   @Override

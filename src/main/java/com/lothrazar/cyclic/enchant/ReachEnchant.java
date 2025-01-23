@@ -42,7 +42,7 @@ public class ReachEnchant extends EnchantmentFlib {
 
   private static final String NBT_REACH_ON = "reachon";
   public static final String ID = "reach";
-  public static BooleanValue CFG;
+
 
   public ReachEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -67,7 +67,7 @@ public class ReachEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override

@@ -41,7 +41,7 @@ import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 public class MultiBowEnchant extends EnchantmentFlib {
 
   public static final String ID = "multishot";
-  public static BooleanValue CFG;
+
 
   public MultiBowEnchant(Rarity rarityIn, EnchantmentCategory typeIn, EquipmentSlot... slots) {
     super(rarityIn, typeIn, slots);
@@ -49,7 +49,7 @@ public class MultiBowEnchant extends EnchantmentFlib {
 
   @Override
   public boolean isEnabled() {
-    return CFG.get();
+    return true;
   }
 
   @Override
