@@ -332,22 +332,23 @@ public class ItemRegistry {
     //Shield tier is as follows: Flint, Leather, Bone, Obsidian
     //A vanilla shield has 336 durability
     private static final int VANILLA_SHIELD_DURABILITY = 336;
-    //    public static final RegistryObject<Item> SHIELD_WOOD = ITEMS.register("shield_wood", () -> new ShieldCyclicItem(new Item.Properties().durability(84), ShieldType.WOOD));
+    //public static final RegistryObject<Item> SHIELD_WOOD = ITEMS.register("shield_wood", () -> new ShieldCyclicItem(new Item.Properties().durability(84), ShieldType.WOOD));
 
-
-    //See clientRegistryCyclic class and ShieldBlockEntityWithoutLevelRenderer class to see where these shields were uncommented
-
+//See clientRegistryCyclic class and ShieldBlockEntityWithoutLevelRenderer class to see where these shields were uncommented
 //    public static final RegistryObject<Item> SHIELD_FLINT = ITEMS.register("shield_flint", () -> new ShieldCyclicItem(
 //            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.1f)), ShieldType.FLINT));
 
+    //More durable than vanilla shield
     public static final RegistryObject<Item> SHIELD_LEATHER = ITEMS.register("shield_leather", () -> new ShieldCyclicItem(
-            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.3f)), ShieldType.LEATHER));
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.25f)), ShieldType.LEATHER));
 
+    //More durable than leather shield
     public static final RegistryObject<Item> SHIELD_BONE = ITEMS.register("shield_bone", () -> new ShieldCyclicItem(
-            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.6f)), ShieldType.BONE));
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.7f)), ShieldType.BONE));
 
+    //Most durable
     public static final RegistryObject<Item> SHIELD_OBSIDIAN = ITEMS.register("shield_obsidian", () -> new ShieldCyclicItem(
-            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 3)), ShieldType.OBSIDIAN));
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 3.25f)), ShieldType.OBSIDIAN));
 
 
     /**
