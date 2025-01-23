@@ -79,15 +79,7 @@ import com.lothrazar.cyclic.item.ender.EnderWingItem;
 import com.lothrazar.cyclic.item.ender.EnderWingSp;
 //import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
 import com.lothrazar.cyclic.item.enderbook.EnderBookItem;
-import com.lothrazar.cyclic.item.equipment.AmethystAxeItem;
-import com.lothrazar.cyclic.item.equipment.AmethystHoeItem;
-import com.lothrazar.cyclic.item.equipment.AmethystPickaxeItem;
-import com.lothrazar.cyclic.item.equipment.AmethystShovelItem;
-import com.lothrazar.cyclic.item.equipment.GlowingHelmetItem;
-import com.lothrazar.cyclic.item.equipment.MattockItem;
-import com.lothrazar.cyclic.item.equipment.RotatorItem;
-import com.lothrazar.cyclic.item.equipment.ShearsMaterial;
-import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
+import com.lothrazar.cyclic.item.equipment.*;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem.ShieldType;
 import com.lothrazar.cyclic.item.food.AppleBuffs;
 import com.lothrazar.cyclic.item.food.AppleChocolate;
@@ -319,7 +311,6 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> ENTITY_DATA = ITEMS.register("entity_data", () -> new EntityDataCard(new Item.Properties()));
 
 
-
     //  public static final RegistryObject<Item> TELEPORT = ITEMS.register("teleport", () -> new BlockItem(BlockRegistry.TELEPORT.get(), new Item.Properties()));
 //    public static final RegistryObject<Item> STORAGE_BAG = ITEMS.register("storage_bag", () -> new ItemStorageBag(new Item.Properties().stacksTo(1).setNoRepair()));
 //    public static final RegistryObject<Item> CRAFTING_BAG = ITEMS.register("crafting_bag", () -> new CraftingBagItem(new Item.Properties().stacksTo(1).setNoRepair()));
@@ -532,6 +523,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> COPPER_PICKAXE = ITEMS.register("copper_pickaxe", () -> new PickaxeItem(MaterialRegistry.ToolMats.COPPER, 1, -2.8F, new Item.Properties()));
     public static final RegistryObject<Item> COPPER_AXE = ITEMS.register("copper_axe", () -> new AxeItem(MaterialRegistry.ToolMats.COPPER, 6.0F, -3.1F, new Item.Properties()));
 
+    //Creative gear
     public static final RegistryObject<Item> CREATIVE_SWORD = ITEMS.register("creative_sword", () -> new SwordItem(ToolMats.CREATIVE, 3, -2.4F, (new Item.Properties())));
 
 
@@ -547,12 +539,14 @@ public class ItemRegistry {
 //    public static final RegistryObject<Item> NETHERBRICK_SWORD = ITEMS.register("netherbrick_sword", () -> new SwordItem(MaterialRegistry.ToolMats.NETHERBRICK, 3, -2.4F, (new Item.Properties())));
 
 
-    //Shields
-    public static final RegistryObject<Item> SHIELD_WOOD = ITEMS.register("shield_wood", () -> new ShieldCyclicItem(new Item.Properties().durability(84), ShieldType.WOOD));
-    public static final RegistryObject<Item> SHIELD_LEATHER = ITEMS.register("shield_leather", () -> new ShieldCyclicItem(new Item.Properties().durability(168), ShieldType.LEATHER));
-    public static final RegistryObject<Item> SHIELD_FLINT = ITEMS.register("shield_flint", () -> new ShieldCyclicItem(new Item.Properties().durability(168 + 84), ShieldType.FLINT));
-    public static final RegistryObject<Item> SHIELD_OBSIDIAN = ITEMS.register("shield_obsidian", () -> new ShieldCyclicItem(new Item.Properties().durability(168 * 8), ShieldType.OBSIDIAN));
-    public static final RegistryObject<Item> SHIELD_BONE = ITEMS.register("shield_bone", () -> new ShieldCyclicItem(new Item.Properties().durability(168 + 84), ShieldType.BONE));
+    //Shields (Basically just regular shields with more durability)
+    //A vanilla shield has 336 durability
+    private static final int VANILLA_SHIELD_DURABILITY = 336;
+    //    public static final RegistryObject<Item> SHIELD_WOOD = ITEMS.register("shield_wood", () -> new ShieldCyclicItem(new Item.Properties().durability(84), ShieldType.WOOD));
+    public static final RegistryObject<Item> SHIELD_LEATHER = ITEMS.register("shield_leather", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.1f)), ShieldType.LEATHER));
+    public static final RegistryObject<Item> SHIELD_FLINT = ITEMS.register("shield_flint", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.2f)), ShieldType.FLINT));
+    public static final RegistryObject<Item> SHIELD_BONE = ITEMS.register("shield_bone", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.75f)), ShieldType.BONE));
+    public static final RegistryObject<Item> SHIELD_OBSIDIAN = ITEMS.register("shield_obsidian", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 3)), ShieldType.OBSIDIAN));
 
 
     public static final RegistryObject<Item> FIRE_KILLER = ITEMS.register("fire_killer", () -> new FireExtinguishItem(new Item.Properties()));

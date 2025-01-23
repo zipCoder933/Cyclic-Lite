@@ -93,20 +93,20 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 public class ItemEvents {
 
     @SubscribeEvent
-    public void onShieldBlock(ShieldBlockEvent event) {
-        ItemStack shield = event.getEntity().getUseItem();
-        if (shield.getItem() instanceof ShieldCyclicItem shieldItem) {
-            if (event.getEntity() instanceof Player playerIn) {
-                if (playerIn.getCooldowns().isOnCooldown(shield.getItem())) {
-                    SoundUtil.playSound(playerIn, SoundEvents.SHIELD_BREAK);
-                    event.setCanceled(true);
-                    return;
-                }
-                shieldItem.onShieldBlock(event, playerIn);
-            } else {
-                shieldItem.onShieldBlock(event, null);
-            }
-        }
+    public void onShieldBlock(ShieldBlockEvent event) {//TODO: (Lite) If we wanted to add shield blocking events again, uncomment and fix this
+//        ItemStack shield = event.getEntity().getUseItem();
+//        if (shield.getItem() instanceof ShieldCyclicItem shieldItem) {
+//            if (event.getEntity() instanceof Player playerIn) {
+//                if (playerIn.getCooldowns().isOnCooldown(shield.getItem())) {
+//                    SoundUtil.playSound(playerIn, SoundEvents.SHIELD_BREAK);
+//                    event.setCanceled(true);
+//                    return;
+//                }
+//                shieldItem.onShieldBlock(event, playerIn);
+//            } else {
+//                shieldItem.onShieldBlock(event, null);
+//            }
+//        }
     }
 
     @SubscribeEvent
