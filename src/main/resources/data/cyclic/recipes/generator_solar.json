@@ -13,10 +13,10 @@
       "item": "minecraft:redstone"
     },
     "B": {
-      "tag": "minecraft:glass"
+      "item": "minecraft:glass"
     },
     "I": {
-      "tag": "minecraft:iron_ingot"
+      "item": "minecraft:iron_ingot"
     }
   },
   "result": {
