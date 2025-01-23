@@ -103,6 +103,7 @@ public class ConfigRegistry extends ConfigTemplate {
     private static final List<String> IGNORE_LIST_UNCRAFTER = new ArrayList<>();
     private static final List<String> MBALL_IGNORE = new ArrayList<>();
     private static final List<String> DISARM_IGNORE = new ArrayList<>();
+    private static final List<String> IGNORE_RECIPES_UNCRAFTER = new ArrayList<>();
     private static final List<String> TRANSPORTBAG = new ArrayList<>();
     private static final List<String> ENDERAPPLE = new ArrayList<>();
     private static ConfigValue<List<? extends String>> BEHEADING_SKINS;
@@ -115,6 +116,7 @@ public class ConfigRegistry extends ConfigTemplate {
     public static DoubleValue CHARM_ATTACKSPEED;
     public static BooleanValue OVERRIDE_TRANSPORTER_SINGLETON;
     public static BooleanValue GENERATE_FLOWERS;
+    public static BooleanValue CYAN_PODZOL_LEGACY;
     public static BooleanValue TRANSFER_NODES_DIMENSIONAL;
     public static IntValue SOUND_RADIUS;
     public static IntValue RECORDER_RADIUS;
@@ -160,6 +162,51 @@ public class ConfigRegistry extends ConfigTemplate {
         BEHEADING.add("minecraft:silverfish:MHF_Silverfish");
         BEHEADING.add("minecraft:endermite:MHF_Endermite");
         //
+        //most of these are ported direct from 1.12 defaults, idk if these mods or items exist anymore
+        IGNORE_LIST_UNCRAFTER.add("minecraft:elytra");
+        IGNORE_LIST_UNCRAFTER.add("minecraft:tipped_arrow");
+        IGNORE_LIST_UNCRAFTER.add("minecraft:magma_block");
+        IGNORE_LIST_UNCRAFTER.add("minecraft:stick");
+        IGNORE_LIST_UNCRAFTER.add("spectrite:spectrite_arrow");
+        IGNORE_LIST_UNCRAFTER.add("spectrite:spectrite_arrow_special");
+        IGNORE_LIST_UNCRAFTER.add("techreborn:uumatter");
+        IGNORE_LIST_UNCRAFTER.add("projecte:*");
+        //a
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:white_dye_from_lily_of_the_valley");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:orange_dye_from_orange_tulip");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:magenta_dye_from_allium");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:magenta_dye_from_lilac");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:light_blue_dye_from_blue_orchid");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:yellow_dye_from_sunflower");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:yellow_dye_from_dandelion");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:pink_dye_from_peony");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:pink_dye_from_pink_tulip");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:light_gray_dye_from_oxeye_daisy");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:light_gray_dye_from_azure_bluet");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:light_gray_dye_from_white_tulip");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:blue_dye_from_cornflower");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:red_dye_from_poppy");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:red_dye_from_rose_bush");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:red_dye_from_tulip");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:black_dye_from_wither_rose");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:blue_dye");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:black_dye");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:brown_dye");
+        IGNORE_RECIPES_UNCRAFTER.add("botania:cobweb");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:magma_cream");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:beacon");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:stick_from_bamboo_item");
+        IGNORE_RECIPES_UNCRAFTER.add("minecraft:netherite_ingot_from_netherite_block");
+        IGNORE_RECIPES_UNCRAFTER.add("mysticalagriculture:essence*");
+        IGNORE_RECIPES_UNCRAFTER.add("mysticalagriculture:farmland_till");
+        IGNORE_RECIPES_UNCRAFTER.add("refinedstorage:coloring_recipes*");
+        IGNORE_RECIPES_UNCRAFTER.add("forcecraft:transmutation*");
+        IGNORE_RECIPES_UNCRAFTER.add("cyclic:flower_purple_tulip");
+        IGNORE_RECIPES_UNCRAFTER.add("cyclic:flower_absalon_tulip");
+        IGNORE_RECIPES_UNCRAFTER.add("cyclic:flower_cyan");
+        IGNORE_RECIPES_UNCRAFTER.add("cyclic:flower_lime_carnation");
+        IGNORE_RECIPES_UNCRAFTER.add("cyclic:fireball");
+        IGNORE_RECIPES_UNCRAFTER.add("cyclic:shapeless/spark");
         //
         TRANSPORTBAG.addAll(Arrays.asList(
                 //legacy
@@ -191,7 +238,10 @@ public class ConfigRegistry extends ConfigTemplate {
 //    GENERATE_FLOWERS = CFG.comment(" Do the four generate in the world. "
 //        + " If false, the 4 flower blocks and 3 features (flower_all, flower_tulip_ flower_lime) will still be registered and can be used externally (data packs etc), "
 //        + "but the mod will not use the features to generate/place flowers in world-generation")
-//        .define("flowers.enabled", false);
+//        .define("flowers.enabled", false); // TODO: ad recipes for flowers
+//    CYAN_PODZOL_LEGACY = CFG.comment(" Enable the legacy feature that will spawn a Cyan flower when bonemeal is used on Podzol")
+//        .define("cyan_podzol_legacy.enabled", false);
+//    CFG.pop();
 
         CFG.comment(WALL, " Edit the permissions of all commands added by the mod.  false means anyone can use, true means only OP players can use  ", WALL)
                 .push("command");

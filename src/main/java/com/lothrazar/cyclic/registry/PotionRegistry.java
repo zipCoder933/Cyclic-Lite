@@ -12,7 +12,6 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -60,43 +59,43 @@ public class PotionRegistry {
         final ItemStack awkwardPotion = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD);
         final ItemStack thickPotion = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.THICK);
         // Potion recipes
-        basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.NIGHT_VISION), PotionRegistry.BLIND.get(), Items.BEETROOT);
-        basicBrewing(awkwardPotion.copy(), PotionRegistry.MAGNETIC.get(), Items.LAPIS_LAZULI);
-        basicBrewing(awkwardPotion.copy(), PotionRegistry.REACH_DISTANCE.get(), Items.AMETHYST_SHARD);
+        basicBrewing(PotionRegistry.BLIND.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.NIGHT_VISION), Items.BEETROOT);
+        basicBrewing(PotionRegistry.MAGNETIC.get(), awkwardPotion.copy(), Items.LAPIS_LAZULI);
+        basicBrewing(PotionRegistry.REACH_DISTANCE.get(), awkwardPotion.copy(), Items.AMETHYST_SHARD);
 
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.HASTE.get(), Items.EMERALD);
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), PotionRegistry.HASTE.get()), PotionRegistry.HASTE_STRONG.get(), Items.REDSTONE);
-
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.STUN.get(), Items.CLAY);
-
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.SWIMSPEED.get(), Items.DRIED_KELP_BLOCK);
+//      basicBrewing(PotionRegistry.HASTE.get(), awkwardPotion.copy(), Items.EMERALD);
+//      basicBrewing(PotionRegistry.HASTE_STRONG.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionRegistry.HASTE.get()), Items.REDSTONE);
 //
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.SLOW_FALLING), PotionRegistry.LEVITATION.get(), Items.FERMENTED_SPIDER_EYE);
+//      basicBrewing(PotionRegistry.STUN.get(), awkwardPotion.copy(), Items.CLAY);
 //
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH), PotionRegistry.RESISTANCE.get(), Items.IRON_INGOT);
+//      basicBrewing(PotionRegistry.SWIMSPEED.get(), awkwardPotion.copy(), Items.DRIED_KELP_BLOCK);
 //
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WEAKNESS), PotionRegistry.WITHER.get(), Items.NETHER_BRICK);
+//      basicBrewing(PotionRegistry.LEVITATION.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.SLOW_FALLING), Items.FERMENTED_SPIDER_EYE);
 //
-//      basicBrewing(thickPotion.copy(), PotionRegistry.HUNGER.get(), Items.ROTTEN_FLESH);
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), HUNGER.get()), PotionRegistry.STRONG_HUNGER.get(), Items.REDSTONE);
-
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.WATERWALK.get(), Items.PRISMARINE_SHARD);
-//      basicBrewing(thickPotion.copy(), PotionRegistry.WATERWALK.get(), Items.COD);
-
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.SNOWWALK.get(), Items.SNOWBALL);
-
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.FROST_WALKER.get(), Blocks.ICE.asItem());
-
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.LEAPING), PotionRegistry.GRAVITY.get(), Items.COPPER_INGOT);
-
-//      basicBrewing(awkwardPotion.copy(), PotionRegistry.ATTACK_RANGE.get(), Blocks.POINTED_DRIPSTONE.asItem());
-
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), PotionRegistry.GRAVITY.get()), PotionRegistry.ANTIGRAVITY.get(), Items.FERMENTED_SPIDER_EYE);
-
-//      basicBrewing(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRONG_HEALING), PotionRegistry.FLIGHT.get(), Items.CHORUS_FRUIT);
+//      basicBrewing(PotionRegistry.RESISTANCE.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRENGTH), Items.IRON_INGOT);
+//
+//      basicBrewing(PotionRegistry.WITHER.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WEAKNESS), Items.NETHER_BRICK);
+//
+//      basicBrewing(PotionRegistry.HUNGER.get(), thickPotion.copy(), Items.ROTTEN_FLESH);
+//      basicBrewing(PotionRegistry.STRONG_HUNGER.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), HUNGER.get()), Items.REDSTONE);
+//
+//      basicBrewing(PotionRegistry.WATERWALK.get(), awkwardPotion.copy(), Items.PRISMARINE_SHARD);
+//      basicBrewing(PotionRegistry.WATERWALK.get(), thickPotion.copy(), Items.COD);
+//
+//      basicBrewing(PotionRegistry.SNOWWALK.get(), awkwardPotion.copy(), Items.SNOWBALL);
+//
+//      basicBrewing(PotionRegistry.FROST_WALKER.get(), awkwardPotion.copy(), Blocks.ICE.asItem());
+//
+//      basicBrewing(PotionRegistry.GRAVITY.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.LEAPING), Items.COPPER_INGOT);
+//
+//      basicBrewing(PotionRegistry.ATTACK_RANGE.get(), awkwardPotion.copy(), Blocks.POINTED_DRIPSTONE.asItem());
+//
+//      basicBrewing(PotionRegistry.ANTIGRAVITY.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), PotionRegistry.GRAVITY.get()), Items.FERMENTED_SPIDER_EYE);
+//
+//      basicBrewing(PotionRegistry.FLIGHT.get(), PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.STRONG_HEALING), Items.CHORUS_FRUIT);
     }
 
-    private static void basicBrewing(ItemStack inputPot, Potion output, Item item) {
+    private static void basicBrewing(Potion output, ItemStack inputPot, Item item) {
         BrewingRecipeRegistry.addRecipe(new BrewingRecipeFlib(inputPot, Ingredient.of(item), PotionUtils.setPotion(new ItemStack(Items.POTION), output)));
     }
 }
