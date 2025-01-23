@@ -12,7 +12,7 @@
 		}
 	],
 	"energy": {
-		"rfpertick": 1500,
+		"rfpertick": 3000,
 		"ticks": 300
 	},
 	"mix": {

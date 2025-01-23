@@ -1,25 +1,26 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "cbc",
-    "cec",
-    "cpc"
+   "BBB",
+   "IRI",
+   "IAI"
   ],
   "key": {
-    "e": {
-      "item": "cyclic:gem_amber"
+    "R": {
+      "item": "minecraft:redstone"
     },
-    "p": {
-      "item": "minecraft:bone_block"
+    "A": {
+      "item": "minecraft:redstone"
     },
-    "b": {
-      "tag": "forge:enchanting_fuels"
+    "B": {
+      "tag": "minecraft:glass"
     },
-    "c": {
-      "tag": "forge:nuggets/copper"
+    "I": {
+      "tag": "minecraft:iron_ingot"
     }
   },
   "result": {
-    "item": "cyclic:generator_solar"
+    "item": "cyclic:generator_solar",
+    "count": 4
   }
 }
