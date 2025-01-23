@@ -296,7 +296,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> COMPUTER_SHAPE = BLOCKS.register("computer_shape", () -> new BlockShapedata(Block.Properties.of()));
 
     public static final RegistryObject<Block> SCAFFOLD_FRAGILE = BLOCKS.register("scaffold_fragile", () -> new BlockScaffolding(Block.Properties.of(), true));
-    public static final RegistryObject<Block> SCAFFOLD_RESPONSIVE = BLOCKS.register("scaffold_responsive.json", () -> new BlockScaffoldingResponsive(Block.Properties.of(), false));
+    public static final RegistryObject<Block> SCAFFOLD_RESPONSIVE = BLOCKS.register("scaffold_responsive", () -> new BlockScaffoldingResponsive(Block.Properties.of(), false));
 //    public static final RegistryObject<Block> SCAFFOLD_REPLACE = BLOCKS.register("scaffold_replace", () -> new BlockScaffoldingReplace(Block.Properties.of()));
 
     public static final RegistryObject<Block> DARK_GLASS = BLOCKS.register("dark_glass", () -> new DarkGlassBlock(Block.Properties.of()));

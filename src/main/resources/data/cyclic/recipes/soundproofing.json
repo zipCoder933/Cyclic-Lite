@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " s ",
-    "sos",
-    " s "
+    "sws",
+    "www",
+    "sws"
   ],
   "key": {
-    "o": {
-      "tag": "forge:dyes/orange"
+    "w": {
+      "tag": "minecraft:orange_wool"
     },
     "s": {
       "item": "minecraft:white_terracotta"

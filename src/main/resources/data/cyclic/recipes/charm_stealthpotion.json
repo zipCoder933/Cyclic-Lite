@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "nnn",
+    "frf",
+    "nnn"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:gold_nugget"
+    },
+    "r": {
+      "item": "minecraft:redstone"
+    },
+    "f": {
+      "item": "minecraft:flint"
+    }
+  },
+  "result": {
+    "item": "cyclic:charm_stealthpotion",
+    "count": 1
+  }
+}
