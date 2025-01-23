@@ -67,18 +67,26 @@
   "item.cyclic.shield_wood": "Wooden Shield",
   "item.cyclic.shield_wood.tooltip": "Fragile shield that increases knockback ",
   "item.cyclic.shield_wood.guide": "Gets destroyed in a single hit from explosions. Config sets this as weaker than regular shields.  ",
-  "item.cyclic.shield_leather": "Leather Shield",
-  "item.cyclic.shield_leather.tooltip": "A slightly weaker shield",
-  "item.cyclic.shield_leather.guide": "This shield when used takes no durability damage from explosions.  Config sets this as weaker than regular shields.  ",
+
+
   "item.cyclic.shield_flint": "Flint Shield",
-  "item.cyclic.shield_flint.tooltip": "A slightly weaker shield that can reflect damage",
-  "item.cyclic.shield_flint.guide": "50% chance to take no durability damage from arrows.  25% chance to reflect projectile attacks with one point of thorns damage to the attacker.  Config sets this as weaker than regular shields.   ",
-  "item.cyclic.shield_obsidian": "Obsidian Shield",
-  "item.cyclic.shield_obsidian.tooltip": "Prevents knockback while blocking",
-  "item.cyclic.shield_obsidian.guide": "Prevents knockback completely while blocking.  Takes no durability damage from projectiles or explosions (unless they bypass armor)",
+  "item.cyclic.shield_flint.tooltip": "Slightly more durable than a traditional wooden shield.",
+  "item.cyclic.shield_flint.guide": "Slightly more durable than a traditional wooden shield.",
+
+  "item.cyclic.shield_leather": "Leather Shield",
+  "item.cyclic.shield_leather.tooltip": "More durable than a traditional wooden shield.",
+  "item.cyclic.shield_leather.guide": "More durable than a traditional wooden shield.",
+
   "item.cyclic.shield_bone": "Bone Shield",
-  "item.cyclic.shield_bone.tooltip": "Average shield",
-  "item.cyclic.shield_bone.guide": "Takes no durability tamage from projectiles.  Not weaker than normal shields unlike some others",
+  "item.cyclic.shield_bone.tooltip": "More durable than a leather shield.",
+  "item.cyclic.shield_bone.guide": "More durable than a leather shield.",
+
+  "item.cyclic.shield_obsidian": "Obsidian Shield",
+  "item.cyclic.shield_obsidian.tooltip": "Significantly more durable than a traditional wooden shield.",
+  "item.cyclic.shield_obsidian.guide": "Significantly more durable than a traditional wooden shield.",
+
+
+
   "item.cyclic.flute_summoning": "Summoning Flute",
   "item.cyclic.flute_summoning.tooltip": "Tap on a specific entity to summon it later",
   "item.cyclic.flute_summoning.teleported": "Attempting teleport...",

@@ -1,16 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "WoW",
-    "WWW",
-    " W "
+    "OOO",
+    "OSO",
+    " O "
   ],
   "key": {
-    "W": {
-      "tag": "minecraft:planks"
+    "S": {
+      "item": "cyclic:shield_bone"
     },
-    "o": {
-      "tag": "forge:obsidian"
+    "O": {
+      "item": "forge:obsidian"
     }
   },
   "result": {

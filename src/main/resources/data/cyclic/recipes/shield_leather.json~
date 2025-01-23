@@ -10,10 +10,10 @@
       "item": "minecraft:shield"
     },
     "O": {
-      "item": "minecraft:flint"
+      "item": "minecraft:leather"
     }
   },
   "result": {
-    "item": "cyclic:shield_flint"
+    "item": "cyclic:shield_leather"
   }
 }

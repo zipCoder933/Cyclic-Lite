@@ -540,13 +540,21 @@ public class ItemRegistry {
 
 
     //Shields (Basically just regular shields with more durability)
+    //Shield tier is as follows: Flint, Leather, Bone, Obsidian
     //A vanilla shield has 336 durability
     private static final int VANILLA_SHIELD_DURABILITY = 336;
     //    public static final RegistryObject<Item> SHIELD_WOOD = ITEMS.register("shield_wood", () -> new ShieldCyclicItem(new Item.Properties().durability(84), ShieldType.WOOD));
-    public static final RegistryObject<Item> SHIELD_LEATHER = ITEMS.register("shield_leather", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.1f)), ShieldType.LEATHER));
-    public static final RegistryObject<Item> SHIELD_FLINT = ITEMS.register("shield_flint", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.2f)), ShieldType.FLINT));
-    public static final RegistryObject<Item> SHIELD_BONE = ITEMS.register("shield_bone", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.75f)), ShieldType.BONE));
-    public static final RegistryObject<Item> SHIELD_OBSIDIAN = ITEMS.register("shield_obsidian", () -> new ShieldCyclicItem(new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 3)), ShieldType.OBSIDIAN));
+    public static final RegistryObject<Item> SHIELD_FLINT = ITEMS.register("shield_flint", () -> new ShieldCyclicItem(
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.1f)), ShieldType.FLINT));
+
+    public static final RegistryObject<Item> SHIELD_LEATHER = ITEMS.register("shield_leather", () -> new ShieldCyclicItem(
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.3f)), ShieldType.LEATHER));
+
+    public static final RegistryObject<Item> SHIELD_BONE = ITEMS.register("shield_bone", () -> new ShieldCyclicItem(
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 1.6f)), ShieldType.BONE));
+
+    public static final RegistryObject<Item> SHIELD_OBSIDIAN = ITEMS.register("shield_obsidian", () -> new ShieldCyclicItem(
+            new Item.Properties().durability((int) (VANILLA_SHIELD_DURABILITY * 3)), ShieldType.OBSIDIAN));
 
 
     public static final RegistryObject<Item> FIRE_KILLER = ITEMS.register("fire_killer", () -> new FireExtinguishItem(new Item.Properties()));
