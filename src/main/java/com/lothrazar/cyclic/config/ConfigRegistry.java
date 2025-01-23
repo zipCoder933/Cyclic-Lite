@@ -1,7 +1,11 @@
 package com.lothrazar.cyclic.config;
 
-import com.lothrazar.cyclic.registry.ItemRegistry;
-import com.lothrazar.cyclic.registry.ItemRegistry.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.lothrazar.cyclic.CyclicLogger;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.CandleWaterBlock;
@@ -9,6 +13,8 @@ import com.lothrazar.cyclic.block.LavaSpongeBlock;
 import com.lothrazar.cyclic.block.PeatBlock;
 import com.lothrazar.cyclic.block.antipotion.TileAntiBeacon;
 import com.lothrazar.cyclic.block.anvil.TileAnvilAuto;
+//import com.lothrazar.cyclic.block.anvilmagma.TileAnvilMagma;
+//import com.lothrazar.cyclic.block.anvilvoid.TileAnvilVoid;
 import com.lothrazar.cyclic.block.battery.TileBattery;
 import com.lothrazar.cyclic.block.batteryclay.TileClayBattery;
 import com.lothrazar.cyclic.block.beaconpotion.TilePotionBeacon;
@@ -16,28 +22,55 @@ import com.lothrazar.cyclic.block.cable.energy.TileCableEnergy;
 import com.lothrazar.cyclic.block.cable.fluid.TileCableFluid;
 import com.lothrazar.cyclic.block.collectfluid.TileFluidCollect;
 import com.lothrazar.cyclic.block.crafter.TileCrafter;
+//import com.lothrazar.cyclic.block.disenchant.TileDisenchant;
+//import com.lothrazar.cyclic.block.dropper.TileDropper;
+//import com.lothrazar.cyclic.block.enderctrl.EnderShelfHelper;
+//import com.lothrazar.cyclic.block.endershelf.EnderShelfItemHandler;
+//import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
+import com.lothrazar.cyclic.block.eye.TileEye;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
+//import com.lothrazar.cyclic.block.fishing.TileFisher;
+//import com.lothrazar.cyclic.block.forester.TileForester;
 import com.lothrazar.cyclic.block.generatorexpl.BlockDestruction;
 import com.lothrazar.cyclic.block.generatorfood.TileGeneratorFood;
 import com.lothrazar.cyclic.block.generatorfuel.TileGeneratorFuel;
 import com.lothrazar.cyclic.block.generatorsolar.BlockGeneratorSolar;
+//import com.lothrazar.cyclic.block.harvester.TileHarvester;
+//import com.lothrazar.cyclic.block.magnet.BlockMagnetPanel;
 import com.lothrazar.cyclic.block.miner.TileMiner;
+//import com.lothrazar.cyclic.block.packager.TilePackager;
 import com.lothrazar.cyclic.block.peatfarm.TilePeatFarm;
 import com.lothrazar.cyclic.block.shapebuilder.TileStructure;
 import com.lothrazar.cyclic.block.spawntriggers.BlockAltarNoTraders;
 import com.lothrazar.cyclic.block.spawntriggers.CandlePeaceBlock;
+//import com.lothrazar.cyclic.block.sprinkler.TileSprinkler;
 import com.lothrazar.cyclic.block.terraglass.TileTerraGlass;
+import com.lothrazar.cyclic.block.terrasoil.TileTerraPreta;
+
+import com.lothrazar.cyclic.item.OreProspector;
+import com.lothrazar.cyclic.item.TeleporterWandItem;
+import com.lothrazar.cyclic.item.WandHypnoItem;
 import com.lothrazar.cyclic.item.bauble.AutoCaveTorchItem;
 import com.lothrazar.cyclic.item.bauble.AutoTorchItem;
 import com.lothrazar.cyclic.item.elemental.IceWand;
 import com.lothrazar.cyclic.item.elemental.WaterSpreaderItem;
+//import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
+import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 import com.lothrazar.cyclic.item.food.EdibleFlightItem;
 import com.lothrazar.cyclic.item.food.EdibleSpecItem;
 import com.lothrazar.cyclic.item.food.EnderApple;
+import com.lothrazar.cyclic.item.food.HeartItem;
+import com.lothrazar.cyclic.item.food.HeartToxicItem;
+import com.lothrazar.cyclic.item.missile.WandMissileItem;
+import com.lothrazar.cyclic.item.scythe.ScytheBrush;
+import com.lothrazar.cyclic.item.scythe.ScytheForage;
+import com.lothrazar.cyclic.item.scythe.ScytheHarvest;
+import com.lothrazar.cyclic.item.scythe.ScytheLeaves;
 import com.lothrazar.cyclic.item.transporter.TileTransporterEmptyItem;
 import com.lothrazar.cyclic.registry.CommandRegistry;
 import com.lothrazar.cyclic.registry.CommandRegistry.CyclicCommands;
 import com.lothrazar.cyclic.registry.MaterialRegistry;
+import com.lothrazar.cyclic.registry.PotionRegistry;
 import com.lothrazar.library.config.ConfigTemplate;
 import com.lothrazar.library.util.StringParseUtil;
 import net.minecraft.resources.ResourceLocation;
@@ -50,8 +83,6 @@ import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.registries.ForgeRegistries;
-
-import java.util.*;
 
 public class ConfigRegistry extends ConfigTemplate {
 
@@ -178,12 +209,27 @@ public class ConfigRegistry extends ConfigTemplate {
         CFG.pop(); //logging
         CFG.comment(WALL, " Item specific configs", WALL)
                 .push("items");
+        //
+        //laser_cannon
+        CFG.push("laser_cannon");
+        LaserItemRange = CFG.comment(" Maximum range to hit target").defineInRange("range", 6000, 1, 9999);
+        LaserItemDamageClose = CFG.comment(" Damage dealt at point blank range").defineInRange("damage_close", 20, 1, Integer.MAX_VALUE);
+        LaserItemDamageFar = CFG.comment(" Damage dealt when firing at range").defineInRange("damage_far", 12, 1, Integer.MAX_VALUE);
+        LaserItemEnergy = CFG.comment(" Energy cost per firing; only drained when living targets are hit").defineInRange("energy", 10, 1, Integer.MAX_VALUE);
+        LaserRenderMisses = CFG.comment(" Render the laser beam even when there is no living target (used to be hardcoded as false, so change this back to restore legacy behavior)").define("render_misses", true);
+        CFG.pop();
 
-        //shields
-        CFG.push("shields");
-        ItemRegistry.SHIELD_LEATHER_DURABILITY = CFG.comment(" Leather shield durability").defineInRange("range", 1.25, 1.0, 10);
-        ItemRegistry.SHIELD_BONE_DURABILITY = CFG.comment(" Bone shield durability").defineInRange("range", 1.7, 1.0, 10);
-        ItemRegistry.SHIELD_OBSIDIAN_DURABILITY = CFG.comment(" Obsidian shield durability").defineInRange("range", 3.25, 1.0, 10);
+        CFG.comment(WALL, " spell_water settings", WALL).push("spell_water");
+        WaterSpreaderItem.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
+        CFG.pop();
+
+        CFG.comment(WALL, " spell_ice settings", WALL).push("spell_ice");
+        IceWand.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
+        CFG.pop();
+
+        CFG.comment(" apple_ender settings").push("apple_ender");
+        EnderApple.STRUCTURE_TAGS = CFG.comment(" Which structure tags are looked for").defineList("structure_tags", ENDERAPPLE, it -> it instanceof String);
+        EnderApple.PRINTED = CFG.comment(" How many results the client will see").defineInRange("printed", 5, 1, 60);
         CFG.pop();
 
         CFG.comment(WALL, " Emerald gear settings", WALL).push("emerald");
@@ -194,7 +240,6 @@ public class ConfigRegistry extends ConfigTemplate {
         MaterialRegistry.EMERALD_LEG = CFG.comment(" Damage Reduction").defineInRange("leg", 6, 1, 99);
         MaterialRegistry.EMERALD_TOUGH = CFG.comment(" Armor toughness").defineInRange("toughness", 2.5F, 0.1F, 99F);
         CFG.pop();
-
         CFG.comment(WALL, " Obsidian gear settings", WALL).push("obsidian");
         MaterialRegistry.OBS_TOUGH = CFG.comment(" Armor toughness").defineInRange("toughness", 6.0F, 0.1F, 999F);
         MaterialRegistry.OBS_DMG = CFG.comment(" Weapon damage").defineInRange("damage", 10.5F, 0.1F, 999F);
@@ -203,14 +248,11 @@ public class ConfigRegistry extends ConfigTemplate {
         MaterialRegistry.OBS_CHEST = CFG.comment(" Damage Reduction").defineInRange("chest", 11, 1, 999);
         MaterialRegistry.OBS_LEG = CFG.comment(" Damage Reduction").defineInRange("leg", 10, 1, 999);
         CFG.pop();
-
-
+//    ItemProjectileDungeon.RANGE = CFG.comment(" Range in all directions to search for spawner").defineInRange("spawner_seeker.range", 64, 1, 256);
         CHARM_LUCK = CFG.comment(" Boost given by item charm_luck").defineInRange("charm_luck.boost", 25, 0, 100);
         CHARM_SPEED = CFG.comment(" Boost given by item charm_speed").defineInRange("charm_speed.boost", 0.5F, 0, 2F);
         CHARM_ATTACKSPEED = CFG.comment(" Boost given by item charm_attackspeed").defineInRange("charm_attack_speed.boost", 0.5F, 0, 2F);
         AutoTorchItem.LIGHT_LEVEL = CFG.comment(" Light level limit for placing torches").defineInRange("charm_torch.light_level", 9, 0, 15);
-
-
         CFG.comment(WALL, " Caving Torch Charm settings", WALL).push("caving_torch");
         AutoCaveTorchItem.LIGHT_LIMIT = CFG.comment(" Light level at which to start placing down a torch").defineInRange("light_limit", 7, 0, 14);
         AutoCaveTorchItem.LIGHT_TARGET = CFG.comment(
@@ -220,11 +262,12 @@ public class ConfigRegistry extends ConfigTemplate {
         AutoCaveTorchItem.PREFER_WALLS = CFG.comment(" Whether to prioritise placing torches on walls").define("prefer_walls", true);
         AutoCaveTorchItem.PREFER_LEFT_WALL = CFG.comment(" Which wall to place torches on when digging a 1-wide tunnel", "True means left, False means right").define("prefer_left_wall", false);
         CFG.pop(); // caving_torch
-
-
         EdibleFlightItem.TICKS = CFG.comment(" Seconds of flight per chorus_flight").defineInRange("chorus_flight.ticks", 20 * 60, 1, 20 * 1000);
         EdibleSpecItem.TICKS = CFG.comment(" Seconds of noClip per chorus_spectral").defineInRange("chorus_spectral.ticks", 20 * 30, 1, 20 * 1000);
         MBALL_IGNORE_LIST = CFG.comment(" Entity ids that cannot be picked up with the Monster all").defineList("monster_ball.ignore_list", MBALL_IGNORE, it -> it instanceof String);
+//        CFG.comment(" Wand settings").push("teleport_wand");
+//        TeleporterWandItem.RANGE = CFG.comment(" Maximum distance to activate").defineInRange("range", 256, 8, 1024);
+//        CFG.pop();
 
 
         CFG.comment(" Sack of Holding settings").push("tile_transporter");
@@ -234,6 +277,11 @@ public class ConfigRegistry extends ConfigTemplate {
                 .define("overrideChestSingle", true);
         CFG.pop();
 
+
+//        CFG.comment(" Heart items").push("heart");
+//        HeartToxicItem.HEARTXPMINUS = CFG.comment(" Experience given when eating a poisoned heart").defineInRange("experience", 500, 0, 99999);
+//        HeartItem.MAX = CFG.comment(" Maximum number of hearts that can be attained (including initial 10)").defineInRange("maximum", 100, 1, 200);
+//        CFG.pop(); //heart
 
         /**
          * Eye teleport
@@ -245,39 +293,6 @@ public class ConfigRegistry extends ConfigTemplate {
         TileEyeTp.FREQUENCY = CFG.comment(" Tick delay between checks, faster checks can consume server resources (1 means check every tick; 20 means only check once per second)")
                 .defineInRange("frequency", 40, 1, 100);
         CFG.pop(); // eye_teleport
-
-
-//        CFG.push("laser_cannon");//laser_cannon
-//        LaserItemRange = CFG.comment(" Maximum range to hit target").defineInRange("range", 6000, 1, 9999);
-//        LaserItemDamageClose = CFG.comment(" Damage dealt at point blank range").defineInRange("damage_close", 20, 1, Integer.MAX_VALUE);
-//        LaserItemDamageFar = CFG.comment(" Damage dealt when firing at range").defineInRange("damage_far", 12, 1, Integer.MAX_VALUE);
-//        LaserItemEnergy = CFG.comment(" Energy cost per firing; only drained when living targets are hit").defineInRange("energy", 10, 1, Integer.MAX_VALUE);
-//        LaserRenderMisses = CFG.comment(" Render the laser beam even when there is no living target (used to be hardcoded as false, so change this back to restore legacy behavior)").define("render_misses", true);
-//        CFG.pop();
-
-//        CFG.comment(WALL, " spell_ice settings", WALL).push("spell_ice");
-//        IceWand.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
-//        CFG.pop();
-
-//        CFG.comment(WALL, " spell_water settings", WALL).push("spell_water");
-//        WaterSpreaderItem.RADIUS = CFG.comment(" Radius defines how far it reaches").defineInRange("radius", 3, 0, 32);
-//        CFG.pop();
-
-//        CFG.comment(" Wand settings").push("teleport_wand");
-//        TeleporterWandItem.RANGE = CFG.comment(" Maximum distance to activate").defineInRange("range", 256, 8, 1024);
-//        CFG.pop();
-
-//        CFG.comment(" apple_ender settings").push("apple_ender");
-//        EnderApple.STRUCTURE_TAGS = CFG.comment(" Which structure tags are looked for").defineList("structure_tags", ENDERAPPLE, it -> it instanceof String);
-//        EnderApple.PRINTED = CFG.comment(" How many results the client will see").defineInRange("printed", 5, 1, 60);
-//        CFG.pop();
-
-//        CFG.comment(" Heart items").push("heart");
-//        HeartToxicItem.HEARTXPMINUS = CFG.comment(" Experience given when eating a poisoned heart").defineInRange("experience", 500, 0, 99999);
-//        HeartItem.MAX = CFG.comment(" Maximum number of hearts that can be attained (including initial 10)").defineInRange("maximum", 100, 1, 200);
-//        CFG.pop(); //heart
-
-//    ItemProjectileDungeon.RANGE = CFG.comment(" Range in all directions to search for spawner").defineInRange("spawner_seeker.range", 64, 1, 256);
 
 
         /**
