@@ -41,6 +41,16 @@ public class BlockScaffolding extends BlockCyclic {
     return AABB;
   }
 
+
+  @Override
+  public void neighborChanged(BlockState state, Level worldIn, BlockPos pos, Block blockIn, BlockPos fromPos, boolean isMoving) {
+    //If a block next to it was broken, destroy it
+    super.neighborChanged(state, worldIn, pos, blockIn, fromPos, isMoving);
+    if (blockIn == this) {
+      worldIn.destroyBlock(pos, true);
+    }
+  }
+
   @Override
   public void tick(BlockState state, ServerLevel worldIn, BlockPos pos, RandomSource random) {
     if (doesAutobreak && random.nextDouble() < CHANCE_CRUMBLE) {
