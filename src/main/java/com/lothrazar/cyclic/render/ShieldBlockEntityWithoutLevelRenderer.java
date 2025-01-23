@@ -45,10 +45,11 @@ public class ShieldBlockEntityWithoutLevelRenderer extends BlockEntityWithoutLev
 //    if (stackIn.is(ItemRegistry.SHIELD_WOOD.get())) {
 //      rendermaterial = isBanner ? MaterialShieldRegistry.SHIELD_BASE_WOOD : MaterialShieldRegistry.SHIELD_BASE_WOOD_NOPATTERN;
 //    }
+//      if (stackIn.is(ItemRegistry.SHIELD_FLINT.get())) {
+//            rendermaterial = isBanner ? MaterialShieldRegistry.SHIELD_BASE_FLINT : MaterialShieldRegistry.SHIELD_BASE_FLINT_NOPATTERN;
+//        }
         if (stackIn.is(ItemRegistry.SHIELD_LEATHER.get())) {
             rendermaterial = isBanner ? MaterialShieldRegistry.SHIELD_BASE_LEATHER : MaterialShieldRegistry.SHIELD_BASE_LEATHER_NOPATTERN;
-        } else if (stackIn.is(ItemRegistry.SHIELD_FLINT.get())) {
-            rendermaterial = isBanner ? MaterialShieldRegistry.SHIELD_BASE_FLINT : MaterialShieldRegistry.SHIELD_BASE_FLINT_NOPATTERN;
         } else if (stackIn.is(ItemRegistry.SHIELD_BONE.get())) {
             rendermaterial = isBanner ? MaterialShieldRegistry.SHIELD_BASE_BONE : MaterialShieldRegistry.SHIELD_BASE_BONE_NOPATTERN;
         } else if (stackIn.is(ItemRegistry.SHIELD_OBSIDIAN.get())) {

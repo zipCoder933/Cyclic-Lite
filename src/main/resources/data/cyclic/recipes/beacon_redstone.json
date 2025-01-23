@@ -2,8 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "sss",
-    "s s",
-    "bcb"
+    "cbc",
+    "cbc"
   ],
   "key": {
     "b": {
@@ -13,7 +13,7 @@
       "item": "minecraft:amethyst_block"
     },
     "s": {
-      "tag": "forge:glass/dark"
+      "item": "minecraft:glass"
     }
   },
   "result": {
