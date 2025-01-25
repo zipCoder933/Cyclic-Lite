@@ -59,6 +59,7 @@ public class MagmaFluidBlock extends LiquidBlock {
 
   public MagmaFluidBlock(java.util.function.Supplier<? extends FlowingFluid> supplier, Block.Properties props) {
     super(supplier, props);
+    props.replaceable();
     int max = 15; //max of the property LEVEL.getAllowedValues()
     float offset = 0.875F;
     for (int i = 0; i <= max; i++) { //x and z go from [0,1] 

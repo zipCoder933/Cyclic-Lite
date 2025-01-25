@@ -14,6 +14,7 @@ public class WaxFluidBlock extends LiquidBlock {
 
   public WaxFluidBlock(java.util.function.Supplier<? extends FlowingFluid> supplier, Properties props) {
     super(supplier, props);
+    props.replaceable();
   }
 
   @SuppressWarnings("deprecation")

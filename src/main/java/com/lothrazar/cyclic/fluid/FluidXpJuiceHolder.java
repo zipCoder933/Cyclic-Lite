@@ -29,7 +29,7 @@
 //  public static RegistryObject<FlowingFluid> STILL = FluidRegistry.FLUIDS.register(ID, () -> new ForgeFlowingFluid.Source(makeProperties()));
 //  public static RegistryObject<FlowingFluid> FLOWING = FluidRegistry.FLUIDS.register(ID + "_flowing", () -> new ForgeFlowingFluid.Flowing(makeProperties()));
 //  // .noDrops() became noLootTable()
-//  public static RegistryObject<LiquidBlock> BLOCK = BlockRegistry.BLOCKS.register(ID + "_block", () -> new XpJuiceFluidBlock(STILL, Block.Properties.of().liquid()
+//  public static RegistryObject<LiquidBlock> BLOCK = BlockRegistry.BLOCKS.register(ID + "_block", () -> new XpJuiceFluidBlock(STILL, Block.Properties.of().liquid().replaceable()
 //      .noCollission().lightLevel(s -> 8).strength(100.0F).noLootTable()));
 //  public static RegistryObject<Item> BUCKET = ItemRegistry.ITEMS.register(ID + "_bucket", () -> new BucketItem(STILL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 //  public static RegistryObject<FluidType> test_fluid_type = FluidRegistry.FLUID_TYPES.register(ID, () -> new FluidType(FluidType.Properties.create()) {
