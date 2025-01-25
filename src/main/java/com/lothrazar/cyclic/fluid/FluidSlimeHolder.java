@@ -23,14 +23,17 @@ public class FluidSlimeHolder {
   private static final String id = "slime";
 
   //We get the texture from the real minecraft block
-  private static final ResourceLocation FLUID_FLOWING = new ResourceLocation("minecraft:block/" + id + "_block");
-  private static final ResourceLocation FLUID_STILL = new ResourceLocation("minecraft:block/" + id + "_block");
+  private static final ResourceLocation FLUID_FLOWING = new ResourceLocation("cyclic:block/liquid/slime_flow");
+  private static final ResourceLocation FLUID_STILL = new ResourceLocation("cyclic:block/liquid/slime_still");
 
   public static final int COLOR = 0x51A03E;
   public static RegistryObject<FlowingFluid> STILL = FluidRegistry.FLUIDS.register(id, () -> new SlimeFluidBlock.Source(makeProperties()));
   public static RegistryObject<FlowingFluid> FLOWING = FluidRegistry.FLUIDS.register(id + "_flowing", () -> new SlimeFluidBlock.Flowing(makeProperties()));
-  public static RegistryObject<LiquidBlock> BLOCK = BlockRegistry.BLOCKS.register(id + "_block", () -> new SlimeFluidBlock(STILL, Block.Properties.of().liquid().replaceable()
+
+  public static RegistryObject<LiquidBlock> BLOCK = BlockRegistry.BLOCKS.register(id + "_block",
+          () -> new SlimeFluidBlock(STILL, Block.Properties.of().liquid().replaceable()
       .noCollission().strength(100.0F).noLootTable()));
+
   public static RegistryObject<Item> BUCKET = ItemRegistry.ITEMS.register(id + "_bucket", () -> new BucketItem(STILL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
   public static RegistryObject<FluidType> test_fluid_type = FluidRegistry.FLUID_TYPES.register(id, () -> new FluidType(FluidType.Properties.create()) {
 

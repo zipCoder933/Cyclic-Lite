@@ -21,14 +21,17 @@ import net.minecraftforge.registries.RegistryObject;
 public class FluidMagmaHolder {
 
   private static final String id = "magma";
+  private static final ResourceLocation FLUID_FLOWING = new ResourceLocation("cyclic:block/liquid/magma_flow");
   private static final ResourceLocation FLUID_STILL = new ResourceLocation("minecraft:block/" + id);
   public static final int COLOR = 0x4B261F;
   public static RegistryObject<FlowingFluid> STILL = FluidRegistry.FLUIDS.register(id, () -> new MagmaFluidBlock.Source(makeProperties()));
   public static RegistryObject<FlowingFluid> FLOWING = FluidRegistry.FLUIDS.register(id + "_flowing", () -> new MagmaFluidBlock.Flowing(makeProperties()));
+
   public static RegistryObject<LiquidBlock> BLOCK = BlockRegistry.BLOCKS.register(id + "_block", () ->
-          new MagmaFluidBlock(STILL, Block.Properties.of().liquid().replaceable().strength(100.0F).lightLevel((p_235456_0_) -> {
+          new MagmaFluidBlock(STILL, Block.Properties.of().liquid().noCollission().replaceable().strength(100.0F).lightLevel((p_235456_0_) -> {
     return 8;
   }).noLootTable()));
+
   public static RegistryObject<Item> BUCKET = ItemRegistry.ITEMS.register(id + "_bucket", () -> new BucketItem(STILL, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
   public static RegistryObject<FluidType> test_fluid_type = FluidRegistry.FLUID_TYPES.register(id, () -> new FluidType(FluidType.Properties.create()) {
 
@@ -43,7 +46,7 @@ public class FluidMagmaHolder {
 
         @Override
         public ResourceLocation getFlowingTexture() {
-          return FLUID_STILL;
+          return FLUID_FLOWING;
         }
 
         //        @Nullable
