@@ -21,7 +21,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class FluidSlimeHolder {
 
   private static final String id = "slime";
-  
+
   //We get the texture from the real minecraft block
   private static final ResourceLocation FLUID_FLOWING = new ResourceLocation("minecraft:block/" + id + "_block");
   private static final ResourceLocation FLUID_STILL = new ResourceLocation("minecraft:block/" + id + "_block");
