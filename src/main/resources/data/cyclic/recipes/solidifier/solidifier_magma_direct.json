@@ -1,0 +1,26 @@
+{
+	"type": "cyclic:solidifier",
+	"ingredients":[ 
+		{
+    	"item": "minecraft:cobblestone"
+  		},
+		{
+    	"item": "minecraft:cobblestone"
+  		},
+		{
+    	"item": "minecraft:cobblestone"
+  		}
+	],
+	"mix": {
+		"fluid": "cyclic:magma",
+		"count": 1000
+	},
+	"energy": {
+		"rfpertick": 400,
+		"ticks": 60
+	},
+	"result": {
+		"item": "minecraft:magma_block",
+		"count": 1
+	}
+}
