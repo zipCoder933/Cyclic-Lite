@@ -10,7 +10,7 @@
 		"count": 250
 	},
 	"energy": {
-		"rfpertick": 300,
+		"rfpertick": 200,
 		"ticks": 40
 	},
 	"result": {
