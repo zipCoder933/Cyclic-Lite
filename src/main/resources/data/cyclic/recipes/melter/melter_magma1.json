@@ -4,7 +4,7 @@
     "item": "minecraft:magma_block"
   }],
 	"energy": {
-		"rfpertick": 200,
+		"rfpertick": 300,
 		"ticks": 60
 	},
   "result": {
