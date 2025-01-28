@@ -1,4 +1,4 @@
-# Cyclic (Nexus)
+# Cyclic Lite
 A mod specifically modified for my nexus beyond modpack:
 https://www.curseforge.com/minecraft/modpacks/nexus-beyond
 
