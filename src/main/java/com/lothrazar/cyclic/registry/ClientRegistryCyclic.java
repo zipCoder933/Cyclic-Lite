@@ -1,45 +1,22 @@
 package com.lothrazar.cyclic.registry;
 
-import org.lwjgl.glfw.GLFW;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.BlockCyclic;
 import com.lothrazar.cyclic.block.antipotion.RenderBeaconAnti;
 import com.lothrazar.cyclic.block.beaconpotion.RenderBeaconPotion;
 import com.lothrazar.cyclic.block.beaconredstone.RenderBeaconRedstone;
-import com.lothrazar.cyclic.block.collectfluid.RenderFluidCollect;
-//import com.lothrazar.cyclic.block.collectitem.RenderItemCollect;
-//import com.lothrazar.cyclic.block.conveyor.ConveyorItemRenderer;
 import com.lothrazar.cyclic.block.detectorentity.RenderDetector;
 import com.lothrazar.cyclic.block.detectoritem.RenderDetectorItem;
-//import com.lothrazar.cyclic.block.dropper.RenderDropper;
-//import com.lothrazar.cyclic.block.enderitemshelf.ItemShelfRenderer;
-//import com.lothrazar.cyclic.block.endershelf.EnderShelfRenderer;
 import com.lothrazar.cyclic.block.facade.RenderCableFacade;
 import com.lothrazar.cyclic.block.facade.light.RenderLightFacade;
 import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffRenderFacade;
-//import com.lothrazar.cyclic.block.fan.RenderFan;
-//import com.lothrazar.cyclic.block.fishing.RenderFisher;
-//import com.lothrazar.cyclic.block.forester.RenderForester;
-//import com.lothrazar.cyclic.block.harvester.RenderHarvester;
 import com.lothrazar.cyclic.block.laser.RenderLaser;
-import com.lothrazar.cyclic.block.melter.RenderMelter;
-import com.lothrazar.cyclic.block.miner.RenderMiner;
-import com.lothrazar.cyclic.block.peatfarm.RenderPeatFarm;
-import com.lothrazar.cyclic.block.screen.RenderScreentext;
-import com.lothrazar.cyclic.block.shapebuilder.RenderStructure;
-import com.lothrazar.cyclic.block.shapedata.RenderShapedata;
-import com.lothrazar.cyclic.block.solidifier.RenderSolidifier;
-//import com.lothrazar.cyclic.block.sprinkler.RenderSprinkler;
 import com.lothrazar.cyclic.block.tank.RenderTank;
-import com.lothrazar.cyclic.block.wireless.redstone.RenderTransmit;
 import com.lothrazar.cyclic.capabilities.ClientDataManager;
 import com.lothrazar.cyclic.event.ClientInputEvents;
 import com.lothrazar.cyclic.event.EventRender;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
-//import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
-//import com.lothrazar.cyclic.item.magicnet.EntityMagicNetEmpty;
-//import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
@@ -59,6 +36,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import org.lwjgl.glfw.GLFW;
 
 @Mod.EventBusSubscriber(value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientRegistryCyclic {
@@ -114,30 +92,12 @@ public class ClientRegistryCyclic {
 
   @SubscribeEvent
   public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerBlockEntityRenderer(TileRegistry.PEAT_FARM.get(), RenderPeatFarm::new);
-    event.registerBlockEntityRenderer(TileRegistry.STRUCTURE.get(), RenderStructure::new);
-    event.registerBlockEntityRenderer(TileRegistry.COLLECTOR_FLUID.get(), RenderFluidCollect::new);
-//    event.registerBlockEntityRenderer(TileRegistry.COLLECTOR.get(), RenderItemCollect::new);
     event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ENTITY.get(), RenderDetector::new);
     event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ITEM.get(), RenderDetectorItem::new);
-//    event.registerBlockEntityRenderer(TileRegistry.DROPPER.get(), RenderDropper::new);
-//    event.registerBlockEntityRenderer(TileRegistry.ENDER_ITEM_SHELF.get(), ItemShelfRenderer::new);
-//    event.registerBlockEntityRenderer(TileRegistry.FAN.get(), RenderFan::new);
-//    event.registerBlockEntityRenderer(TileRegistry.ENDER_SHELF.get(), EnderShelfRenderer::new);
-//    event.registerBlockEntityRenderer(TileRegistry.FISHER.get(), RenderFisher::new);
-//    event.registerBlockEntityRenderer(TileRegistry.FORESTER.get(), RenderForester::new);
-//    event.registerBlockEntityRenderer(TileRegistry.HARVESTER.get(), RenderHarvester::new);
     event.registerBlockEntityRenderer(TileRegistry.LASER.get(), RenderLaser::new);
     event.registerBlockEntityRenderer(TileRegistry.LIGHT_CAMO.get(), RenderLightFacade::new);
-    event.registerBlockEntityRenderer(TileRegistry.MELTER.get(), RenderMelter::new);
-    event.registerBlockEntityRenderer(TileRegistry.MINER.get(), RenderMiner::new);
-    event.registerBlockEntityRenderer(TileRegistry.SCREEN.get(), RenderScreentext::new);
-    event.registerBlockEntityRenderer(TileRegistry.COMPUTER_SHAPE.get(), RenderShapedata::new);
-    event.registerBlockEntityRenderer(TileRegistry.SOLIDIFIER.get(), RenderSolidifier::new);
     event.registerBlockEntityRenderer(TileRegistry.SOUNDPROOFING_GHOST.get(), SoundmuffRenderFacade::new);
-//    event.registerBlockEntityRenderer(TileRegistry.SPRINKLER.get(), RenderSprinkler::new);
     event.registerBlockEntityRenderer(TileRegistry.TANK.get(), RenderTank::new);
-    event.registerBlockEntityRenderer(TileRegistry.WIRELESS_TRANSMITTER.get(), RenderTransmit::new);
     event.registerBlockEntityRenderer(TileRegistry.BEACON.get(), RenderBeaconPotion::new);
     event.registerBlockEntityRenderer(TileRegistry.ANTI_BEACON.get(), RenderBeaconAnti::new);
     event.registerBlockEntityRenderer(TileRegistry.BEACON_REDSTONE.get(), RenderBeaconRedstone::new);
@@ -209,19 +169,12 @@ public class ClientRegistryCyclic {
   @SubscribeEvent
   public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
     event.registerEntityRenderer(EntityRegistry.SNOW_BOLT.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.BOOMERANG_STUN.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.BOOMERANG_CARRY.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.BOOMERANG_DAMAGE.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.MAGIC_NET.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.TORCH_BOLT.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.DUNGEON.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.EYE.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.FIRE_BOLT.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.DARKFIRE_BOLT.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.ENDER_FISHING.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.STONE_BOLT.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.LIGHTNING_BOLT.get(), ThrownItemRenderer::new);
     event.registerEntityRenderer(EntityRegistry.MAGIC_MISSILE.get(), ThrownItemRenderer::new);
-//    event.registerEntityRenderer(EntityRegistry.CONVEYOR_ITEM.get(), ConveyorItemRenderer::new);
   }
 }

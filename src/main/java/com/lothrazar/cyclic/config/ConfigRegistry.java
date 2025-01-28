@@ -1,11 +1,5 @@
 package com.lothrazar.cyclic.config;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.lothrazar.cyclic.CyclicLogger;
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.CandleWaterBlock;
@@ -13,64 +7,28 @@ import com.lothrazar.cyclic.block.LavaSpongeBlock;
 import com.lothrazar.cyclic.block.PeatBlock;
 import com.lothrazar.cyclic.block.antipotion.TileAntiBeacon;
 import com.lothrazar.cyclic.block.anvil.TileAnvilAuto;
-//import com.lothrazar.cyclic.block.anvilmagma.TileAnvilMagma;
-//import com.lothrazar.cyclic.block.anvilvoid.TileAnvilVoid;
 import com.lothrazar.cyclic.block.battery.TileBattery;
 import com.lothrazar.cyclic.block.batteryclay.TileClayBattery;
 import com.lothrazar.cyclic.block.beaconpotion.TilePotionBeacon;
 import com.lothrazar.cyclic.block.cable.energy.TileCableEnergy;
 import com.lothrazar.cyclic.block.cable.fluid.TileCableFluid;
-import com.lothrazar.cyclic.block.collectfluid.TileFluidCollect;
-import com.lothrazar.cyclic.block.crafter.TileCrafter;
-//import com.lothrazar.cyclic.block.disenchant.TileDisenchant;
-//import com.lothrazar.cyclic.block.dropper.TileDropper;
-//import com.lothrazar.cyclic.block.enderctrl.EnderShelfHelper;
-//import com.lothrazar.cyclic.block.endershelf.EnderShelfItemHandler;
-//import com.lothrazar.cyclic.block.expcollect.TileExpPylon;
-import com.lothrazar.cyclic.block.eye.TileEye;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
-//import com.lothrazar.cyclic.block.fishing.TileFisher;
-//import com.lothrazar.cyclic.block.forester.TileForester;
 import com.lothrazar.cyclic.block.generatorexpl.BlockDestruction;
 import com.lothrazar.cyclic.block.generatorfood.TileGeneratorFood;
 import com.lothrazar.cyclic.block.generatorfuel.TileGeneratorFuel;
 import com.lothrazar.cyclic.block.generatorsolar.BlockGeneratorSolar;
-//import com.lothrazar.cyclic.block.harvester.TileHarvester;
-//import com.lothrazar.cyclic.block.magnet.BlockMagnetPanel;
-import com.lothrazar.cyclic.block.miner.TileMiner;
-//import com.lothrazar.cyclic.block.packager.TilePackager;
-import com.lothrazar.cyclic.block.peatfarm.TilePeatFarm;
-import com.lothrazar.cyclic.block.shapebuilder.TileStructure;
-import com.lothrazar.cyclic.block.spawntriggers.BlockAltarNoTraders;
-import com.lothrazar.cyclic.block.spawntriggers.CandlePeaceBlock;
-//import com.lothrazar.cyclic.block.sprinkler.TileSprinkler;
 import com.lothrazar.cyclic.block.terraglass.TileTerraGlass;
-import com.lothrazar.cyclic.block.terrasoil.TileTerraPreta;
-
-import com.lothrazar.cyclic.item.OreProspector;
-import com.lothrazar.cyclic.item.TeleporterWandItem;
-import com.lothrazar.cyclic.item.WandHypnoItem;
 import com.lothrazar.cyclic.item.bauble.AutoCaveTorchItem;
 import com.lothrazar.cyclic.item.bauble.AutoTorchItem;
 import com.lothrazar.cyclic.item.elemental.IceWand;
 import com.lothrazar.cyclic.item.elemental.WaterSpreaderItem;
-//import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
-import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 import com.lothrazar.cyclic.item.food.EdibleFlightItem;
 import com.lothrazar.cyclic.item.food.EdibleSpecItem;
 import com.lothrazar.cyclic.item.food.EnderApple;
-import com.lothrazar.cyclic.item.food.HeartItem;
-import com.lothrazar.cyclic.item.food.HeartToxicItem;
-import com.lothrazar.cyclic.item.missile.WandMissileItem;
-import com.lothrazar.cyclic.item.scythe.ScytheBrush;
-import com.lothrazar.cyclic.item.scythe.ScytheForage;
-import com.lothrazar.cyclic.item.scythe.ScytheHarvest;
-import com.lothrazar.cyclic.item.scythe.ScytheLeaves;
 import com.lothrazar.cyclic.item.transporter.TileTransporterEmptyItem;
 import com.lothrazar.cyclic.registry.CommandRegistry;
 import com.lothrazar.cyclic.registry.CommandRegistry.CyclicCommands;
 import com.lothrazar.cyclic.registry.MaterialRegistry;
-import com.lothrazar.cyclic.registry.PotionRegistry;
 import com.lothrazar.library.config.ConfigTemplate;
 import com.lothrazar.library.util.StringParseUtil;
 import net.minecraft.resources.ResourceLocation;
@@ -83,6 +41,8 @@ import net.minecraftforge.common.ForgeConfigSpec.IntValue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.*;
 
 public class ConfigRegistry extends ConfigTemplate {
 
@@ -355,30 +315,14 @@ public class ConfigRegistry extends ConfigTemplate {
         BlockGeneratorSolar.TIMEOUT = CFG.comment(" Ticks between power gen interval. Example: 40 ticks is 2 seconds. 0 means every tick it generates")
                 .defineInRange("generator_solar.ticks", 100, 0, Integer.MAX_VALUE);
         LavaSpongeBlock.RADIUS = CFG.comment(" Reach of the sponge").defineInRange("sponge_lava.radius", 8, 1, 64);
-        CandlePeaceBlock.HEIGHT = CFG.comment(" Height reach of the candle for spawn prevention").defineInRange("peace_candle.height", 4, 0, 512);
-        CandlePeaceBlock.RADIUS = CFG.comment(" Reach of the candle for spawn prevention").defineInRange("peace_candle.radius", 32, 0, 64);
         BlockDestruction.HEIGHT = CFG.comment(" Height for explosion prevention").defineInRange("altar_destruction.height", 8, 1, 512);
         BlockDestruction.RADIUS = CFG.comment(" Reach for explosion prevention").defineInRange("altar_destruction.radius", 32, 1, 128);
-//    BlockMagnetPanel.RADIUS = CFG.comment(" Reach for magnet distance to find items").defineInRange("magnet_block.radius", 16, 1, 128);
-        BlockAltarNoTraders.HEIGHT = CFG.comment(" Height reach of the no_soliciting for spawn prevention").defineInRange("no_soliciting.height", 4, 0, 512);
-        BlockAltarNoTraders.RADIUS = CFG.comment(" Reach of the no_soliciting for spawn prevention").defineInRange("no_soliciting.radius", 32, 0, 64);
         CandleWaterBlock.RADIUS = CFG.comment(" Reach of the candle").defineInRange("water_candle.radius", 8, 1, 64);
         CandleWaterBlock.TICK_RATE = CFG.comment(" Tick rate of the candle").defineInRange("water_candle.tick_rate", 60, 1, Integer.MAX_VALUE);
-//    TilePackager.POWERCONF = CFG.comment(" Power per recipe in the packager").defineInRange("packager.energy_cost", 50, 0, Integer.MAX_VALUE);
-//    TileUser.POWERCONF = CFG.comment(" Power per use user").defineInRange("user.energy_cost", 0, 0, Integer.MAX_VALUE);
         TileAnvilAuto.POWERCONF = CFG.comment(" Power per repair anvil").defineInRange("anvil.energy_cost", 6500, 0, Integer.MAX_VALUE);
-//    TileDropper.POWERCONF = CFG.comment(" Power per use dropper").defineInRange("dropper.energy_cost", 50, 0, Integer.MAX_VALUE);
-//    TileForester.POWERCONF = CFG.comment(" Power per use forester").defineInRange("forester.energy_cost", 50, 0, Integer.MAX_VALUE);
-//    TileHarvester.POWERCONF = CFG.comment(" Power per use harvester").defineInRange("harvester.energy_cost", 250, 0, Integer.MAX_VALUE);
+
         TilePotionBeacon.POWERCONF = CFG.comment(" Power per tick beacon").defineInRange("beacon.energy_cost", 10, 0, Integer.MAX_VALUE);
-        TileMiner.POWERCONF = CFG.comment(" Power per use miner").defineInRange("miner.energy_cost", 10, 0, Integer.MAX_VALUE);
-//    TileUncraft.POWERCONF = CFG.comment(" Power per use uncraft").defineInRange("uncraft.energy_cost", 1000, 0, Integer.MAX_VALUE);
-        TileFluidCollect.POWERCONF = CFG.comment(" Power per use collector_fluid").defineInRange("collector_fluid.energy_cost", 500, 0, Integer.MAX_VALUE);
-        TilePeatFarm.POWERCONF = CFG.comment(" Power per use peat_farm").defineInRange("peat_farm.energy_cost", 500, 0, Integer.MAX_VALUE);
-        TileCrafter.POWERCONF = CFG.comment(" Power per use crafter").defineInRange("crafter.energy_cost", 500, 0, Integer.MAX_VALUE);
-        TileStructure.POWERCONF = CFG.comment(" Power per tick while in use").defineInRange("structure.energy_cost", 10, 0, Integer.MAX_VALUE);
-//    BlockTeleport.POWERCONF = CFG.comment(" Power per use").defineInRange("teleport.energy_cost", 400, 0, Integer.MAX_VALUE);
-//    BlockTeleport.COSTDIM = CFG.comment(" Power per use while crossing dimensions").defineInRange("teleport.energy_cost_xdim", 8000, 0, Integer.MAX_VALUE);
+
         TilePotionBeacon.POWERCONF = CFG.comment(" Power per tick while in use").defineInRange("beacon.energy_cost", 0, 0, 64000);
         PeatBlock.PEATCHANCE = CFG.comment(" Chance that Peat Bog converts to Peat when wet (is multiplied by the number of surrounding water blocks)")
                 .defineInRange("peat.conversion_chance",
