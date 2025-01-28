@@ -2,19 +2,8 @@ package com.lothrazar.cyclic.registry;
 
 import com.lothrazar.cyclic.ModCyclic;
 import com.lothrazar.cyclic.block.BlockCyclic;
-import com.lothrazar.cyclic.block.antipotion.RenderBeaconAnti;
-import com.lothrazar.cyclic.block.beaconpotion.RenderBeaconPotion;
-import com.lothrazar.cyclic.block.beaconredstone.RenderBeaconRedstone;
-import com.lothrazar.cyclic.block.detectorentity.RenderDetector;
-import com.lothrazar.cyclic.block.detectoritem.RenderDetectorItem;
-import com.lothrazar.cyclic.block.facade.RenderCableFacade;
-import com.lothrazar.cyclic.block.facade.light.RenderLightFacade;
-import com.lothrazar.cyclic.block.facade.soundmuff.SoundmuffRenderFacade;
-import com.lothrazar.cyclic.block.laser.RenderLaser;
-import com.lothrazar.cyclic.block.tank.RenderTank;
 import com.lothrazar.cyclic.capabilities.ClientDataManager;
 import com.lothrazar.cyclic.event.ClientInputEvents;
-import com.lothrazar.cyclic.event.EventRender;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem;
 import com.mojang.blaze3d.platform.InputConstants;
@@ -75,9 +64,7 @@ public class ClientRegistryCyclic {
   };
 
   public ClientRegistryCyclic() {
-    //fired by mod constructor  DistExecutor.safeRunForDist 
     MinecraftForge.EVENT_BUS.register(new ClientInputEvents());
-    MinecraftForge.EVENT_BUS.register(new EventRender());
   }
 
   public static void setupClient(final FMLClientSetupEvent event) {
@@ -92,26 +79,15 @@ public class ClientRegistryCyclic {
 
   @SubscribeEvent
   public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
-    event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ENTITY.get(), RenderDetector::new);
-    event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ITEM.get(), RenderDetectorItem::new);
-    event.registerBlockEntityRenderer(TileRegistry.LASER.get(), RenderLaser::new);
-    event.registerBlockEntityRenderer(TileRegistry.LIGHT_CAMO.get(), RenderLightFacade::new);
-    event.registerBlockEntityRenderer(TileRegistry.SOUNDPROOFING_GHOST.get(), SoundmuffRenderFacade::new);
-    event.registerBlockEntityRenderer(TileRegistry.TANK.get(), RenderTank::new);
-    event.registerBlockEntityRenderer(TileRegistry.BEACON.get(), RenderBeaconPotion::new);
-    event.registerBlockEntityRenderer(TileRegistry.ANTI_BEACON.get(), RenderBeaconAnti::new);
-    event.registerBlockEntityRenderer(TileRegistry.BEACON_REDSTONE.get(), RenderBeaconRedstone::new);
-    //cable renderers
-    event.registerBlockEntityRenderer(TileRegistry.ENERGY_PIPE.get(), RenderCableFacade::new);
-    event.registerBlockEntityRenderer(TileRegistry.ITEM_PIPE.get(), RenderCableFacade::new);
-    event.registerBlockEntityRenderer(TileRegistry.FLUID_PIPE.get(), RenderCableFacade::new);
+//    event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ENTITY.get(), RenderDetector::new);
+//    event.registerBlockEntityRenderer(TileRegistry.DETECTOR_ITEM.get(), RenderDetectorItem::new);
+//    event.registerBlockEntityRenderer(TileRegistry.LASER.get(), RenderLaser::new);
   }
 
   @SuppressWarnings("deprecation") //shield itemproperty
   private static void initShields() {
     //this matches up with ShieldCyclicItem where it calls startUsingItem() inside of use()
     net.minecraft.client.renderer.item.ItemPropertyFunction blockFn = (stack, world, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F;
-//    ItemProperties.register(ItemRegistry.SHIELD_WOOD.get(), ShieldCyclicItem.BLOCKING, blockFn);
     ItemProperties.register(ItemRegistry.SHIELD_LEATHER.get(), ShieldCyclicItem.BLOCKING, blockFn);
 //    ItemProperties.register(ItemRegistry.SHIELD_FLINT.get(), ShieldCyclicItem.BLOCKING, blockFn);
     ItemProperties.register(ItemRegistry.SHIELD_BONE.get(), ShieldCyclicItem.BLOCKING, blockFn);
@@ -133,36 +109,6 @@ public class ClientRegistryCyclic {
   @OnlyIn(Dist.CLIENT)
   @SubscribeEvent
   public static void registerItemColors(RegisterColorHandlersEvent.Item event) {
-//    event.register((stack, tintIndex) -> {
-//      if (tintIndex == 0) { //layer zero is outline, ignore this
-//        return 0xFFFFFFFF;
-//      }
-//      //layer 1 is overlay
-//      return ItemLunchbox.getColour(stack);
-//    }, ItemRegistry.LUNCHBOX.get());
-    //
-//    event.register((stack, tintIndex) -> {
-//      if (tintIndex == 0) { //layer zero is outline, ignore this
-//        return 0xFFFFFFFF;
-//      }
-//      return ItemStorageBag.getColour(stack);
-//    }, ItemRegistry.STORAGE_BAG.get());
-
-
-//Magic Net
-//    event.register((stack, tintIndex) -> {
-//      if (stack.hasTag() && tintIndex > 0) {
-//        //what entity is inside
-//        EntityType<?> thing = ForgeRegistries.ENTITY_TYPES.getValue(new ResourceLocation(stack.getTag().getString(EntityMagicNetEmpty.NBT_ENTITYID)));
-//        //pull the colours from the egg
-//        for (SpawnEggItem spawneggitem : SpawnEggItem.eggs()) {
-//          if (spawneggitem.getType(null) == thing) {
-//            return spawneggitem.getColor(tintIndex - 1);
-//          }
-//        }
-//      }
-//      return 0xFFFFFFFF;
-//    }, ItemRegistry.MOB_CONTAINER.get());
   }
 
   @OnlyIn(Dist.CLIENT)

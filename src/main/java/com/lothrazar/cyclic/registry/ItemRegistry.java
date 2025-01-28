@@ -1,57 +1,28 @@
 package com.lothrazar.cyclic.registry;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.lothrazar.cyclic.ModCyclic;
-import com.lothrazar.cyclic.block.cable.CableWrench;
-//import com.lothrazar.cyclic.block.expcollect.ExpItemGain;
-//import com.lothrazar.cyclic.block.expcollect.ItemBlockPylon;
 import com.lothrazar.cyclic.block.scaffolding.ItemScaffolding;
-//import com.lothrazar.cyclic.item.FluteItem;
 import com.lothrazar.cyclic.item.GemstoneItem;
 import com.lothrazar.cyclic.item.ItemBaseCyclic;
 import com.lothrazar.cyclic.item.bauble.AutoTorchItem;
 import com.lothrazar.cyclic.item.bauble.CharmVoid;
 import com.lothrazar.cyclic.item.bauble.ItemBaseToggle;
-//import com.lothrazar.cyclic.item.bauble.SoulstoneCharm;
-//import com.lothrazar.cyclic.item.boomerang.BoomerangItem;
-//import com.lothrazar.cyclic.item.boomerang.BoomerangItem.Boomer;
-//import com.lothrazar.cyclic.item.crafting.CraftingBagItem;
 import com.lothrazar.cyclic.item.crafting.simple.CraftingStickItem;
 import com.lothrazar.cyclic.item.elemental.DarkFireballItem;
-import com.lothrazar.cyclic.item.elemental.FireExtinguishItem;
 import com.lothrazar.cyclic.item.elemental.FireballItem;
-//import com.lothrazar.cyclic.item.elemental.FishingMagicItem;
 import com.lothrazar.cyclic.item.elemental.TorchThrowingItem;
 import com.lothrazar.cyclic.item.ender.EnderBagItem;
-//import com.lothrazar.cyclic.item.ender.ItemProjectileDungeon;
 import com.lothrazar.cyclic.item.equipment.*;
 import com.lothrazar.cyclic.item.equipment.ShieldCyclicItem.ShieldType;
-import com.lothrazar.cyclic.item.food.AppleBuffs;
-import com.lothrazar.cyclic.item.food.AppleChocolate;
-//import com.lothrazar.cyclic.item.food.inventorycake.ItemCakeInventory;
-//import com.lothrazar.cyclic.item.lunchbox.ItemLunchbox;
-//import com.lothrazar.cyclic.item.magicnet.ItemMagicNet;
-//import com.lothrazar.cyclic.item.magicnet.ItemMobContainer;
-//import com.lothrazar.cyclic.item.storagebag.ItemStorageBag;
 import com.lothrazar.cyclic.item.transporter.TileTransporterEmptyItem;
 import com.lothrazar.cyclic.registry.MaterialRegistry.ToolMats;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.food.Foods;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.HoeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.ShovelItem;
-import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -80,9 +51,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> SPIKES_FIRE = ITEMS.register("spikes_fire", () -> new BlockItem(BlockRegistry.SPIKES_FIRE.get(), new Item.Properties()));
 
 
-    public static final RegistryObject<Item> ITEM_PIPE = ITEMS.register("item_pipe", () -> new BlockItem(BlockRegistry.ITEM_PIPE.get(), new Item.Properties()));
-
-
     public static final RegistryObject<Item> GEM_OBSIDIAN = ITEMS.register("gem_obsidian", () -> new GemstoneItem(new Item.Properties()));
     public static final RegistryObject<Item> GEM_AMBER = ITEMS.register("gem_amber", () -> new GemstoneItem(new Item.Properties()));
     public static final RegistryObject<Item> COMPRESSED_COBBLESTONE = ITEMS.register("compressed_cobblestone", () -> new BlockItem(BlockRegistry.COMPRESSED_COBBLESTONE.get(), new Item.Properties()));
@@ -91,8 +59,7 @@ public class ItemRegistry {
     //If anything, we can just remove the item from the registry
     //  public static final RegistryObject<Item> EYE_REDSTONE = ITEMS.register("eye_redstone", () -> new BlockItem(BlockRegistry.EYE_REDSTONE.get(), new Item.Properties()));
     public static final RegistryObject<Item> EYE_TELEPORT = ITEMS.register("eye_teleport", () -> new BlockItem(BlockRegistry.EYE_TELEPORT.get(), new Item.Properties()));
-    public static final RegistryObject<Item> SOUNDPROOFING = ITEMS.register("soundproofing", () -> new BlockItem(BlockRegistry.SOUNDPROOFING.get(), new Item.Properties()));
-    public static final RegistryObject<Item> ANVIL = ITEMS.register("anvil", () -> new BlockItem(BlockRegistry.ANVIL.get(), new Item.Properties()));
+     public static final RegistryObject<Item> ANVIL = ITEMS.register("anvil", () -> new BlockItem(BlockRegistry.ANVIL.get(), new Item.Properties()));
     public static final RegistryObject<Item> UNBREAKABLE_BLOCK = ITEMS.register("unbreakable_block", () -> new BlockItem(BlockRegistry.UNBREAKABLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> UNBREAKABLE_REACTIVE = ITEMS.register("unbreakable_reactive", () -> new BlockItem(BlockRegistry.UNBREAKABLE_REACTIVE.get(), new Item.Properties()));
     public static final RegistryObject<Item> WORKBENCH = ITEMS.register("workbench", () -> new BlockItem(BlockRegistry.WORKBENCH.get(), new Item.Properties()));
@@ -105,7 +72,6 @@ public class ItemRegistry {
     public static final RegistryObject<Item> SCAFFOLD_RESPONSIVE = ITEMS.register("scaffold_responsive", () -> new ItemScaffolding(BlockRegistry.SCAFFOLD_RESPONSIVE.get(), new Item.Properties()));
 
     //Misc
-    public static final RegistryObject<Item> CABLE_WRENCH = ITEMS.register("cable_wrench", () -> new CableWrench(new Item.Properties()));
     public static final RegistryObject<Item> ENDER_TORCH = ITEMS.register("ender_torch", () -> new TorchThrowingItem(new Item.Properties()));
     public static final RegistryObject<Item> FIREBALL_ORANGE = ITEMS.register("fireball", () -> new FireballItem(new Item.Properties()));
     public static final RegistryObject<Item> FIREBALL_DARK = ITEMS.register("fireball_dark", () -> new DarkFireballItem(new Item.Properties()));
@@ -175,13 +141,7 @@ public class ItemRegistry {
     /**
      * Redstone related items
      */
-    public static final RegistryObject<Item> GENERATOR_SOLAR = ITEMS.register("generator_solar", () -> new BlockItem(BlockRegistry.GENERATOR_SOLAR.get(), new Item.Properties()));
     public static final RegistryObject<Item> WAXED_REDSTONE = ITEMS.register("waxed_redstone", () -> new BlockItem(BlockRegistry.WAXED_REDSTONE.get(), new Item.Properties()));
-    //Beacon
-//    public static final RegistryObject<Item> BEACON = ITEMS.register("beacon", () -> new BlockItem(BlockRegistry.BEACON.get(), new Item.Properties()));
-//    public static final RegistryObject<Item> ANTI_BEACON = ITEMS.register("anti_beacon", () -> new BlockItem(BlockRegistry.ANTI_BEACON.get(), new Item.Properties()));
-    public static final RegistryObject<Item> BEACON_REDSTONE = ITEMS.register("beacon_redstone", () -> new BlockItem(BlockRegistry.BEACON_REDSTONE.get(), new Item.Properties()));
-
     public static final RegistryObject<Item> WATER_CANDLE = ITEMS.register("water_candle", () -> new BlockItem(BlockRegistry.WATER_CANDLE.get(), new Item.Properties()));
     public static final RegistryObject<Item> ALTAR_DESTRUCTION = ITEMS.register("altar_destruction", () -> new BlockItem(BlockRegistry.ALTAR_DESTRUCTION.get(), new Item.Properties()));
 

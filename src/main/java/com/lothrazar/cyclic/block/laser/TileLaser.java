@@ -1,7 +1,6 @@
 package com.lothrazar.cyclic.block.laser;
 
 import com.lothrazar.cyclic.block.TileBlockEntityCyclic;
-import com.lothrazar.cyclic.item.datacard.LocationGpsCard;
 import com.lothrazar.cyclic.registry.BlockRegistry;
 import com.lothrazar.cyclic.registry.TileRegistry;
 import com.lothrazar.library.core.BlockPosDim;
@@ -42,7 +41,7 @@ public class TileLaser extends TileBlockEntityCyclic implements MenuProvider {
 
     @Override
     public boolean isItemValid(int slot, ItemStack stack) {
-      return stack.getItem() instanceof LocationGpsCard;
+      return true;
     }
   };
   private LazyOptional<IItemHandler> inventoryCap = LazyOptional.of(() -> inventory);
@@ -84,12 +83,6 @@ public class TileLaser extends TileBlockEntityCyclic implements MenuProvider {
   }
 
   BlockPos getPosTarget() {
-    //before going to nextpos
-    //do we have a center offset
-    BlockPosDim loc = LocationGpsCard.getPosition(inventory.getStackInSlot(0));
-    if (loc != null && loc.getPos() != null) {
-      return loc.getPos();
-    }
     return this.getBlockPos();
   }
 

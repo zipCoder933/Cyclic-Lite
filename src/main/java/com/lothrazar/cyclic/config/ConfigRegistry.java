@@ -2,21 +2,14 @@ package com.lothrazar.cyclic.config;
 
 import com.lothrazar.cyclic.CyclicLogger;
 import com.lothrazar.cyclic.ModCyclic;
+import com.lothrazar.cyclic.block.BlockDestruction;
 import com.lothrazar.cyclic.block.CandleWaterBlock;
 import com.lothrazar.cyclic.block.LavaSpongeBlock;
 import com.lothrazar.cyclic.block.PeatBlock;
-import com.lothrazar.cyclic.block.antipotion.TileAntiBeacon;
 import com.lothrazar.cyclic.block.anvil.TileAnvilAuto;
 import com.lothrazar.cyclic.block.battery.TileBattery;
 import com.lothrazar.cyclic.block.batteryclay.TileClayBattery;
-import com.lothrazar.cyclic.block.beaconpotion.TilePotionBeacon;
-import com.lothrazar.cyclic.block.cable.energy.TileCableEnergy;
-import com.lothrazar.cyclic.block.cable.fluid.TileCableFluid;
 import com.lothrazar.cyclic.block.eyetp.TileEyeTp;
-import com.lothrazar.cyclic.block.generatorexpl.BlockDestruction;
-import com.lothrazar.cyclic.block.generatorfood.TileGeneratorFood;
-import com.lothrazar.cyclic.block.generatorfuel.TileGeneratorFuel;
-import com.lothrazar.cyclic.block.generatorsolar.BlockGeneratorSolar;
 import com.lothrazar.cyclic.block.terraglass.TileTerraGlass;
 import com.lothrazar.cyclic.item.bauble.AutoCaveTorchItem;
 import com.lothrazar.cyclic.item.bauble.AutoTorchItem;
@@ -283,37 +276,7 @@ public class ConfigRegistry extends ConfigTemplate {
                         + "This affects blocks cyclic:wireless_energy, cyclic:wireless_item, cyclic:wireless_fluid, cyclic:wireless_transmitter; "
                         + "If you change it to false it will only work if the target is in the same dimension.")
                 .define("wireless_transfer_dimensional", true);
-        TileAntiBeacon.HARMFUL_POTIONS = CFG.comment(" If true, then all potions marked as harmful/negative will be used in addition to the 'anti_beacon.potion_list' for cures and immunities  (used by both sponge and artemisbeacon).")
-                .define("harmful_potions", true);
-        TileAntiBeacon.RADIUS = CFG.comment(" Radius to protect players and entities from potion effects being applied (used by both sponge and artemisbeacon). ")
-                .defineInRange("anti_beacon.radius", 16, 1, 128);
-        TileAntiBeacon.TICKS = CFG.comment(" Ticks to fire anti beacon and remove effects from entities (20 = 1 second).  Does not affect potion immunity which applies regardless of ticks. This only used if you gain a potion effect out of range and then walk into range, so keep this large.")
-                .defineInRange("anti_beacon.ticks", 200, 20, 9999);
-        //TODO: variant that is (only harmful effects? just like milk that does all effects) ?
-        TileAntiBeacon.POTIONS = CFG.comment(" List of extra effects to clear. supports wildcard such as 'cyclic:*'. (This list is is used even if harmful_potions=false or true both)")
-                .defineList("anti_beacon.potion_list", Arrays.asList("minecraft:poison", "minecraft:*_poison", "minecraft:wither",
-                        "cyclic:gravity",
-                        "minecraft:weakness", "minecraft:slowness"), it -> it instanceof String);
-        //TODO: can potions have TAGS?
-        TileCableFluid.BUFFERSIZE = CFG.comment(" How many buckets of buffer fluid the fluid cable can hold (for each direction. for example 2 here means 2000ub in each face)")
-                .defineInRange("cables.fluid.buffer", 16, 1, 32);
-        TileCableFluid.TRANSFER_RATE = CFG.comment(" How many fluid units per tick can flow through these cables each tick (1 bucket = 1000) including normal flow and extraction mode")
-                .defineInRange("cables.fluid.flow", 16000, 100, Integer.MAX_VALUE);
-        TileCableEnergy.BUFFERSIZE = CFG.comment(" How much buffer the energy cables hold (must not be smaller than flow)")
-                .defineInRange("cables.energy.buffer", 32000, 1, Integer.MAX_VALUE);
-        TileCableEnergy.TRANSFER_RATE = CFG.comment(" How fast energy flows in these cables (must not be greater than buffer)")
-                .defineInRange("cables.energy.flow", 32000, 100, Integer.MAX_VALUE);
-        //
-        TileGeneratorFuel.RF_PER_TICK = CFG.comment(" RF energy per tick generated while burning furnace fuel in this machine.  Burn time in ticks is the same as furnace values, so 1 coal = 1600 ticks")
-                .defineInRange("generator_fuel.rf_per_tick", 80, 1, Integer.MAX_VALUE);
-        TileGeneratorFood.RF_PER_TICK = CFG.comment(" RF energy per tick generated while burning food in this machine")
-                .defineInRange("generator_food.rf_per_tick", 60, 1, Integer.MAX_VALUE);
-        TileGeneratorFood.TICKS_PER_FOOD = CFG.comment(" This [factor * (item.food + item.saturation) = ticks] results in the number of ticks food will burn at. IE Bread has (5 + 0.6) with factor 100, will burn for 560 ticks.")
-                .defineInRange("generator_food.ticks_per_food", 100, 1, Integer.MAX_VALUE);
-        BlockGeneratorSolar.ENERGY_GENERATE = CFG.comment(" Base level of solar power generation (affected by weather contitions).")
-                .defineInRange("generator_solar.energy", 16, 1, Integer.MAX_VALUE);
-        BlockGeneratorSolar.TIMEOUT = CFG.comment(" Ticks between power gen interval. Example: 40 ticks is 2 seconds. 0 means every tick it generates")
-                .defineInRange("generator_solar.ticks", 100, 0, Integer.MAX_VALUE);
+
         LavaSpongeBlock.RADIUS = CFG.comment(" Reach of the sponge").defineInRange("sponge_lava.radius", 8, 1, 64);
         BlockDestruction.HEIGHT = CFG.comment(" Height for explosion prevention").defineInRange("altar_destruction.height", 8, 1, 512);
         BlockDestruction.RADIUS = CFG.comment(" Reach for explosion prevention").defineInRange("altar_destruction.radius", 32, 1, 128);
@@ -321,9 +284,6 @@ public class ConfigRegistry extends ConfigTemplate {
         CandleWaterBlock.TICK_RATE = CFG.comment(" Tick rate of the candle").defineInRange("water_candle.tick_rate", 60, 1, Integer.MAX_VALUE);
         TileAnvilAuto.POWERCONF = CFG.comment(" Power per repair anvil").defineInRange("anvil.energy_cost", 6500, 0, Integer.MAX_VALUE);
 
-        TilePotionBeacon.POWERCONF = CFG.comment(" Power per tick beacon").defineInRange("beacon.energy_cost", 10, 0, Integer.MAX_VALUE);
-
-        TilePotionBeacon.POWERCONF = CFG.comment(" Power per tick while in use").defineInRange("beacon.energy_cost", 0, 0, 64000);
         PeatBlock.PEATCHANCE = CFG.comment(" Chance that Peat Bog converts to Peat when wet (is multiplied by the number of surrounding water blocks)")
                 .defineInRange("peat.conversion_chance",
                         0.08000000000000F,
